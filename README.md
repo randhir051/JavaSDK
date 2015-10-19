@@ -8,6 +8,7 @@ This is the Java SDK for CloudBoost. It is available as a JAR. If you want to ha
 
 ``` java
 //Add cloudboost java sdk jar file in your project
+//get jar: https://github.com/CloudBoost/JavaSDK/blob/master/target/JavaSDK-1.0-SNAPSHOT.jar
 import io.cloudboost.*;
 ```
 
