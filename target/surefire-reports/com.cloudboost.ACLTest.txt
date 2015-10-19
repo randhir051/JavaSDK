@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.cloudboost.ACLTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.253 sec <<< FAILURE!
+revokePublicWriteAccess(com.cloudboost.ACLTest)  Time elapsed: 0.044 sec  <<< ERROR!
+java.lang.ClassCastException: org.json.JSONArray cannot be cast to java.util.ArrayList
+	at com.cloudboost.ACL.getWriteList(ACL.java:59)
+	at com.cloudboost.ACL.setPublicWriteAccess(ACL.java:88)
+	at com.cloudboost.ACLTest.revokePublicWriteAccess(ACLTest.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)

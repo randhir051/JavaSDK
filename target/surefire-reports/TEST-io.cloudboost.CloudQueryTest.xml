@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="29" failures="10" name="io.cloudboost.CloudQueryTest" time="0.436" errors="19" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.60-b23"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/media/ranjeet/CED23D64D23D52476/cloudboost/JavaSDK/JavaSDK"/>
+    <property name="java.runtime.version" value="1.8.0_60-b27"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="3.13.0-53-generic"/>
+    <property name="user.home" value="/root"/>
+    <property name="user.timezone" value="Asia/Kolkata"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="root"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_60"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="selectColumn" time="0.024">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$1.done(CloudQueryTest.java:25)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.selectColumn(CloudQueryTest.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;newColumn&quot;:&quot;sample&quot;,&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;description&quot;:&quot;sample2&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn&quot;,&quot;description&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="lessThanEqualTo" time="0.012">
+    <error message="JSONObject[&quot;age&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;age&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.lessThanEqualTo(CloudQuery.java:348)
+	at io.cloudboost.CloudQueryTest$13.done(CloudQueryTest.java:371)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.lessThanEqualTo(CloudQueryTest.java:367)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:15},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="ascendingOrder" time="0.02">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$15$1.done(CloudQueryTest.java:440)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:963)
+	at io.cloudboost.CloudQueryTest$15.done(CloudQueryTest.java:437)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.ascendingOrder(CloudQueryTest.java:432)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:21},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+http://localhost:4730/data/sample123/student4/find
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="descendingOrder" time="0.019">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$16$1.done(CloudQueryTest.java:470)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:963)
+	at io.cloudboost.CloudQueryTest$16.done(CloudQueryTest.java:467)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.descendingOrder(CloudQueryTest.java:462)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:19},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+http://localhost:4730/data/sample123/student4/find
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="findById" time="0.016">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$17.done(CloudQueryTest.java:497)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.findById(CloudQueryTest.java:492)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;abcd&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="doesNotExists" time="0.015">
+    <error message="JSONObject[&quot;age&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;age&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.doesNotExists(CloudQuery.java:168)
+	at io.cloudboost.CloudQueryTest$19.done(CloudQueryTest.java:551)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.doesNotExists(CloudQueryTest.java:547)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:17},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="getElementWithRelation" time="0.023">
+    <error message="JSONObject[&quot;_id&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;_id&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.notEqualTo(CloudQuery.java:122)
+	at io.cloudboost.CloudQueryTest$20$1.done(CloudQueryTest.java:584)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest$20.done(CloudQueryTest.java:580)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.getElementWithRelation(CloudQueryTest.java:575)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;hostel&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;room&quot;],&quot;room&quot;:123},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+{&quot;document&quot;:{&quot;newColumn&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;hostel&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;room&quot;],&quot;room&quot;:123},&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="saveRelation" time="0.009">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$21.done(CloudQueryTest.java:621)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.saveRelation(CloudQueryTest.java:617)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;newColumn1&quot;:&quot;Course&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn1&quot;,&quot;newColumn7&quot;],&quot;newColumn7&quot;:[{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Ranjeet&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]},{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Ravi&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]}]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="saveMultiJoin" time="0.016">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$22.done(CloudQueryTest.java:645)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.saveMultiJoin(CloudQueryTest.java:641)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;newColumn2&quot;:{&quot;expires&quot;:null,&quot;address&quot;:&quot;progress&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom3&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;address&quot;]},&quot;newColumn1&quot;:&quot;Course&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom2&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn1&quot;,&quot;newColumn2&quot;,&quot;newColumn7&quot;],&quot;newColumn7&quot;:{&quot;newColumn&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;hostel&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;room&quot;],&quot;room&quot;:509},&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Ranjeet&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;,&quot;newColumn&quot;]}},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="includeRelationlObjectInQuery" time="0.018">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$23.done(CloudQueryTest.java:669)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.includeRelationlObjectInQuery(CloudQueryTest.java:665)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;newColumn2&quot;:{&quot;expires&quot;:null,&quot;address&quot;:&quot;progress&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom3&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;address&quot;]},&quot;newColumn1&quot;:&quot;Course&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom2&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn1&quot;,&quot;newColumn2&quot;,&quot;newColumn7&quot;],&quot;newColumn7&quot;:{&quot;newColumn&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;hostel&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;room&quot;],&quot;room&quot;:509},&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Ranjeet&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;,&quot;newColumn&quot;]}},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="includeRelationObjectOnDistinct" time="0.013">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$24.done(CloudQueryTest.java:711)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.includeRelationObjectOnDistinct(CloudQueryTest.java:707)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;newColumn1&quot;:&quot;text&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom2&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn1&quot;,&quot;newColumn7&quot;],&quot;newColumn7&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Ranjeet&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]}},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="queryOverLinkedColumnWithEqualTo" time="0.011">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$25.done(CloudQueryTest.java:749)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.queryOverLinkedColumnWithEqualTo(CloudQueryTest.java:745)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;newColumn&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;hostel&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;room&quot;],&quot;room&quot;:789},&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="containedInOverListOfCloudObject" time="0.012">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$26.done(CloudQueryTest.java:783)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.containedInOverListOfCloudObject(CloudQueryTest.java:779)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn7&quot;],&quot;newColumn7&quot;:[{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;]},{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;]}]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="includeFindById" time="0.01">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$27.done(CloudQueryTest.java:818)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.includeFindById(CloudQueryTest.java:814)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn7&quot;],&quot;newColumn7&quot;:[{&quot;expires&quot;:null,&quot;newColumn1&quot;:&quot;sample&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn1&quot;]},{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;]}]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="getEncryptedPassword" time="0.036">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$28$1.done(CloudQueryTest.java:857)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:963)
+	at io.cloudboost.CloudQueryTest$28.done(CloudQueryTest.java:853)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.getEncryptedPassword(CloudQueryTest.java:847)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;password&quot;:&quot;password&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;User&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;username&quot;,&quot;password&quot;,&quot;email&quot;],&quot;email&quot;:&quot;lskxryja@gam.com&quot;,&quot;username&quot;:&quot;lskxryja&quot;},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+http://localhost:4730/data/sample123/User/find
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="getEncryptedPasswordOverQuery" time="0.022">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$29.done(CloudQueryTest.java:881)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.getEncryptedPasswordOverQuery(CloudQueryTest.java:878)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;password&quot;:&quot;password&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;User&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;username&quot;,&quot;password&quot;,&quot;email&quot;],&quot;email&quot;:&quot;eaovlisk@gam.com&quot;,&quot;username&quot;:&quot;eaovlisk&quot;},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="greaterThan" time="0.012">
+    <error message="JSONObject[&quot;age&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;age&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.greaterThan(CloudQuery.java:278)
+	at io.cloudboost.CloudQueryTest$10.done(CloudQueryTest.java:287)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.greaterThan(CloudQueryTest.java:283)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;subject&quot;:[&quot;C#&quot;,&quot;C&quot;],&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;subject&quot;,&quot;age&quot;],&quot;age&quot;:15},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="greaterThanEqualTo" time="0.032">
+    <error message="JSONObject[&quot;age&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;age&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.greaterThanEqualTo(CloudQuery.java:301)
+	at io.cloudboost.CloudQueryTest$11.done(CloudQueryTest.java:315)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.greaterThanEqualTo(CloudQueryTest.java:311)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:10},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="lessThan" time="0.011">
+    <error message="JSONObject[&quot;age&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;age&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.lessThan(CloudQuery.java:324)
+	at io.cloudboost.CloudQueryTest$12.done(CloudQueryTest.java:343)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.lessThan(CloudQueryTest.java:339)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:20},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="selectColumnDistinct" time="0.009">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$2.done(CloudQueryTest.java:58)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.selectColumnDistinct(CloudQueryTest.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;newColumn&quot;:&quot;sample&quot;,&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;description&quot;:&quot;sample2&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Custom1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;newColumn&quot;,&quot;description&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="notEqualToWithNull" time="0.014">
+    <error message="JSONObject[&quot;name&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;name&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.exists(CloudQuery.java:145)
+	at io.cloudboost.CloudQuery.notEqualTo(CloudQuery.java:129)
+	at io.cloudboost.CloudQueryTest$4.done(CloudQueryTest.java:121)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.notEqualToWithNull(CloudQueryTest.java:117)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="findOne" time="0.009">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$5.done(CloudQueryTest.java:154)
+	at io.cloudboost.CloudQuery.findOne(CloudQuery.java:1054)
+	at io.cloudboost.CloudQueryTest.findOne(CloudQueryTest.java:150)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;select&quot;:{},&quot;query&quot;:{&quot;name&quot;:&quot;vipul&quot;},&quot;skip&quot;:0,&quot;sort&quot;:{},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="equalToWithNull" time="0.012">
+    <error message="JSONObject[&quot;name&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;name&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.doesNotExists(CloudQuery.java:168)
+	at io.cloudboost.CloudQuery.equalTo(CloudQuery.java:101)
+	at io.cloudboost.CloudQueryTest$3.done(CloudQueryTest.java:90)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.equalToWithNull(CloudQueryTest.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student1&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+dfgv
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="findData" time="0.013">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$6.done(CloudQueryTest.java:175)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:963)
+	at io.cloudboost.CloudQueryTest.findData(CloudQueryTest.java:171)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+http://localhost:4730/data/sample123/student1/find
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="notContianedIn" time="0.012">
+    <error message="JSONObject[&quot;subject&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;subject&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getJSONObject(JSONObject.java:573)
+	at io.cloudboost.CloudQuery.notContainedIn(CloudQuery.java:580)
+	at io.cloudboost.CloudQueryTest$9.done(CloudQueryTest.java:253)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.notContianedIn(CloudQueryTest.java:249)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;subject&quot;:[&quot;java&quot;,&quot;python&quot;],&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;subject&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="startsWith" time="0.004">
+    <error message="JSONObject[&quot;name&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;name&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.startsWith(CloudQuery.java:762)
+	at io.cloudboost.CloudQueryTest.startsWith(CloudQueryTest.java:225)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="exists" time="0.009">
+    <error message="JSONObject[&quot;age&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;age&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getString(JSONObject.java:654)
+	at io.cloudboost.CloudQuery.exists(CloudQuery.java:145)
+	at io.cloudboost.CloudQueryTest$18.done(CloudQueryTest.java:523)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.exists(CloudQueryTest.java:519)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;age&quot;],&quot;age&quot;:18},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="containsAll" time="0.011">
+    <error message="JSONObject[&quot;subject&quot;] not found." type="org.json.JSONException">org.json.JSONException: JSONObject[&quot;subject&quot;] not found.
+	at org.json.JSONObject.get(JSONObject.java:473)
+	at org.json.JSONObject.getJSONObject(JSONObject.java:573)
+	at io.cloudboost.CloudQuery.containsAll(CloudQuery.java:688)
+	at io.cloudboost.CloudQueryTest$7.done(CloudQueryTest.java:198)
+	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+	at io.cloudboost.CloudQueryTest.containsAll(CloudQueryTest.java:194)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;document&quot;:{&quot;expires&quot;:null,&quot;subject&quot;:[&quot;java&quot;,&quot;python&quot;],&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;custom&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;student4&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;subject&quot;]},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="or" time="0.003">
+    <error message="org.json.JSONArray cannot be cast to java.util.List" type="java.lang.ClassCastException">java.lang.ClassCastException: org.json.JSONArray cannot be cast to java.util.List
+	at io.cloudboost.CloudQuery.or(CloudQuery.java:71)
+	at io.cloudboost.CloudQueryTest.or(CloudQueryTest.java:400)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+</system-out>
+  </testcase>
+</testsuite>

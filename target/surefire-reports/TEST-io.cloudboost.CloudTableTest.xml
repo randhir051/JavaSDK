@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="32" failures="22" name="io.cloudboost.CloudTableTest" time="0.731" errors="8" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.60-b23"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/media/ranjeet/CED23D64D23D52476/cloudboost/JavaSDK/JavaSDK"/>
+    <property name="java.runtime.version" value="1.8.0_60-b27"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="3.13.0-53-generic"/>
+    <property name="user.home" value="/root"/>
+    <property name="user.timezone" value="Asia/Kolkata"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="root"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_60"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableStudent" time="0.03">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$32.done(CloudTableTest.java:695)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableStudent(CloudTableTest.java:691)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;age&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;class&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;name&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;description&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Student&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom18" time="0.012">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$34.done(CloudTableTest.java:723)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom18(CloudTableTest.java:719)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;number&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom18&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom3" time="0.019">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$36.done(CloudTableTest.java:751)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom3(CloudTableTest.java:747)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;address&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom3&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom7" time="0.013">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$38.done(CloudTableTest.java:780)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom7(CloudTableTest.java:776)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;requiredNumber&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom7&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom2" time="0.032">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$40.done(CloudTableTest.java:815)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom2(CloudTableTest.java:811)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn1&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Relation&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn7&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;{\&quot;columns\&quot;:[{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;Id\&quot;,\&quot;unique\&quot;:true,\&quot;name\&quot;:\&quot;id\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;expires\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:false,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;createdAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;updatedAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;ACL\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;ACL\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null}],\&quot;appId\&quot;:\&quot;sample123\&quot;,\&quot;name\&quot;:\&quot;student1\&quot;,\&quot;_type\&quot;:\&quot;table\&quot;,\&quot;type\&quot;:\&quot;custom\&quot;,\&quot;maxCount\&quot;:9999}&quot;},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Relation&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn2&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;{\&quot;columns\&quot;:[{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;Id\&quot;,\&quot;unique\&quot;:true,\&quot;name\&quot;:\&quot;id\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;expires\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:false,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;createdAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;updatedAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;ACL\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;ACL\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null}],\&quot;appId\&quot;:\&quot;sample123\&quot;,\&quot;name\&quot;:\&quot;Custom3\&quot;,\&quot;_type\&quot;:\&quot;table\&quot;,\&quot;type\&quot;:\&quot;custom\&quot;,\&quot;maxCount\&quot;:9999}&quot;}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom2&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom4" time="0.018">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$42.done(CloudTableTest.java:846)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom4(CloudTableTest.java:842)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn1&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn7&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;{\&quot;columns\&quot;:[{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;Id\&quot;,\&quot;unique\&quot;:true,\&quot;name\&quot;:\&quot;id\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;expires\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:false,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;createdAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;updatedAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;ACL\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;ACL\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null}],\&quot;appId\&quot;:\&quot;sample123\&quot;,\&quot;name\&quot;:\&quot;student1\&quot;,\&quot;_type\&quot;:\&quot;table\&quot;,\&quot;type\&quot;:\&quot;custom\&quot;,\&quot;maxCount\&quot;:9999}&quot;}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom4&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom14" time="0.035">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$44.done(CloudTableTest.java:877)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom14(CloudTableTest.java:873)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;List_Number&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;Number&quot;},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;List_GeoPoint&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;GeoPoint&quot;}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom14&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom1" time="0.012">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$46.done(CloudTableTest.java:908)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom1(CloudTableTest.java:904)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Boolean&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn1&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;description&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom1&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="addColumnAfterSave" time="0.011"/>
+  <testcase classname="io.cloudboost.CloudTableTest" name="renameTable" time="0.007">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$7.done(CloudTableTest.java:198)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.renameTable(CloudTableTest.java:195)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="deleteTableAddress" time="0.015">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$8.done(CloudTableTest.java:222)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.deleteTableAddress(CloudTableTest.java:219)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="deleteTableCompany" time="0.011">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$9.done(CloudTableTest.java:246)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.deleteTableCompany(CloudTableTest.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="deleteTableEmployee" time="0.012">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$10.done(CloudTableTest.java:270)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.deleteTableEmployee(CloudTableTest.java:267)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableEmployee" time="0.012">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$11.done(CloudTableTest.java:300)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableEmployee(CloudTableTest.java:295)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;Age&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;Name&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Employee&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCompany" time="0.02">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$12.done(CloudTableTest.java:321)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCompany(CloudTableTest.java:316)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;Revenue&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;Name&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Company&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableAddress" time="0.024">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$13.done(CloudTableTest.java:343)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableAddress(CloudTableTest.java:338)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;City&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;PinCode&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Address&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="updateTableSchemaEmployee" time="0.011">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$14.done(CloudTableTest.java:363)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.updateTableSchemaEmployee(CloudTableTest.java:357)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="updateTableSchemaCompany" time="0.013">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$15.done(CloudTableTest.java:394)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.updateTableSchemaCompany(CloudTableTest.java:388)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableStudent4" time="0.011">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$16.done(CloudTableTest.java:429)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableStudent4(CloudTableTest.java:424)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;subject&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;Text&quot;},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;age&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;student4&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableRole" time="0.011">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$18.done(CloudTableTest.java:456)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableRole(CloudTableTest.java:452)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Role&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableUser" time="0.01">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$20.done(CloudTableTest.java:482)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableUser(CloudTableTest.java:478)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;User&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom" time="0.031">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$22.done(CloudTableTest.java:523)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom(CloudTableTest.java:519)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Email&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn1&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;URL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn2&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn3&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Boolean&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn4&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn5&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Object&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn6&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="updateTableCustom" time="0.002"/>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableCustom5" time="0.062">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$24.done(CloudTableTest.java:556)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableCustom5(CloudTableTest.java:552)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;GeoPoint&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;location&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Custom5&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableSample" time="0.031">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$26.done(CloudTableTest.java:597)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableSample(CloudTableTest.java:593)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;name&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;unique&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;stringArray&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;Text&quot;},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;objectArray&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;Object&quot;},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;File&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;file&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;List&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;fileList&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;File&quot;}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;Sample&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableHostel" time="0.011">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$28.done(CloudTableTest.java:627)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableHostel(CloudTableTest.java:623)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;room&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;name&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;hostel&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createTableStudent1" time="0.065">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$30.done(CloudTableTest.java:661)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createTableStudent1(CloudTableTest.java:657)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Number&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;age&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Relation&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;newColumn&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:&quot;{\&quot;columns\&quot;:[{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;Id\&quot;,\&quot;unique\&quot;:true,\&quot;name\&quot;:\&quot;id\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;expires\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:false,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;createdAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;DateTime\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;updatedAt\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null},{\&quot;relationType\&quot;:null,\&quot;isDeletable\&quot;:false,\&quot;isEditable\&quot;:false,\&quot;dataType\&quot;:\&quot;ACL\&quot;,\&quot;unique\&quot;:false,\&quot;name\&quot;:\&quot;ACL\&quot;,\&quot;_type\&quot;:\&quot;column\&quot;,\&quot;isRenamable\&quot;:false,\&quot;required\&quot;:true,\&quot;relatedTo\&quot;:null}],\&quot;appId\&quot;:\&quot;sample123\&quot;,\&quot;name\&quot;:\&quot;hostel\&quot;,\&quot;_type\&quot;:\&quot;table\&quot;,\&quot;type\&quot;:\&quot;custom\&quot;,\&quot;maxCount\&quot;:9999}&quot;},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:true,&quot;isEditable&quot;:true,&quot;dataType&quot;:&quot;Text&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;name&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;student1&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;9SPxp6D3OPWvxj0asw5ryA==&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="duplicateTable" time="0.028">
+    <failure message="null expected:&lt;[Table already exists.]&gt; but was:&lt;[java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000]&gt;" type="junit.framework.ComparisonFailure">junit.framework.ComparisonFailure: null expected:&lt;[Table already exists.]&gt; but was:&lt;[java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000]&gt;
+	at junit.framework.Assert.assertEquals(Assert.java:81)
+	at junit.framework.Assert.assertEquals(Assert.java:87)
+	at io.cloudboost.CloudTableTest$1$1.done(CloudTableTest.java:33)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest$1.done(CloudTableTest.java:29)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.duplicateTable(CloudTableTest.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+mmjjrwgx
+{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;mmjjrwgx&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;mmjjrwgx&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="createAndDeleteTable" time="0.024">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$2.done(CloudTableTest.java:57)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.createAndDeleteTable(CloudTableTest.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+srkzqvkc
+{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;srkzqvkc&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="GetAllTable" time="0.053">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$4.done(CloudTableTest.java:105)
+	at io.cloudboost.CloudTable.getAll(CloudTable.java:184)
+	at io.cloudboost.CloudTableTest.GetAllTable(CloudTableTest.java:100)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+url: http://localhost:3000/sample123/table
+{&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="updateNewColumnIntoTable" time="0.045">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudTableTest$5$1$1.done(CloudTableTest.java:132)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest$5$1.done(CloudTableTest.java:129)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest$5.done(CloudTableTest.java:126)
+	at io.cloudboost.CloudTable.save(CloudTable.java:288)
+	at io.cloudboost.CloudTableTest.updateNewColumnIntoTable(CloudTableTest.java:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;qedizxkx&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+{&quot;data&quot;:{&quot;columns&quot;:[{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;Id&quot;,&quot;unique&quot;:true,&quot;name&quot;:&quot;id&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;expires&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:false,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;createdAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;updatedAt&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null},{&quot;relationType&quot;:null,&quot;isDeletable&quot;:false,&quot;isEditable&quot;:false,&quot;dataType&quot;:&quot;ACL&quot;,&quot;unique&quot;:false,&quot;name&quot;:&quot;ACL&quot;,&quot;_type&quot;:&quot;column&quot;,&quot;isRenamable&quot;:false,&quot;required&quot;:true,&quot;relatedTo&quot;:null}],&quot;appId&quot;:&quot;sample123&quot;,&quot;name&quot;:&quot;ynwerwbp&quot;,&quot;_type&quot;:&quot;table&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;maxCount&quot;:9999},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudTableTest" name="getTable" time="0.019">
+    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:3000
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudTableTest$3.done(CloudTableTest.java:86)
+	at io.cloudboost.CloudTable.get(CloudTable.java:236)
+	at io.cloudboost.CloudTableTest.getTable(CloudTableTest.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
+</system-out>
+  </testcase>
+</testsuite>
