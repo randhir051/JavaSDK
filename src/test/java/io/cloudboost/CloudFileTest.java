@@ -1,10 +1,5 @@
 package io.cloudboost;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Blob;
-
 import junit.framework.Assert;
 
 import org.junit.Test;

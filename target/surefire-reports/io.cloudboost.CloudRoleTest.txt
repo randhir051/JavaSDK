@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: io.cloudboost.CloudRoleTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec <<< FAILURE!
-createRole(io.cloudboost.CloudRoleTest)  Time elapsed: 0.019 sec  <<< FAILURE!
-junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.025 sec <<< FAILURE!
+createRole(io.cloudboost.CloudRoleTest)  Time elapsed: 2.022 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: No Table found.
 	at junit.framework.Assert.fail(Assert.java:47)
 	at io.cloudboost.CloudRoleTest$1.done(CloudRoleTest.java:25)
-	at io.cloudboost.CloudRole.save(CloudRole.java:89)
+	at io.cloudboost.CloudRole.save(CloudRole.java:85)
 	at io.cloudboost.CloudRoleTest.createRole(CloudRoleTest.java:20)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

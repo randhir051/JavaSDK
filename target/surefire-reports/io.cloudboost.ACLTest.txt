@@ -1,12 +1,17 @@
 -------------------------------------------------------------------------------
 Test set: io.cloudboost.ACLTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.375 sec <<< FAILURE!
-revokePublicWriteAccess(io.cloudboost.ACLTest)  Time elapsed: 1.196 sec  <<< FAILURE!
-junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.ACLTest$1.done(ACLTest.java:43)
-	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 20.132 sec <<< FAILURE!
+revokePublicWriteAccess(io.cloudboost.ACLTest)  Time elapsed: 20.017 sec  <<< ERROR!
+java.lang.Exception: test timed out after 20000 milliseconds
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:836)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:997)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1304)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:231)
+	at com.ning.http.client.providers.netty.future.NettyResponseFuture.get(NettyResponseFuture.java:152)
+	at io.cloudboost.CloudObject.save(CloudObject.java:513)
 	at io.cloudboost.ACLTest.revokePublicWriteAccess(ACLTest.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

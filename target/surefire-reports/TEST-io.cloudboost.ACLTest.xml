@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="1" name="io.cloudboost.ACLTest" time="1.301" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="io.cloudboost.ACLTest" time="20.131" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -58,11 +58,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="io.cloudboost.ACLTest" name="revokePublicWriteAccess" time="1.196">
-    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.ACLTest$1.done(ACLTest.java:43)
-	at io.cloudboost.CloudObject.save(CloudObject.java:530)
+  <testcase classname="io.cloudboost.ACLTest" name="revokePublicWriteAccess" time="20.017">
+    <error message="test timed out after 20000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 20000 milliseconds
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:836)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:997)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1304)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:231)
+	at com.ning.http.client.providers.netty.future.NettyResponseFuture.get(NettyResponseFuture.java:152)
+	at io.cloudboost.CloudObject.save(CloudObject.java:513)
 	at io.cloudboost.ACLTest.revokePublicWriteAccess(ACLTest.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -73,7 +78,7 @@
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
 	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
+</error>
     <system-out>SQL Lite is Up
 Driver name: SQLiteJDBC
 Driver version: native

@@ -45,7 +45,7 @@ public class CloudTableTest{
 			
 		}
 		
-		@Test(timeout=50000)
+	@Test(timeout=50000)
 		public void createAndDeleteTable () throws CloudException{
 			 initialize();
 			final String tableName = PrivateMethod._makeString();
@@ -162,6 +162,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=40000)
 		public void addColumnAfterSave () throws CloudException{
+			initialize();
 			String tableName = PrivateMethod._makeString();
 			CloudTable table = new CloudTable(tableName);
 			table.save(new CloudTableCallback(){
@@ -191,6 +192,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=40000)
 		public void renameTable () throws CloudException{
+			initialize();
 			CloudTable table = new CloudTable("Address");
 			CloudTable.get(table, new CloudTableCallback(){
 				@Override
@@ -215,6 +217,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=20000)
 		public void  deleteTableAddress() throws CloudException{
+			initialize();
 			CloudTable obj = new CloudTable("Address");
 			CloudTable.get(obj, new  CloudTableCallback(){
 				@Override
@@ -239,6 +242,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void deleteTableCompany() throws CloudException{
+			initialize();
 			CloudTable obj = new CloudTable("Company");
 			CloudTable.get(obj, new  CloudTableCallback(){
 				@Override
@@ -263,6 +267,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=20000)
 		public void  deleteTableEmployee() throws CloudException{
+			initialize();
 			CloudTable obj = new CloudTable("Employee");
 			CloudTable.get(obj, new  CloudTableCallback(){
 				@Override
@@ -287,6 +292,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableEmployee() throws CloudException{
+			initialize();
 			CloudTable obj = new CloudTable("Employee");
 			Column age = new Column("Age", DataType.Number, false, false);
 			Column name = new Column("Name", DataType.Text, false, false);
@@ -308,6 +314,7 @@ public class CloudTableTest{
 		}
 		@Test(timeout=50000)
 		public void createTableCompany() throws CloudException{
+			initialize();
 				CloudTable obj = new CloudTable("Company");
 				Column revenue = new Column("Revenue", DataType.Number, false, false);
 				Column name = new Column("Name", DataType.Text, false, false);
@@ -330,6 +337,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=20000)
 		public void  createTableAddress() throws CloudException{
+			initialize();
 			CloudTable obj = new CloudTable("Address");
 			Column city = new Column("City", DataType.Text, false, false);
 			Column pinCode = new Column("PinCode", DataType.Number, false, false);
@@ -353,6 +361,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=10000)
 		public void updateTableSchemaEmployee() throws CloudException{
+				initialize();
 				CloudTable table = new CloudTable("Employee");
 				CloudTable.get(table,new CloudTableCallback(){
 					@Override
@@ -384,6 +393,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void updateTableSchemaCompany() throws CloudException{
+			initialize();
 			CloudTable table = new CloudTable("Company");
 			CloudTable.get(table,new CloudTableCallback(){
 				@Override
@@ -415,6 +425,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableStudent4() throws CloudException{
+			initialize();
 			CloudTable obj = new CloudTable("student4");
 			Column subject = new Column("subject", DataType.List, false, false);
 			subject.setRelatedTo(DataType.Text);
@@ -448,6 +459,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableRole() throws CloudException{
+			initialize();
 			CloudTable user= new CloudTable("Role");
 			user.save(new CloudTableCallback(){
 				@Override
@@ -474,6 +486,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableUser() throws CloudException{
+			initialize();
 			CloudTable user= new CloudTable("User");
 			user.save(new CloudTableCallback(){
 				@Override
@@ -500,6 +513,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom() throws CloudException{
+			initialize();
 				CloudTable custom = new CloudTable("Custom");
 				Column newColumn = new Column("newColumn", DataType.Email, false, false);
 				custom.addColumn(newColumn);
@@ -546,6 +560,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom5() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom5");
 			Column newColumn = new Column("location", DataType.GeoPoint, false, false);
 			custom.addColumn(newColumn);
@@ -574,6 +589,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableSample() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Sample");
             Column newColumn = new Column("name", DataType.Text, true, false);
             custom.addColumn(newColumn);
@@ -615,6 +631,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableHostel() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("hostel");
 		   	Column newColumn = new Column("room", DataType.Number, false, false);
 		   	custom.addColumn(newColumn);
@@ -645,6 +662,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableStudent1() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("student1");
 		   	Column newColumn = new Column("age", DataType.Number, false, false);
 		   	custom.addColumn(newColumn);
@@ -679,6 +697,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableStudent() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Student");
 		   	Column newColumn = new Column("age", DataType.Number, false, false);
 		   	custom.addColumn(newColumn);
@@ -713,6 +732,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom18() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom18");
 			Column newColumn3 = new Column("number", DataType.Number, false, false);
 		   	custom.addColumn(newColumn3);
@@ -741,6 +761,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom3() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom3");
 			Column newColumn3 = new Column("address", DataType.Text, false, false);
 		   	custom.addColumn(newColumn3);
@@ -770,6 +791,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom7() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom7");
 			Column newColumn3 = new Column("requiredNumber", DataType.Number, false, false);
 		   	custom.addColumn(newColumn3);
@@ -797,6 +819,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom2() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom2");
 			Column newColumn = new Column("newColumn1", DataType.Text, false, false);
 		   	custom.addColumn(newColumn);
@@ -832,6 +855,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom4() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom4");
 			Column newColumn = new Column("newColumn1", DataType.Text, false, false);
 		   	custom.addColumn(newColumn);
@@ -863,6 +887,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom14() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom14");
 			Column newColumn = new Column("List_Number", DataType.List, false, false);
 			newColumn.setRelatedTo(DataType.Number);
@@ -894,6 +919,7 @@ public class CloudTableTest{
 		
 		@Test(timeout=50000)
 		public void createTableCustom1() throws CloudException{
+			initialize();
 			CloudTable custom = new CloudTable("Custom1");
 		   	Column newColumn1 = new Column("newColumn", DataType.Text, false, false);
 		   	custom.addColumn(newColumn1);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="5" name="io.cloudboost.CloudUserTest" time="0.155" errors="3" skipped="0">
+<testsuite tests="1" failures="1" name="io.cloudboost.CloudUserTest" time="1.972" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -58,12 +58,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createRole" time="0.001">
-    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
+  <testcase classname="io.cloudboost.CloudUserTest" name="createNewUser" time="1.971">
+    <failure message="{&quot;error&quot;:&quot;No Table found.&quot;}" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: {&quot;error&quot;:&quot;No Table found.&quot;}
 	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$5.done(CloudUserTest.java:111)
-	at io.cloudboost.CloudRole.save(CloudRole.java:89)
-	at io.cloudboost.CloudUserTest.createRole(CloudUserTest.java:106)
+	at io.cloudboost.CloudUserTest$1.done(CloudUserTest.java:29)
+	at io.cloudboost.CloudUser.signUp(CloudUser.java:145)
+	at io.cloudboost.CloudUserTest.createNewUser(CloudUserTest.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -74,132 +74,13 @@
 	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
-    <system-out>{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;role&quot;,&quot;name&quot;:&quot;wkouiqto&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Role&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
+    <system-out>SQL Lite is Up
+Driver name: SQLiteJDBC
+Driver version: native
+Product name: SQLite
+Product version: 3.8.11
+Table Created
+Socket Initializaed
 </system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="assignRoleToUser" time="0.001">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.CloudUserTest$6$1.done(CloudUserTest.java:137)
-	at io.cloudboost.CloudRole.save(CloudRole.java:89)
-	at io.cloudboost.CloudUserTest$6.done(CloudUserTest.java:134)
-	at io.cloudboost.CloudUser.logIn(CloudUser.java:203)
-	at io.cloudboost.CloudUserTest.assignRoleToUser(CloudUserTest.java:129)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-    <system-out>{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;role&quot;,&quot;name&quot;:&quot;lxpoyllm&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Role&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="removeRoleFromUser" time="0.057">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.CloudUserTest$7$1.done(CloudUserTest.java:174)
-	at io.cloudboost.CloudRole.save(CloudRole.java:89)
-	at io.cloudboost.CloudUserTest$7.done(CloudUserTest.java:171)
-	at io.cloudboost.CloudUser.logIn(CloudUser.java:203)
-	at io.cloudboost.CloudUserTest.removeRoleFromUser(CloudUserTest.java:168)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-    <system-out>{&quot;document&quot;:{&quot;expires&quot;:null,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;role&quot;,&quot;name&quot;:&quot;qokkzyri&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;Role&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;name&quot;]},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="encryptUserPassword" time="0.018">
-    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$8.done(CloudUserTest.java:211)
-	at io.cloudboost.CloudObject.save(CloudObject.java:530)
-	at io.cloudboost.CloudUserTest.encryptUserPassword(CloudUserTest.java:206)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>{&quot;document&quot;:{&quot;expires&quot;:null,&quot;password&quot;:&quot;abcd&quot;,&quot;_isModified&quot;:true,&quot;_type&quot;:&quot;user&quot;,&quot;ACL&quot;:{&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}},&quot;_tableName&quot;:&quot;User&quot;,&quot;_modifiedColumns&quot;:[&quot;createdAt&quot;,&quot;updatedAt&quot;,&quot;ACL&quot;,&quot;expires&quot;,&quot;username&quot;,&quot;password&quot;,&quot;email&quot;],&quot;email&quot;:&quot;cunnguzm@abc.com&quot;,&quot;username&quot;:&quot;caurybnd&quot;},&quot;key&quot;:&quot;Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=&quot;}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createNewUser" time="0.032">
-    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$1.done(CloudUserTest.java:26)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:149)
-	at io.cloudboost.CloudUserTest.createNewUser(CloudUserTest.java:22)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="logoutUser" time="0.004">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.CloudUserTest.logoutUser(CloudUserTest.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createUserGetVersion" time="0.022">
-    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$3.done(CloudUserTest.java:58)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:149)
-	at io.cloudboost.CloudUserTest.createUserGetVersion(CloudUserTest.java:54)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="queryOnUser" time="0.004"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="loginUser" time="0.015">
-    <failure message="java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: localhost/127.0.0.1:4730
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$4.done(CloudUserTest.java:88)
-	at io.cloudboost.CloudUser.logIn(CloudUser.java:203)
-	at io.cloudboost.CloudUserTest.loginUser(CloudUserTest.java:83)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
   </testcase>
 </testsuite>

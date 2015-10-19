@@ -301,7 +301,7 @@ public class CloudTable{
 			throw new CloudException("App id is null");
 		}
 		
-		if(this.document.get("_id") == null){
+		if(this.document.has("_id") == false){
 			throw new CloudException("Cannot delete a table which is not saved.");
 		}
 		

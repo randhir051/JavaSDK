@@ -42,7 +42,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		
+	
 		@Test(timeout=20000)
 		public void selectColumnDistinct() throws CloudException{
 			initialize();
