@@ -142,7 +142,7 @@ public class CloudSearchTest{
 	@Test(timeout=30000)
 	public void searchObjectWithWildCard() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		SearchQuery sq = new SearchQuery();
-		sq.wildcard("name", "R*", null);
+		sq.wildcard("name", "G*", null);
 		CloudSearch cs = new CloudSearch("Student", sq, null);
 		cs.search(new CloudObjectArrayCallback(){
 			@Override

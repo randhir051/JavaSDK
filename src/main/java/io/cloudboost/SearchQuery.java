@@ -30,6 +30,13 @@ class SearchQuery{
 		this.bool.put("must_not", this.must_not);
 	}
 	
+	private JSONObject toJSON(SearchQuery object){
+		JSONObject obj = new JSONObject();
+		obj.put("bool", object.bool);
+		obj.put("match", object.match);
+		obj.put("multi_match", object.multi_match);
+		return obj;
+	}
 	/**
 	 * 
 	 * _Build Search Pharse
@@ -425,10 +432,9 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @return
 	 */
 	SearchQuery and(SearchQuery object){
-		
-		this.must.add(object);
+		JSONObject obj = this.toJSON(object);
+		this.must.add(obj);
 		this.bool.put("must", must);
-	    
 		return this;
 	}
 	
@@ -439,10 +445,9 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @return
 	 */
 	SearchQuery or(SearchQuery object){
-		
-		this.should.add(object);
+		JSONObject obj = this.toJSON(object);
+		this.should.add(obj);
 		this.bool.put("should", this.should);
-		
 		return this;
 	}
 	
@@ -454,10 +459,9 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @return
 	 */
 	SearchQuery not(SearchQuery object){
-		
-		this.must_not.add(object);
+		JSONObject obj = this.toJSON(object);
+		this.must_not.add(obj);
 		this.bool.put("must_not", this.must_not);
-		
 		return this;
 	}
 }
