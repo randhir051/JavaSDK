@@ -13,7 +13,7 @@ public class CloudUserTest{
 	    String username = PrivateMethod._makeString();
 	    String passwd =  "abcd";
 	    void initialize(){
-			CloudApp.init("sample123","9SPxp6D3OPWvxj0asw5ryA==");
+			CloudApp.init("travis123","6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
 		@Test(timeout=20000)
 		public void createNewUser() throws CloudException{
@@ -34,19 +34,19 @@ public class CloudUserTest{
 					}
 				});
 		}
-		
-		@Test(timeout=20000)
-		public void logoutUser() throws CloudException{
-				initialize();
-				CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
-					@Override
-					public void done(CloudUser x, CloudException t)	throws CloudException {
-						
-					}
-
-		
-				});
-		}
+//		
+//		@Test(timeout=20000)
+//		public void logoutUser() throws CloudException{
+//				initialize();
+//				CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
+//					@Override
+//					public void done(CloudUser x, CloudException t)	throws CloudException {
+//						
+//					}
+//
+//		
+//				});
+//		}
 		
 		@Test(timeout=20000)
 		public void createUserGetVersion() throws CloudException{
@@ -80,28 +80,28 @@ public class CloudUserTest{
 				
 		}
 		
-		@Test(timeout=20000)
-		public void loginUser() throws CloudException{
-			initialize();
-			CloudUser user = new CloudUser();
-			user.setUserName(username);
-			user.setPassword(passwd);
-			user.logIn(new CloudUserCallback(){
-
-				@Override
-				public void done(CloudUser object, CloudException e)throws CloudException {
-					if(e != null){
-							Assert.fail(e.getMessage());
-					}
-					
-					if(object != null){
-						Assert.assertEquals(object.get("username"), username);
-					}else{
-						Assert.fail();
-					}
-				}
-			});
-		}
+//		@Test(timeout=20000)
+//		public void loginUser() throws CloudException{
+//			initialize();
+//			CloudUser user = new CloudUser();
+//			user.setUserName(username);
+//			user.setPassword(passwd);
+//			user.logIn(new CloudUserCallback(){
+//
+//				@Override
+//				public void done(CloudUser object, CloudException e)throws CloudException {
+//					if(e != null){
+//							Assert.fail(e.getMessage());
+//					}
+//					
+//					if(object != null){
+//						Assert.assertEquals(object.get("username"), username);
+//					}else{
+//						Assert.fail();
+//					}
+//				}
+//			});
+//		}
 		
 		String roleName = PrivateMethod._makeString();
 		

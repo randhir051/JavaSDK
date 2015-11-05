@@ -134,8 +134,11 @@ public class CloudQuery {
 
 				this.query.put(columnName, $ne);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Error: "+e.getMessage());
+				JSONObject $ne = new JSONObject("{ $ne: " + "" + " }");
+
+				this.query.put(columnName, $ne);
+				
 			}
 
 		} else {

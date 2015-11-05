@@ -1,10 +1,11 @@
 package io.cloudboost;
+import io.cloudboost.json.JSONException;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import junit.framework.Assert;
 
-import org.json.JSONException;
 import org.junit.Test;
 /**
  * 
@@ -13,7 +14,7 @@ import org.junit.Test;
  */
 public class CloudSearchTest{
 	void initialize(){
-		CloudApp.init("sample123","9SPxp6D3OPWvxj0asw5ryA==");
+		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
 	
 	@Test(timeout=30000)

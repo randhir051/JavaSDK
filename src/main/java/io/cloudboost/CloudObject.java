@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import io.cloudboost.beans.CBResponse;
+
 /**
  * 
  * @author cloudboost
@@ -19,6 +20,7 @@ import io.cloudboost.beans.CBResponse;
 public class CloudObject {
 	public ACL acl;
 	protected JSONObject document;
+
 	public JSONObject getDocument() {
 		return document;
 	}
@@ -246,9 +248,9 @@ public class CloudObject {
 			data = ((CloudObject) data).document;
 		}
 
-		// if (data instanceof CloudGeoPoint) {
-		// data = ((CloudGeoPoint) data).document;
-		// }
+		 if (data instanceof CloudGeoPoint) {
+		 data = ((CloudGeoPoint) data).document;
+		 }
 		try {
 			if (data == null) {
 
@@ -380,7 +382,7 @@ public class CloudObject {
 			return (Integer) document.get(columnName);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -439,8 +441,8 @@ public class CloudObject {
 
 			object = new CloudObject(obj.getString("_tableName"));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Error: "+e.getMessage());
+			this.document.put(columnName, "");
 		}
 		object.document = obj;
 		return object;
@@ -462,8 +464,7 @@ public class CloudObject {
 				object[i].document = obj.getJSONObject(i);
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			this.document.put(columnName, new String[10]);
 		}
 		return object;
 	}
@@ -629,44 +630,44 @@ public class CloudObject {
 	 * @param callbackObj
 	 * @throws CloudException
 	 */
-	 public static void off(String tableName, String eventType,
-	 final CloudStringCallback callbackObj) throws CloudException {
-	 tableName = tableName.toLowerCase();
-	 eventType = eventType.toLowerCase();
-	
-	 if (eventType == "created" || eventType == "updated"
-	 || eventType == "deleted") {
-	 CloudSocket.getSocket().disconnect();
-	 CloudSocket.getSocket().emit(
-	 "leave-object-channel",
-	 (CloudApp.getAppId() + "table" + tableName + eventType)
-	 .toLowerCase());
-	 CloudSocket.getSocket().disconnect();
-	 CloudSocket
-	 .getSocket()
-	 .off((CloudApp.getAppId() + "table" + tableName + eventType)
-	 .toLowerCase(), new Emitter.Listener() {
-	 @Override
-	 public void call(final Object... args) {
-	 try {
-	 callbackObj.done("success", null);
-	 } catch (CloudException e) {
-	
-	 try {
-	 callbackObj.done(null, e);
-	 } catch (CloudException e1) {
-	 e1.printStackTrace();
-	 }
-	 e.printStackTrace();
-	 }
-	 }
-	 });
-	 } else {
-	 throw new CloudException(
-	 "created, updated, deleted are supported notification types");
-	 }
-	
-	 }
+	public static void off(String tableName, String eventType,
+			final CloudStringCallback callbackObj) throws CloudException {
+		tableName = tableName.toLowerCase();
+		eventType = eventType.toLowerCase();
+
+		if (eventType == "created" || eventType == "updated"
+				|| eventType == "deleted") {
+			CloudSocket.getSocket().disconnect();
+			CloudSocket.getSocket().emit(
+					"leave-object-channel",
+					(CloudApp.getAppId() + "table" + tableName + eventType)
+							.toLowerCase());
+			CloudSocket.getSocket().disconnect();
+			CloudSocket
+					.getSocket()
+					.off((CloudApp.getAppId() + "table" + tableName + eventType)
+							.toLowerCase(), new Emitter.Listener() {
+						@Override
+						public void call(final Object... args) {
+							try {
+								callbackObj.done("success", null);
+							} catch (CloudException e) {
+
+								try {
+									callbackObj.done(null, e);
+								} catch (CloudException e1) {
+									e1.printStackTrace();
+								}
+								e.printStackTrace();
+							}
+						}
+					});
+		} else {
+			throw new CloudException(
+					"created, updated, deleted are supported notification types");
+		}
+
+	}
 
 	/**
 	 * 
@@ -711,15 +712,14 @@ public class CloudObject {
 			CloudException e = new CloudException(e1.getMessage());
 			callbackObject.done(null, e);
 		}
-		String content = response.getResponseBody();
-		if (content != null) {
-			String responseBody = content;
+		if (response.getStatusCode() == 200) {
+			String responseBody = response.getResponseBody();
 			JSONObject body = new JSONObject(responseBody);
 			thisObj = new CloudObject(body.get("_tableName").toString());
 			thisObj.document = body;
 			callbackObject.done(thisObj, null);
 		} else {
-			CloudException e = new CloudException(content);
+			CloudException e = new CloudException(response.getStatusMessage());
 			callbackObject.done(null, e);
 		}
 
@@ -743,8 +743,7 @@ public class CloudObject {
 			data.put("document", jsons.toArray(new JSONObject[0]));
 			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
 					+ array[0].getDocument().get("_tableName");
-			response = CBParser.callJson(url, "PUT",
-					 data);
+			response = CBParser.callJson(url, "PUT", data);
 			statusCode = response.getStatusCode();
 			if (statusCode == 200) {
 				List<CloudObject> objects = new ArrayList<>();
@@ -795,18 +794,19 @@ public class CloudObject {
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getApiUrl() + "/" + CloudApp.getAppId() + "/"
 					+ this.document.get("_tableName") + "/get/" + this.getId();
-			CBResponse response=CBParser.callJson(url, "POST", data)	;	
-			 int statusCode = response.getStatusCode();
-	
-			 if (statusCode == 200) {
-			 System.out.println("success");
-			 JSONObject body = new JSONObject(response.getResponseBody());
-			 thisObj.document = body;
-			 callbackObject.done(thisObj, null);
-			 } else {
-			 CloudException e = new CloudException(response.getResponseBody());
-			 callbackObject.done(null, e);
-			 }
+			CBResponse response = CBParser.callJson(url, "POST", data);
+			int statusCode = response.getStatusCode();
+
+			if (statusCode == 200) {
+				System.out.println("success");
+				JSONObject body = new JSONObject(response.getResponseBody());
+				thisObj.document = body;
+				callbackObject.done(thisObj, null);
+			} else {
+				CloudException e = new CloudException(
+						response.getResponseBody());
+				callbackObject.done(null, e);
+			}
 		} catch (JSONException e) {
 			callbackObject.done(null, new CloudException(e.getMessage()));
 		}
@@ -833,26 +833,27 @@ public class CloudObject {
 		String url = null;
 		try {
 			this.document.put("ACL", this.acl.getACL());
-
+			thisObj = this;
 			data = new JSONObject();
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 
 			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
 					+ this.document.getString("_tableName");
-			CBResponse response=CBParser.callJson(url, "POST", data);
-			int statusCode=response.getStatusCode();
-		if (statusCode == 200) {
-			 System.out.println("success");
-			 JSONObject body = new JSONObject(response.getResponseBody());
-			 thisObj.document = body;
-			 callbackObject.done(thisObj, null);
-		} else {
-			CloudException e = new CloudException(response.getResponseBody());
-			callbackObject.done(null, e);
-		}
+			CBResponse response = CBParser.callJson(url, "DELETE", data);
+			int statusCode = response.getStatusCode();
+			if (statusCode == 200) {
+				System.out.println("success");
+				JSONObject body = new JSONObject(response.getResponseBody());
+				thisObj.document = body;
+				callbackObject.done(thisObj, null);
+			} else {
+				CloudException e = new CloudException(
+						response.getResponseBody());
+				callbackObject.done(null, e);
+			}
 		} catch (JSONException e2) {
-			callbackObject.done(null,  new CloudException(e2.getMessage()));
+			callbackObject.done(null, new CloudException(e2.getMessage()));
 		}
 	}
 }

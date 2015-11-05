@@ -59,12 +59,13 @@ public class CBParser {
 	        dos.close();
 	        respCode=conn.getResponseCode();
 	        respMsg=conn.getResponseMessage();
+	        System.out.println("code="+respCode+",msg="+respMsg);
 	        inputString=inputStreamToString(conn.getInputStream());
 //	        sid=conn.getHeaderField("sessionId");
 	        
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			CBResponse resp=new CBResponse(respMsg, respMsg, respCode, sid);
+			return resp;
 		}
  
         String firstChar=String.valueOf(inputString.charAt(0)).trim();
@@ -72,8 +73,8 @@ public class CBParser {
 			try {
 				throw new Exception("Response is not JSON:"+inputString+", Response-Code="+respCode+", Response-Message="+respMsg);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				return new CBResponse(inputString, respMsg, respCode, sid);
 			}
 //        
 //        if(sid!= null){
