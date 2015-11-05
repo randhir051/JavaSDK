@@ -901,24 +901,24 @@ public class CloudQuery {
 	 * @param minDistance
 	 * @return
 	 */
-	// public CloudQuery near(String columnName, CloudGeoPoint geoPoint, Double
-	// maxDistance, Double minDistance){
-	//
-	// try {
-	// this.query.put(columnName, JSONObject.NULL);
-	//
-	//
-	// String $near = "{ '$geometry': {coordinates:"+
-	// geoPoint.document.get("coordinates")
-	// +" , type:'Point' }, '$maxDistance': "+ maxDistance
-	// +", '$minDistance': "+ minDistance +"}";
-	// this.query.put(columnName, $near);
-	// } catch (JSONException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// return this;
-	// }
+	 public CloudQuery near(String columnName, CloudGeoPoint geoPoint, Double
+	 maxDistance, Double minDistance){
+	
+	 try {
+	 this.query.put(columnName, JSONObject.NULL);
+	
+	
+	 String $near = "{ '$geometry': {coordinates:"+
+	 geoPoint.document.get("coordinates")
+	 +" , type:'Point' }, '$maxDistance': "+ maxDistance
+	 +", '$minDistance': "+ minDistance +"}";
+	 this.query.put(columnName, $near);
+	 } catch (JSONException e) {
+	 // TODO Auto-generated catch block
+	 e.printStackTrace();
+	 }
+	 return this;
+	 }
 
 	/**
 	 * 
@@ -931,22 +931,22 @@ public class CloudQuery {
 	 * @return
 	 */
 	//
-	// public CloudQuery geoWithin(String columnName, CloudGeoPoint geoPoint,
-	// Double radius){
-	//
-	// try {
-	// this.query.put(columnName, JSONObject.NULL);
-	//
-	//
-	// String $geoWithin = "{ '$centerSphere':["+
-	// geoPoint.document.get("coordinates")+", "+ radius/3963.2 +"] }";
-	// this.query.put(columnName, $geoWithin);
-	// } catch (JSONException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// return this;
-	// }
+	 public CloudQuery geoWithin(String columnName, CloudGeoPoint geoPoint,
+	 Double radius){
+	
+	 try {
+	 this.query.put(columnName, JSONObject.NULL);
+	
+	
+	 String $geoWithin = "{ '$centerSphere':["+
+	 geoPoint.document.get("coordinates")+", "+ radius/3963.2 +"] }";
+	 this.query.put(columnName, $geoWithin);
+	 } catch (JSONException e) {
+	 // TODO Auto-generated catch block
+	 e.printStackTrace();
+	 }
+	 return this;
+	 }
 
 	/**
 	 * 
@@ -956,29 +956,29 @@ public class CloudQuery {
 	 * @param geoPoint
 	 * @return
 	 */
-	// public CloudQuery geoWithin( String columnName, CloudGeoPoint[] geoPoint
-	// ){
-	// JSONArray coordinates = new JSONArray();
-	// try{
-	//
-	// for(int i=0; i<geoPoint.length; i++){
-	// if(geoPoint[i].document.get("coordinates") != null){
-	// JSONArray point = new
-	// JSONArray(geoPoint[i].document.get("coordinates").toString());
-	// coordinates.put(point.get(0));
-	// coordinates.put(point.get(1));
-	// }
-	// }
-	// this.query.put(columnName, JSONObject.NULL);
-	// String $geoWithin = "{ '$geometry':{ 'type': 'Polygon', 'coordinates': "+
-	// coordinates.toString() +"} }";
-	// this.query.put(columnName, $geoWithin);
-	// } catch (JSONException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// return this;
-	// }
+	 public CloudQuery geoWithin( String columnName, CloudGeoPoint[] geoPoint
+	 ){
+	 JSONArray coordinates = new JSONArray();
+	 try{
+	
+	 for(int i=0; i<geoPoint.length; i++){
+	 if(geoPoint[i].document.get("coordinates") != null){
+	 JSONArray point = new
+	 JSONArray(geoPoint[i].document.get("coordinates").toString());
+	 coordinates.put(point.get(0));
+	 coordinates.put(point.get(1));
+	 }
+	 }
+	 this.query.put(columnName, JSONObject.NULL);
+	 String $geoWithin = "{ '$geometry':{ 'type': 'Polygon', 'coordinates': "+
+	 coordinates.toString() +"} }";
+	 this.query.put(columnName, $geoWithin);
+	 } catch (JSONException e) {
+	 // TODO Auto-generated catch block
+	 e.printStackTrace();
+	 }
+	 return this;
+	 }
 
 	public void count(CloudIntegerCallback callbackObject)
 			throws CloudException {

@@ -629,44 +629,44 @@ public class CloudObject {
 	 * @param callbackObj
 	 * @throws CloudException
 	 */
-	// public static void off(String tableName, String eventType,
-	// final CloudStringCallback callbackObj) throws CloudException {
-	// tableName = tableName.toLowerCase();
-	// eventType = eventType.toLowerCase();
-	//
-	// if (eventType == "created" || eventType == "updated"
-	// || eventType == "deleted") {
-	// CloudSocket.getSocket().disconnect();
-	// CloudSocket.getSocket().emit(
-	// "leave-object-channel",
-	// (CloudApp.getAppId() + "table" + tableName + eventType)
-	// .toLowerCase());
-	// CloudSocket.getSocket().disconnect();
-	// CloudSocket
-	// .getSocket()
-	// .off((CloudApp.getAppId() + "table" + tableName + eventType)
-	// .toLowerCase(), new Emitter.Listener() {
-	// @Override
-	// public void call(final Object... args) {
-	// try {
-	// callbackObj.done("success", null);
-	// } catch (CloudException e) {
-	//
-	// try {
-	// callbackObj.done(null, e);
-	// } catch (CloudException e1) {
-	// e1.printStackTrace();
-	// }
-	// e.printStackTrace();
-	// }
-	// }
-	// });
-	// } else {
-	// throw new CloudException(
-	// "created, updated, deleted are supported notification types");
-	// }
-	//
-	// }
+	 public static void off(String tableName, String eventType,
+	 final CloudStringCallback callbackObj) throws CloudException {
+	 tableName = tableName.toLowerCase();
+	 eventType = eventType.toLowerCase();
+	
+	 if (eventType == "created" || eventType == "updated"
+	 || eventType == "deleted") {
+	 CloudSocket.getSocket().disconnect();
+	 CloudSocket.getSocket().emit(
+	 "leave-object-channel",
+	 (CloudApp.getAppId() + "table" + tableName + eventType)
+	 .toLowerCase());
+	 CloudSocket.getSocket().disconnect();
+	 CloudSocket
+	 .getSocket()
+	 .off((CloudApp.getAppId() + "table" + tableName + eventType)
+	 .toLowerCase(), new Emitter.Listener() {
+	 @Override
+	 public void call(final Object... args) {
+	 try {
+	 callbackObj.done("success", null);
+	 } catch (CloudException e) {
+	
+	 try {
+	 callbackObj.done(null, e);
+	 } catch (CloudException e1) {
+	 e1.printStackTrace();
+	 }
+	 e.printStackTrace();
+	 }
+	 }
+	 });
+	 } else {
+	 throw new CloudException(
+	 "created, updated, deleted are supported notification types");
+	 }
+	
+	 }
 
 	/**
 	 * 

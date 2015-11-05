@@ -2,6 +2,7 @@ package io.cloudboost;
 import junit.framework.Assert;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -16,11 +17,15 @@ public class CloudObjectTest{
 	}
 	void initialize(){
 		CloudApp.init("sample123","9SPxp6D3OPWvxj0asw5ryA==");
+//		CloudApp.init("egimabengitest", "yiBh75txY35CB+LSb/1XLQ==");
+
 	}
 	@Test(timeout=10000)
 	public void SaveData() throws CloudException{
 		 initialize();
+//		CloudObject obj = new CloudObject("sample");
 		CloudObject obj = new CloudObject("Sample");
+
 		obj.set("name", "samplexyz");
 		obj.save(new CloudObjectCallback(){
 			@Override
@@ -39,6 +44,8 @@ public class CloudObjectTest{
 	public void ShouldNotSaveStringIntoDate() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Sample");
+//		CloudObject obj = new CloudObject("sample");
+
 		obj.set("createdAt", "abcd");
 		obj.save(new CloudObjectCallback(){
 
@@ -58,6 +65,8 @@ public class CloudObjectTest{
 	public void ShouldNotSaveWithoutRequiredColumn() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Sample");
+//		CloudObject obj = new CloudObject("sample");
+
 		obj.save(new CloudObjectCallback(){
 
 			@Override
@@ -78,6 +87,8 @@ public class CloudObjectTest{
 	public void ShouldNotSaveWithWrongDataType() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Sample");
+//		CloudObject obj = new CloudObject("sample");
+
 		obj.set("name", 10);
 		obj.save(new CloudObjectCallback(){
 
@@ -98,14 +109,18 @@ public class CloudObjectTest{
 	public void ShouldNotSaveDuplicateValue() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Sample");
+//		CloudObject obj = new CloudObject("sample");
+
 		final String text = PrivateMethod._makeString();
 		obj.set("name", "sample");
-		obj.set("unique", text);
+//		obj.set("unique", text);
 		obj.save(new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(x != null){
 					CloudObject obj = new CloudObject("Sample");
+//					CloudObject obj = new CloudObject("sample");
+
 					obj.set("name", "sample1");
 					obj.set("unique", text);
 					obj.save(new CloudObjectCallback(){
@@ -129,6 +144,8 @@ public class CloudObjectTest{
 	public void updateAfterSave() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Sample");
+//		CloudObject obj = new CloudObject("sample");
+
      	obj.set("name", "sample");
      	obj.save(new CloudObjectCallback(){
 			@Override
@@ -153,6 +170,8 @@ public class CloudObjectTest{
 	public void deleteAfterSave() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Sample");
+//		CloudObject obj = new CloudObject("sample");
+
      	obj.set("name", "sample");
      	obj.save(new CloudObjectCallback(){
 			@Override
@@ -212,7 +231,12 @@ public class CloudObjectTest{
 		CloudObject obj = new CloudObject("Sample");
 		obj.set("name", "sample");
 		JSONObject obj1 = new JSONObject();
-		obj1.put("sample", "sample");
+		try {
+			obj1.put("sample", "sample");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		JSONArray string = new JSONArray();
 		string.put(obj1);
 		string.put(obj1);

@@ -1,5 +1,7 @@
 package io.cloudboost;
 import junit.framework.Assert;
+
+import org.json.JSONException;
 import org.junit.Test;
 /**
  * 
@@ -151,7 +153,10 @@ public class CloudGeoPointTest{
 							Assert.fail(e.getMessage());
 						}
 						System.out.println(x.get("location"));
-						CloudGeoPoint newObj =CloudGeoPoint.toGeoPoint( x.get("location"));
+						CloudGeoPoint newObj=null;
+						
+							newObj = CloudGeoPoint.toGeoPoint( x.get("location"));
+						
 						newObj.setLatitute(55.0);
 						x.set("location", newObj);
 						x.save(new CloudObjectCallback(){

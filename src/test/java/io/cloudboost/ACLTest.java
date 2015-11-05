@@ -1,8 +1,10 @@
 package io.cloudboost;
 import java.util.ArrayList;
+
 import junit.framework.Assert;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -42,13 +44,20 @@ public class ACLTest{
 				if(t != null){
 					Assert.fail(t.getMessage());
 				}
+				try{
 				setAclList(new JSONObject(x.get("ACL").toString()));
 				write = aclList.getJSONObject("write");
 				deny = write.getJSONObject("deny");
 				deniedUser =  new ArrayList<String>();
 				JSONArray user = new JSONArray(deny.get("user").toString());
 				for(int i=0; i<user.length(); i++){
-					deniedUser.add(i, user.getString(i));
+					
+						deniedUser.add(i, user.getString(i));
+					
+				}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				if(deniedUser.size() == 0){
 					obj.set("age", 15);
