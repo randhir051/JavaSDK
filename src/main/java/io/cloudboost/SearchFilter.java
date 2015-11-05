@@ -2,14 +2,15 @@ package io.cloudboost;
 
 import java.util.ArrayList;
 
-import org.json.JSONObject;
+import io.cloudboost.json.*;
+
 
 /**
  * 
  * @author cloudboost
  *
  */
-class SearchFilter{
+public class SearchFilter{
 	
 	JSONObject bool;
 	ArrayList<String> $include;
@@ -20,17 +21,20 @@ class SearchFilter{
 	/**
 	 * Constructor
 	 */
-	SearchFilter(){
+	public 	SearchFilter(){
 		bool = new JSONObject();
 		$include = new ArrayList<String>();
 		must = new ArrayList<Object>();
 		should = new ArrayList<Object>();
 		must_not = new ArrayList<Object>();
-		
+		try{
 		this.bool.put("must", this.must);
 		this.bool.put("should", this.should);
 		this.bool.put("must_not", this.must_not);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -41,18 +45,22 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter notEqualTo(String columnName, Object data){
+	public 	SearchFilter notEqualTo(String columnName, Object data){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject term = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put(columnName, data);
 		term.put("term", column);
 		
 		this.must_not.add(term);
 		this.bool.put("must_not", this.must_not);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -64,19 +72,23 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter notEqualTo(String columnName, Object[] data){
+	public 	SearchFilter notEqualTo(String columnName, Object[] data){
 		
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject term = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put(columnName, data);
 		term.put("terms", column);
 		
 		this.must_not.add(term);
 		this.bool.put("must_not", this.must_not);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -88,18 +100,22 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter equalTo(String columnName, Object data){
+	public 	SearchFilter equalTo(String columnName, Object data){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject term = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put(columnName, data);
 		term.put("term", column);
 		
 		this.must.add(term);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -111,18 +127,22 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter equalTo(String columnName, Object[] data){
+	public 	SearchFilter equalTo(String columnName, Object[] data){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject term = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put(columnName, data);
 		term.put("terms", column);
 		
 		this.must.add(term);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -134,18 +154,22 @@ class SearchFilter{
 	 * @param columnName
 	 * @return
 	 */
-	SearchFilter exists(String columnName){
+	public 	SearchFilter exists(String columnName){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject obj = new JSONObject();
 		JSONObject field = new JSONObject();
+		try{
 		field.put("field", columnName);
 		obj.put("exists", field);
 		
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -156,18 +180,23 @@ class SearchFilter{
 	 * @param columnName
 	 * @return
 	 */
-	SearchFilter doesNotExists(String columnName){
+	public 	SearchFilter doesNotExists(String columnName){
 		
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject obj = new JSONObject();
 		JSONObject field = new JSONObject();
+		try{
 		field.put("field", columnName);
 		obj.put("missing", field);
 		
 		this.must.add(obj);
 		this.bool.put("must", this.must);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -179,21 +208,24 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter greaterThanEqualTo(String columnName, Object data){
+	public 	SearchFilter greaterThanEqualTo(String columnName, Object data){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject obj = new JSONObject();
 		JSONObject range = new JSONObject();
 		JSONObject column = new JSONObject();
-		
+		try{
 		column.put("gte", data);
 		range.put(columnName, column);
 		obj.put("range", range);
 		
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -205,21 +237,24 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter greaterThan(String columnName, Object data){
+	public SearchFilter greaterThan(String columnName, Object data){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject obj = new JSONObject();
 		JSONObject range = new JSONObject();
 		JSONObject column = new JSONObject();
-		
+		try{
 		column.put("gt", data);
 		range.put(columnName, column);
 		obj.put("range", range);
 		
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -231,7 +266,7 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter lessThan(String columnName, Object data){
+	public SearchFilter lessThan(String columnName, Object data){
 		
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
@@ -239,14 +274,17 @@ class SearchFilter{
 		JSONObject obj = new JSONObject();
 		JSONObject range = new JSONObject();
 		JSONObject column = new JSONObject();
-		
+		try{
 		column.put("lt", data);
 		range.put(columnName, column);
 		obj.put("range", range);
 		
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -258,21 +296,24 @@ class SearchFilter{
 	 * @param data
 	 * @return
 	 */
-	SearchFilter lessThanOrEqualTo(String columnName, Object data){
+	public SearchFilter lessThanOrEqualTo(String columnName, Object data){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		
 		JSONObject obj = new JSONObject();
 		JSONObject range = new JSONObject();
 		JSONObject column = new JSONObject();
-		
+		try{
 		column.put("lte", data);
 		range.put(columnName, column);
 		obj.put("range", range);
 		
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -284,7 +325,7 @@ class SearchFilter{
 	 * @return
 	 * @throws CloudException 
 	 */
-	SearchFilter and(SearchFilter object) throws CloudException{
+	public SearchFilter and(SearchFilter object) throws CloudException{
 		if(object.$include.size() > 0){
 			throw new CloudException("You cannot have an include over AND. Have an CloudSearch Include over parent SearchFilter instead");
 		}
@@ -292,7 +333,12 @@ class SearchFilter{
 		object.$include.clear();
 		
 		this.must.add(object);
-		this.bool.put("must", this.must);
+		try {
+			this.bool.put("must", this.must);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return this;
 	}
@@ -305,7 +351,7 @@ class SearchFilter{
 	 * @return
 	 * @throws CloudException 
 	 */
-	SearchFilter or(SearchFilter object) throws CloudException{
+	public SearchFilter or(SearchFilter object) throws CloudException{
 		if(object.$include.size() > 0){
 			throw new CloudException("You cannot have an include over OR. Have an CloudSearch Include over parent SearchFilter instead");
 		}
@@ -313,7 +359,12 @@ class SearchFilter{
 		object.$include.clear();
 		
 		this.should.add(object);
-		this.bool.put("should", this.should);
+		try {
+			this.bool.put("should", this.should);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return this;
 	}
@@ -326,7 +377,7 @@ class SearchFilter{
 	 * @return
 	 * @throws CloudException 
 	 */
-	SearchFilter not(SearchFilter object) throws CloudException{
+	public SearchFilter not(SearchFilter object) throws CloudException{
 		if(object.$include.size() > 0){
 			throw new CloudException("You cannot have an include over NOT. Have an CloudSearch Include over parent SearchFilter instead");
 		}
@@ -334,7 +385,12 @@ class SearchFilter{
 		object.$include.clear();
 		
 		this.must_not.add(object);
-		this.bool.put("must_not", this.must_not);
+		try {
+			this.bool.put("must_not", this.must_not);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return this;
 	}
@@ -346,7 +402,7 @@ class SearchFilter{
 	 * @param columnName
 	 * @return
 	 */
-	SearchFilter include(String columnName){
+	public SearchFilter include(String columnName){
 		if (columnName.equals("id") || columnName.equals("expires"))
 	        columnName = "_" + columnName;
 		

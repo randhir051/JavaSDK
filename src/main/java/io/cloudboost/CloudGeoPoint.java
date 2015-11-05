@@ -2,9 +2,8 @@ package io.cloudboost;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import io.cloudboost.json.*;
+
 
 /**
  * 
@@ -26,7 +25,9 @@ public class CloudGeoPoint{
 	public CloudGeoPoint(Double latitude, Double longitude) throws CloudException{
 		document = new JSONObject();
 		this.coordinates = new ArrayList<Double>();
-		document.put("_type", "point");
+		try {
+			document.put("_type", "point");
+		
 		document.put("_isModified", true);
 		if((latitude >= -90.0 && latitude <= 90.0)&&( longitude >= -180.0 && longitude<=180.0)) {
 			this.coordinates.add(latitude);
@@ -34,9 +35,13 @@ public class CloudGeoPoint{
 			this.document.put("coordinates", this.coordinates);
 			this.document.put("longitude", longitude);
 			this.document.put("latitude", latitude);
+			
 	    }else{
 	    	throw new CloudException("latitude and longitudes are not in range");
-	    }
+	    }} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -48,7 +53,9 @@ public class CloudGeoPoint{
 	 */
 	public void setLongitude(Double longitude) throws CloudException{
 		if(longitude >= -180 && longitude <= 180) {
-            this.document.put("latitude",longitude);
+            try {
+				this.document.put("latitude",longitude);
+			
             JSONArray lat = new JSONArray(this.document.get("coordinates").toString());
             for(int i=0; i<lat.length(); i++){
             	this.coordinates.add((double) lat.getInt(i));
@@ -56,7 +63,10 @@ public class CloudGeoPoint{
 
             this.coordinates.set(0, longitude);
             this.document.put("coordinates", this.coordinates);
-            this.document.put("_isModified", true);
+            this.document.put("_isModified", true);} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }else{
         	throw new CloudException("Longitude is not in Range");
         }
@@ -69,7 +79,13 @@ public class CloudGeoPoint{
 	 * @return
 	 */
 	public Double getLongitude(){
-		return this.document.getDouble("longitude");
+		try {
+			return this.document.getDouble("longitude");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0.0;
+		}
 	}
 	
 	/**
@@ -81,7 +97,9 @@ public class CloudGeoPoint{
 	 */
 	public void setLatitute(Double latitute) throws CloudException{
 		if(latitute >= -90 && latitute <= 90) {
-            this.document.put("longitude",latitute);
+            try {
+				this.document.put("longitude",latitute);
+			
             JSONArray lat = new JSONArray(this.document.get("coordinates").toString());
             for(int i=0; i<lat.length(); i++){
             	this.coordinates.add((double) lat.getInt(i));
@@ -89,6 +107,10 @@ public class CloudGeoPoint{
             this.coordinates.set(1, latitute);
             this.document.put("coordinates", this.coordinates);
             this.document.put("_isModified", true);
+            } catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }else{
         	throw new CloudException("Latitute is not in Range");
         }
@@ -101,7 +123,13 @@ public class CloudGeoPoint{
 	 * @return
 	 */
 	public Double getLatitute(){
-		return this.document.getDouble("latitute");
+		try {
+			return this.document.getDouble("latitute");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0.0;
+		}
 	}
 	
 	/**
@@ -143,9 +171,14 @@ public class CloudGeoPoint{
 	 */
 	@SuppressWarnings("unchecked")
 	private Double greatCircleFormula(CloudGeoPoint point){
-		this.coordinates = (ArrayList<Double>) this.document.get("coordinates");
-		point.coordinates = (ArrayList<Double>) point.document.get("coordinates");
+		try {
+			this.coordinates = (ArrayList<Double>) this.document.get("coordinates");
 		
+		point.coordinates = (ArrayList<Double>) point.document.get("coordinates");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    Double dLat =toRad(this.coordinates.get(1) - point.coordinates.get(1));
 	    Double dLon = toRad(this.coordinates.get(0) - point.coordinates.get(0));
 	    

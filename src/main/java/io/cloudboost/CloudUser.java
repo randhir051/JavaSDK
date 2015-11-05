@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
+import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.*;
+import io.cloudboost.util.CBParser;
 
 /**
  * 
@@ -23,11 +21,15 @@ public class CloudUser extends CloudObject{
 	 */
 	public CloudUser(){
 		super("User");
-		this.document.put("_type", "user");
+		try {
+			this.document.put("_type", "user");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private static CloudUser current ;
-	private AsyncHttpClient client;  
 	
 	/**
 	 * 
@@ -49,7 +51,12 @@ public class CloudUser extends CloudObject{
 	 * @param username
 	 */
 	public void setUserName(String username){
-		this.document.put("username", username);
+		try {
+			this.document.put("username", username);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		PrivateMethod._isModified(this, "username");
 	}
 	
@@ -58,7 +65,13 @@ public class CloudUser extends CloudObject{
 	 * @return
 	 */
 	public String getUserName(){
-		return this.document.getString("username");
+		try {
+			return this.document.getString("username");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -66,7 +79,12 @@ public class CloudUser extends CloudObject{
 	 * @param password
 	 */
 	public void setPassword(String password){
-		this.document.put("password", password);
+		try {
+			this.document.put("password", password);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		PrivateMethod._isModified(this, "password");
 	}
 	
@@ -75,7 +93,13 @@ public class CloudUser extends CloudObject{
 	 * @return
 	 */
 	public String getPassword(){
-		return this.document.getString("password");
+		try {
+			return this.document.getString("password");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -83,7 +107,12 @@ public class CloudUser extends CloudObject{
 	 * @param email
 	 */
 	public void setEmail(String email){
-		this.document.put("email", email);
+		try {
+			this.document.put("email", email);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		PrivateMethod._isModified(this, "email");
 	}
 	
@@ -92,7 +121,13 @@ public class CloudUser extends CloudObject{
 	 * @return
 	 */
 	public String getEmail(){
-		return this.document.getString("email");
+		try {
+			return this.document.getString("email");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -107,7 +142,9 @@ public class CloudUser extends CloudObject{
 		if(CloudApp.getAppId() == null){
 			throw new CloudException("App Id is null");
 		}
-		
+		CloudUser thisObj=null;
+		JSONObject data=null ;
+		try{
 		if(this.document.get("username") == null){
 			throw new CloudException("Username is not set");
 		}
@@ -118,33 +155,24 @@ public class CloudUser extends CloudObject{
 			throw new CloudException("Email is not set");
 		}
 		
-		CloudUser thisObj;
-		JSONObject data  = new JSONObject();
+		
+		 data  = new JSONObject();
 		thisObj = this;
 		data.put("document", document);		
 		data.put("key", CloudApp.getAppKey());
-		
-		client = new AsyncHttpClient();
 		String url = CloudApp.getApiUrl()+"/user/"+CloudApp.getAppId()+"/signup";
-	
-		Future<Response> f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(data.toString()).execute();
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
+		CBResponse response=CBParser.callJson(url, "POST", data);
+		if(response.getStatusCode() == 200){
 				
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				current = thisObj;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done(null, e);
 			}
-		} catch (JSONException | InterruptedException | ExecutionException | IOException e) {
+		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done(null, e1);
 			e.printStackTrace();
@@ -162,7 +190,7 @@ public class CloudUser extends CloudObject{
 		if(CloudApp.getAppId() == null){
 			throw new CloudException("App Id is null");
 		}
-		
+		try{
 		if(this.document.get("username") == null){
 			throw new CloudException("Username is not set");
 		}
@@ -176,29 +204,21 @@ public class CloudUser extends CloudObject{
 		thisObj = this;
 		data.put("document", document);		
 		data.put("key", CloudApp.getAppKey());
-		
-		client = new AsyncHttpClient();
+
 		String url = CloudApp.getApiUrl()+"/user/"+CloudApp.getAppId()+"/login";
-		
-		Future<Response> f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(data.toString()).execute();
-		
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
+
+		CBResponse response=CBParser.callJson(url, "POST", data);
+		if(response.getStatusCode() == 200){
 				
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				current = thisObj;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done(null, e);
 			}
-		} catch (JSONException | InterruptedException | ExecutionException | IOException e) {
+		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done(null, e1);
 			e.printStackTrace();
@@ -213,6 +233,7 @@ public class CloudUser extends CloudObject{
 	 * @throws CloudException
 	 */
 	public void logOut(CloudUserCallback callbackObject) throws CloudException{
+		try {
 		if(CloudApp.getAppId() == null){
 			throw new CloudException("App Id is null");
 		}
@@ -231,29 +252,19 @@ public class CloudUser extends CloudObject{
 		data.put("document", document);		
 		data.put("key", CloudApp.getAppKey());
 		
-		client = new AsyncHttpClient();
 		String url = CloudApp.getApiUrl()+"/user/"+CloudApp.getAppId()+"/logout";
-		
-		Future<Response> f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(data.toString()).execute();
-		
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
-				System.out.println("Logout :: "+ f.get().getResponseBody());
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+		CBResponse response=CBParser.callJson(url, "POST", data);
+		if(response.getStatusCode() == 200){
+				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				
 				current = null;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done(null, e);
 			}
-		} catch (JSONException | InterruptedException | ExecutionException | IOException e) {
+		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done(null, e1);
 			e.printStackTrace();
@@ -276,35 +287,28 @@ public class CloudUser extends CloudObject{
 		CloudUser thisObj;
 		JSONObject data  = new JSONObject();
 		thisObj = this;
-		
+		try {
 		data.put("document", document);		
 		data.put("user", thisObj.document);
 		data.put("role", role.document);
-		data.put("key", CloudApp.getAppKey());
 		
-		client = new AsyncHttpClient();
+			data.put("key", CloudApp.getAppKey());
+		
 		String url = CloudApp.getApiUrl()+"/user/"+CloudApp.getAppId()+"/addToRole";
 		
-		Future<Response> f = client.preparePut(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(data.toString()).execute();
-		
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
+		CBResponse response=CBParser.callJson(url, "PUT", data);
+		if(response.getStatusCode() == 200){
 				
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				
 				current = null;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done(null, e);
 			}
-		} catch (JSONException | InterruptedException | ExecutionException | IOException e){
+		} catch (JSONException e){
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done(null, e1);
 			e.printStackTrace();
@@ -316,12 +320,16 @@ public class CloudUser extends CloudObject{
 		if(role == null){
 			throw new CloudException("role is null");
 		}
-		
+		try{
 		ArrayList<String> roles = (ArrayList<String>) this.document.get("roles");
 		
 		if(roles.contains(role.document.get("_id"))){
 			return true;
 		}else{
+			return false;
+		}} catch (JSONException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
 			return false;
 		}
 		
@@ -336,35 +344,27 @@ public class CloudUser extends CloudObject{
 		JSONObject data  = new JSONObject();
 		thisObj = this;
 		
-		data.put("document", document);		
+		try {
+			data.put("document", document);
+			
 		data.put("user", thisObj.document);
 		data.put("role", role.document);
 		data.put("key", CloudApp.getAppKey());
-		
-		client = new AsyncHttpClient();
 		String url = CloudApp.getApiUrl()+"/user/"+CloudApp.getAppId()+"/removeFromRole";
 		
-		Future<Response> f = client.preparePut(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(data.toString()).execute();
-		
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			
-			if(f.get().getStatusCode() == 200){
+		CBResponse response=CBParser.callJson(url, "PUT", data);
+		if(response.getStatusCode() == 200){
 				
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				
 				current = null;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done(null, e);
 			}
-		} catch (JSONException | InterruptedException | ExecutionException | IOException e) {
+		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done(null, e1);
 			e.printStackTrace();

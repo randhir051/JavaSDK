@@ -1,7 +1,8 @@
 package io.cloudboost;
 
-import io.cloudboost.util.SqlLite;
+
 import io.cloudboost.util.CloudSocket;
+//import io.cloudboost.util.SqlLite;
 /**
  * @author cloudboost
  *
@@ -11,13 +12,14 @@ import io.cloudboost.util.CloudSocket;
 public class CloudApp {
 	private static String appId;
 	private static String appKey;
-	//private static String serverUrl = "https://api.cloudboost.io";
-	//private static String serviceUrl = "https://service.cloudboost.io";
-	private static String serviceUrl = "http://localhost:3000";
-	private static String serverUrl = "http://localhost:4730";
+	private static String serverUrl = "https://api.cloudboost.io";
+	private static String serviceUrl = "https://service.cloudboost.io";
+//	private static String serviceUrl = "http://localhost:3000";
+//	private static String serverUrl = "http://localhost:4730";
 	private static String appUrl = serverUrl+"/api";
 	private static String apiUrl = serverUrl;
 	private static String socketUrl = serverUrl;
+	public static String SESSION_ID=null;
 	
 	/**
 	 * 
@@ -85,7 +87,7 @@ public class CloudApp {
 	public static void init(String appId, String appKey) {
 		CloudApp.appId = appId;
 		CloudApp.appKey = appKey;
-		SqlLite.init();
+//		SqlLite.init();
 		CloudSocket.init(getSocketUrl());
 	}	
 }
