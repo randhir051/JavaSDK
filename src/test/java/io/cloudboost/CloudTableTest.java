@@ -216,30 +216,30 @@ public class CloudTableTest{
 //			
 //		}
 		
-		@Test(timeout=20000)
-		public void  deleteTableAddress() throws CloudException{
-			initialize();
-			CloudTable obj = new CloudTable("Address");
-			CloudTable.get(obj, new  CloudTableCallback(){
-				@Override
-				public void done(CloudTable table, CloudException e)	throws CloudException {
-					table.delete(new CloudStringCallback(){
-						@Override
-						public void done(String response, CloudException e)throws CloudException {
-							if(e != null){
-								   Assert.fail(e.getMessage());
-							   }
-							
-							 	if(response == null){
-							 			Assert.fail("Should have delete the  table");
-							 	}else{
-							 		Assert.assertEquals(response, "Success");
-							 	}
-						}
-					});
-				}
-			});
-		}
+//		@Test(timeout=20000)
+//		public void  deleteTableAddress() throws CloudException{
+//			initialize();
+//			CloudTable obj = new CloudTable("Address");
+//			CloudTable.get(obj, new  CloudTableCallback(){
+//				@Override
+//				public void done(CloudTable table, CloudException e)	throws CloudException {
+//					table.delete(new CloudStringCallback(){
+//						@Override
+//						public void done(String response, CloudException e)throws CloudException {
+//							if(e != null){
+//								   Assert.fail(e.getMessage());
+//							   }
+//							
+//							 	if(response == null){
+//							 			Assert.fail("Should have delete the  table");
+//							 	}else{
+//							 		Assert.assertEquals(response, "Success");
+//							 	}
+//						}
+//					});
+//				}
+//			});
+//		}
 		
 //		@Test(timeout=50000)
 //		public void deleteTableCompany() throws CloudException{
@@ -336,29 +336,29 @@ public class CloudTableTest{
 //				});
 //		}
 		
-		@Test(timeout=20000)
-		public void  createTableAddress() throws CloudException{
-			initialize();
-			CloudTable obj = new CloudTable("Address");
-			Column city = new Column("City", DataType.Text, false, false);
-			Column pinCode = new Column("PinCode", DataType.Number, false, false);
-			obj.addColumn(city);
-			obj.addColumn(pinCode);
-			obj.save(new CloudTableCallback(){
-
-				@Override
-				public void done(CloudTable table, CloudException e)	throws CloudException {
-						if(e!=null){
-							Assert.fail(e.getMessage());
-						}
-						
-						if(table !=null){
-							Assert.assertEquals(table.getTableName(), "Address");
-						}
-				}
-			});
-			
-		}
+//		@Test(timeout=20000)
+//		public void  createTableAddress() throws CloudException{
+//			initialize();
+//			CloudTable obj = new CloudTable("Address");
+//			Column city = new Column("City", DataType.Text, false, false);
+//			Column pinCode = new Column("PinCode", DataType.Number, false, false);
+//			obj.addColumn(city);
+//			obj.addColumn(pinCode);
+//			obj.save(new CloudTableCallback(){
+//
+//				@Override
+//				public void done(CloudTable table, CloudException e)	throws CloudException {
+//						if(e!=null){
+//							Assert.fail(e.getMessage());
+//						}
+//						
+//						if(table !=null){
+//							Assert.assertEquals(table.getTableName(), "Address");
+//						}
+//				}
+//			});
+//			
+//		}
 		
 //		@Test(timeout=10000)
 //		public void updateTableSchemaEmployee() throws CloudException{

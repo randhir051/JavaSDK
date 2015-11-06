@@ -1,13 +1,12 @@
 package io.cloudboost;
-import io.cloudboost.json.JSONArray;
-import io.cloudboost.json.JSONException;
-import io.cloudboost.json.JSONObject;
-
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import junit.framework.Assert;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
 
 public class CloudObjectTest{

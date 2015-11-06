@@ -3,10 +3,6 @@ package io.cloudboost;
 
 import io.cloudboost.util.CloudSocket;
 //import io.cloudboost.util.SqlLite;
-/**
- * @author cloudboost
- *
- */
 
 
 public class CloudApp {
@@ -21,69 +17,40 @@ public class CloudApp {
 	private static String socketUrl = serverUrl;
 	public static String SESSION_ID=null;
 	
-	/**
-	 * 
-	 * @return
-	 */
+	
 	public static String getAppId() {
 		return appId;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public static String getAppKey() {
 		return appKey;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public static String getAppUrl() {
 		return appUrl;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public static String getApiUrl(){
 		return apiUrl;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public static String getServerUrl() {
 		return serverUrl;
 	}
-	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public static String getServiceUrl(){
 		return serviceUrl;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public static String getSocketUrl(){
 		return socketUrl;
 	}
-	
-	/**
-	 * 
-	 * App Initialization
-	 * 
-	 * @param appId
-	 * @param appKey
-	 */
+
 	public static void init(String appId, String appKey) {
 		CloudApp.appId = appId;
 		CloudApp.appKey = appKey;

@@ -1,8 +1,6 @@
 package io.cloudboost.util;
 
-import io.cloudboost.PrivateMethod;
 import io.cloudboost.beans.CBResponse;
-import io.cloudboost.json.JSONObject;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,10 +11,12 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.json.JSONObject;
+
 public class CBParser {
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
         String params=parameters.toString(); 
-        System.out.println("parameters: "+params);
+//        System.out.println("parameters: "+params);
 
         URL url=null;
 		try {
@@ -83,7 +83,7 @@ public class CBParser {
 //			PrivateMethod._deleteSessionId();
 //		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
-        System.out.println(rr.toString());
+//        System.out.println(rr.toString());
        return rr;
     }
    

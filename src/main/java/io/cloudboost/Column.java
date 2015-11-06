@@ -1,6 +1,7 @@
 package io.cloudboost;
 
-import io.cloudboost.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**

@@ -1,12 +1,11 @@
 package io.cloudboost;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
 import io.cloudboost.beans.CBResponse;
-import io.cloudboost.json.*;
 import io.cloudboost.util.CBParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  * 
  * @author cloudboost
@@ -176,11 +175,11 @@ public class CloudTable{
 		try {
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table";
-		System.out.println("url: "+url);
-		System.out.println(params);
+//		System.out.println("url: "+url);
+//		System.out.println(params);
 		CBResponse response=CBParser.callJson(url, "POST", params);
 			if(response.getStatusCode() == 200){
-				System.out.println(response.getResponseBody());
+//				System.out.println(response.getResponseBody());
 				JSONArray body = new JSONArray(response.getResponseBody());
 				CloudTable[] object = new CloudTable[body.length()];
 				

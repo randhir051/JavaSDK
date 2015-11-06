@@ -10,7 +10,7 @@ import org.junit.Test;
 public class CloudGeoPointTest{
 		
 		void initialize(){
-			CloudApp.init("sample123","9SPxp6D3OPWvxj0asw5ryA==");
+			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
 	
 //		@Test(timeout=50000)

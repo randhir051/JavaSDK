@@ -1,13 +1,7 @@
 package io.cloudboost;
-import io.cloudboost.json.JSONArray;
-import io.cloudboost.json.JSONException;
-import io.cloudboost.json.JSONObject;
-
 import java.util.ArrayList;
 
-import junit.framework.Assert;
-
-import org.junit.Test;
+import org.json.JSONObject;
 
 public class ACLTest{
 	

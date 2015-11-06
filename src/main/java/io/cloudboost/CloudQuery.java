@@ -1,14 +1,14 @@
 package io.cloudboost;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import io.cloudboost.beans.CBResponse;
-import io.cloudboost.json.*;
 import io.cloudboost.util.CBParser;
+
+import java.util.ArrayList;
+import java.util.concurrent.Future;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 
@@ -135,9 +135,16 @@ public class CloudQuery {
 				this.query.put(columnName, $ne);
 			} catch (JSONException e) {
 				System.out.println("Error: "+e.getMessage());
-				JSONObject $ne = new JSONObject("{ $ne: " + "" + " }");
+				JSONObject $ne;
+				try {
+					$ne = new JSONObject("{ $ne: " + "" + " }");
+					this.query.put(columnName, $ne);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
-				this.query.put(columnName, $ne);
+				
 				
 			}
 

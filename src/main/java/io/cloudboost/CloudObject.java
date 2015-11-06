@@ -1,16 +1,18 @@
 package io.cloudboost;
 
-import io.cloudboost.json.JSONArray;
-import io.cloudboost.json.JSONException;
-import io.cloudboost.json.JSONObject;
+import io.cloudboost.beans.CBResponse;
 import io.cloudboost.util.CBParser;
 import io.cloudboost.util.CloudSocket;
 import io.socket.emitter.Emitter;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import io.cloudboost.beans.CBResponse;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 
@@ -442,7 +444,12 @@ public class CloudObject {
 			object = new CloudObject(obj.getString("_tableName"));
 		} catch (JSONException e) {
 			System.out.println("Error: "+e.getMessage());
-			this.document.put(columnName, "");
+			try {
+				this.document.put(columnName, "");
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		object.document = obj;
 		return object;
@@ -464,7 +471,12 @@ public class CloudObject {
 				object[i].document = obj.getJSONObject(i);
 			}
 		} catch (JSONException e) {
-			this.document.put(columnName, new String[10]);
+			try {
+				this.document.put(columnName, new String[10]);
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		return object;
 	}
@@ -698,20 +710,19 @@ public class CloudObject {
 		}
 		JSONObject data = new JSONObject();
 		String url = null;
+		CBResponse response = null;
+
+		try {
 		data.put("document", document);
 		data.put("key", CloudApp.getAppKey());
 		url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
 				+ this.document.get("_tableName");
 
-		CBResponse response = null;
-		try {
+		
 
 			response = CBParser.callJson(url, "PUT", data);
 
-		} catch (Exception e1) {
-			CloudException e = new CloudException(e1.getMessage());
-			callbackObject.done(null, e);
-		}
+		
 		if (response.getStatusCode() == 200) {
 			String responseBody = response.getResponseBody();
 			JSONObject body = new JSONObject(responseBody);
@@ -720,6 +731,9 @@ public class CloudObject {
 			callbackObject.done(thisObj, null);
 		} else {
 			CloudException e = new CloudException(response.getStatusMessage());
+			callbackObject.done(null, e);
+		}} catch (Exception e1) {
+			CloudException e = new CloudException(e1.getMessage());
 			callbackObject.done(null, e);
 		}
 
