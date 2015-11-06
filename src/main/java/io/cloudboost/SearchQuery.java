@@ -2,13 +2,15 @@ package io.cloudboost;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
 /**
  * 
  * @author cloudboost
  *
  */
-class SearchQuery{
+public class SearchQuery{
 	
 	JSONObject bool;
 	JSONObject multi_match ;
@@ -18,25 +20,24 @@ class SearchQuery{
 	ArrayList<Object> should;
 	ArrayList<Object> must_not;
 	
-	SearchQuery(){
+	public SearchQuery(){
 		bool = new JSONObject();
 		$include = new ArrayList<String>();
 		must = new ArrayList<Object>();
 		should = new ArrayList<Object>();
 		must_not = new ArrayList<Object>();
 		
-		this.bool.put("must", this.must);
+		try {
+			this.bool.put("must", this.must);
+		
 		this.bool.put("should", this.should);
 		this.bool.put("must_not", this.must_not);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	private JSONObject toJSON(SearchQuery object){
-		JSONObject obj = new JSONObject();
-		obj.put("bool", object.bool);
-		obj.put("match", object.match);
-		obj.put("multi_match", object.multi_match);
-		return obj;
-	}
 	/**
 	 * 
 	 * _Build Search Pharse
@@ -47,11 +48,12 @@ class SearchQuery{
 	 * @param boost
 	 * @return
 	 */
-	JSONObject _buildSearchPhrase(String columnName, String query, String slop, String boost){
+	public JSONObject _buildSearchPhrase(String columnName, String query, String slop, String boost){
 		
 		JSONObject obj = this._buildSearchOn(columnName, query, null, null,null,boost);	
 		JSONObject column = new JSONObject();
 		match = new JSONObject();
+		try{
 		column.put("query", query);
 	    column.put("type", "phrase");
 	    if(slop != null){
@@ -61,14 +63,18 @@ class SearchQuery{
 	    }
 	    match.put(columnName, column);
 	    obj.put("match", match);
-
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return obj;
 	}
 	
-JSONObject _buildSearchPhrase(String[] columnName, String query, String slop, String boost){
+	public JSONObject _buildSearchPhrase(String[] columnName, String query, String slop, String boost){
 		
 		JSONObject obj = this._buildSearchOn(columnName, query, null, null,null,boost);	
 		multi_match = new JSONObject();
+		try{
 		multi_match.put("query", query);
 		multi_match.put("type", "phrase");
 	    if(slop != null){
@@ -77,7 +83,10 @@ JSONObject _buildSearchPhrase(String[] columnName, String query, String slop, St
 	    	multi_match.put("slop", JSONObject.NULL);
 	    }
 	    obj.put("multi_match", multi_match);
-
+} catch (JSONException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 		return obj;
 	}
 	
@@ -93,25 +102,32 @@ JSONObject _buildSearchPhrase(String[] columnName, String query, String slop, St
 	 * @param boost
 	 * @return
 	 */
-	JSONObject _buildBestColumns(String columnName, String query, String fuzziness, String operator, String match_percent, String boost){
+	public JSONObject _buildBestColumns(String columnName, String query, String fuzziness, String operator, String match_percent, String boost){
 		
 		JSONObject obj = this._buildSearchOn(columnName, query, fuzziness, operator, match_percent, boost);
 		
 		JSONObject column = new JSONObject();
+		try{
 	    column.put("type", "best_fields");
 	    match.put(columnName, column);
 	    obj.put("match", match);
-	    
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	    return obj;
 	}
 	
-JSONObject _buildBestColumns(String[] columnName, String query, String fuzziness, String operator, String match_percent, String boost){
+	public JSONObject _buildBestColumns(String[] columnName, String query, String fuzziness, String operator, String match_percent, String boost){
 		
 		JSONObject obj = this._buildSearchOn(columnName, query, fuzziness, operator, match_percent, boost);
-		
+		try{
 		multi_match.put("type", "best_fields");
 	    obj.put("multi_match",multi_match);
-	    
+} catch (JSONException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 	    return obj;
 	}
 	
@@ -127,26 +143,33 @@ JSONObject _buildBestColumns(String[] columnName, String query, String fuzziness
 	 * @param boost
 	 * @return
 	 */
-	JSONObject _buildMostColumns(String columnName, String query, String fuzziness,  String operator, String match_percent, String boost){
+	public JSONObject _buildMostColumns(String columnName, String query, String fuzziness,  String operator, String match_percent, String boost){
 		
 		JSONObject obj = this._buildSearchOn(columnName, query, fuzziness, operator, match_percent, boost);
 
 		JSONObject column = new JSONObject();
 		 match = new JSONObject();
+		 try{
 	    column.put("type", "most_fields");
 	    match.put(columnName, column);
 	    obj.put("match", match);
-	    
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	    return obj;
 	}
 	
-JSONObject _buildMostColumns(String[] columnName, String query, String fuzziness,  String operator, String match_percent, String boost){
+	public JSONObject _buildMostColumns(String[] columnName, String query, String fuzziness,  String operator, String match_percent, String boost){
 		
 		JSONObject obj = this._buildSearchOn(columnName, query, fuzziness, operator, match_percent, boost);
-		
+		try{
 		multi_match.put("type", "most_fields");
 	    obj.put("multi_match", multi_match);
-	    
+} catch (JSONException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 	    return obj;
 	}
 	
@@ -162,12 +185,12 @@ JSONObject _buildMostColumns(String[] columnName, String query, String fuzziness
 	 * @param boost
 	 * @return
 	 */
-	JSONObject _buildSearchOn(String columnName, String query, String fuzziness, String operator, String match_percent, String boost){
+	public JSONObject _buildSearchOn(String columnName, String query, String fuzziness, String operator, String match_percent, String boost){
 		
 		JSONObject obj = new JSONObject();
 		match = new JSONObject();
 		JSONObject column = new JSONObject();
-		
+		try{
 		column.put("query", query);
 		
 		if(operator != null){
@@ -197,15 +220,18 @@ JSONObject _buildMostColumns(String[] columnName, String query, String fuzziness
         
         match.put(columnName, column);
         obj.put("match", match);
-        
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return obj;
 	}
 	
-JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, String operator, String match_percent, String boost){
+	public JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, String operator, String match_percent, String boost){
 		
 		JSONObject obj = new JSONObject();
 		multi_match = new JSONObject();
-		
+		try{
 		multi_match.put("query", query);
 		multi_match.put("fields", columnName);
 		if(operator != null){
@@ -233,6 +259,10 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
         }
      
         obj.put("multi_match", multi_match);
+} catch (JSONException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 		return obj;
 	}
 
@@ -248,7 +278,7 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param priority
 	 * @return
 	 */
-	SearchQuery searchOn(String columns, Object  query, String fuzziness, String all_words, String match_percent, String priority){
+	public SearchQuery searchOn(String columns, Object  query, String fuzziness, String all_words, String match_percent, String priority){
 		
 		if(all_words != null){
 	        all_words = "and";
@@ -258,7 +288,12 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	    
 	    
 	    this.should.add(obj);
-		this.bool.put("should", this.should);
+		try {
+			this.bool.put("should", this.should);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
@@ -272,12 +307,17 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param priority
 	 * @return
 	 */
-	SearchQuery phrase(String columns, Object  query, String fuzziness, String priority){
+	public SearchQuery phrase(String columns, Object  query, String fuzziness, String priority){
 		
 		JSONObject obj = this._buildSearchPhrase(columns, query.toString(),fuzziness, priority);
 		
 		this.should.add(obj);
-		this.bool.put("should", this.should);
+		try {
+			this.bool.put("should", this.should);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		    
 		return this;
 	}
@@ -295,7 +335,7 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @return
 	 * @throws CloudException 
 	 */
-	SearchQuery bestColumns(String[] columns, Object query, String fuzziness, String all_words, String match_percent, String priority) throws CloudException{
+	public SearchQuery bestColumns(String[] columns, Object query, String fuzziness, String all_words, String match_percent, String priority) throws CloudException{
 		
 		if(columns.length < 2) {
 			throw new CloudException("There should be more than one columns in-order to use this function");
@@ -308,7 +348,12 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 		JSONObject obj = this._buildBestColumns(columns, query.toString(), fuzziness, all_words, match_percent, priority);
 		
 		this.should.add(obj);
-		this.bool.put("should", this.should);
+		try {
+			this.bool.put("should", this.should);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return this;
 	}
@@ -326,7 +371,7 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @return
 	 * @throws CloudException 
 	 */
-	SearchQuery mostColumns(String[] columns, Object query, String fuzziness, String all_words, String match_percent, String priority) throws CloudException{
+	public SearchQuery mostColumns(String[] columns, Object query, String fuzziness, String all_words, String match_percent, String priority) throws CloudException{
 		if(columns.length < 2) {
 			throw new CloudException("There should be more than one columns in-order to use this function");
 		}
@@ -338,7 +383,12 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 		JSONObject obj = this._buildMostColumns(columns, query.toString(), fuzziness, all_words, match_percent, priority);
 		
 		this.should.add(obj);
-		this.bool.put("should", this.should);
+		try {
+			this.bool.put("should", this.should);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return this;
 	}
@@ -352,11 +402,12 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param priority
 	 * @return
 	 */
-	SearchQuery startsWith(String columnName, String value, String priority){
+	public SearchQuery startsWith(String columnName, String value, String priority){
 		
 		JSONObject obj = new JSONObject();
 		JSONObject prefix = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put("value", value);	    
 	    if(priority != null){
 	    	column.put("boost", priority);
@@ -366,7 +417,10 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-	    
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return this;
 	}
 	
@@ -379,11 +433,12 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param priority
 	 * @return
 	 */
-	SearchQuery wildcard(String columnName, String value, String priority){
+	public SearchQuery wildcard(String columnName, String value, String priority){
 		
 		JSONObject obj = new JSONObject();
 		JSONObject wildcard = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put("value", value);	    
 	    if(priority != null){
 	    	column.put("boost", priority);
@@ -393,7 +448,10 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 
 		this.should.add(obj);
 		this.bool.put("should", this.should);
-		
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return this;
 	}
 	
@@ -406,11 +464,12 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param priority
 	 * @return
 	 */
-	SearchQuery regexp(String columnName, String value, String priority){
+	public SearchQuery regexp(String columnName, String value, String priority){
 		
 		JSONObject obj = new JSONObject();
 		JSONObject regexp = new JSONObject();
 		JSONObject column = new JSONObject();
+		try{
 		column.put("value", value);	    
 	    if(priority != null){
 	    	column.put("boost", priority);
@@ -420,7 +479,10 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 
 		this.must.add(obj);
 		this.bool.put("must", this.must);
-		    
+	} catch (JSONException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} 
 		return this;
 	}
 	
@@ -431,10 +493,16 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param object
 	 * @return
 	 */
-	SearchQuery and(SearchQuery object){
-		JSONObject obj = this.toJSON(object);
-		this.must.add(obj);
-		this.bool.put("must", must);
+	public SearchQuery and(SearchQuery object){
+		
+		this.must.add(object);
+		try {
+			this.bool.put("must", must);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
 		return this;
 	}
 	
@@ -444,10 +512,16 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param object
 	 * @return
 	 */
-	SearchQuery or(SearchQuery object){
-		JSONObject obj = this.toJSON(object);
-		this.should.add(obj);
-		this.bool.put("should", this.should);
+	public SearchQuery or(SearchQuery object){
+		
+		this.should.add(object);
+		try {
+			this.bool.put("should", this.should);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return this;
 	}
 	
@@ -458,10 +532,16 @@ JSONObject _buildSearchOn(String[] columnName, String query, String fuzziness, S
 	 * @param object
 	 * @return
 	 */
-	SearchQuery not(SearchQuery object){
-		JSONObject obj = this.toJSON(object);
-		this.must_not.add(obj);
-		this.bool.put("must_not", this.must_not);
+	public SearchQuery not(SearchQuery object){
+		
+		this.must_not.add(object);
+		try {
+			this.bool.put("must_not", this.must_not);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return this;
 	}
 }

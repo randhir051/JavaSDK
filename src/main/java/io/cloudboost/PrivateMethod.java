@@ -1,20 +1,23 @@
 package io.cloudboost;
 
+//import io.cloudboost.util.SqlLite;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Pattern;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import io.cloudboost.util.SqlLite;;
+
 
 /**
  * 
  * @author cloudboost
  *
  */
-class PrivateMethod{
+public class PrivateMethod{
 	
 	/**
 	 * 
@@ -187,11 +190,27 @@ class PrivateMethod{
 	static void _isModified(CloudObject object, String columnName){
 	
 		ArrayList<String> modifiedColumns = new ArrayList<String>();
-		JSONArray col = new JSONArray(object.document.get("_modifiedColumns").toString());
-		for(int i=0;i < col.length();i++){
-			modifiedColumns.add( col.getString(i));
+		JSONArray col=null;
+		try {
+			col = new JSONArray(object.document.get("_modifiedColumns").toString());
+		} catch (JSONException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
 		}
-		object.document.put("_isModified", true);
+		for(int i=0;i < col.length();i++){
+			try {
+				modifiedColumns.add( col.getString(i));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		try {
+			object.document.put("_isModified", true);
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		if(modifiedColumns.contains(columnName)){
 			modifiedColumns.clear();
@@ -199,7 +218,12 @@ class PrivateMethod{
 		}else{
 			modifiedColumns.add(columnName);
 		}
-		object.document.put("_modifiedColumns", modifiedColumns);
+		try {
+			object.document.put("_modifiedColumns", modifiedColumns);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -225,23 +249,31 @@ class PrivateMethod{
 		return sb.toString();
 	}
 	
-	static  String _getSessionId(){
-		String session = SqlLite.getSessionId();
+	public static  String _getSessionId(){
+//		String session = SqlLite.getSessionId();
+		String session=CloudApp.SESSION_ID;
 		return session;
 	}
 	
-	static  void  _setSessionId(String session){
-		SqlLite.setSessionId(session);
+	public static  void  _setSessionId(String session){
+//		SqlLite.setSessionId(session);
+		CloudApp.SESSION_ID=session;
 	}
 	
-	static  void  _deleteSessionId(){
-		SqlLite.deleteSessionId();
+	public static  void  _deleteSessionId(){
+//		SqlLite.deleteSessionId();
+		CloudApp.SESSION_ID=null;
 	}
 	
 	static ArrayList<String> _toStringArray(JSONArray obj1){
 		ArrayList<String> obj = new ArrayList<String>();
 		for(int i=0; i<obj1.length(); i++){
-			obj.add(obj1.getString(i));
+			try {
+				obj.add(obj1.getString(i));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return obj;
 	}
@@ -249,7 +281,12 @@ class PrivateMethod{
 	static ArrayList<Object> _toObjectArray(JSONArray obj1){
 		ArrayList<Object> obj = new ArrayList<Object>();
 		for(int i=0; i<obj1.length(); i++){
-			obj.add(obj1.get(i));
+			try {
+				obj.add(obj1.get(i));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return obj;
 	}

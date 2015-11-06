@@ -1,6 +1,8 @@
 package io.cloudboost;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
 
 /**
  * 
@@ -26,6 +28,7 @@ public class Column{
 		}
 			
 		this.document  = new JSONObject();
+		try{
 		this.document.put("name", columnName);
 		this.document.put("dataType", dataType);
 		this.document.put("_type", "column");
@@ -36,6 +39,10 @@ public class Column{
 		this.document.put("isDeletable", true);
 		this.document.put("isEditable", true);
 		this.document.put("isRenamable", false);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -44,7 +51,13 @@ public class Column{
 	 * @return
 	 */
 	public String getColumnName(){
-		return this.document.getString("name");
+		try {
+			return this.document.getString("name");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -52,7 +65,13 @@ public class Column{
 	 * @return
 	 */
 	public DataType getDataType(){
-		return (DataType) this.document.get("dataType");
+		try {
+			return (DataType) this.document.get("dataType");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/***
@@ -62,11 +81,22 @@ public class Column{
 	 * @param required
 	 */
 	public void setRequired(boolean required){
-		this.document.put("required", required);
+		try {
+			this.document.put("required", required);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean getRequired(){
-		return this.document.getBoolean("required");
+		try {
+			return this.document.getBoolean("required");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	/**
@@ -76,7 +106,12 @@ public class Column{
 	 * @param unique
 	 */
 	public void setUnique(boolean unique){
-		this.document.put("unique", unique);
+		try {
+			this.document.put("unique", unique);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/***
@@ -84,7 +119,13 @@ public class Column{
 	 * @return
 	 */
 	public boolean getUnique(){
-		return this.document.getBoolean("unique");
+		try {
+			return this.document.getBoolean("unique");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	/***
@@ -94,21 +135,40 @@ public class Column{
 	 * @param table
 	 */
 	public void setRelatedTo(CloudTable table){
-		this.document.put("relatedTo", table.document.toString());
+		try {
+			this.document.put("relatedTo", table.document.toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void setRelatedTo(DataType type){
-		this.document.put("relatedTo", type);
+		try {
+			this.document.put("relatedTo", type);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * 
 	 * @return
 	 */
 	public CloudTable getRelatedTo(){
-		JSONObject table =  (JSONObject) this.document.get("relatedTo");
-		CloudTable object = new CloudTable(table.getString("name"));
+		
+		JSONObject table=null;
+		CloudTable object=null;
+		try {
+			table = (JSONObject) this.document.get("relatedTo");
+		
+		object = new CloudTable(table.getString("name"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		object.document = table;
-		return (CloudTable) object;
+		return object;
 	}
 	
 	/**
@@ -118,11 +178,22 @@ public class Column{
 	 * @param value
 	 */
 	public void setRelatedToType(String value){
-		this.document.put("relatedTotype", value);
+		try {
+			this.document.put("relatedTotype", value);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public String getRelatedToType(){
-		return this.document.getString("relatedToType");
+		try {
+			return this.document.getString("relatedToType");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/***
@@ -132,7 +203,12 @@ public class Column{
 	 * @param value
 	 */
 	public void setRelationType(String value){
-		this.document.put("relationType", value);
+		try {
+			this.document.put("relationType", value);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -140,7 +216,13 @@ public class Column{
 	 * @return
 	 */
 	public String setRelationType(){
-		return this.document.getString("relationType");
+		try {
+			return this.document.getString("relationType");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -150,11 +232,22 @@ public class Column{
 	 * @param value
 	 */
 	void setIsDeletable(boolean value){
-		this.document.put("isDeletable", value);
+		try {
+			this.document.put("isDeletable", value);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	boolean getIsDeletable(){
-		return this.document.getBoolean("isDeletable");
+		try {
+			return this.document.getBoolean("isDeletable");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	/***
@@ -164,11 +257,22 @@ public class Column{
 	 * @param value
 	 */
 	void setIsEditable(boolean value){
-		this.document.put("isEditable", value);
+		try {
+			this.document.put("isEditable", value);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	boolean getIsEditable(){
-		return this.document.getBoolean("isEditable");
+		try {
+			return this.document.getBoolean("isEditable");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	/**
@@ -178,11 +282,22 @@ public class Column{
 	 * @param value
 	 */
 	void setIsRenamable(boolean value){
-		this.document.put("isRenamable", value);
+		try {
+			this.document.put("isRenamable", value);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	boolean getIsRenamable(){
-		return this.document.getBoolean("isRenamable");
+		try {
+			return this.document.getBoolean("isRenamable");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 		
 }

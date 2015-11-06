@@ -1,16 +1,11 @@
 package io.cloudboost;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import io.cloudboost.beans.CBResponse;
+import io.cloudboost.util.CBParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
-
 /**
  * 
  * @author cloudboost
@@ -19,7 +14,6 @@ import com.ning.http.client.Response;
 public class CloudTable{
 	
 	protected JSONObject document;
-	private static AsyncHttpClient client;
 	
 	public CloudTable(String tableName){
 		if(!PrivateMethod._tableValidation(tableName)){
@@ -29,7 +23,7 @@ public class CloudTable{
 				e.printStackTrace();
 			}
 		}
-		
+		try{
 		this.document = new JSONObject();
 		this.document.put("name", tableName);
 		this.document.put("appId", CloudApp.getAppId());
@@ -46,7 +40,10 @@ public class CloudTable{
 		}
 		
 		this.document.put("columns", PrivateMethod._defaultColumns(this.document.getString("type")));
-		
+	} catch (JSONException e2) {
+		// TODO Auto-generated catch block
+		e2.printStackTrace();
+	}	
 	}
 	
 	
@@ -55,15 +52,32 @@ public class CloudTable{
 	 * @param tableName
 	 */
 	public void setTableName(String tableName){
-		this.document.put("name", tableName);
+		try {
+			this.document.put("name", tableName);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public String getTableName(){
-		return this.document.getString("name");
+		try {
+			return this.document.getString("name");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	String getTableType(){
-		return this.document.getString("type");
+		try {
+			return this.document.getString("type");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	
@@ -85,10 +99,14 @@ public class CloudTable{
 		if(!PrivateMethod._columnValidation(column, this)){
 			throw new CloudException("Invalid Column Found, Do Not Use Reserved Column Names");
 		}
-		
+		try{
 		JSONArray columnList = new JSONArray( this.document.get("columns").toString());
 		columnList.put(column.document);
 		this.document.put("columns", columnList);
+		} catch (JSONException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}	
 	}
 	
 	/**
@@ -114,7 +132,7 @@ public class CloudTable{
 	public void deleteColumn(Column column) throws CloudException{
 		if(!PrivateMethod._columnValidation(column, this)){
 			throw new CloudException("Can Not Delete a Reserved Column");
-		}else{
+		}else{try{
 			JSONArray col = new JSONArray( this.document.get("columns").toString());
 			for(int i=0; i<col.length(); i++){
 				if(col.getJSONObject(i).get("name") == column.document.get("name")){
@@ -123,6 +141,10 @@ public class CloudTable{
 				}
 			}
 			this.document.put("columns", col);
+		} catch (JSONException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}	
 		}
 	}
 	
@@ -150,21 +172,15 @@ public class CloudTable{
 		}
 		
 		JSONObject params = new JSONObject();
+		try {
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table";
-		System.out.println("url: "+url);
-		System.out.println(params);
-		client = new AsyncHttpClient();
-		Future<Response> f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
-				System.out.println(f.get().getResponseBody());
-				JSONArray body = new JSONArray(f.get().getResponseBody());
+//		System.out.println("url: "+url);
+//		System.out.println(params);
+		CBResponse response=CBParser.callJson(url, "POST", params);
+			if(response.getStatusCode() == 200){
+//				System.out.println(response.getResponseBody());
+				JSONArray body = new JSONArray(response.getResponseBody());
 				CloudTable[] object = new CloudTable[body.length()];
 				
 				for(int i=0; i<object.length; i++){
@@ -175,19 +191,11 @@ public class CloudTable{
 				
 			}else{
 				
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done((CloudTable[])null, e);
 			}
 			
-		} catch (InterruptedException | ExecutionException e) {
-			CloudException e1 = new CloudException(e.toString());
-			callbackObject.done((CloudTable[])null, e1);
-			e.printStackTrace();
 		} catch (JSONException e) {
-			CloudException e1 = new CloudException(e.toString());
-			callbackObject.done((CloudTable[])null, e1);
-			e.printStackTrace();
-		} catch (IOException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done((CloudTable[])null, e1);
 			e.printStackTrace();
@@ -208,38 +216,24 @@ public class CloudTable{
 		}
 		
 		JSONObject params = new JSONObject();
+		try {
 		params.put("key", CloudApp.getAppKey());
 		params.put("appId", CloudApp.getAppId());
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table/"+table.getTableName();
-		client = new AsyncHttpClient();
-		Future<Response> f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
-				System.out.println("Get Response :: "+ f.get().getResponseBody());
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+		CBResponse response=CBParser.callJson(url, "POST", params);
+
+			if(response.getStatusCode() == 200){
+				JSONObject body = new JSONObject(response.getResponseBody());
 				CloudTable object = new CloudTable(body.getString("name"));
 				object.document = body;
 				callbackObject.done(object, null);
 			}else{
 				
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done((CloudTable)null, e);
 			}
 			
-		} catch (InterruptedException | ExecutionException e) {
-			CloudException e1 = new CloudException(e.toString());
-			callbackObject.done((CloudTable)null, e1);
-			e.printStackTrace();
 		} catch (JSONException e) {
-			CloudException e1 = new CloudException(e.toString());
-			callbackObject.done((CloudTable)null, e1);
-			e.printStackTrace();
-		} catch (IOException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done((CloudTable)null, e1);
 			e.printStackTrace();
@@ -261,29 +255,23 @@ public class CloudTable{
 		
 		JSONObject params  = new JSONObject();
 		CloudTable thisObj = this;
+		try {
 		params.put("data", document);		
 		params.put("key", CloudApp.getAppKey());
 		System.out.println(params.toString());
-		client = new AsyncHttpClient();
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table/"+this.document.get("name");
-		Future<Response> f = client.preparePut(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
-				JSONObject body = new JSONObject(f.get().getResponseBody());
+		CBResponse response=CBParser.callJson(url, "PUT", params);
+
+			if(response.getStatusCode() == 200){
+				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				callbackObject.done(thisObj, null);
-				System.out.println(url);
 			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done((CloudTable)null, e);
 				
 			}
-		} catch (InterruptedException | ExecutionException | JSONException | IOException e) {
+		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done((CloudTable)null, e1);
 		}
@@ -306,25 +294,18 @@ public class CloudTable{
 		}
 		
 		JSONObject params  = new JSONObject();
+		try {
 		params.put("data", document);		
 		params.put("key", CloudApp.getAppKey());
-		
-		client = new AsyncHttpClient();
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table/"+this.document.get("name");
-		Future<Response> f = client.prepareDelete(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
-		try {
-			if(f.get().getHeader("sessionId") != null){
-				PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
+		CBResponse response=CBParser.callJson(url, "DELETE", params);
+			if(response.getStatusCode() == 200){
+				callbackObject.done(response.getResponseBody(), null);
 			}else{
-				PrivateMethod._deleteSessionId();
-			}
-			if(f.get().getStatusCode() == 200){
-				callbackObject.done(f.get().getResponseBody(), null);
-			}else{
-				CloudException e = new CloudException(f.get().getResponseBody());
+				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done((String)null, e);
 			}
-		} catch (InterruptedException | ExecutionException | IOException e) {
+		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done((String)null, e1);
 			e.printStackTrace();

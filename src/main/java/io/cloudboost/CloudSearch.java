@@ -1,16 +1,16 @@
 package io.cloudboost;
 
+import io.cloudboost.beans.CBResponse;
+import io.cloudboost.util.CBParser;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
 
 /**
  * 
@@ -19,7 +19,6 @@ import com.ning.http.client.Response;
  */
 public class CloudSearch{
 	
-	private static AsyncHttpClient client;
 	String collectionName;
 	ArrayList<String> collectionArray;
 	JSONObject query;
@@ -43,6 +42,7 @@ public class CloudSearch{
 			this.query = new JSONObject();
 			this.bool = new JSONObject();
 			filtered = new JSONObject();
+			try{
 			if(searchObject != null){
 				this.bool.put("bool", searchObject.bool);
 				filtered.put("query",this.bool );
@@ -55,7 +55,10 @@ public class CloudSearch{
 			}else{
 				filtered.put("filter", new JSONObject());
 			}
-			
+			} catch (JSONException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			System.out.println("bool :: " + filtered.toString());
 			this.from = 0;
 			this.size = 10;
@@ -70,9 +73,14 @@ public class CloudSearch{
 		this.query = new JSONObject();
 		filtered = new JSONObject();
 		
-		filtered.put("query", searchObject.bool.toString());
-		filtered.put("filter", searchFilter.bool.toString());
+		try {
+			filtered.put("query", searchObject.bool.toString());
 		
+		filtered.put("filter", searchFilter.bool.toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.from = 0;
 		this.size = 10;
 		this.sort = new ArrayList<Object>();
@@ -116,8 +124,14 @@ public class CloudSearch{
 	      
 		JSONObject obj = new JSONObject();
 		JSONObject column= new JSONObject();
-		column.put("order", "asc");
+		try {
+			column.put("order", "asc");
+		
 		obj.put(columnName, column);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.sort.add(obj);
 		
 		return this;
@@ -137,8 +151,14 @@ public class CloudSearch{
 	      
 		JSONObject obj = new JSONObject();
 		JSONObject column= new JSONObject();
-		column.put("order", "desc");
+		try {
+			column.put("order", "desc");
+		
 		obj.put(columnName, column);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.sort.add(obj);
 		
 		return this;
@@ -175,19 +195,11 @@ public class CloudSearch{
 		params.put("skip", this.from);
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId() + "/" +this.collectionName + "/search";
-		client = new AsyncHttpClient();
-		Future<Response> f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
-		System.out.println(url);
 		System.out.println(params);
-		System.out.println(f.get().getResponseBody());
-		if(f.get().getHeader("sessionId") != null){
-			PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-		}else{
-			PrivateMethod._deleteSessionId();
-		}
-		System.out.println(f.get().getStatusCode());
-		if(f.get().getStatusCode() == 200){
-			JSONArray body = new JSONArray(f.get().getResponseBody());
+		CBResponse response=CBParser.callJson(url, "POST", params);
+
+		if(response.getStatusCode() == 200){
+			JSONArray body = new JSONArray(response.getResponseBody());
 			CloudObject[] object = new CloudObject[body.length()];
 			
 			for(int i=0; i<object.length; i++){
@@ -196,7 +208,7 @@ public class CloudSearch{
 			}
 			callbackObject.done(object, null);
 		}else{
-			CloudException e = new CloudException(f.get().getResponseBody());
+			CloudException e = new CloudException(response.getResponseBody());
 			callbackObject.done((CloudObject[])null, e);
 		}
 	}

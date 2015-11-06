@@ -13,7 +13,7 @@ import org.junit.Test;
  */
 public class CloudSearchTest{
 	void initialize(){
-		CloudApp.init("sample123","9SPxp6D3OPWvxj0asw5ryA==");
+		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
 	
 	@Test(timeout=30000)
@@ -142,7 +142,7 @@ public class CloudSearchTest{
 	@Test(timeout=30000)
 	public void searchObjectWithWildCard() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		SearchQuery sq = new SearchQuery();
-		sq.wildcard("name", "G*", null);
+		sq.wildcard("name", "R*", null);
 		CloudSearch cs = new CloudSearch("Student", sq, null);
 		cs.search(new CloudObjectArrayCallback(){
 			@Override

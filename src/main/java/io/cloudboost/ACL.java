@@ -6,7 +6,9 @@ package io.cloudboost;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
 class ACL{
 	
 	private ArrayList<String> allowedReadUser; 
@@ -42,7 +44,9 @@ class ACL{
 		allowWrite= new JSONObject();
 		denyWrite = new JSONObject();
 		
-		allowRead.put("user", allowedReadUser);
+		try {
+			allowRead.put("user", allowedReadUser);
+		
 		allowRead.put("role", allowedReadRole);
 		allowWrite.put("user", allowedWriteUser);
 		allowWrite.put("role", allowedWriteRole);
@@ -63,7 +67,10 @@ class ACL{
 		
 		acl = new JSONObject();
 		acl.put("read", read);
-		acl.put("write", write);
+		acl.put("write", write);} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -72,46 +79,70 @@ class ACL{
 	}
 	@SuppressWarnings({ })
 	private ArrayList<String> getWriteList(JSONObject acl){
-		write = (JSONObject) acl.get("write");
+		JSONArray user;
+		try {
+			write = (JSONObject) acl.get("write");
+		
 		allowWrite = (JSONObject) write.get("allow");
-		JSONArray user = new JSONArray(allowWrite.get("user").toString());
+		user = new JSONArray(allowWrite.get("user").toString());
 		allowedWriteUser.clear();
 		for(int i=0; i<user.length(); i++){
 			allowedWriteUser.add(i, user.getString(i));
+		}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return allowedWriteUser;
 	}
 	
 	private ArrayList<String> getReadList(JSONObject acl){
-		read = (JSONObject) acl.get("read");
+		try {
+			read = (JSONObject) acl.get("read");
+		
 		allowRead = (JSONObject) read.get("allow");
 		allowedReadUser.clear();
 		JSONArray user = new JSONArray(allowRead.get("user").toString());
 		for(int i=0; i<user.length(); i++){
 			allowedReadUser.add(i, user.getString(i));
 		}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return allowedReadUser;
 	}
 	
 	private ArrayList<String> getDeniedWriteList(JSONObject acl){
-		write = (JSONObject) acl.get("write");
+		try {
+			write = (JSONObject) acl.get("write");
+		
 		denyWrite = (JSONObject) write.get("deny");
 		JSONArray user = new JSONArray(denyWrite.get("user").toString());
 		deniedWriteUser.clear();
 		for(int i=0; i<user.length(); i++){
 			deniedWriteUser.add(i, user.getString(i));
 		}
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return deniedWriteUser;
 	}
 	
 	private ArrayList<String> getDeniedReadList(JSONObject acl){
-		read = (JSONObject) acl.get("read");
+		try {
+			read = (JSONObject) acl.get("read");
+		
 		denyRead= (JSONObject) read.get("deny");
 		JSONArray user = new JSONArray(denyRead.get("user").toString());
 		deniedReadUser.clear();
 		for(int i=0; i<user.length(); i++){
 			deniedReadUser.add(i, user.getString(i));
+		}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return deniedReadUser;
 	}
@@ -129,10 +160,15 @@ class ACL{
 				allowedWriteUser.remove("all");
 			}
 		}
-		
+		try {
 		allowWrite.put("user", allowedWriteUser);
 		write.put("allow", allowWrite);
-		acl.put("write", write);
+		
+			acl.put("write", write);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -148,9 +184,15 @@ class ACL{
 				allowedReadUser.remove("all");
 			}
 		}
-		allowRead.put("user", allowedReadUser);
+		try {
+			allowRead.put("user", allowedReadUser);
+		
 		read.put("allow", allowRead);
 		acl.put("read", read);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void setUserWriteAccess(String userId, boolean value){ //for setting the user write access
@@ -174,11 +216,17 @@ class ACL{
 			deniedWriteUser.add(userId);
 			
 		}
-		allowWrite.put("user", allowedWriteUser);
+		try {
+			allowWrite.put("user", allowedWriteUser);
+		
 		denyWrite.put("user", deniedWriteUser);
 		write.put("deny", denyWrite);
 		write.put("allow", allowWrite);
 		acl.put("write", write);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}	
 
 	public void setUserReadAccess(String userId, boolean value){ //for setting the user read access
@@ -203,11 +251,17 @@ class ACL{
 			deniedReadUser.add(userId);
 			
 		}
-		allowRead.put("user", allowedReadUser);
+		try {
+			allowRead.put("user", allowedReadUser);
+		
 		denyRead.put("user", deniedReadUser);
 		read.put("deny", denyRead);
 		read.put("allow", allowRead);
 		acl.put("read", read);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}	
 	
 	@SuppressWarnings("unchecked")
@@ -216,7 +270,9 @@ class ACL{
 		allowedWriteUser = getWriteList(acl);
 		deniedWriteUser = getDeniedWriteList(acl);
 		
-		write = (JSONObject) acl.get("write");
+		try {
+			write = (JSONObject) acl.get("write");
+		
 		//allowedRole
 		allowWrite = (JSONObject) write.get("allow");
 		allowedWriteRole = (ArrayList<String>) allowWrite.get("role");
@@ -224,6 +280,10 @@ class ACL{
 		//deniedRole
 		denyWrite = (JSONObject) write.get("deny");
 		deniedWriteRole = (ArrayList<String>) denyWrite.get("role");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if(value){
 			index = allowedWriteUser.indexOf("all");
@@ -246,12 +306,18 @@ class ACL{
 			}
 			deniedWriteRole.add(roleId);
 		}
-		allowWrite.put("user", allowedWriteUser);
+		try {
+			allowWrite.put("user", allowedWriteUser);
+		
 		allowWrite.put("role", allowedWriteRole);
 		denyWrite.put("role", deniedWriteRole);
 		write.put("deny", denyWrite);
 		write.put("allow", allowWrite);
 		acl.put("write", write);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -260,7 +326,9 @@ class ACL{
 		allowedReadUser = getReadList(acl);
 		deniedWriteUser = getDeniedReadList(acl);
 		
-		write = (JSONObject) acl.get("write");
+		try {
+			write = (JSONObject) acl.get("write");
+		
 		//allowedReadRole
 		allowRead = (JSONObject) read.get("allow");
 		allowedReadRole = (ArrayList<String>) allowRead.get("role");
@@ -268,7 +336,10 @@ class ACL{
 		//deniedReadRole
 		denyRead = (JSONObject) read.get("deny");
 		deniedReadRole = (ArrayList<String>) denyRead.get("role");
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(value){
 			index = allowedReadUser.indexOf("all");
 			if(index > -1){
@@ -290,11 +361,17 @@ class ACL{
 			}
 			deniedReadRole.add(roleId);
 		}
-		allowRead.put("user", allowedReadUser);
+		try {
+			allowRead.put("user", allowedReadUser);
+		
 		allowRead.put("role", allowedReadRole);
 		denyRead.put("role", deniedReadRole);
 		read.put("deny", denyRead);
 		read.put("allow", allowRead);
 		acl.put("read", read);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }	
