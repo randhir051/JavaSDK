@@ -16,7 +16,11 @@ import org.json.JSONObject;
 public class CBParser {
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
         String params=parameters.toString(); 
+<<<<<<< HEAD
         System.out.println("parameters: "+params);
+=======
+//        System.out.println("parameters: "+params);
+>>>>>>> b3d7fc905549befcd1aab0096b346a58ae7f9666
 
         URL url=null;
 		try {
@@ -67,6 +71,18 @@ public class CBParser {
 			CBResponse resp=new CBResponse(respMsg, respMsg, respCode, sid);
 			return resp;
 		}
+<<<<<<< HEAD
+=======
+ 
+        String firstChar=String.valueOf(inputString.charAt(0)).trim();
+        if(!firstChar.equals("{")&&!firstChar.equals("["))
+			try {
+				throw new Exception("Response is not JSON:"+inputString+", Response-Code="+respCode+", Response-Message="+respMsg);
+			} catch (Exception e) {
+				
+				return new CBResponse(inputString, respMsg, respCode, sid);
+			}
+>>>>>>> b3d7fc905549befcd1aab0096b346a58ae7f9666
 //        
 //        if(sid!= null){
 //			PrivateMethod._setSessionId(sid);
@@ -74,7 +90,11 @@ public class CBParser {
 //			PrivateMethod._deleteSessionId();
 //		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
+<<<<<<< HEAD
         System.out.println(rr.toString());
+=======
+//        System.out.println(rr.toString());
+>>>>>>> b3d7fc905549befcd1aab0096b346a58ae7f9666
        return rr;
     }
    
