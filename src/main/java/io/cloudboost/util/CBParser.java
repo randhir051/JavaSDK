@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class CBParser {
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
         String params=parameters.toString(); 
-//        System.out.println("parameters: "+params);
+        System.out.println("parameters: "+params);
 
         URL url=null;
 		try {
@@ -67,15 +67,6 @@ public class CBParser {
 			CBResponse resp=new CBResponse(respMsg, respMsg, respCode, sid);
 			return resp;
 		}
- 
-        String firstChar=String.valueOf(inputString.charAt(0)).trim();
-        if(!firstChar.equals("{")&&!firstChar.equals("["))
-			try {
-				throw new Exception("Response is not JSON:"+inputString+", Response-Code="+respCode+", Response-Message="+respMsg);
-			} catch (Exception e) {
-				
-				return new CBResponse(inputString, respMsg, respCode, sid);
-			}
 //        
 //        if(sid!= null){
 //			PrivateMethod._setSessionId(sid);
@@ -83,7 +74,7 @@ public class CBParser {
 //			PrivateMethod._deleteSessionId();
 //		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
-//        System.out.println(rr.toString());
+        System.out.println(rr.toString());
        return rr;
     }
    
