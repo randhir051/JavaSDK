@@ -267,10 +267,7 @@ public class CloudTable{
 				thisObj.document = body;
 				callbackObject.done(thisObj, null);
 			}else{
-<<<<<<< HEAD
 				System.out.println("we got an exception: "+response.getResponseBody());
-=======
->>>>>>> b3d7fc905549befcd1aab0096b346a58ae7f9666
 				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done((CloudTable)null, e);
 				

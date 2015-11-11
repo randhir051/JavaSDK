@@ -56,7 +56,7 @@ public class CloudGeoPoint{
 	public void setLongitude(Double longitude) throws CloudException{
 		if(longitude >= -180 && longitude <= 180) {
             try {
-				this.document.put("latitude",longitude);
+				this.document.put("longitude",longitude);
 			
             JSONArray lat = new JSONArray(this.document.get("coordinates").toString());
             for(int i=0; i<lat.length(); i++){
@@ -100,7 +100,7 @@ public class CloudGeoPoint{
 	public void setLatitute(Double latitute) throws CloudException{
 		if(latitute >= -90 && latitute <= 90) {
             try {
-				this.document.put("longitude",latitute);
+				this.document.put("latitude",latitute);
 			
             JSONArray lat = new JSONArray(this.document.get("coordinates").toString());
             for(int i=0; i<lat.length(); i++){
@@ -114,7 +114,7 @@ public class CloudGeoPoint{
 				e.printStackTrace();
 			}
         }else{
-        	throw new CloudException("Latitute is not in Range");
+        	throw new CloudException("Latitude is not in Range");
         }
 	}
 	
@@ -126,7 +126,7 @@ public class CloudGeoPoint{
 	 */
 	public Double getLatitute(){
 		try {
-			return this.document.getDouble("latitute");
+			return this.document.getDouble("latitude");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
