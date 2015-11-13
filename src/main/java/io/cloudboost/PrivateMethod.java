@@ -2,6 +2,9 @@ package io.cloudboost;
 
 //import io.cloudboost.util.SqlLite;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -144,6 +147,21 @@ public class PrivateMethod{
 		
 		return true;
 	}
+    public static boolean isValidURL(String pUrl) {
+
+        URL u = null;
+        try {
+            u = new URL(pUrl);
+        } catch (MalformedURLException e) {
+            return false;
+        }
+        try {
+            u.toURI();
+        } catch (URISyntaxException e) {
+            return false;
+        }
+        return true;
+    }
 	
 	/**
 	 * 

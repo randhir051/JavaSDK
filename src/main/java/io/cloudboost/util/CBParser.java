@@ -20,6 +20,7 @@ public class CBParser {
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
         String params=parameters.toString(); 
         System.out.println("parameters: "+params);
+        System.out.println("URL="+myUrl);
 
         URL url=null;
 		try {

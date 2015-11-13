@@ -99,6 +99,7 @@ public class CloudFile{
 			this.document.put("size", JSONObject.NULL);
 			this.document.put("url", url);
 			this.document.put("contentType", JSONObject.NULL);
+			
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
