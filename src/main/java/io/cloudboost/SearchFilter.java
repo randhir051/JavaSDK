@@ -411,4 +411,8 @@ public class SearchFilter{
 		
 		return this;
 	}
+	public SearchFilter near(String columnName,CloudGeoPoint point,int distance){
+		return this;
+		
+	}
 }

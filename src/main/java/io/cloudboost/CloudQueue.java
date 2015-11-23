@@ -52,6 +52,78 @@ public class CloudQueue {
 			return null;
 		}
 	}
+	public void refreshMessageTimeout(QueueMessage msg,CloudQueueMessageCallback callback){
+		JSONObject data = new JSONObject();
+		String url;
+		String id=msg.getId();
+		try {
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+					+ document.get("name") + "/"+id+"/refresh-message-timeout";
+			if (validate()) {
+				CBResponse response = CBParser.callJson(url, "PUT", data);
+				if (response.getStatusCode() == 200) {
+					JSONObject body = new JSONObject(response.getResponseBody());
+						QueueMessage qmsg = new QueueMessage();
+						qmsg.setDocument(body);
+						QueueMessage[] qmsgs={qmsg};
+						callback.done(qmsgs, null);
+
+					}
+				 else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void refreshMessageTimeout(QueueMessage msg,int timeout,CloudQueueMessageCallback callback){
+		JSONObject data = new JSONObject();
+		String url;
+		String id=msg.getId();
+		try {
+			data.put("timeout", timeout);
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+					+ document.get("name") + "/"+id+"/refresh-message-timeout";
+			if (validate()) {
+				CBResponse response = CBParser.callJson(url, "PUT", data);
+				if (response.getStatusCode() == 200) {
+					JSONObject body = new JSONObject(response.getResponseBody());
+						QueueMessage qmsg = new QueueMessage();
+						qmsg.setDocument(body);
+						QueueMessage[] qmsgs={qmsg};
+						callback.done(qmsgs, null);
+
+					}
+				 else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void addChangedColumn(String columnName){
+		
+	}
 	public void setAttribute(String propertyName,Object value){
 		try {
 			document.put(propertyName, value);
@@ -344,7 +416,7 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-					merge(body);
+					this.document=body;
 					callback.done(this.thisObj, null);
 				} else {
 					callback.done(null,
@@ -626,6 +698,8 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
+			setAttribute("_isModified", true);
+			setAttribute("_modifiedColumns","[\"queueType\"]");
 			data.put("document", this.document);
 			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name");
@@ -635,8 +709,8 @@ public class CloudQueue {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
 					System.out.println("this obj: "+this.thisObj);
-					merge(body);
-//					this.thisObj.document=body;
+//					merge(body);
+					this.thisObj.document=body;
 					
 					callback.done(this.thisObj, null);
 				} else {

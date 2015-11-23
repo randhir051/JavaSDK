@@ -1,5 +1,6 @@
 package io.cloudboost;
 
+import io.cloudboost.Column.DataType;
 import io.cloudboost.beans.CBResponse;
 import io.cloudboost.util.CBParser;
 
@@ -107,6 +108,41 @@ public class CloudTable{
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}	
+	}
+	public Column getColumn(String name){
+		Column col = null;
+		try {
+			JSONArray columnList = new JSONArray( this.document.get("columns").toString());
+			for(int i=0; i<columnList.length(); i++){
+				if(columnList.getJSONObject(i).get("name") == name){
+					JSONObject obj=columnList.getJSONObject(i);
+					col=new Column(name, (DataType)obj.get("dataType"), obj.getBoolean("required"), obj.getBoolean("unique"));
+					break;
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return col;
+
+	}
+	public void updateColumn(Column column){
+		Column col = null;
+		try {
+			JSONArray columnList = new JSONArray( this.document.get("columns").toString());
+			for(int i=0; i<columnList.length(); i++){
+				if(columnList.getJSONObject(i).get("name") == column.getColumnName()){
+					columnList.put(i, column);
+					this.document.put("columns", columnList);					
+					break;
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	/**

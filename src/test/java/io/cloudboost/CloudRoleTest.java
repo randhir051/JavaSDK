@@ -12,7 +12,22 @@ public class CloudRoleTest{
 		void initialize(){
 			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
-		
+		@Test(timeout=20000)
+		public void createRoleWithVersion() throws CloudException{
+				initialize();
+				String roleName = PrivateMethod._makeString();
+				CloudRole role = new CloudRole(roleName);
+				role.save(new CloudRoleCallback(){
+
+					@Override
+					public void done(CloudRole roleObj, CloudException e)throws CloudException {
+							if(e != null){
+									Assert.fail(e.getMessage());
+							}
+							Assert.assertEquals(roleObj.get("_version"), 0);
+					}
+				});
+		}
 		@Test(timeout=20000)
 		public void createRole() throws CloudException{
 				initialize();
@@ -39,8 +54,8 @@ public class CloudRoleTest{
 													Assert.fail(t.getMessage());
 												}
 												
-												if(x.length < 0){
-													Assert.fail("Should retrieve the cloud role");
+												if(x!=null){
+													Assert.assertTrue(x.length>0);
 												}
 										}
 									});

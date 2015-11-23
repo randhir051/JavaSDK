@@ -221,6 +221,9 @@ public class CloudObject {
 			e.printStackTrace();
 		}
 	}
+	public boolean hasKey(String key){
+		return document.has(key);
+	}
 
 	/**
 	 * 
@@ -233,6 +236,8 @@ public class CloudObject {
 	public void set(String columnName, Object data) throws CloudException {
 		String keywords[] = { "_tableName", "_type", "operator" };
 		int index = -1;
+		if(columnName.equals("id")||columnName.equals("_id"))
+			throw new CloudException("You cannot set Id on a CloudObject");
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
 		}
@@ -282,7 +287,8 @@ public class CloudObject {
 	public void set(String columnName, Object[] data) throws CloudException {
 		String keywords[] = { "_tableName", "_type", "operator" };
 		int index = -1;
-
+		if(columnName.equals("id")||columnName.equals("_id"))
+			throw new CloudException("You cannot set Id on a CloudObject");
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
 		}
@@ -309,7 +315,19 @@ public class CloudObject {
 
 				this._modifiedColumns.add(columnName);
 				document.put("_modifiedColumns", this._modifiedColumns);
-			} else {
+			}else if(data instanceof CloudGeoPoint[]){
+				CloudGeoPoint[] arrayList = (CloudGeoPoint[]) data;
+				ArrayList<Object> objectArray = new ArrayList<Object>();
+				for (int i = 0; i < arrayList.length; i++) {
+					objectArray.add(arrayList[i].document);
+				}
+
+				document.put(columnName, objectArray);
+
+				this._modifiedColumns.add(columnName);
+				document.put("_modifiedColumns", this._modifiedColumns);
+			}
+			else {
 				document.put(columnName, data);
 				this._modifiedColumns.add(columnName);
 				document.put("_modifiedColumns", this._modifiedColumns);
@@ -324,7 +342,8 @@ public class CloudObject {
 			throws CloudException {
 		String keywords[] = { "_tableName", "_type", "operator" };
 		int index = -1;
-
+		if(columnName.equals("id")||columnName.equals("_id"))
+			throw new CloudException("You cannot set Id on a CloudObject");
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
 		}
@@ -439,6 +458,7 @@ public class CloudObject {
 		JSONObject obj = null;
 		CloudObject object = null;
 		try {
+			System.out.println("document is==="+this.document.toString());
 			obj = new JSONObject(this.document.get(columnName).toString());
 
 			object = new CloudObject(obj.getString("_tableName"));
@@ -728,17 +748,60 @@ public class CloudObject {
 			JSONObject body = new JSONObject(responseBody);
 			thisObj = new CloudObject(body.get("_tableName").toString());
 			thisObj.document = body;
+			System.out.println("calling callback with data: "+thisObj.toString());
 			callbackObject.done(thisObj, null);
 		} else {
 			CloudException e = new CloudException(response.getStatusMessage());
 			callbackObject.done(null, e);
 		}} catch (Exception e1) {
+			System.out.println("Exception : "+e1.getMessage());
+			e1.printStackTrace();
 			CloudException e = new CloudException(e1.getMessage());
 			callbackObject.done(null, e);
 		}
 
 	}
+	public void deleteAll(CloudObject[] array, CloudObjectArrayCallback callback)
+			throws CloudException {
+		if (CloudApp.getAppId() == null) {
+			throw new CloudException("App Id is null");
+		}
 
+		JSONObject data = new JSONObject();
+		List<JSONObject> jsons = new ArrayList<>();
+		CBResponse response = null;
+		int statusCode = 0;
+		for (CloudObject ob : array)
+			jsons.add(ob.getDocument());
+		String url = null;
+		try {
+			data.put("key", CloudApp.getAppKey());
+			data.put("document", jsons.toArray(new JSONObject[0]));
+			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
+					+ array[0].getDocument().get("_tableName");
+			response = CBParser.callJson(url, "DELETE", data);
+			statusCode = response.getStatusCode();
+			if (statusCode == 200) {
+				List<CloudObject> objects = new ArrayList<>();
+				JSONArray body = new JSONArray(response.getResponseBody());
+				for (int i = 0; i < body.length(); i++) {
+					JSONObject object = body.getJSONObject(i);
+					CloudObject cbObject = new CloudObject(object.get(
+							"_tableName").toString());
+					cbObject.document = object;
+					objects.add(cbObject);
+				}
+				callback.done(objects.toArray(new CloudObject[0]), null);
+			} else {
+				CloudException e = new CloudException(
+						response.getResponseBody());
+				callback.done(null, e);
+			}
+		} catch (JSONException e) {
+			CloudException e1 = new CloudException(e.toString());
+			callback.done(null, e1);
+		}
+	}
 	public void saveAll(CloudObject[] array, CloudObjectArrayCallback callback)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -798,29 +861,19 @@ public class CloudObject {
 		if (this.getId() == null) {
 			throw new CloudException("Can't fetch an object which is not saved");
 		}
-		String url = null;
 		try {
-			this.document.put("ACL", this.acl.getACL());
-
-			JSONObject data = new JSONObject();
-			thisObj = this;
-			data.put("document", document);
-			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/" + CloudApp.getAppId() + "/"
-					+ this.document.get("_tableName") + "/get/" + this.getId();
-			CBResponse response = CBParser.callJson(url, "POST", data);
-			int statusCode = response.getStatusCode();
-
-			if (statusCode == 200) {
-				System.out.println("success");
-				JSONObject body = new JSONObject(response.getResponseBody());
-				thisObj.document = body;
-				callbackObject.done(thisObj, null);
-			} else {
-				CloudException e = new CloudException(
-						response.getResponseBody());
-				callbackObject.done(null, e);
-			}
+			CloudQuery q=null;
+			if(this.document.getString("_type").equals("file"))
+				q=new CloudQuery("File");
+			else q=new CloudQuery(this.document.getString("_tableName"));
+			q.findById(getId(), new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					callbackObject.done(x, t);
+					
+				}
+			});
 		} catch (JSONException e) {
 			callbackObject.done(null, new CloudException(e.getMessage()));
 		}

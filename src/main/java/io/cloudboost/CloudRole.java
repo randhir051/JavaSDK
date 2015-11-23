@@ -30,7 +30,6 @@ public class CloudRole extends CloudObject{
 		modified.add("name");
 		this.document.put("_modifiedColumns", modified);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class QueueMessage {
 	private ACL acl;
-	private long timeout;
+	private long timeout=1800;
 	private String message;
 	private JSONObject document;
 	private ArrayList<String> _modifiedColumns;
@@ -18,12 +18,16 @@ public class QueueMessage {
 		this._modifiedColumns.add("updatedAt");
 		this._modifiedColumns.add("ACL");
 		this._modifiedColumns.add("expires");
+		this._modifiedColumns.add("timeout");
+		this._modifiedColumns.add("delay");
+		this._modifiedColumns.add("message");
+
 		this.acl = new ACL();
 		document = new JSONObject();
 		try {
-			document.put("_id", (Object) null);
+			document.put("_id", JSONObject.NULL);
 			document.put("timeout", timeout);
-			document.put("delay", (Object) null);
+			document.put("delay", JSONObject.NULL);
 
 			document.put("_type",type);
 			document.put("ACL", acl.getACL());
@@ -52,16 +56,16 @@ public class QueueMessage {
 	
 	}
 	public ACL getAcl() {
-		return acl;
+		return (ACL) getElement("ACL");
 	}
 	public void setAcl(ACL acl) {
-		this.acl = acl;
+		addElement("ACL", acl);;
 	}
 	public long getTimeout() {
-		return timeout;
+		return (long) getElement("timeout");
 	}
 	public void setTimeout(long timeout) {
-		this.timeout = timeout;
+		addElement("timeout",timeout);
 	}
 	public String getMessage() {
 		return (String) getElement("message");
@@ -75,7 +79,7 @@ public class QueueMessage {
 			e.printStackTrace();
 		}
 	}
-	private Object getElement(String key){
+	public Object getElement(String key){
 		Object obj=null;
 		try {
 			obj=document.get(key);
@@ -86,7 +90,7 @@ public class QueueMessage {
 		return obj;
 	}
 	public void setMessage(String message) {
-		this.message = message;
+		addElement("message", message);
 	}
 	public JSONObject getDocument() {
 		return document;

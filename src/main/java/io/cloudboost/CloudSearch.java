@@ -49,12 +49,12 @@ public class CloudSearch{
 			}else{
 				filtered.put("query", new JSONObject());
 			}
-			if(searchFilter != null){
-				this.bool.put("bool", searchFilter.bool);
-				filtered.put("filter",this .bool);
-			}else{
-				filtered.put("filter", new JSONObject());
-			}
+//			if(searchFilter != null){
+//				this.bool.put("bool", searchFilter.bool);
+//				filtered.put("filter",this .bool);
+//			}else{
+//				filtered.put("filter", new JSONObject());
+//			}
 			} catch (JSONException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -66,17 +66,29 @@ public class CloudSearch{
 	}
 	
 	public CloudSearch(String[] tableName, SearchQuery searchObject, SearchFilter searchFilter){
+		this.collectionArray = new ArrayList<String>();
+		this.query = new JSONObject();
+		this.bool = new JSONObject();
+		filtered = new JSONObject();
 		for(int i=0; i<tableName.length; i++){
 			this.collectionArray.add(tableName[i]);
 		}
-	
 		this.query = new JSONObject();
 		filtered = new JSONObject();
 		
 		try {
-			filtered.put("query", searchObject.bool.toString());
-		
-		filtered.put("filter", searchFilter.bool.toString());
+			if(searchObject != null){
+				this.bool.put("bool", searchObject.bool);
+				filtered.put("query",this.bool );
+			}else{
+				filtered.put("query", new JSONObject());
+			}
+			if(searchFilter != null){
+				this.bool.put("bool", searchFilter.bool);
+				filtered.put("filter",this .bool);
+			}else{
+				filtered.put("filter", new JSONObject());
+			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,16 +187,22 @@ public class CloudSearch{
 	 * @throws InterruptedException 
 	 * @throws JSONException 
 	 */
-	public void search(CloudObjectArrayCallback callbackObject) throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
+	public void search(CloudObjectArrayCallback callbackObject) throws CloudException{
 		String collectionString;
+		System.out.println("collections array="+collectionArray);
 		if(this.collectionArray.size() >0){
-			collectionString = this.collectionArray.get(0);
-			for(int i=1; i<this.collectionArray.size(); i++){
-				collectionString.concat(","+this.collectionArray.get(i));
+			
+			collectionString = "";
+			for(int i=0; i<this.collectionArray.size(); i++){
+				collectionString+=(i>0?","+this.collectionArray.get(i):this.collectionArray.get(i));
+				
 			}
+			System.out.println("collection string= "+collectionString);
+			this.collectionName=collectionString;
 		}else{
 			collectionString = this.collectionName;
 		}
+		try{
 		this.query.put("filtered", this.filtered);
 		JSONObject params = new JSONObject();
 		params.put("collectionName", collectionString);
@@ -206,10 +224,15 @@ public class CloudSearch{
 				object[i] = new CloudObject(body.getJSONObject(i).get("_tableName").toString());
 				object[i].document = body.getJSONObject(i);
 			}
+			System.out.println("calling callback...");
 			callbackObject.done(object, null);
 		}else{
 			CloudException e = new CloudException(response.getResponseBody());
 			callbackObject.done((CloudObject[])null, e);
+		}
+		}catch(JSONException e){
+			CloudException ee = new CloudException(e.getMessage());
+			callbackObject.done((CloudObject[])null, ee);
 		}
 	}
 }

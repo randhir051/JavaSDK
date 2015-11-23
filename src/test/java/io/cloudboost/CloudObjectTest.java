@@ -1,4 +1,6 @@
 package io.cloudboost;
+import io.cloudboost.util.UUID;
+
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
@@ -135,7 +137,39 @@ public class CloudObjectTest{
 
 		});
 	}
-	
+	@Test(timeout=30000)
+	public void shouldUpdateVersionOnUpdate() throws CloudException{
+		initialize();
+		CloudObject obj = new CloudObject("Sample");
+     	obj.set("name", "sample");
+     	obj.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t)	throws CloudException {
+				if(t != null){
+					Assert.fail(t.getMessage());
+				}
+				x.set("name", "sample1");
+				x.save(new CloudObjectCallback(){
+					@Override
+					public void done(CloudObject object, CloudException err)throws CloudException {
+						if(err != null){
+							Assert.fail(err.getMessage());
+						}
+						String id=object.getId();
+						CloudQuery q=new CloudQuery("Sample");
+						q.findById(id, new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								int ver=x.getInteger("_version");
+								Assert.assertTrue(ver>0);
+							}
+						});
+					}
+				});
+			}
+     	});
+	}
 	@Test(timeout=30000)
 	public void updateAfterSave() throws CloudException{
 		initialize();
@@ -243,7 +277,24 @@ public class CloudObjectTest{
 			}
 		});
 	}
-	
+	@Test(timeout=30000)
+	public void saveRelationWithVersion() throws CloudException{
+		initialize();
+		CloudObject obj = new CloudObject("Sample");
+		obj.set("name", "sample");
+		CloudObject obj1 = new CloudObject("Sample");
+		obj1.set("name", "sample");
+		obj.set("sameRelation", obj1);
+		obj.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t)throws CloudException {
+				if(t != null){
+					Assert.fail(t.getMessage());
+				}
+				Assert.assertEquals(x.get("_version"),0);
+			}
+		});
+	}
 	@Test(timeout=30000)
 	public void saveRelation() throws CloudException{
 		initialize();
@@ -566,5 +617,362 @@ public class CloudObjectTest{
 				});
 			}
 	    });
+	}
+	
+	
+	@Test(timeout=30000)
+	public void saveAndDeleteArrayOfCloudObject() throws CloudException{
+		initialize();
+		CloudObject obj = new CloudObject("Sample");
+		obj.set("name", "sample11");
+		CloudObject obj1 = new CloudObject("Sample");
+		obj1.set("name", "sample22");
+		final CloudObject obj2 = new CloudObject("Sample");
+		obj2.set("name", "sample33");
+		CloudObject[] objects={obj,obj1,obj2};
+		CloudObject saver=new CloudObject("Sample");
+		saver.saveAll(objects,new CloudObjectArrayCallback(){
+			@Override
+			public void done(CloudObject[] x, CloudException t)throws CloudException {
+				if(t != null){
+					Assert.fail(t.getMessage());
+				}
+				if(x!=null){
+					if(x.length==3){
+						CloudObject deleter=new CloudObject("Sample");
+						deleter.deleteAll(x, new CloudObjectArrayCallback() {
+							
+							@Override
+							public void done(CloudObject[] list, CloudException t) throws CloudException {
+								Assert.assertTrue(list.length==3);
+								
+							}
+						});
+					}
+				}
+			}
+		});
+	}
+	@Test(timeout = 30000)
+	public void shouldFetchCloudObject() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Custom18");
+		obj.set("number", 0);
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				x.fetch(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						if(t!=null)
+							Assert.fail(t.getMessage());
+						Assert.assertTrue(x.getInteger("number")==0);
+						
+					}
+				});
+			
+				
+			}
+		});
+	}
+	@Test(timeout = 30000)
+	public void shouldSaveRequiredNumberAs0() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Custom18");
+		obj.set("number", 0);
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				Assert.assertTrue(t==null);
+			
+				
+			}
+		});
+	}
+	@Test(timeout = 30000)
+	public void shouldUnsetField() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("hostel");
+		obj.set("room", 123);
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				x.unset("room");
+				x.save(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						Assert.assertFalse(x.hasKey("toom"));
+						
+					}
+				});
+				
+			}
+		});
+	}
+	@Test(timeout = 30000)
+	public void shouldGiveErrorWhenWrongDataIsPutInNumberField() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Custom14");
+		obj.set("requiredNumber", "sample");
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				Assert.assertTrue(t!=null);
+				
+			}
+		});
+	}
+	@Test(timeout = 30000)
+	public void shouldSaveGeoPointList() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Custom14");
+		CloudGeoPoint p1=new CloudGeoPoint(17.0, 89.0);
+		CloudGeoPoint p2=new CloudGeoPoint(66.0, 78.0);
+
+		obj.set("ListGeoPoint", new CloudGeoPoint[]{p1,p2});
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				Assert.assertTrue(t==null);
+				
+			}
+		});
+	}
+	@Test(timeout = 10000)
+	public void shouldSaveListNumberList() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Custom14");
+		obj.set("ListNumber", new int[]{1,2,3});
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				Assert.assertTrue(t==null);
+				
+			}
+		});
+	}
+	@Test(timeout = 50000)
+	public void shouldNotDupValuesInListAfterUpdate() throws CloudException{
+			initialize();
+			final CloudObject obj = new CloudObject("student1");
+			obj.set("age", 5);
+			obj.set("name", "ben");
+			CloudObject[] arr={obj,obj};
+			CloudObject obj1 = new CloudObject("Custom4");
+			obj1.set("newColumn7", arr);
+
+			obj1.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					JSONArray array=(JSONArray) x.get("newColumn7");
+					array.put(obj.document);
+					x.set("newColumn7", array);
+					x.save(new CloudObjectCallback() {
+						
+						@Override
+						public void done(CloudObject x, CloudException t) throws CloudException {
+							JSONArray array2=(JSONArray) x.get("newColumn7");
+							Assert.assertEquals(array2.length(), 3);
+							
+						}
+					});
+					
+				}
+			});
+		
+	}
+	@Test(timeout = 50000)
+	public void shouldNotSaveAnArrayOfDifferentObjects() throws CloudException{
+			initialize();
+			final CloudObject obj = new CloudObject("Sample");
+			obj.set("name", "sample");
+			obj.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					CloudObject obj1 = new CloudObject("Sample");
+					obj1.set("name", "sample");
+					CloudObject obj2=new CloudObject("Sample");
+					CloudObject[] arr={obj1,x};
+					obj2.set("relationArray", arr);
+					obj2.set("name", "sample");
+					obj2.save(new CloudObjectCallback() {
+						
+						@Override
+						public void done(CloudObject x, CloudException t) throws CloudException {
+							Assert.assertTrue(x!=null);
+							
+						}
+					});
+					
+				}
+			});
+		
+	}
+	@Test(timeout = 50000)
+	public void shouldModifyListRelationOfSavedObject() throws CloudException{
+			initialize();
+			CloudObject obj = new CloudObject("Sample");
+			obj.set("name", "sample");
+			CloudObject obj1=new CloudObject("Sample");
+			obj1.set("name", "sample");
+			
+			CloudObject obj2=new CloudObject("Sample");
+			obj2.set("name", "sample");
+			
+			CloudObject[] arr={obj1,obj};
+			obj2.set("relationArray", arr);
+			obj2.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					JSONArray arr=(JSONArray) x.get("relationArray");
+					if(arr.length()!=2)
+						Assert.fail("Failed to save relation properly");
+					else{
+						arr.remove(1);
+						x.set("relationArray", arr);
+						x.save(new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								if(t!=null)
+									Assert.fail(t.getMessage());
+								else{
+									JSONArray arr2=(JSONArray) x.get("relationArray");
+									Assert.assertEquals(arr2.length(), 1);
+								}
+								
+							}
+						});
+					}
+					
+					
+				}
+			});
+		
+	}
+	@Test(timeout = 10000)
+	public void shouldNotSaveDupRelationInUniqueFields() throws CloudException{
+			initialize();
+			CloudObject obj = new CloudObject("Sample");
+			obj.set("name", "sample");
+			final CloudObject obj1=new CloudObject("Sample");
+			obj1.set("name", "sample");
+			obj.set("uniqueRelation", obj1);
+			obj.save(new CloudObjectCallback(){
+				@Override
+				public void done(CloudObject x, CloudException t)throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					if(x!=null){
+						CloudObject obj2 = new CloudObject("Sample");
+						obj2.set("name", "sample");
+						JSONObject uniqRel=(JSONObject) x.get("uniqueRelation");
+						obj2.set("uniqueRelation", uniqRel);
+						obj2.save(new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								if(x!=null)
+									Assert.fail("Should not save duplicate relation in unique fields");
+								Assert.assertTrue(t!=null);
+								
+							}
+						});
+					}
+				}
+			});		
+	}
+	@Test(timeout = 10000)
+	public void shouldNotSaveRelationWhenSchemaOfRelationObjectIsWrong() throws CloudException{
+			initialize();
+			CloudObject obj = new CloudObject("Sample");
+			obj.set("name", "sample");
+			CloudObject obj1=new CloudObject("Sample");
+			//name is required , which means the schema is wrong. 
+			obj.set("sameRelation", obj1);
+			obj.save(new CloudObjectCallback(){
+				@Override
+				public void done(CloudObject x, CloudException t)throws CloudException {
+					Assert.assertTrue(t!=null);
+				}
+			});
+		
+		
+	}
+	@Test(timeout = 10000)
+	public void shouldNotAllowMultipleDataTypesInArray() throws CloudException{
+			initialize();
+			CloudObject obj = new CloudObject("Sample");
+			obj.set("name", "sample");
+			String text = PrivateMethod._makeString();
+			Object[] string = {text , 123};
+			obj.set("stringArray", string);
+			obj.save(new CloudObjectCallback(){
+				@Override
+				public void done(CloudObject x, CloudException t)throws CloudException {
+					Assert.assertTrue(t!=null);
+				}
+			});
+		
+		
+	}
+	@Test(timeout = 10000)
+	public void shouldNotSetId() throws CloudException{
+		CloudObject ob=new CloudObject("Employee");
+		try{
+		ob.set("id", UUID.uuid(6));
+		Assert.fail("Should not have set id on cloudobject");
+		}catch(CloudException e){
+			Assert.assertEquals(e.getMessage(), "You cannot set Id on a CloudObject");
+		}
+	}
+	@Test(timeout = 30000)
+	public void shouldNotUpdateCreatedAtOnUpdate() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Sample");
+		obj.set("name", "egima");
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				final String createdAt=x.getString("createdAt");
+				x.set("name", "bengi");
+				x.save(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						if(t!=null)
+							Assert.fail(t.getMessage());
+						Assert.assertEquals(x.getString("createdAt"), createdAt);
+						
+					}
+				});
+			
+				
+			}
+		});
 	}
 }

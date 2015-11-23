@@ -196,26 +196,26 @@ public class SearchQuery{
 		if(operator != null){
 			column.put("operator", operator);
 		}else{
-			column.put("operator", JSONObject.NULL);
+			column.put("operator", (Object) null);
 		}
        
 
         if(match_percent != null){
         	column.put("minimum_should_match", match_percent);
         }else{
-        	column.put("minimum_should_match", JSONObject.NULL);
+        	column.put("minimum_should_match",(Object) null);
         }
 
         if(boost != null){
         	column.put("boost", boost);
         }else{
-        	column.put("boost", JSONObject.NULL);
+        	column.put("boost", (Object) null);
         }
 
         if(fuzziness != null){
         	column.put("fuzziness", fuzziness);
         }else{
-        	column.put("fuzziness", JSONObject.NULL);
+        	column.put("fuzziness", (Object) null);
         }
         
         match.put(columnName, column);
@@ -237,25 +237,25 @@ public class SearchQuery{
 		if(operator != null){
 			multi_match.put("operator", operator);
 		}else{
-			multi_match.put("operator", JSONObject.NULL);
+			multi_match.put("operator", (Object) null);
 		}
        
         if(match_percent != null){
         	multi_match.put("minimum_should_match", match_percent);
         }else{
-        	multi_match.put("minimum_should_match", JSONObject.NULL);
+        	multi_match.put("minimum_should_match", (Object) null);
         }
 
         if(boost != null){
         	multi_match.put("boost", boost);
         }else{
-        	multi_match.put("boost", JSONObject.NULL);
+        	multi_match.put("boost",(Object) null);
         }
 
         if(fuzziness != null){
         	multi_match.put("fuzziness", fuzziness);
         }else{
-        	multi_match.put("fuzziness", JSONObject.NULL);
+        	multi_match.put("fuzziness", (Object) null);
         }
      
         obj.put("multi_match", multi_match);
@@ -513,9 +513,11 @@ public class SearchQuery{
 	 * @return
 	 */
 	public SearchQuery or(SearchQuery object){
-		
-		this.should.add(object);
+		JSONObject obj=new JSONObject();
+
 		try {
+			obj.put("bool", object.bool);
+			this.should.add(obj);
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

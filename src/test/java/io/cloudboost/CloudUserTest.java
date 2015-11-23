@@ -1,5 +1,7 @@
 package io.cloudboost;
+import io.cloudboost.util.UUID;
 import junit.framework.Assert;
+
 import org.junit.Test;
 
 /**
@@ -34,19 +36,66 @@ public class CloudUserTest{
 					}
 				});
 		}
-//		
+		@Test(timeout=20000)
+		public void shouldCreateNewUserWithVersion() throws CloudException{
+				initialize();
+				CloudUser obj = new CloudUser();
+				obj.setUserName(username);
+				obj.setPassword(passwd);
+				obj.setEmail(PrivateMethod._makeString()+"@abc.com");
+				obj.signUp(new CloudUserCallback(){
+					@Override
+					public void done(CloudUser object, CloudException e)	throws CloudException {
+						if(e != null){
+							Assert.fail(e.getMessage());
+						}
+						if(object != null){
+							Assert.assertEquals(object.get("_version"), 0);
+						}
+					}
+				});
+		}
 //		@Test(timeout=20000)
-//		public void logoutUser() throws CloudException{
-//				initialize();
-//				CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
-//					@Override
-//					public void done(CloudUser x, CloudException t)	throws CloudException {
-//						
-//					}
+//		public void loginLogoutUser() throws CloudException{
+//			initialize();
+//			final CloudUser user = new CloudUser();
+//			user.setUserName(username);
+//			user.setPassword(passwd);
+//			user.logIn(new CloudUserCallback(){
 //
-//		
-//				});
+//				@Override
+//				public void done(CloudUser object, CloudException e)throws CloudException {
+//					if(e != null){
+//							Assert.fail(e.getMessage());
+//					}
+//					
+//					if(object != null){
+//						if(object.get("username").equals(username)){
+//							user.logOut(new CloudUserCallback(){
+//								@Override
+//								public void done(CloudUser x, CloudException t)	throws CloudException {
+//									if(t!=null)
+//										Assert.fail(t.getMessage());
+//									if(x!=null)
+//										Assert.assertEquals(x.getUserName(), username);
+//								}
+//
+//					
+//							});
+//							
+//						}
+//						else{
+//							Assert.fail("logged in but different username returned");
+//						}
+//						
+//					}else{
+//						Assert.fail();
+//					}
+//				}
+//			});
 //		}
+		
+
 		
 		@Test(timeout=20000)
 		public void createUserGetVersion() throws CloudException{
@@ -80,28 +129,7 @@ public class CloudUserTest{
 				
 		}
 		
-//		@Test(timeout=20000)
-//		public void loginUser() throws CloudException{
-//			initialize();
-//			CloudUser user = new CloudUser();
-//			user.setUserName(username);
-//			user.setPassword(passwd);
-//			user.logIn(new CloudUserCallback(){
-//
-//				@Override
-//				public void done(CloudUser object, CloudException e)throws CloudException {
-//					if(e != null){
-//							Assert.fail(e.getMessage());
-//					}
-//					
-//					if(object != null){
-//						Assert.assertEquals(object.get("username"), username);
-//					}else{
-//						Assert.fail();
-//					}
-//				}
-//			});
-//		}
+
 		
 		String roleName = PrivateMethod._makeString();
 		
@@ -127,84 +155,116 @@ public class CloudUserTest{
 				
 			});
 		}
+		public void shouldDoQueryOnUser() throws CloudException{
+			initialize();
+			CloudUser obj = new CloudUser();
+			final String uuid=UUID.uuid(8);
+			obj.setUserName(uuid);
+			obj.setPassword(passwd);
+			obj.setEmail(PrivateMethod._makeString()+"@abc.com");
+			obj.signUp(new CloudUserCallback(){
+				@Override
+				public void done(final CloudUser object, CloudException e)	throws CloudException {
+					if(e != null){
+						Assert.fail(e.getMessage());
+					}
+					if(object != null){
+						if(object.getInteger("_version")>=0&&object.getUserName().equals(uuid)){
+							CloudQuery qry=new CloudQuery("User");
+							qry.findById(object.getId(), new CloudObjectCallback() {
+								
+								@Override
+								public void done(CloudObject x, CloudException t) throws CloudException {
+									if(t!=null)
+										Assert.fail(t.getMessage());
+									if(x!=null)
+										Assert.assertEquals(x.getId(), object.getId());
+									
+								}
+							});
+						}
+						Assert.assertEquals(object.get("username"), username);
+					}
+				}
+			});
+		}
+		@Test(timeout=100000)
+		public void assignRoleToUser() throws CloudException{
+			initialize();
+			CloudUser user = new CloudUser();
+			user.setUserName(username);
+			user.setPassword(passwd);
+			user.logIn(new CloudUserCallback(){
+
+				@Override
+				public void done(final CloudUser newUser, CloudException t)	throws CloudException {
+						CloudRole role = new CloudRole(roleName);
+						role.save(new CloudRoleCallback(){
+							@Override
+							public void done(CloudRole newRole, CloudException t)	throws CloudException {
+									newUser.addToRole(newRole, new CloudUserCallback(){
+
+										@Override
+										public void done(CloudUser anotherUser, CloudException e)throws CloudException {
+											if(e != null){
+												Assert.fail(e.getMessage());
+											}
+											
+											if(anotherUser != null){
+												Assert.assertEquals(anotherUser.getUserName(), username);
+											}else{
+												Assert.fail("Add Role Error");
+											}
+										}
+										
+									});
+							}
+							
+						});
+				}
+				
+			});
+		}
 		
-//		@Test(timeout=20000)
-//		public void assignRoleToUser() throws CloudException{
-//			initialize();
-//			CloudUser user = new CloudUser();
-//			user.setUserName(username);
-//			user.setPassword(passwd);
-//			user.logIn(new CloudUserCallback(){
-//
-//				@Override
-//				public void done(final CloudUser newUser, CloudException t)	throws CloudException {
-//						CloudRole role = new CloudRole(roleName);
-//						role.save(new CloudRoleCallback(){
-//							@Override
-//							public void done(CloudRole newRole, CloudException t)	throws CloudException {
-//									newUser.addToRole(newRole, new CloudUserCallback(){
-//
-//										@Override
-//										public void done(CloudUser anotherUser, CloudException e)throws CloudException {
-//											if(e != null){
-//												Assert.fail(e.getMessage());
-//											}
-//											
-//											if(anotherUser != null){
-//												Assert.assertEquals(anotherUser.getUserName(), username);
-//											}else{
-//												Assert.fail("Add Role Error");
-//											}
-//										}
-//										
-//									});
-//							}
-//							
-//						});
-//				}
-//				
-//			});
-//		}
-		
-//		@Test(timeout=20000)
-//		public void removeRoleFromUser() throws CloudException{
-//			initialize();
-//			CloudUser user = new CloudUser();
-//			user.setUserName(username);
-//			user.setPassword(passwd);
-//			String roleName = PrivateMethod._makeString();
-//			final CloudRole role = new CloudRole(roleName);
-//			user.logIn(new CloudUserCallback(){
-//				@Override
-//				public void done(final CloudUser newUser, CloudException t)	throws CloudException {
-//						role.save(new CloudRoleCallback(){
-//							@Override
-//							public void done(final CloudRole newRole, CloudException t)	throws CloudException {
-//									newUser.addToRole(newRole, new CloudUserCallback(){
-//										@Override
-//										public void done(CloudUser anotherUser, CloudException e)throws CloudException {
-//												CloudUser.getcurrentUser().removeFromRole(newRole, new CloudUserCallback(){
-//													@Override
-//													public void done(CloudUser object, CloudException e)throws CloudException {
-//														if(e != null){
-//															Assert.fail(e.getMessage());
-//														}	
-//														if(object != null){
-//															Assert.assertEquals(object.getUserName(), username);
-//														}else{
-//															Assert.fail("Add Role Error");
-//														}
-//													}
-//												});
-//										}
-//									});
-//							}
-//							
-//						});
-//				}
-//				
-//			});
-//		}
+		@Test(timeout=20000)
+		public void removeRoleFromUser() throws CloudException{
+			initialize();
+			CloudUser user = new CloudUser();
+			user.setUserName(username);
+			user.setPassword(passwd);
+			String roleName = PrivateMethod._makeString();
+			final CloudRole role = new CloudRole(roleName);
+			user.logIn(new CloudUserCallback(){
+				@Override
+				public void done(final CloudUser newUser, CloudException t)	throws CloudException {
+						role.save(new CloudRoleCallback(){
+							@Override
+							public void done(final CloudRole newRole, CloudException t)	throws CloudException {
+									newUser.addToRole(newRole, new CloudUserCallback(){
+										@Override
+										public void done(CloudUser anotherUser, CloudException e)throws CloudException {
+												anotherUser.removeFromRole(newRole, new CloudUserCallback(){
+													@Override
+													public void done(CloudUser object, CloudException e)throws CloudException {
+														if(e != null){
+															Assert.fail(e.getMessage());
+														}	
+														if(object != null){
+															Assert.assertEquals(object.getUserName(), username);
+														}else{
+															Assert.fail("Add Role Error");
+														}
+													}
+												});
+										}
+									});
+							}
+							
+						});
+				}
+				
+			});
+		}
 		
 		@Test(timeout=20000)
 		public void encryptUserPassword() throws CloudException{

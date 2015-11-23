@@ -1,5 +1,8 @@
 package io.cloudboost;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import junit.framework.Assert;
@@ -15,7 +18,469 @@ public class CloudSearchTest{
 	void initialize(){
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
-	
+    @Test(timeout = 20000)
+    public void shouldSkipElements() throws CloudException{
+    	initialize();
+    	CloudSearch cs=new CloudSearch("Student", null, null);
+    	cs.orderByAsc("age");
+    	cs.search(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					if(x.length>0){
+						int prev=0;
+						for(CloudObject o:x){
+							int age=o.getInteger("age");
+							if(age<prev)
+								Assert.fail("Fetched records but failed to arrange in ascending order");
+							prev=age;
+							
+						}
+					}
+				}
+				
+			}
+		});
+    	
+    
+
+    }
+    @Test(timeout = 20000)
+    public void shouldIncludeArelationOnSearch() throws CloudException{
+    	initialize();
+    	CloudObject obj1=new CloudObject("Custom2");
+    	CloudObject obj2=new CloudObject("student1");
+
+			obj1.set("newColumn1", "text");
+	    	obj2.set("name", "vipul");
+	    	obj1.set("newColumn7", obj2);
+    	obj1.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null)
+				{
+					SearchFilter filter=new SearchFilter();
+					filter.include("newColumn7");
+					filter.equalTo("id", x.getId());
+					CloudSearch cs=new CloudSearch("Custom2", null, filter);
+					cs.search(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x!=null){
+								Assert.assertTrue(x.length>0);
+							}
+							
+						}
+					});
+				}
+				
+			}
+		});
+
+    }
+    @Test(timeout = 20000)
+    public void shouldSortElementsInDescendingOrder() throws CloudException{
+    	initialize();
+    	CloudSearch cs=new CloudSearch("Student", null, null);
+    	cs.orderByDesc("age");
+    	cs.search(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					if(x.length>0){
+						int prev=10000;
+						for(CloudObject o:x){
+							int age=o.getInteger("age");
+							if(age>prev)
+								Assert.fail("Fetched records but failed to sort in Descending order");
+							prev=age;
+							
+						}
+					}
+				}
+				
+			}
+		});
+    	
+    
+
+    }
+    @Test(timeout = 20000)
+    public void shouldGiveElementsWhereCertainColumnExists() throws CloudException{
+
+    	
+    	initialize();
+    	SearchFilter filter=new SearchFilter();
+    	filter.exists("name");
+    	CloudSearch cs=new CloudSearch("Student", null, filter);
+    	cs.search(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				System.out.println("inisde coallback");
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					System.out.println("length of arr: "+x.length);
+					if(x.length>0){
+						boolean pass=true;
+						for(CloudObject o:x){
+							
+							if(!o.hasKey("name")){
+								pass=false;
+								break;
+							}
+							
+						}
+						Assert.assertTrue(pass);
+					}
+				}
+				
+			}
+		});
+
+    }
+	@Test(timeout = 20000)
+	public void shouldRunMultiTableSearch() throws CloudException {
+
+		initialize();
+    	CloudObject obj1=new CloudObject("Student");
+    	obj1.set("name", "RAVI");
+    	final CloudObject obj2=new CloudObject("hostel");
+    	obj2.set("name","ravi");
+    	obj1.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null)
+					obj2.save(new CloudObjectCallback() {
+						
+						@Override
+						public void done(CloudObject x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x!=null){
+							final String[] tables={"Student","hostel"};
+							SearchQuery q=new SearchQuery();
+							q.searchOn("name", "ravi", null, null, null, null);
+														
+					    	CloudSearch cs=new CloudSearch(tables, q, null);
+					    	cs.setLimit(9999);
+					    	cs.search(new CloudObjectArrayCallback() {
+								
+								@Override
+								public void done(CloudObject[] x, CloudException t) throws CloudException {
+									if(t!=null)
+										Assert.fail(t.getMessage());
+									if(x!=null){
+											boolean pass=true;
+											List<String> tableList=Arrays.asList(tables);
+											for(CloudObject o:x){
+												String table=o.getString("_tableName");			
+												if(!tableList.contains(table)){
+													pass=false;
+													break;
+												}
+											}
+											Assert.assertTrue(pass);
+										
+									}
+									
+								}
+							});
+						}}
+					});
+				
+			}
+		});
+	}
+    @Test(timeout = 20000)
+    public void orShouldWorkBetweenTables() throws CloudException{
+
+    	
+    	initialize();
+    	CloudObject obj1=new CloudObject("Student");
+    	obj1.set("name", "RAVI");
+    	final CloudObject obj2=new CloudObject("hostel");
+    	obj2.set("room",509);
+    	obj1.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null)
+					obj2.save(new CloudObjectCallback() {
+						
+						@Override
+						public void done(CloudObject x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x!=null){
+							final String[] tables={"Student","hostel"};
+							SearchQuery q1=new SearchQuery();
+							q1=q1.searchOn("name", "RAVI", null, null, null, null);
+							SearchQuery q2=new SearchQuery();
+							q2=q2.searchOn("room", 509, null, null, null, null);
+							SearchQuery q=new SearchQuery();
+							q=q.or(q1);
+							q=q.or(q2);
+							ArrayList<Object> sq=q.should;
+							
+							System.out.println("Should of overall sq="+q.should.toString());
+							
+					    	CloudSearch cs=new CloudSearch(tables, q, null);
+					    	cs.setLimit(9999);
+					    	cs.search(new CloudObjectArrayCallback() {
+								
+								@Override
+								public void done(CloudObject[] x, CloudException t) throws CloudException {
+									if(t!=null)
+										Assert.fail(t.getMessage());
+									if(x!=null){
+											boolean pass=true;
+											List<String> tableList=Arrays.asList(tables);
+											for(CloudObject o:x){
+												String table=o.getString("_tableName");			
+												if(!tableList.contains(table)){
+													pass=false;
+													break;
+												}
+											}
+											Assert.assertTrue(pass);
+										
+									}
+									
+								}
+							});
+						}}
+					});
+				
+			}
+		});
+
+
+
+    }
+	@Test(timeout = 20000)
+	public void shouldRunMinimumPercentPrecisionQuery() throws CloudException {
+
+		initialize();
+		CloudObject obj1 = new CloudObject("Student");
+		obj1.set("name", "RAVI");
+		obj1.save(new CloudObjectCallback() {
+
+			@Override
+			public void done(CloudObject x, CloudException t)
+					throws CloudException {
+
+				if (t != null)
+					Assert.fail(t.getMessage());
+				if (x != null) {
+					final String[] tables = { "Student"};
+					SearchQuery q = new SearchQuery();
+					q = q.searchOn("name", "RAVI", null, null, "75%", null);
+
+					CloudSearch cs = new CloudSearch(tables, q, null);
+					cs.setLimit(9999);
+					cs.search(new CloudObjectArrayCallback() {
+
+						@Override
+						public void done(CloudObject[] x, CloudException t)
+								throws CloudException {
+							if (t != null)
+								Assert.fail(t.getMessage());
+							if (x != null) {
+								boolean pass = true;
+								List<String> tableList = Arrays.asList(tables);
+								for (CloudObject o : x) {
+									String table = o.getString("_tableName");
+									if (!tableList.contains(table)) {
+										pass = false;
+										break;
+									}
+								}
+								Assert.assertTrue(pass);
+
+							}
+
+						}
+					});
+
+				}
+
+			}
+		});
+	}
+	@Test(timeout = 20000)
+	public void shouldRunPrecisionQuery() throws CloudException {
+
+		initialize();
+		CloudObject obj1 = new CloudObject("Student");
+		obj1.set("name", "ravi");
+		obj1.save(new CloudObjectCallback() {
+
+			@Override
+			public void done(CloudObject x, CloudException t)
+					throws CloudException {
+
+				if (t != null)
+					Assert.fail(t.getMessage());
+				if (x != null) {
+					final String[] tables = { "Student"};
+					SearchQuery q = new SearchQuery();
+					q = q.searchOn("name", "ravi", null, "and", null, null);
+
+					CloudSearch cs = new CloudSearch(tables, q, null);
+					cs.setLimit(9999);
+					cs.search(new CloudObjectArrayCallback() {
+
+						@Override
+						public void done(CloudObject[] x, CloudException t)
+								throws CloudException {
+							if (t != null)
+								Assert.fail(t.getMessage());
+							if (x != null) {
+								boolean pass = true;
+								List<String> tableList = Arrays.asList(tables);
+								for (CloudObject o : x) {
+									String table = o.getString("_tableName");
+									if (!tableList.contains(table)) {
+										pass = false;
+										break;
+									}
+								}
+								Assert.assertTrue(pass);
+
+							}
+
+						}
+					});
+
+				}
+
+			}
+		});
+	}
+    @Test(timeout = 20000)
+    public void shouldGiveRecordsWithinACertainRange() throws CloudException{
+
+    	
+    	initialize();
+    	SearchFilter filter=new SearchFilter();
+    	filter.greaterThan("age", 19);
+    	filter.lessThan("age", 50);
+    	CloudSearch cs=new CloudSearch("Student", null, filter);
+    	cs.search(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					if(x.length>0){
+						boolean pass=true;
+						for(CloudObject o:x){
+										int age=o.getInteger("age");			
+							if(age<=19&&age>=50){
+								pass=false;
+								break;
+							}
+						}
+						Assert.assertTrue(pass);
+					}
+				}
+				
+			}
+		});
+
+    }
+    @Test(timeout = 20000)
+    public void shouldGiveElementsWhereCertainColumnNotExists() throws CloudException{
+
+    	
+    	initialize();
+    	SearchFilter filter=new SearchFilter();
+    	filter.doesNotExists("name");
+    	CloudSearch cs=new CloudSearch("Student", null, filter);
+    	cs.search(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					if(x.length>0){
+						boolean pass=true;
+						for(CloudObject o:x){
+													
+							if(o.hasKey("name")){
+								pass=false;
+								break;
+							}
+						}
+						Assert.assertTrue(pass);
+					}
+				}
+				
+			}
+		});
+
+    }
+    @Test(timeout = 20000)
+    public void shouldArrangeInAscendingOrder() throws CloudException{
+    	initialize();
+    	SearchFilter filter=new SearchFilter();
+    	filter.notEqualTo("age", 19);
+    	CloudSearch cs=new CloudSearch("Student", null, filter);
+    	cs.setSkip(9999999);
+    	cs.search(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					if(x.length==0){
+				    	SearchFilter filter=new SearchFilter();
+				    	filter.notEqualTo("age", 19);
+				    	CloudSearch cs=new CloudSearch("Student", null, filter);
+				    	cs.setSkip(1);
+				    	cs.search(new CloudObjectArrayCallback() {
+							
+							@Override
+							public void done(CloudObject[] x, CloudException t) throws CloudException {
+								if(t!=null)
+									Assert.fail(t.getMessage());
+								if(x!=null){
+									Assert.assertTrue(x.length>0);
+								}
+								
+							}
+						});
+					}
+					else Assert.fail("Should search for elements");
+				}
+				
+			}
+		});
+    
+
+    }
 	@Test(timeout=30000)
 	public void indexObject() throws CloudException{
 		 initialize();

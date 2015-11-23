@@ -32,8 +32,8 @@ public class CloudGeoPoint{
 		
 		document.put("_isModified", true);
 		if((latitude >= -90.0 && latitude <= 90.0)&&( longitude >= -180.0 && longitude<=180.0)) {
-			this.coordinates.add(latitude);
 			this.coordinates.add(longitude);
+			this.coordinates.add(latitude);
 			this.document.put("coordinates", this.coordinates);
 			this.document.put("longitude", longitude);
 			this.document.put("latitude", latitude);

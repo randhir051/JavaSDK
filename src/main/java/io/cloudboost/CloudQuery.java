@@ -602,23 +602,23 @@ public class CloudQuery {
 				|| data instanceof String[] || data instanceof Double[]) {
 
 			CloudObject[] object = new CloudObject[data.length];
-			columnName = columnName + "._id";
+//			columnName = columnName + "._id";
 
 			try {
 				this.query.put("$include", $include);
 				this.query.put("$includeList", $includeList);
 				if (data instanceof CloudObject[]) {
-
+					Object[] dataz=new Object[data.length];
 					for (int i = 0; i < data.length; i++) {
 						object[i] = (CloudObject) data[i];
 						if (object[i].getId() == null) {
 							throw new CloudException(
 									"CloudObject passed should be saved and should have an id before being passed to containedIn");
 						}
-						data[i] = object[i].getId();
+						dataz[i] = object[i].getId();
 					}
-
-					if (this.query.getString(columnName) == null) {
+					data=dataz;
+					if (this.query.get(columnName) == null) {
 						this.query.put(columnName, (Object) null);
 					}
 
