@@ -23,7 +23,6 @@ public class CloudSocket{
 	public static void init(String url){
 		try {
 			setSocket(IO.socket(url));
-			System.out.println("Socket Initializaed");
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}

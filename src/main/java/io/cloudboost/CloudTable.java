@@ -211,11 +211,8 @@ public class CloudTable{
 		try {
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table";
-//		System.out.println("url: "+url);
-//		System.out.println(params);
 		CBResponse response=CBParser.callJson(url, "POST", params);
 			if(response.getStatusCode() == 200){
-//				System.out.println(response.getResponseBody());
 				JSONArray body = new JSONArray(response.getResponseBody());
 				CloudTable[] object = new CloudTable[body.length()];
 				
@@ -294,7 +291,6 @@ public class CloudTable{
 		try {
 		params.put("data", document);		
 		params.put("key", CloudApp.getAppKey());
-		System.out.println(params.toString());
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "PUT", params);
 
@@ -303,7 +299,6 @@ public class CloudTable{
 				thisObj.document = body;
 				callbackObject.done(thisObj, null);
 			}else{
-				System.out.println("we got an exception: "+response.getResponseBody());
 				CloudException e = new CloudException(response.getResponseBody());
 				callbackObject.done((CloudTable)null, e);
 				

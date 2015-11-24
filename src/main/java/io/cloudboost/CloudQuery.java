@@ -124,7 +124,6 @@ public class CloudQuery {
 				e.printStackTrace();
 			}
 		} else {
-			System.out.println("dfgv");
 			this.doesNotExists(columnName);
 		}
 		return this;
@@ -154,7 +153,6 @@ public class CloudQuery {
 
 				this.query.put(columnName, $ne);
 			} catch (JSONException e) {
-				System.out.println("Error: " + e.getMessage());
 				JSONObject $ne;
 				try {
 					$ne = new JSONObject("{ $ne: " + "" + " }");
@@ -183,7 +181,6 @@ public class CloudQuery {
 		if (columnName == "id" || columnName == "expires")
 			columnName = "_" + columnName;
 
-		System.out.println(this.query.toString());
 		try {
 			this.query.put(columnName, JSONObject.NULL);
 
@@ -209,7 +206,6 @@ public class CloudQuery {
 		if (columnName == "id" || columnName == "expires")
 			columnName = "_" + columnName;
 
-		System.out.println(this.query.toString());
 		try {
 			this.query.put(columnName, JSONObject.NULL);
 
@@ -700,13 +696,11 @@ public class CloudQuery {
 			columnName = "_" + columnName;
 
 		JSONObject column = new JSONObject();
-		System.out.println(this.query.toString());
 		try {
 			this.query.put("$include", $include);
 			this.query.put("$includeList", $includeList);
 			if (this.query.has(columnName)) {
 				column = this.query.getJSONObject(columnName);
-				System.out.println("column string: " + column.toString());
 			}
 
 			ArrayList<String> $in = new ArrayList<String>();
@@ -829,7 +823,6 @@ public class CloudQuery {
 				ArrayList<Object> $all;
 				CloudObject[] object = new CloudObject[data.length];
 				JSONObject column = new JSONObject();
-				System.out.println(this.query.toString());
 				if (this.query.has(columnName)) {
 					column = this.query.getJSONObject(columnName);
 				}
@@ -1029,7 +1022,6 @@ public class CloudQuery {
 		// client = new AsyncHttpClient();
 		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/count";
-		System.out.println(params.toString());
 		Future<?> f = null;
 		// client.preparePost(url).addHeader("Content-type",
 		// "application/json").setBody(params.toString()).execute();
@@ -1074,7 +1066,6 @@ public class CloudQuery {
 
 		CBResponse response=CBParser.callJson(url, "POST", params);
 		 if(response.getStatusCode() == 200){
-		 System.out.println("Get Response :: "+ response.getResponseBody());
 		 JSONArray body = new JSONArray(response.getResponseBody());
 		 CloudObject[] object = new CloudObject[body.length()];
 		
@@ -1137,8 +1128,6 @@ public class CloudQuery {
 				CloudObject[] object = new CloudObject[body.length()];
 
 				for (int i = 0; i < object.length; i++) {
-					System.out.println(body.getJSONObject(i).getString(
-							"_tableName"));
 					object[i] = new CloudObject(body.getJSONObject(i)
 							.getString("_tableName"));
 					object[i].document = body.getJSONObject(i);
@@ -1226,7 +1215,6 @@ public class CloudQuery {
 		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/findOne";
 
-		System.out.println(params.toString());
 		CBResponse response = CBParser.callJson(url, "POST", params);
 
 		try {

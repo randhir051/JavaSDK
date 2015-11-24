@@ -458,12 +458,10 @@ public class CloudObject {
 		JSONObject obj = null;
 		CloudObject object = null;
 		try {
-			System.out.println("document is==="+this.document.toString());
 			obj = new JSONObject(this.document.get(columnName).toString());
 
 			object = new CloudObject(obj.getString("_tableName"));
 		} catch (JSONException e) {
-			System.out.println("Error: "+e.getMessage());
 			try {
 				this.document.put(columnName, "");
 			} catch (JSONException e1) {
@@ -595,7 +593,6 @@ public class CloudObject {
 				payload.put("room", str);
 
 				payload.put("sessionId", PrivateMethod._getSessionId());
-				System.out.println(str);
 				CloudSocket.getSocket().connect();
 				CloudSocket.getSocket().emit("join-object-channel", payload);
 				CloudSocket.getSocket().on((str).toLowerCase(),
@@ -606,8 +603,6 @@ public class CloudObject {
 								try {
 									body = new JSONObject(args[0].toString());
 
-									System.out.println("data recived");
-									System.out.println(body.toString());
 									CloudObject object = new CloudObject(body
 											.getString("_tableName"));
 									object.document = body;
@@ -748,13 +743,11 @@ public class CloudObject {
 			JSONObject body = new JSONObject(responseBody);
 			thisObj = new CloudObject(body.get("_tableName").toString());
 			thisObj.document = body;
-			System.out.println("calling callback with data: "+thisObj.toString());
 			callbackObject.done(thisObj, null);
 		} else {
 			CloudException e = new CloudException(response.getStatusMessage());
 			callbackObject.done(null, e);
 		}} catch (Exception e1) {
-			System.out.println("Exception : "+e1.getMessage());
 			e1.printStackTrace();
 			CloudException e = new CloudException(e1.getMessage());
 			callbackObject.done(null, e);
@@ -910,7 +903,6 @@ public class CloudObject {
 			CBResponse response = CBParser.callJson(url, "DELETE", data);
 			int statusCode = response.getStatusCode();
 			if (statusCode == 200) {
-				System.out.println("success");
 				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 				callbackObject.done(thisObj, null);

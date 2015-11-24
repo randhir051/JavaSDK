@@ -265,7 +265,6 @@ public class CloudFile{
 		}
 			
 		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId();
-		System.out.println(url);
 		if(this.data.equals(null)){
 			//Future<Response> f = client.preparePost(url).addHeader("Content-Type", "multipart/form-data; boundary=" + BOUNDARY).setBodyEncoding("UTF-8").addBodyPart(part).addBodyPart(new StringPart("from", "1")).addFormParam("key",CloudApp.getAppKey()).setBody(this.file).execute();
 			//Future<Response> f = client.preparePost(url).addHeader("Content-Type", "multipart/form-data; boundary=" + BOUNDARY).addBodyPart(part).addFormParam("key",CloudApp.getAppKey()).execute();

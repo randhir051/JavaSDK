@@ -1,6 +1,7 @@
 package io.cloudboost;
 
 import io.cloudboost.Column.DataType;
+import io.cloudboost.util.UUID;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -566,7 +567,8 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableAllDataTypes() throws CloudException {
 		initialize();
-		CloudTable custom = new CloudTable("customalldata");
+		final String name=UUID.uuid(10);
+		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("email", DataType.Email, false, false);
 		custom.addColumn(newColumn);
 		Column newColumn1 = new Column("name", DataType.Text, false, false);
@@ -594,7 +596,7 @@ public class CloudTableTest {
 				}
 
 				if (table != null) {
-					Assert.assertEquals(table.getTableName(), "customalldata");
+					Assert.assertEquals(table.getTableName(),name);
 					table.delete(new CloudStringCallback() {
 						@Override
 						public void done(String response, CloudException e)
@@ -617,7 +619,8 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableStoreGeoPoint() throws CloudException {
 		initialize();
-		CloudTable custom = new CloudTable("geopointtable");
+		final String name=UUID.uuid(10);
+		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("location", DataType.GeoPoint, false,
 				false);
 		custom.addColumn(newColumn);
@@ -630,7 +633,7 @@ public class CloudTableTest {
 				}
 
 				if (table != null) {
-					Assert.assertEquals(table.getTableName(), "geopointtable");
+					Assert.assertEquals(table.getTableName(), name);
 					table.delete(new CloudStringCallback() {
 						@Override
 						public void done(String response, CloudException e)

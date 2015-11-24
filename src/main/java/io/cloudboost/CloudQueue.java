@@ -521,7 +521,6 @@ public class CloudQueue {
 					+ document.get("name") + "/message";
 			this.thisObj = this;
 			boolean valid=validate();
-			System.out.println("validation: "+valid);
 			if (valid) {
 				CBResponse response = CBParser.callJson(url, "PUT", data);
 				if (response.getStatusCode() == 200) {
@@ -576,7 +575,6 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-					System.out.println("thisObj: "+this.thisObj);
 					this.thisObj.document = body;
 					callback.done(this.thisObj, null);
 				} else {
@@ -709,7 +707,6 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-					System.out.println("this obj: "+this.thisObj);
 //					merge(body);
 					this.thisObj.document=body;
 					
@@ -744,7 +741,6 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-					System.out.println("this obj: "+this.thisObj);
 					this.thisObj.document=body;
 					
 					callback.done(this.thisObj, null);

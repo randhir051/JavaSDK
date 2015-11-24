@@ -59,7 +59,6 @@ public class CloudSearch{
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
-			System.out.println("bool :: " + filtered.toString());
 			this.from = 0;
 			this.size = 10;
 			this.sort = new ArrayList<Object>();
@@ -189,7 +188,6 @@ public class CloudSearch{
 	 */
 	public void search(CloudObjectArrayCallback callbackObject) throws CloudException{
 		String collectionString;
-		System.out.println("collections array="+collectionArray);
 		if(this.collectionArray.size() >0){
 			
 			collectionString = "";
@@ -197,7 +195,6 @@ public class CloudSearch{
 				collectionString+=(i>0?","+this.collectionArray.get(i):this.collectionArray.get(i));
 				
 			}
-			System.out.println("collection string= "+collectionString);
 			this.collectionName=collectionString;
 		}else{
 			collectionString = this.collectionName;
@@ -213,7 +210,6 @@ public class CloudSearch{
 		params.put("skip", this.from);
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId() + "/" +this.collectionName + "/search";
-		System.out.println(params);
 		CBResponse response=CBParser.callJson(url, "POST", params);
 
 		if(response.getStatusCode() == 200){
@@ -224,7 +220,6 @@ public class CloudSearch{
 				object[i] = new CloudObject(body.getJSONObject(i).get("_tableName").toString());
 				object[i].document = body.getJSONObject(i);
 			}
-			System.out.println("calling callback...");
 			callbackObject.done(object, null);
 		}else{
 			CloudException e = new CloudException(response.getResponseBody());

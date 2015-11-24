@@ -456,7 +456,7 @@ public class CloudQueueTest {
 									if (msgs != null) {
 										Assert.assertTrue(msgs.length == 2
 												&& msgs[0].getMessage()
-														.equals("sample"));
+														.equals("sample1"));
 									}
 
 								}

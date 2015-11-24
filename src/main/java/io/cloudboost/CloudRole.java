@@ -78,7 +78,6 @@ public class CloudRole extends CloudObject{
 		try {
 			CBResponse response=CBParser.callJson(url, "PUT", data);
 			int statusCode = response.getStatusCode();
-			System.out.println(response.getStatusCode());
 			if(statusCode == 200){
 				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
