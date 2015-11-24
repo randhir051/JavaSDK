@@ -2,11 +2,14 @@ package io.cloudboost;
 
 import io.cloudboost.util.UUID;
 
+import java.util.Arrays;
+import java.util.List;
+
+import junit.framework.Assert;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.junit.Test;
-
-import junit.framework.Assert;
 
 public class CloudQueueTest {
 	void initialize() {
@@ -67,7 +70,7 @@ public class CloudQueueTest {
 		QueueMessage msg1 = new QueueMessage();
 		msg1.push("sample1");
 		QueueMessage msg2 = new QueueMessage();
-		msg1.push("sample2");
+		msg2.push("sample2");
 		QueueMessage[] msgs = { msg1, msg2 };
 		que.push(msgs, new CloudQueueMessageCallback() {
 
@@ -77,9 +80,10 @@ public class CloudQueueTest {
 					Assert.fail(e.getMessage());
 				}
 				if (msg != null) {
+					List<String> msgs=Arrays.asList(new String[]{"sample1","sample2"});
 					Assert.assertTrue(msg.length == 2
-							&& msg[0].getMessage().equals("sample1")
-							&& msg[1].getMessage().equals("sample2"));
+							&& msgs.contains(msg[0].getMessage())
+							&& msgs.contains(msg[1].getMessage()));
 				}
 
 			}
@@ -436,22 +440,30 @@ public class CloudQueueTest {
 							"Object Validation Failure");
 				}
 				if (msgs != null) {
-					que.peek(2, new CloudQueueMessageCallback() {
-
+					que.push("sample2", new CloudQueueMessageCallback() {
+						
 						@Override
 						public void done(QueueMessage[] msgs, CloudException e) {
-							if (e != null) {
-								Assert.assertEquals(e.getMessage(),
-										"Object Validation Failure");
-							}
-							if (msgs != null) {
-								Assert.assertTrue(msgs.length == 2
-										&& msgs[0].getMessage()
-												.equals("sample"));
-							}
+							// TODO Auto-generated method stub
+							que.peek(2, new CloudQueueMessageCallback() {
 
+								@Override
+								public void done(QueueMessage[] msgs, CloudException e) {
+									if (e != null) {
+										Assert.assertEquals(e.getMessage(),
+												"Object Validation Failure");
+									}
+									if (msgs != null) {
+										Assert.assertTrue(msgs.length == 2
+												&& msgs[0].getMessage()
+														.equals("sample"));
+									}
+
+								}
+							});
 						}
 					});
+					
 
 				}
 

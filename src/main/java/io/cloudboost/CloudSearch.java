@@ -49,12 +49,12 @@ public class CloudSearch{
 			}else{
 				filtered.put("query", new JSONObject());
 			}
-//			if(searchFilter != null){
-//				this.bool.put("bool", searchFilter.bool);
-//				filtered.put("filter",this .bool);
-//			}else{
-//				filtered.put("filter", new JSONObject());
-//			}
+			if(searchFilter != null){
+				this.bool.put("bool", searchFilter.bool);
+				filtered.put("filter",this .bool);
+			}else{
+				filtered.put("filter", new JSONObject());
+			}
 			} catch (JSONException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();

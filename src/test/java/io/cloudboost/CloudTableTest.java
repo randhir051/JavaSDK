@@ -113,7 +113,6 @@ public class CloudTableTest {
 				if (e != null) {
 					Assert.fail(e.getMessage());
 				}
-				System.out.println("Number of Tables " + table.length);
 				if (table.length > 0) {
 					Assert.assertTrue(table.length > 0);
 				}

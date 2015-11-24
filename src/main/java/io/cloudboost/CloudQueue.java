@@ -137,8 +137,7 @@ public class CloudQueue {
 		String name;
 		try {
 			name = document.getString("name");
-
-			if (name != null || !"".equals(name))
+			if (name != null && !"".equals(name))
 			return true;
 			else return false;
 		} catch (JSONException e) {
@@ -521,7 +520,9 @@ public class CloudQueue {
 			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message";
 			this.thisObj = this;
-			if (validate()) {
+			boolean valid=validate();
+			System.out.println("validation: "+valid);
+			if (valid) {
 				CBResponse response = CBParser.callJson(url, "PUT", data);
 				if (response.getStatusCode() == 200) {
 

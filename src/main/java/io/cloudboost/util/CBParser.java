@@ -19,8 +19,8 @@ import org.json.JSONObject;
 public class CBParser {
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
         String params=parameters.toString(); 
-        System.out.println("parameters: "+params);
-        System.out.println("URL="+myUrl);
+//        System.out.println("parameters: "+params);
+//        System.out.println("URL="+myUrl);
 
         URL url=null;
 		try {
@@ -59,7 +59,7 @@ public class CBParser {
 	        dos.close();
 	        respCode=conn.getResponseCode();
 	        respMsg=conn.getResponseMessage();
-	        System.out.println("code="+respCode+",msg="+respMsg);
+//	        System.out.println("code="+respCode+",msg="+respMsg);
 	        inputString=inputStreamToString(conn.getInputStream());
 	        
 		} catch (IOException e) {
@@ -67,7 +67,7 @@ public class CBParser {
 			return resp;
 		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
-        System.out.println(rr.toString());
+//        System.out.println(rr.toString());
        return rr;
     }
    

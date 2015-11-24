@@ -251,46 +251,87 @@ public class CloudQueryTest{
 		@Test(timeout=20000)
 		public void startsWith() throws CloudException{
 			initialize();
-			CloudQuery query = new CloudQuery("student4");
-			query.startsWith("name", "v");
-			query.find(new CloudObjectArrayCallback(){
+			CloudObject ob1=new CloudObject("Sample");
+			ob1.set("name", "vipul");
+			CloudObject ob2=new CloudObject("Sample");
+			ob2.set("name", "vipul");
+
+			CloudObject ob3=new CloudObject("Sample");
+			ob3.set("name", "vanessa");
+
+			CloudObject ob4=new CloudObject("Sample");
+			ob4.set("name", "egima");
+
+			CloudObject ob5=new CloudObject("Sample");
+			ob5.set("name", "ayiko");
+
+			CloudObject[] objects={ob1,ob2,ob3,ob4,ob5};
+			ob1.saveAll(objects, new CloudObjectArrayCallback() {
+				
 				@Override
-				public void done(CloudObject[] list,	CloudException t) throws CloudException {
-					if(list.length > 0){
-						for(int i=0 ; i<list.length; i++){
-								if(!(list[i].get("name").toString().charAt(0) != 'v') && !(list[i].get("name").toString().charAt(0) != 'V')) {
-										Assert.fail("should retrieve saved data with particular value");
+				public void done(CloudObject[] x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					if(x.length==5){
+						CloudQuery query = new CloudQuery("Sample");
+						query.startsWith("name", "v");
+						query.find(new CloudObjectArrayCallback(){
+							@Override
+							public void done(CloudObject[] list,	CloudException t) throws CloudException {
+								if(list.length > 0){
+									for(int i=0 ; i<list.length; i++){
+											if(!(list[i].get("name").toString().charAt(0) != 'v') && !(list[i].get("name").toString().charAt(0) != 'V')) {
+													Assert.fail("should retrieve saved data with particular value");
+											}
+										Assert.assertEquals(Character.toString(list[i].getString("name").charAt(0)), "v");
+									}
+								}else{
+									Assert.fail("object could not queried properly");
 								}
-							Assert.assertEquals(list[i].get("name"), "vipul");
-						}
-					}else{
-						Assert.fail("object could not queried properly");
+							}
+						});
 					}
+					
 				}
 			});
+
 		}
 	
 		@Test(timeout = 20000)
 		public void findById() throws CloudException {
 			initialize();
-			CloudQuery query = new CloudQuery("student4");
-			query.orderByAsc("age");
-			query.findById("Sr2YYT9e", new CloudObjectCallback() {
+			CloudObject obj=new CloudObject("student4");
+			obj.set("age", 25);
+//			obj.set("name", "egima");
+			obj.save(new CloudObjectCallback() {
+				
 				@Override
-				public void done(CloudObject object, CloudException t)
-						throws CloudException {
-					if (t != null) {
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
 						Assert.fail(t.getMessage());
+					if(x!=null){
+						CloudQuery query = new CloudQuery("student4");
+						query.orderByAsc("age");
+						
+						query.findById(x.getId(), new CloudObjectCallback() {
+							@Override
+							public void done(CloudObject object, CloudException t)
+									throws CloudException {
+								if (t != null) {
+									Assert.fail(t.getMessage());
+								}
+								if (object != null) {
+										Assert.assertEquals(25, object.get("age"));
+								} else {
+									Assert.fail("object could not queried properly");
+								}
+							}
+						});
 					}
-					if (object != null) {
-						if (object.getInteger("age") != 15) {
-							Assert.fail("incorrect object");
-						}
-					} else {
-						Assert.fail("object could not queried properly");
-					}
+					
 				}
 			});
+			
 
 		}
 

@@ -19,7 +19,7 @@ public class CloudSearchTest{
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
     @Test(timeout = 20000)
-    public void shouldSkipElements() throws CloudException{
+    public void shouldOrderByAsc() throws CloudException{
     	initialize();
     	CloudSearch cs=new CloudSearch("Student", null, null);
     	cs.orderByAsc("age");
