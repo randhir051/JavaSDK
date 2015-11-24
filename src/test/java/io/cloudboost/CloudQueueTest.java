@@ -181,11 +181,9 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
-					System.out.println("return " + msgs);
 					QueueMessage msg = msgs[0];
 					if (msg.getMessage().equals("sample")) {
 						que.pull(1, new CloudQueueMessageCallback() {
@@ -222,11 +220,9 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
-					System.out.println("return " + msgs);
 					QueueMessage msg = msgs[0];
 					String id = msg.getId();
 					que.getMessageById(id, new CloudQueueMessageCallback() {
@@ -436,8 +432,7 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
 					que.push("sample2", new CloudQueueMessageCallback() {
@@ -450,8 +445,7 @@ public class CloudQueueTest {
 								@Override
 								public void done(QueueMessage[] msgs, CloudException e) {
 									if (e != null) {
-										Assert.assertEquals(e.getMessage(),
-												"Object Validation Failure");
+										Assert.fail(e.getMessage());
 									}
 									if (msgs != null) {
 										Assert.assertTrue(msgs.length == 2
@@ -503,13 +497,10 @@ public class CloudQueueTest {
 															QueueMessage[] msgs,
 															CloudException e) {
 														if (e != null) {
-															Assert.assertEquals(
-																	e.getMessage(),
-																	"Object Validation Failure");
+															Assert.fail(
+																	e.getMessage());
 														}
 														if (msgs != null) {
-															System.out
-																	.println("going to assert junit");
 															Assert.assertTrue(msgs.length == 2
 																	&& msgs[0]
 																			.getMessage()
@@ -641,8 +632,7 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
 					que.getMessageById("sample",
@@ -651,8 +641,7 @@ public class CloudQueueTest {
 								@Override
 								public void done(QueueMessage[] msgs,
 										CloudException e) {
-
-									Assert.assertTrue(msgs == null);
+									Assert.assertTrue(msgs.length==0);
 
 								}
 							});
@@ -672,8 +661,7 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
 					final String id = msgs[0].getId();
@@ -768,7 +756,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 60000)
 	// should push data into the queue
 	public void shouldAddSubscriberToQueue() {
 		initialize();
@@ -798,7 +786,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 60000)
 	public void shouldAddMultiplerSubscribers() {
 		initialize();
 		CloudQueue que = new CloudQueue(PrivateMethod._makeString(), null);
@@ -852,8 +840,7 @@ public class CloudQueueTest {
 												.replace("[", "")
 												.replace("]", "");
 										String[] arr = subscribers.split(",");
-										System.out.println("array: "
-												+ subscribers);
+
 										Assert.assertTrue(arr.length == 1);
 									} catch (JSONException e1) {
 										e1.printStackTrace();
@@ -894,7 +881,6 @@ public class CloudQueueTest {
 										.replace("\"\"", "").replace("[", "")
 										.replace("]", "");
 								String[] arr = subscribers.split(",");
-								System.out.println("array: " + subscribers);
 								Assert.assertTrue(arr.length == 1);
 							} catch (JSONException e1) {
 								e1.printStackTrace();
@@ -997,15 +983,11 @@ public class CloudQueueTest {
 							if (e != null)
 								Assert.fail(e.getMessage());
 							if (q != null) {
-								System.out.println("got queue: "
-										+ q.document.toString());
 								que.pull(1, new CloudQueueMessageCallback() {
 
 									@Override
 									public void done(QueueMessage[] msgs,
 											CloudException e) {
-										System.out
-												.println("checking message msgs nullity");
 										Assert.assertTrue(msgs == null);
 
 									}
@@ -1039,15 +1021,11 @@ public class CloudQueueTest {
 							if (e != null)
 								Assert.fail(e.getMessage());
 							if (q != null) {
-								System.out.println("got queue: "
-										+ q.document.toString());
 								que.pull(1, new CloudQueueMessageCallback() {
 
 									@Override
 									public void done(QueueMessage[] msgs,
 											CloudException e) {
-										System.out
-												.println("checking message msgs nullity");
 										Assert.assertTrue(msgs == null);
 
 									}
@@ -1062,7 +1040,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 60000)
 	// should clear queue
 	public void shouldClearQueue() {
 		initialize();
@@ -1505,18 +1483,15 @@ public class CloudQueueTest {
 								Assert.fail(e.getMessage());
 							if(qu!=null){
 								que.setAttribute(CloudQueue.QUEUE_TYPE, "push");
-								System.out.println("received queue from adding sub is: "+qu.document.toString());
 								que.update(new CloudQueueCallback() {
 									
 									@Override
 									public void done(CloudQueue q, CloudException e) {
-										System.out.println("queue="+q);
 										
 										if(q!=null){
 										String queueType=(String) q.getAttribute(CloudQueue.QUEUE_TYPE);
 										Assert.assertEquals(queueType, "push");}
 										else if(e!=null){
-											System.out.println("there is an error: "+e.getMessage());
 											Assert.fail(e.getMessage());}
 										
 									}

@@ -24,7 +24,6 @@ public class CloudTableTest {
 	public void duplicateTable() throws CloudException {
 		initialize();
 		final String tableName = PrivateMethod._makeString();
-		System.out.println(tableName);
 		CloudTable obj = new CloudTable(tableName);
 		obj.save(new CloudTableCallback() {
 			@Override
@@ -57,7 +56,6 @@ public class CloudTableTest {
 	public void createAndDeleteTable() throws CloudException {
 		initialize();
 		final String tableName = PrivateMethod._makeString();
-		System.out.println(tableName);
 		CloudTable obj = new CloudTable(tableName);
 		obj.save(new CloudTableCallback() {
 			@Override
@@ -141,8 +139,6 @@ public class CloudTableTest {
 							@Override
 							public void done(CloudTable getTable,
 									CloudException e) throws CloudException {
-								System.out.println("dd :: "
-										+ getTable.getTableName());
 								Column column1 = new Column("Name",
 										DataType.Relation, true, false);
 								column1.setRelatedTo(getTable);
@@ -227,10 +223,6 @@ public class CloudTableTest {
 					public void done(CloudTable table, CloudException e)
 							throws CloudException {
 						if (e != null) {
-							System.out.println("Rename Table ::"
-									+ e.getMessage());
-							// Assert.assertEquals(e.getMessage(),
-							// "Cannot Rename a Table.");
 							Assert.assertEquals(e.getMessage(),
 									"Internal Server Error");
 						}

@@ -305,7 +305,9 @@ public class CloudQueue {
 						body = new JSONArray(response.getResponseBody());
 					} catch (JSONException e) {
 						body = new JSONArray();
-						body.put(new JSONObject(response.getResponseBody()));
+						String respon=response.getResponseBody();
+						if(respon!=null&&!"".equals(respon))
+							body.put(new JSONObject(respon));
 					}
 
 					QueueMessage[] msgArr = new QueueMessage[body.length()];
