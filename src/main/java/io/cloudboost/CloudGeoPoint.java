@@ -204,7 +204,6 @@ public class CloudGeoPoint{
 	
 	public static CloudGeoPoint toGeoPoint(Object object) throws JSONException, CloudException{
 		JSONObject doc = new JSONObject(object.toString());
-		System.out.print(doc.toString());
 		CloudGeoPoint loc = new CloudGeoPoint(doc.getDouble("latitude"), doc.getDouble("longitude"));
 		loc.document = doc;
 		return loc;

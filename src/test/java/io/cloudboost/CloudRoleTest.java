@@ -12,7 +12,7 @@ public class CloudRoleTest{
 		void initialize(){
 			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void createRoleWithVersion() throws CloudException{
 				initialize();
 				String roleName = PrivateMethod._makeString();
@@ -28,7 +28,7 @@ public class CloudRoleTest{
 					}
 				});
 		}
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void createRole() throws CloudException{
 				initialize();
 				String roleName = PrivateMethod._makeString();

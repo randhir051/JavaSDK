@@ -18,7 +18,7 @@ public class CloudSearchTest{
 	void initialize(){
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldOrderByAsc() throws CloudException{
     	initialize();
     	CloudSearch cs=new CloudSearch("Student", null, null);
@@ -48,7 +48,7 @@ public class CloudSearchTest{
     
 
     }
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldIncludeArelationOnSearch() throws CloudException{
     	initialize();
     	CloudObject obj1=new CloudObject("Custom2");
@@ -87,7 +87,7 @@ public class CloudSearchTest{
 		});
 
     }
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldSortElementsInDescendingOrder() throws CloudException{
     	initialize();
     	CloudSearch cs=new CloudSearch("Student", null, null);
@@ -100,7 +100,7 @@ public class CloudSearchTest{
 					Assert.fail(t.getMessage());
 				if(x!=null){
 					if(x.length>0){
-						int prev=10000;
+						int prev=50000;
 						for(CloudObject o:x){
 							int age=o.getInteger("age");
 							if(age>prev)
@@ -117,7 +117,7 @@ public class CloudSearchTest{
     
 
     }
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldGiveElementsWhereCertainColumnExists() throws CloudException{
 
     	
@@ -150,7 +150,7 @@ public class CloudSearchTest{
 		});
 
     }
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	public void shouldRunMultiTableSearch() throws CloudException {
 
 		initialize();
@@ -206,7 +206,7 @@ public class CloudSearchTest{
 			}
 		});
 	}
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void orShouldWorkBetweenTables() throws CloudException{
 
     	
@@ -273,7 +273,7 @@ public class CloudSearchTest{
 
 
     }
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	public void shouldRunMinimumPercentPrecisionQuery() throws CloudException {
 
 		initialize();
@@ -323,7 +323,7 @@ public class CloudSearchTest{
 			}
 		});
 	}
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	public void shouldRunPrecisionQuery() throws CloudException {
 
 		initialize();
@@ -373,7 +373,7 @@ public class CloudSearchTest{
 			}
 		});
 	}
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldGiveRecordsWithinACertainRange() throws CloudException{
 
     	
@@ -406,7 +406,7 @@ public class CloudSearchTest{
 		});
 
     }
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldGiveElementsWhereCertainColumnNotExists() throws CloudException{
 
     	
@@ -438,7 +438,7 @@ public class CloudSearchTest{
 		});
 
     }
-    @Test(timeout = 20000)
+    @Test(timeout = 50000)
     public void shouldArrangeInAscendingOrder() throws CloudException{
     	initialize();
     	SearchFilter filter=new SearchFilter();
@@ -478,7 +478,7 @@ public class CloudSearchTest{
     
 
     }
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void indexObject() throws CloudException{
 		 initialize();
 		CloudObject obj  = new CloudObject("Custom1");
@@ -497,7 +497,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchindexedObject() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
 		SearchQuery sq = new SearchQuery();
@@ -516,7 +516,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void indexData() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Student");
@@ -561,7 +561,7 @@ public class CloudSearchTest{
         });
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectForValue() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
 		SearchFilter sf = new SearchFilter();
@@ -581,7 +581,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectWithPhrase() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
 		SearchQuery sq = new SearchQuery();
@@ -601,7 +601,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectWithWildCard() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		SearchQuery sq = new SearchQuery();
 		sq.wildcard("name", "R*", null);
@@ -620,7 +620,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectWithStartsWith() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
 		SearchQuery sq = new SearchQuery();
@@ -640,7 +640,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectWithMostColumn() throws CloudException, JSONException, InterruptedException, ExecutionException, IOException{
 		initialize();
 		SearchQuery sq = new SearchQuery();
@@ -661,7 +661,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectWithBestColumn() throws CloudException, JSONException, InterruptedException, ExecutionException, IOException{
 		initialize();
 		SearchQuery sq = new SearchQuery();
@@ -682,7 +682,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void searchObjectWithNotEqualTo() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
 		SearchFilter sf = new SearchFilter();
@@ -702,7 +702,7 @@ public class CloudSearchTest{
 		});
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=50000)
 	public void limitNumberOfSearch() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
 		SearchFilter sf = new SearchFilter();

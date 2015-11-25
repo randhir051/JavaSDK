@@ -17,7 +17,7 @@ public class CloudQueueTest {
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push data into the queue
 	public void push() {
 		initialize();
@@ -39,7 +39,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push data array into the queue
 	public void pushArray() {
 		initialize();
@@ -62,7 +62,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push message array into the queue
 	public void pushMessageArray() {
 		initialize();
@@ -90,7 +90,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	// can push duplicate messages into same queue
 	public void pushDuplicateMessages() {
 		initialize();
@@ -128,7 +128,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	// should not push null data into queue
 	public void noPushNull() {
 		initialize();
@@ -150,7 +150,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	// Should not allow null empty queue name
 	public void dontAllowEmptyQueueName() {
 		initialize();
@@ -286,7 +286,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	public void getMessagesInFIFO() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -362,7 +362,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	public void shouldPeekTwo() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -465,7 +465,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	public void shouldPullTwo() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -525,7 +525,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	public void shouldNotPullMessageWithDelay() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -561,7 +561,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	public void shouldNotPullFromInexistentQueue() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -579,7 +579,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	public void shoulNotPullSameMessageTwice() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -812,7 +812,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push data into the queue
 	public void shouldDeleteSubscriber() {
 		initialize();
@@ -853,7 +853,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push data into the queue
 	public void shouldDeleteMultipleSubscribers() {
 		initialize();
@@ -893,7 +893,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push data into the queue
 	public void shouldNotSubscribeInvalidUrl() {
 		initialize();
@@ -914,7 +914,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	public void shouldAddandRemoveSubscriber() {
 		initialize();
 		final CloudQueue que = new CloudQueue(PrivateMethod._makeString(), null);
@@ -1080,7 +1080,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should push data array into the queue
 	public void shouldGetQueue() {
 		initialize();
@@ -1121,7 +1121,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should get queue by name
 	public void shouldGetQueueByName() {
 		initialize();
@@ -1163,7 +1163,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	// should get queue by name
 	public void shouldNotGetTheQueueWithNullName() {
 		initialize();
@@ -1205,7 +1205,7 @@ public class CloudQueueTest {
 				});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	// should get queue by name
 	public void shoulGetAll() {
 		initialize();
@@ -1226,7 +1226,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 100000)
+	@Test(timeout = 500000)
 	// should get queue by name
 	public void shouldNotGetInexistentQueue() {
 		initialize();
@@ -1242,7 +1242,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 30000)
+	@Test(timeout = 50000)
 	public void pullMessageAfterDelay() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -1286,7 +1286,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 30000)
+	@Test(timeout = 50000)
 	public void pullMessageAfterTimeout() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -1346,7 +1346,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	public void refreshMessageTimeoutPulledMessage() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -1383,7 +1383,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	public void refreshMessageTimeoutUnSpecifiedTimeout() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);
@@ -1421,7 +1421,7 @@ public class CloudQueueTest {
 		});
 	}
 
-	@Test(timeout = 20000)
+	@Test(timeout = 50000)
 	public void refreshMessageTimeoutSpecifiedTimeout() {
 		initialize();
 		final CloudQueue que = new CloudQueue(UUID.uuid(8), null);

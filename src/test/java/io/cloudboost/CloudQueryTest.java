@@ -546,7 +546,7 @@ public class CloudQueryTest{
 //		
 
 //		
-		@Test(timeout=40000)
+		@Test(timeout=50000)
 		public void exists() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -679,7 +679,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout = 30000)
+		@Test(timeout = 50000)
 		public void getEncryptedPasswordOverOr() throws CloudException {
 			initialize();
 			final String username = PrivateMethod._makeString();
@@ -720,7 +720,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout = 30000)
+		@Test(timeout = 50000)
 		public void shouldNotEncryptAlreadyEncryptedPassword() throws CloudException {
 			initialize();
 			final String username = PrivateMethod._makeString();
@@ -886,7 +886,7 @@ public class CloudQueryTest{
 
 	    	
 		}
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldReturnCountAsInteger() throws CloudException {
 
 			initialize();
@@ -939,7 +939,7 @@ public class CloudQueryTest{
 
 		}
 
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldLimitNumberOfDataItems() throws CloudException {
 
 			initialize();
@@ -958,7 +958,7 @@ public class CloudQueryTest{
 				}
 			});  	
 		}
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldLimitNumberOfDataItemsToOne() throws CloudException {
 
 			initialize();
@@ -972,7 +972,7 @@ public class CloudQueryTest{
 				}
 			});  	
 		}
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldGetElementNotHavingGivenColumnName() throws CloudException {
 
 			initialize();
@@ -1050,7 +1050,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldQueryOverBooleanType() throws CloudException {
 
 			initialize();
@@ -1150,7 +1150,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldIncludeRelationOnDistinct() throws CloudException {
 
 			initialize();
@@ -1202,7 +1202,7 @@ public class CloudQueryTest{
 			});
 		}
 
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldQueryOverLinkedColumn() throws CloudException {
 
 			initialize();
@@ -1241,7 +1241,7 @@ public class CloudQueryTest{
 			});
 		}
 
-		@Test(timeout = 30000)
+		@Test(timeout = 50000)
 		public void containedInOverListOfCloudObject() throws CloudException {
 			initialize();
 			CloudObject obj = new CloudObject("Custom");
@@ -1281,7 +1281,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout = 30000)
+		@Test(timeout = 50000)
 		public void shouldIncludeWithFindById() throws CloudException {
 			initialize();
 			CloudObject obj = new CloudObject("Custom");

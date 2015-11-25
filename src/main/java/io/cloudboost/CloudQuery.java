@@ -617,12 +617,15 @@ public class CloudQuery {
 					if (this.query.get(columnName) == null) {
 						this.query.put(columnName, (Object) null);
 					}
-					if(column.has("$in"))
+					if(!column.has("$in"))
+						column.put("$in", new ArrayList<String>());
 						if(column.get("$in") == null){
 							$in = new ArrayList<String>();
 							column.put("$in", $in);
 						}
-					if(column.has("$nin"))
+
+					if(!column.has("$nin"))
+						column.put("$nin", new ArrayList<String>());
 					if (column.get("$nin") == null) {
 						$nin = new ArrayList<String>();
 						column.put("$nin", $nin);

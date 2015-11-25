@@ -236,7 +236,7 @@ public class CloudTableTest {
 
 	}
 
-	@Test(timeout = 220000)
+	@Test(timeout = 250000)
 	public void runSequentialTestSuite() throws CloudException {
 		initialize();
 		CloudTable obj = new CloudTable("Address");
@@ -524,7 +524,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createListTable() throws CloudException {
 		initialize();
-		final String name=UUID.uuid(8);
+		final String name=PrivateMethod._makeString();
 		CloudTable obj = new CloudTable(name);
 		Column subject = new Column("subject", DataType.List, false, false);
 		subject.setRelatedTo(DataType.Text);
@@ -560,7 +560,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableAllDataTypes() throws CloudException {
 		initialize();
-		final String name=UUID.uuid(10);
+		final String name=PrivateMethod._makeString();
 		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("email", DataType.Email, false, false);
 		custom.addColumn(newColumn);
@@ -604,7 +604,7 @@ public class CloudTableTest {
 
 	}
 
-	@Test(timeout = 10000)
+	@Test(timeout = 50000)
 	public void updateTableCustom() {
 
 	}
@@ -612,7 +612,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableStoreGeoPoint() throws CloudException {
 		initialize();
-		final String name=UUID.uuid(6);
+		final String name=PrivateMethod._makeString();
 		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("location", DataType.GeoPoint, false,
 				false);
