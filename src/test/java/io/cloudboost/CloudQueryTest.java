@@ -1262,7 +1262,7 @@ public class CloudQueryTest{
 					obj1.document=(JSONObject) objectList[0];
 					CloudObject obj2=new CloudObject("Custom");
 					obj2.document=(JSONObject) objectList[1];
-					CloudObject[] objectList2={obj1,obj2};
+					CloudObject[] objectList2={obj1};
 					query.containedIn("newColumn7", objectList2);
 					query.find(new CloudObjectArrayCallback() {
 						@Override

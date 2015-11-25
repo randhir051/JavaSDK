@@ -585,20 +585,20 @@ public class CloudQuery {
 			column = this.query.getJSONObject(columnName);
 		} catch (JSONException e) {
 			try {
-				this.query.put(columnName, JSONObject.NULL);
+				this.query.put(columnName, (Object)null);
 			} catch (JSONException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
-		ArrayList<String> $in;
-		ArrayList<String> $nin;
+		ArrayList<String> $in=new ArrayList<String>();
+		ArrayList<String> $nin=new ArrayList<String>();
 
 		if (data instanceof CloudObject[] || data instanceof Integer[]
 				|| data instanceof String[] || data instanceof Double[]) {
 
 			CloudObject[] object = new CloudObject[data.length];
-//			columnName = columnName + "._id";
+			columnName =columnName.equals("_id")?columnName:columnName +"._id";
 
 			try {
 				this.query.put("$include", $include);
@@ -614,9 +614,11 @@ public class CloudQuery {
 						dataz[i] = object[i].getId();
 					}
 					data=dataz;
-					if (this.query.get(columnName) == null) {
-						this.query.put(columnName, (Object) null);
-					}
+//					if(!this.query.has(columnName))
+//						this.query.put(columnName, (Object) null);
+//					if (this.query.get(columnName) == null) {
+//						this.query.put(columnName, (Object) null);
+//					}
 					if(!column.has("$in"))
 						column.put("$in", new ArrayList<String>());
 						if(column.get("$in") == null){
@@ -630,10 +632,15 @@ public class CloudQuery {
 						$nin = new ArrayList<String>();
 						column.put("$nin", $nin);
 					}
-
-					$in = (ArrayList<String>) column.get("$in");
-					$nin = (ArrayList<String>) column.get("$nin");
-
+					JSONArray in=(JSONArray) column.get("$in");
+					JSONArray nin= (JSONArray) column.get("$nin");
+					
+					for(int i=0;i<in.length();i++){
+						$in.add(in.getString(i));
+					}
+					for(int i=0;i<in.length();i++){
+						$nin.add(nin.getString(i));
+					}
 					for (int i = 0; i < data.length; i++) {
 						if (!$in.contains(data[i].toString())) {
 							$in.add(data[i].toString());
