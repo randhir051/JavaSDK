@@ -14,7 +14,7 @@ public class CloudQueryTest{
 			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void selectColumn() throws CloudException{
 			initialize();
 			CloudObject obj1 = new CloudObject("Custom1");
@@ -45,7 +45,7 @@ public class CloudQueryTest{
 			});
 		}
 //	
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void selectColumnDistinct() throws CloudException{
 			initialize();
 			CloudObject obj1 = new CloudObject("Custom1");
@@ -77,7 +77,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void equalToWithNull() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student1");
@@ -106,7 +106,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void notEqualToWithNull() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student1");
@@ -136,7 +136,7 @@ public class CloudQueryTest{
 		}
 //		
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void findOne() throws CloudException{
 			initialize();
 			CloudQuery cbQuery = new CloudQuery("student1");
@@ -157,7 +157,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void findData() throws CloudException{
 			initialize();
 			CloudQuery cbQuery = new CloudQuery("student1");
@@ -179,7 +179,7 @@ public class CloudQueryTest{
 			});
 		}
 
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void notContianedIn() throws CloudException {
 			initialize();
 
@@ -197,7 +197,9 @@ public class CloudQueryTest{
 							for (int i = 0; i < list.length; i++) {
 								CloudObject obj=list[i];
 								try {
-								String json=obj.getDocument().get("subject").toString();
+									String json=null;
+									if(obj.hasKey("subject"))
+										json=obj.getDocument().get("subject").toString();
 								if(json==null||"null".equals(json))
 									continue;
 								else{
@@ -217,7 +219,7 @@ public class CloudQueryTest{
 
 		}		
 		
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void containsAll() throws CloudException {
 			initialize();
 
@@ -248,7 +250,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void startsWith() throws CloudException{
 			initialize();
 			CloudObject ob1=new CloudObject("Sample");
@@ -335,7 +337,7 @@ public class CloudQueryTest{
 
 		}
 
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void queryOverLinkedColumnWithEqualTo() throws CloudException{
 			initialize();
 			CloudObject student = new CloudObject("student1");
@@ -368,7 +370,7 @@ public class CloudQueryTest{
 			});
 		}
 	
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void greaterThan() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -398,7 +400,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void greaterThanEqualTo() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -426,7 +428,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void lessThan() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -454,7 +456,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void lessThanEqualTo() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -482,7 +484,7 @@ public class CloudQueryTest{
 			});
 		}
 	
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void ascendingOrder() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -512,7 +514,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void descendingOrder() throws CloudException{
 			initialize();
 				CloudObject obj = new CloudObject("student4");
@@ -572,7 +574,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
 		public void doesNotExists() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("student4");
@@ -598,7 +600,7 @@ public class CloudQueryTest{
 			});
 		}
 		
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void saveRelation() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("Custom4");
@@ -620,7 +622,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void saveMultiJoin() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("Custom2");
@@ -643,7 +645,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void includeFindById() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("Custom");
@@ -757,7 +759,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void getEncryptedPassword() throws CloudException{
 			initialize();
 			final String username = PrivateMethod._makeString();
@@ -788,7 +790,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void getEncryptedPasswordOverQuery() throws CloudException{
 			initialize();
 			final String username = PrivateMethod._makeString();
@@ -993,7 +995,7 @@ public class CloudQueryTest{
 			});  	
 		}
 
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldNotGiveElementWithGivenRelation() throws CloudException {
 
 			initialize();
@@ -1085,7 +1087,7 @@ public class CloudQueryTest{
 		}
 
 
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldIncludeRelationObjectWhenIncludeIsRequestedInQuery()
 				throws CloudException {
 
@@ -1251,7 +1253,6 @@ public class CloudQueryTest{
 				@Override
 				public void done(CloudObject x, CloudException t)
 						throws CloudException {
-					System.out.println("finished saving, wanna query: x="+x+", e="+t);
 					if (t != null) {
 						Assert.fail(t.getMessage());
 					}
