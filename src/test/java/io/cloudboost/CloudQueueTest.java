@@ -691,8 +691,7 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
 					final String id = msgs[0].getId();
@@ -722,8 +721,7 @@ public class CloudQueueTest {
 			@Override
 			public void done(QueueMessage[] msgs, CloudException e) {
 				if (e != null) {
-					Assert.assertEquals(e.getMessage(),
-							"Object Validation Failure");
+					Assert.fail(e.getMessage());
 				}
 				if (msgs != null) {
 					final String id = msgs[0].getId();
@@ -740,8 +738,7 @@ public class CloudQueueTest {
 											public void done(
 													QueueMessage[] msgs,
 													CloudException e) {
-
-												Assert.assertTrue(msgs == null);
+												Assert.assertTrue(msgs.length==0);
 
 											}
 										});
