@@ -152,7 +152,6 @@ public class CloudGeoPointTest{
 						if(e != null){
 							Assert.fail(e.getMessage());
 						}
-						System.out.println(x.get("location"));
 						CloudGeoPoint newObj=null;
 						
 							try {

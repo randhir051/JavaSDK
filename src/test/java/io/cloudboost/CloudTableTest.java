@@ -524,7 +524,8 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createListTable() throws CloudException {
 		initialize();
-		CloudTable obj = new CloudTable("listTable33");
+		final String name=UUID.uuid(8);
+		CloudTable obj = new CloudTable(name);
 		Column subject = new Column("subject", DataType.List, false, false);
 		subject.setRelatedTo(DataType.Text);
 		Column age = new Column("age", DataType.Number, false, false);
@@ -540,7 +541,7 @@ public class CloudTableTest {
 				}
 
 				if (table != null) {
-					Assert.assertEquals(table.getTableName(), "listTable33");
+					Assert.assertEquals(table.getTableName(), name);
 					table.delete(new CloudStringCallback() {
 
 						@Override
@@ -611,7 +612,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableStoreGeoPoint() throws CloudException {
 		initialize();
-		final String name=UUID.uuid(10);
+		final String name=UUID.uuid(6);
 		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("location", DataType.GeoPoint, false,
 				false);

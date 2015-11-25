@@ -299,7 +299,7 @@ public class CloudQueryTest{
 
 		}
 	
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void findById() throws CloudException {
 			initialize();
 			CloudObject obj=new CloudObject("student4");
@@ -826,7 +826,7 @@ public class CloudQueryTest{
 			});
 		}
 //		
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void containedInShouldWorkOnId() throws CloudException {
 
 			initialize();
@@ -910,7 +910,7 @@ public class CloudQueryTest{
 
 	    	
 		}
-		@Test(timeout = 20000)
+		@Test(timeout = 50000)
 		public void shouldNotRetrieveDataWithAparticularValue()
 				throws CloudException {
 

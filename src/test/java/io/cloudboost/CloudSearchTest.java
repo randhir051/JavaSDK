@@ -129,11 +129,9 @@ public class CloudSearchTest{
 			
 			@Override
 			public void done(CloudObject[] x, CloudException t) throws CloudException {
-				System.out.println("inisde coallback");
 				if(t!=null)
 					Assert.fail(t.getMessage());
 				if(x!=null){
-					System.out.println("length of arr: "+x.length);
 					if(x.length>0){
 						boolean pass=true;
 						for(CloudObject o:x){
@@ -241,7 +239,6 @@ public class CloudSearchTest{
 							q=q.or(q2);
 							ArrayList<Object> sq=q.should;
 							
-							System.out.println("Should of overall sq="+q.should.toString());
 							
 					    	CloudSearch cs=new CloudSearch(tables, q, null);
 					    	cs.setLimit(9999);
