@@ -14,6 +14,7 @@ public class CloudQueryTest{
 			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
 //		
+		
 		@Test(timeout=50000)
 		public void selectColumn() throws CloudException{
 			initialize();

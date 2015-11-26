@@ -23,6 +23,44 @@ public class CloudObjectTest{
 
 
 	}
+	@Test(timeout=100000)
+	public void createNotice() throws CloudException{
+		initialize();
+		CloudObject.on("Company", "created", new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				if(x!=null){
+					CloudObject.off("Company", "created", new CloudStringCallback() {
+						
+						@Override
+						public void done(String x, CloudException e) throws CloudException {
+							System.out.println("x="+x+",e="+e);
+							
+						}
+					});
+//					Assert.assertTrue(x.getInteger("Revenue")==2567);
+				}
+			}
+		});
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CloudObject ob=new CloudObject("Company");
+		ob.set("Revenue", 2567);
+		ob.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				
+			}
+		});
+	}
 	@Test(timeout=10000)
 	public void SaveData() throws CloudException{
 		 initialize();
@@ -496,13 +534,14 @@ public class CloudObjectTest{
 		
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=100000)
 	public void createObjectNotice() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("Student");
 	    CloudObject.on("Student", "created", new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject data, CloudException t)	throws CloudException {
+				System.out.println("");
 				if(t != null){
 					Assert.fail(t.getMessage());
 				}
@@ -576,7 +615,83 @@ public class CloudObjectTest{
 			}
 	    });
 	}
+	@Test(timeout = 100000)
+	public void shouldStopListening() throws CloudException{
+		initialize();
+		CloudObject.on("Student", new String[]{"created","deleted","updated"}, new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				System.out.println("real time bingooo");
+				CloudObject.off("Student", new String[]{"created","deleted","updated"}, new CloudStringCallback(){
+
+					@Override
+					public void done(String x, CloudException t)
+							throws CloudException {
+						System.out.println("offed: "+x);
+						
+					}
+					
+				} );
+				
+			}
+		});
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CloudObject ob1=new CloudObject("Student");
+		ob1.set("name", "sample");
+		ob1.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				System.out.println("saved");
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				x.set("name", "egima");
+				x.save(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						if(t!=null)
+							Assert.fail(t.getMessage());
+						System.out.println("updated");
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						x.delete(new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								System.out.println("deleted");
+								try {
+									Thread.sleep(2000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								
+							}
+						});	
+						
+					}
+				});
 	
+			}
+		});
+	}
 	@Test(timeout=30000)
 	public void deleteObjectNotice() throws CloudException{
 		initialize();
@@ -650,6 +765,135 @@ public class CloudObjectTest{
 						});
 					}
 				}
+			}
+		});
+	}
+	@Test(timeout = 20000)
+	public void shouldRejectWrongEventType() throws CloudException{
+		initialize();
+		CloudObject.on("sample", "wrongType", new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				Assert.assertTrue(t!=null);
+				
+			}
+		});
+		
+	}
+	@Test(timeout = 50000)
+	public void shouldAlertOnAllThreeEvents() throws CloudException{
+		initialize();
+		CloudObject.on("Student", new String[]{"created","deleted","updated"}, new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				System.out.println("real time bingooo");
+				
+			}
+		});
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CloudObject ob1=new CloudObject("Student");
+		ob1.set("name", "sample");
+		ob1.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				System.out.println("saved");
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				x.set("name", "egima");
+				x.save(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						if(t!=null)
+							Assert.fail(t.getMessage());
+						System.out.println("updated");
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						x.delete(new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								System.out.println("deleted");
+								try {
+									Thread.sleep(2000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								
+							}
+						});	
+						
+					}
+				});
+	
+			}
+		});
+	}
+	@Test(timeout = 50000)
+	public void shouldAlertOnMultipleEvents() throws CloudException{
+		initialize();
+		CloudObject.on("Student", new String[]{"created","deleted"}, new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				System.out.println("real time bingooo");
+				
+			}
+		});
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CloudObject ob1=new CloudObject("Student");
+		ob1.set("name", "sample");
+		ob1.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
+				System.out.println("saved");
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				x.delete(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						System.out.println("deleted");
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					}
+				});		
 			}
 		});
 	}

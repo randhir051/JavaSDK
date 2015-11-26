@@ -26,10 +26,10 @@ public class CloudNotification{
 			throw new CloudException("CloudApp key is null");
 		}
 		CloudSocket.getSocket().connect();
-		CloudSocket.getSocket().emit("join-custom-channel",CloudApp.getAppId()+channelName );
 		CloudSocket.getSocket().on(CloudApp.getAppId()+channelName, new Emitter.Listener() {
 			@Override
 			public void call(final Object... args) {
+				System.out.println("callback called");
 				try {
 					callbackObject.done(args[0], null);
 				} catch (CloudException e) {
@@ -37,6 +37,8 @@ public class CloudNotification{
 				}
 			}
 		});
+		CloudSocket.getSocket().emit("join-custom-channel",CloudApp.getAppId()+channelName );
+
 	}
 	
 	/**

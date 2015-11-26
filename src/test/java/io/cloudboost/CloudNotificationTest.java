@@ -22,6 +22,10 @@ public class CloudNotificationTest{
 					if(x == null){
 						Assert.fail("failed to subscribe");
 					}
+					else{
+						System.out.println("object is "+x.toString());
+						Assert.assertTrue(true);
+					}
 			}	
 		});
 	}
@@ -69,5 +73,33 @@ public class CloudNotificationTest{
 				}
 			}	
 		});
+	}
+	@Test(timeout=20000)
+	public void shouldPublishToChannel() throws CloudException{
+		initialize();
+		CloudNotification.on("sample", new CloudNotificationCallback() {
+			
+			@Override
+			public void done(Object x, CloudException t) throws CloudException {
+				Assert.assertTrue(x!=null);
+				
+			}
+		});
+
+		CloudNotification.publish("sample", "Get ready for realtime");
+	}
+	@Test(timeout=20000)
+	public void shouldStopListeningToChannel() throws CloudException{
+		initialize();
+		CloudNotification.on("sample", new CloudNotificationCallback() {
+			
+			@Override
+			public void done(Object x, CloudException t) throws CloudException {
+				Assert.assertTrue(x!=null);
+				
+			}
+		});
+
+		CloudNotification.publish("sample", "Get ready for realtime");
 	}
 }

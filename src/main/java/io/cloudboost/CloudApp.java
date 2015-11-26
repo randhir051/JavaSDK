@@ -14,7 +14,7 @@ public class CloudApp {
 //	private static String serverUrl = "http://localhost:4730";
 	private static String appUrl = serverUrl+"/api";
 	private static String apiUrl = serverUrl;
-	private static String socketUrl = serverUrl;
+	private static String socketUrl = "https://realtime.cloudboost.io";
 	public static String SESSION_ID=null;
 	
 	

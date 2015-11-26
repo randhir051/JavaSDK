@@ -3,6 +3,7 @@ package io.cloudboost;
 import io.cloudboost.beans.CBResponse;
 import io.cloudboost.util.CBParser;
 import io.cloudboost.util.CloudSocket;
+import io.socket.client.Ack;
 import io.socket.emitter.Emitter;
 
 import java.util.ArrayList;
@@ -594,7 +595,14 @@ public class CloudObject {
 
 				payload.put("sessionId", PrivateMethod._getSessionId());
 				CloudSocket.getSocket().connect();
-				CloudSocket.getSocket().emit("join-object-channel", payload);
+				CloudSocket.getSocket().emit("join-object-channel", payload,new Ack() {
+					
+					@Override
+					public void call(Object... args) {
+						System.out.println("Acknow received for on:"+args[0].toString() );
+						
+					}
+				});
 				CloudSocket.getSocket().on((str).toLowerCase(),
 						new Emitter.Listener() {
 							@Override
@@ -627,9 +635,8 @@ public class CloudObject {
 				e2.printStackTrace();
 			}
 		} else {
-
-			throw new CloudException(
-					"created, updated, deleted are supported notification types");
+			callbackObject.done(null,new CloudException("created, updated, deleted are supported notification types"));
+			
 
 		}
 	}
@@ -647,7 +654,12 @@ public class CloudObject {
 			CloudObject.on(tableName, eventType[i], callbackObject);
 		}
 	}
-
+	public static void off(String tableName, String[] eventType,
+			final CloudStringCallback callbackObject) throws CloudException {
+		for (int i = 0; i < eventType.length; i++) {
+			CloudObject.off(tableName, eventType[i], callbackObject);
+		}
+	}
 	/**
 	 * 
 	 * CloudObject Off
@@ -664,16 +676,29 @@ public class CloudObject {
 
 		if (eventType == "created" || eventType == "updated"
 				|| eventType == "deleted") {
-			CloudSocket.getSocket().disconnect();
+			JSONObject payload=new JSONObject();
+			String str=(CloudApp.getAppId() + "table" + tableName + eventType)
+					.toLowerCase();
+			try {
+				payload.put("room", str);
+				payload.put("sessionId", PrivateMethod._getSessionId());
+
+			} catch (JSONException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			CloudSocket.getSocket().emit(
-					"leave-object-channel",
-					(CloudApp.getAppId() + "table" + tableName + eventType)
-							.toLowerCase());
-			CloudSocket.getSocket().disconnect();
-			CloudSocket
-					.getSocket()
-					.off((CloudApp.getAppId() + "table" + tableName + eventType)
-							.toLowerCase(), new Emitter.Listener() {
+					"leave-object-channel",payload,new Ack() {
+								
+								@Override
+								public void call(Object... args) {
+									System.out.println("Acknowledgement arrived: "+args[0].toString());
+									
+								}
+							});
+//			CloudSocket.getSocket().
+			CloudSocket.getSocket()
+					.off(str, new Emitter.Listener() {
 						@Override
 						public void call(final Object... args) {
 							try {
