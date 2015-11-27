@@ -569,6 +569,93 @@ public class CloudObject {
 		PrivateMethod._isModified(this, columnName);
 	}
 
+	public static void on(String tableName, String eventType,
+			final CloudQuery cloudQuery,
+			final CloudObjectCallback callbackObject) throws CloudException {
+		
+		try{
+        if(!cloudQuery.getTableName().equals(tableName)){
+            throw new CloudException("CloudQuery TableName and CloudNotification TableName should be same.");
+        }
+
+        if(cloudQuery.hasQuery()){
+            if(cloudQuery.include.size()>0||cloudQuery.includeList.size()>0){
+                throw new CloudException("Include with CloudNotificaitons is not supported right now.");
+
+                
+            }
+        }
+
+        if(!cloudQuery.getSelect().toString().equals("{}")){
+            throw new CloudException("You cannot pass the query with select in CloudNotifications.");
+
+            
+        }
+		}catch(CloudException e){
+			callbackObject.done(null, e);
+			return;
+		}
+		tableName = tableName.toLowerCase();
+		eventType = eventType.toLowerCase();
+		if (eventType.equals("created") || eventType.equals("updated")
+				|| eventType.equals("deleted")) {
+			String str = (CloudApp.getAppId() + "table" + tableName + eventType)
+					.toLowerCase();
+			JSONObject payload = new JSONObject();
+			try {
+				payload.put("room", str);
+
+				payload.put("sessionId", PrivateMethod._getSessionId());
+				CloudSocket.getSocket().connect();
+				CloudSocket.getSocket().emit("join-object-channel", payload,new Ack() {
+					
+					@Override
+					public void call(Object... args) {
+						System.out.println("Acknow received for on:"+args[0].toString() );
+						
+					}
+				});
+				CloudSocket.getSocket().on((str).toLowerCase(),
+						new Emitter.Listener() {
+							@Override
+							public void call(final Object... args) {
+								JSONObject body;
+								try {
+									body = new JSONObject(args[0].toString());
+
+									CloudObject object = new CloudObject(body
+											.getString("_tableName"));
+									object.document = body;
+									boolean valid=CloudObject.validateNotificationQuery(object, cloudQuery);
+									System.out.println("validation query: "+valid);
+									if(valid)
+									try {
+										
+										callbackObject.done(object, null);
+									} catch (CloudException e) {
+										try {
+											callbackObject.done(null, e);
+										} catch (CloudException e1) {
+											e1.printStackTrace();
+										}
+										e.printStackTrace();
+									}
+								} catch (JSONException e2) {
+									// TODO Auto-generated catch block
+									e2.printStackTrace();
+								}
+							}
+						});
+			} catch (JSONException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+		} else {
+			callbackObject.done(null,new CloudException("created, updated, deleted are supported notification types"));
+			
+
+		}
+	}
 	/**
 	 * 
 	 * CloudObject On
@@ -652,6 +739,12 @@ public class CloudObject {
 			final CloudObjectCallback callbackObject) throws CloudException {
 		for (int i = 0; i < eventType.length; i++) {
 			CloudObject.on(tableName, eventType[i], callbackObject);
+		}
+	}
+	public static void on(String tableName, String[] eventType,CloudQuery query,
+			final CloudObjectCallback callbackObject) throws CloudException {
+		for (int i = 0; i < eventType.length; i++) {
+			CloudObject.on(tableName, eventType[i],query, callbackObject);
 		}
 	}
 	public static void off(String tableName, String[] eventType,
@@ -939,5 +1032,32 @@ public class CloudObject {
 		} catch (JSONException e2) {
 			callbackObject.done(null, new CloudException(e2.getMessage()));
 		}
+	}
+	public static boolean validateNotificationQuery(CloudObject object,CloudQuery query){
+		boolean valid=false;
+		if(query==null)
+			return valid;
+		if(!query.hasQuery())
+			return valid;
+		if(query.getLimit()==0)
+			return valid;
+		if(query.getSkip()>0){
+			query.setSkip(query.getSkip()-1);
+			return valid;
+		}
+		JSONObject realQuery=query.getQuery();
+		realQuery.remove("$include");
+		realQuery.remove("$all");
+		realQuery.remove("$includeList");
+		try {
+			if(CloudQuery.validateQuery(object, realQuery))
+				valid=true;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			return valid;
+		}
+		
+		
+		return valid;
 	}
 }

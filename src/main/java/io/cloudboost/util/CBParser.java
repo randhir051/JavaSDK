@@ -69,6 +69,7 @@ public class CBParser {
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
 //        System.out.println(rr.toString());
        return rr;
+//        return null;
     }
    
     	

@@ -27,6 +27,7 @@ public class CloudQuery {
 	private int limit;
 	private ArrayList<String> $include;
 	private ArrayList<String> $includeList;
+	public JSONObject body=new JSONObject();
 
 	/**
 	 * 
@@ -55,6 +56,71 @@ public class CloudQuery {
 
 		this.skip = 0;
 		this.limit = 10;
+
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+	public JSONObject getSelect() {
+		return select;
+	}
+
+	public void setSelect(JSONObject select) {
+		this.select = select;
+	}
+
+	public ArrayList<String> getIncludeList() {
+		return includeList;
+	}
+
+	public void setIncludeList(ArrayList<String> includeList) {
+		this.includeList = includeList;
+	}
+
+	public ArrayList<String> getInclude() {
+		return include;
+	}
+
+	public void setInclude(ArrayList<String> include) {
+		this.include = include;
+	}
+
+	public JSONObject getSort() {
+		return sort;
+	}
+
+	public void setSort(JSONObject sort) {
+		this.sort = sort;
+	}
+
+	public ArrayList<String> get$include() {
+		return $include;
+	}
+
+	public void set$include(ArrayList<String> $include) {
+		this.$include = $include;
+	}
+
+	public ArrayList<String> get$includeList() {
+		return $includeList;
+	}
+
+	public void set$includeList(ArrayList<String> $includeList) {
+		this.$includeList = $includeList;
+	}
+
+	public int getSkip() {
+		return skip;
+	}
+
+	public int getLimit() {
+		return limit;
 	}
 
 	public JSONObject getQuery() {
@@ -63,6 +129,9 @@ public class CloudQuery {
 
 	public void setQuery(JSONObject query) {
 		this.query = query;
+	}
+	public boolean hasQuery(){
+		return query!=null;
 	}
 
 	/**
@@ -96,6 +165,148 @@ public class CloudQuery {
 		}
 
 		return object;
+	}
+	public static boolean validateQuery(CloudObject co,JSONObject query) throws JSONException{
+		boolean valid=false;
+		String[] names=JSONObject.getNames(query);
+		if(names==null)
+			return valid;
+		for(String key:names){
+			Object val=query.get(key);
+			if(val instanceof JSONObject||val instanceof JSONArray){
+				if(key.equals("$or")){
+					JSONArray arr=query.getJSONArray(key);
+					
+					if(arr.length()>0){
+						for(int i=0;i<arr.length();i++){
+							if(CloudQuery.validateQuery(co, arr.getJSONObject(i))){
+								valid=true;
+								break;
+								
+							}
+						}
+					}
+					
+				}
+				if(val instanceof JSONObject){
+					String[] subkeys=JSONObject.getNames((JSONObject)val);
+					for(String subkey:subkeys){
+						if(subkey.equals("$ne"))
+							{
+							Object subval=((JSONObject) val).get(subkey);
+							if(subval instanceof Double )
+								valid=co.getDouble(key)!=((JSONObject)val).getDouble(subkey);
+							else if(subval instanceof Integer)
+								valid=co.getInteger(key)!=((JSONObject)val).getInt(subkey);
+							else if(subval instanceof String)
+								valid=!co.getString(key).equals(((JSONObject)val).getString(subkey));
+							if(!valid)
+								return valid;
+							}
+						if(subkey.equals("$gt")){
+							Object subval=((JSONObject) val).get(subkey);
+							if(subval instanceof Double )
+								valid=co.getDouble(key)>((JSONObject)val).getDouble(subkey);
+							else if(subval instanceof Integer)
+								valid=co.getInteger(key)>((JSONObject)val).getInt(subkey);
+							if(!valid)
+								return valid;
+						}
+						if(subkey.equals("$gte")){
+							Object subval=((JSONObject) val).get(subkey);
+							if(subval instanceof Double )
+								valid=co.getDouble(key)>=((JSONObject)val).getDouble(subkey);
+							else if(subval instanceof Integer)
+								valid=co.getInteger(key)>=((JSONObject)val).getInt(subkey);
+							if(!valid)
+								return valid;
+						}
+						if(subkey.equals("$lt")){
+							Object subval=((JSONObject) val).get(subkey);
+							if(subval instanceof Double )
+								valid=co.getDouble(key)<((JSONObject)val).getDouble(subkey);
+							else if(subval instanceof Integer)
+								valid=co.getInteger(key)<((JSONObject)val).getInt(subkey);
+							if(!valid)
+								return valid;
+						}
+						if(subkey.equals("$lte")){
+							Object subval=((JSONObject) val).get(subkey);
+							if(subval instanceof Double )
+								valid=co.getDouble(key)<=((JSONObject)val).getDouble(subkey);
+							else if(subval instanceof Integer)
+								valid=co.getInteger(key)<=((JSONObject)val).getInt(subkey);
+							if(!valid)
+								return valid;
+						}
+						if(subkey.equals("$exists")){
+							boolean exists=((JSONObject) val).getBoolean(subkey);
+							if(exists&&!co.hasKey(key)||!exists&&co.hasKey(subkey))
+								return valid;
+						}
+						if(subkey.equals("$in")){
+							JSONArray arr=((JSONObject) val).getJSONArray(subkey);
+							Object value=null;
+							if(key.indexOf(".")!=-1)
+								value=co.get(key.substring(0, key.indexOf(".")));
+							else value=co.get(key);
+							for(int i=0;i<arr.length();i++){
+								if(arr.get(i).equals(value))
+								{
+									valid=true;
+									break;
+								}
+							}
+							if(!valid)
+								return valid;
+
+						}
+						if(subkey.equals("$nin")){
+							JSONArray arr=((JSONObject) val).getJSONArray(subkey);
+							Object value=null;
+							if(key.indexOf(".")!=-1)
+								value=co.get(key.substring(0, key.indexOf(".")));
+							else value=co.get(key);
+							for(int i=0;i<arr.length();i++){
+								if(arr.get(i).equals(value))
+								{
+									valid=false;
+									break;
+								}
+							}
+							if(!valid)
+								return valid;
+						}
+						if(subkey.equals("$all"));
+
+
+
+
+
+
+
+					}
+				}
+				
+				
+			}
+			else{
+				if(key.indexOf(".")!=-1)
+					key=key.substring(0, key.indexOf("."));
+				if(!co.hasKey(key))
+					return valid;
+				if(val instanceof Double )
+					valid=co.getDouble(key)==query.getDouble(key);
+				if(val instanceof Integer)
+					valid=co.getInteger(key)==query.getInt(key);
+				if(val instanceof Boolean)
+					valid=co.getBoolean(key)&&query.getBoolean(key);
+				if(!valid)
+					return valid;
+				
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -1109,7 +1320,21 @@ public class CloudQuery {
 //	 }
 //	 return out.toString();
 //	 }
-
+	@Override
+	public String toString(){
+		JSONObject params=new JSONObject();
+		try{
+		params.put("query", this.query);
+		params.put("select", this.select);
+		params.put("limit", this.limit);
+		params.put("skip", this.skip);
+		params.put("sort", this.sort);
+		params.put("tableName", this.tableName);
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+		return params.toString();
+	}
 	public void find(CloudObjectArrayCallback callbackObject)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
