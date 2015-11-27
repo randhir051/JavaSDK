@@ -627,7 +627,7 @@ public class CloudObject {
 											.getString("_tableName"));
 									object.document = body;
 									boolean valid=CloudObject.validateNotificationQuery(object, cloudQuery);
-									System.out.println("validation query: "+valid);
+//									System.out.println("validation query: "+valid);
 									if(valid)
 									try {
 										

@@ -37,7 +37,7 @@ public class CloudObjectTest{
 						
 						@Override
 						public void done(String x, CloudException e) throws CloudException {
-							System.out.println("x="+x+",e="+e);
+//							System.out.println("x="+x+",e="+e);
 							
 						}
 					});
@@ -541,12 +541,12 @@ public class CloudObjectTest{
 	    CloudObject.on("Student", "created", new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject data, CloudException t)	throws CloudException {
-				System.out.println("");
+//				System.out.println("");
 				if(t != null){
 					Assert.fail(t.getMessage());
 				}
 				if(data.get("name").equals("sample")) {
-						System.out.print(data.get("name").toString());
+//						System.out.print(data.get("name").toString());
 			           CloudObject.off("Student","created", new CloudStringCallback(){
 						@Override
 						public void done(String x, CloudException e)throws CloudException {
@@ -583,7 +583,7 @@ public class CloudObjectTest{
 					Assert.fail(t.getMessage());
 				}
 				if(data.get("name").equals("sample1")) {
-						System.out.print(data.get("name").toString());
+//						System.out.print(data.get("name").toString());
 			           CloudObject.off("Student","created", new CloudStringCallback(){
 						@Override
 						public void done(String x, CloudException e)throws CloudException {
@@ -622,13 +622,13 @@ public class CloudObjectTest{
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
-				System.out.println("real time bingooo");
+//				System.out.println("real time bingooo");
 				CloudObject.off("Student", new String[]{"created","deleted","updated"}, new CloudStringCallback(){
 
 					@Override
 					public void done(String x, CloudException t)
 							throws CloudException {
-						System.out.println("offed: "+x);
+//						System.out.println("offed: "+x);
 						
 					}
 					
@@ -650,7 +650,7 @@ public class CloudObjectTest{
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-				System.out.println("saved");
+//				System.out.println("saved");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -664,7 +664,7 @@ public class CloudObjectTest{
 					public void done(CloudObject x, CloudException t) throws CloudException {
 						if(t!=null)
 							Assert.fail(t.getMessage());
-						System.out.println("updated");
+//						System.out.println("updated");
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
@@ -675,7 +675,7 @@ public class CloudObjectTest{
 							
 							@Override
 							public void done(CloudObject x, CloudException t) throws CloudException {
-								System.out.println("deleted");
+//								System.out.println("deleted");
 								try {
 									Thread.sleep(2000);
 								} catch (InterruptedException e) {
@@ -703,7 +703,7 @@ public class CloudObjectTest{
 					Assert.fail(t.getMessage());
 				}
 				if(data.get("name").equals("sample")) {
-						System.out.print(data.get("name").toString());
+//						System.out.print(data.get("name").toString());
 			           CloudObject.off("Student","created", new CloudStringCallback(){
 						@Override
 						public void done(String x, CloudException e)throws CloudException {
@@ -788,7 +788,7 @@ public class CloudObjectTest{
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
-				System.out.println("real time bingooo");
+//				System.out.println("real time bingooo");
 				
 			}
 		});
@@ -806,7 +806,7 @@ public class CloudObjectTest{
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-				System.out.println("saved");
+//				System.out.println("saved");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -820,7 +820,7 @@ public class CloudObjectTest{
 					public void done(CloudObject x, CloudException t) throws CloudException {
 						if(t!=null)
 							Assert.fail(t.getMessage());
-						System.out.println("updated");
+//						System.out.println("updated");
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
@@ -831,7 +831,7 @@ public class CloudObjectTest{
 							
 							@Override
 							public void done(CloudObject x, CloudException t) throws CloudException {
-								System.out.println("deleted");
+//								System.out.println("deleted");
 								try {
 									Thread.sleep(2000);
 								} catch (InterruptedException e) {
@@ -855,7 +855,7 @@ public class CloudObjectTest{
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
-				System.out.println("real time bingooo");
+//				System.out.println("real time bingooo");
 				
 			}
 		});
@@ -873,7 +873,7 @@ public class CloudObjectTest{
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-				System.out.println("saved");
+//				System.out.println("saved");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -884,7 +884,7 @@ public class CloudObjectTest{
 					
 					@Override
 					public void done(CloudObject x, CloudException t) throws CloudException {
-						System.out.println("deleted");
+//						System.out.println("deleted");
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
