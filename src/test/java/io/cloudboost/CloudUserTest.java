@@ -37,6 +37,44 @@ public class CloudUserTest{
 				});
 		}
 		@Test(timeout=20000)
+		public void newUser() throws CloudException{
+				initialize();
+				CloudUser obj = new CloudUser();
+				obj.setUserName(username);
+				obj.setPassword(passwd);
+				obj.setEmail(PrivateMethod._makeString()+"@abc.com");
+				obj.signUp(new CloudUserCallback(){
+					@Override
+					public void done(CloudUser object, CloudException e)	throws CloudException {
+						if(e != null){
+							Assert.fail(e.getMessage());
+						}
+						if(object != null){
+							Assert.assertEquals(object.get("username"), username);
+						}
+					}
+				});
+		}
+		@Test(timeout=20000)
+		public void shouldCreateNewUser() throws CloudException{
+				initialize();
+				CloudUser obj = new CloudUser();
+				obj.setUserName(username);
+				obj.setPassword(passwd);
+				obj.setEmail(PrivateMethod._makeString()+"@abc.com");
+				obj.signUp(new CloudUserCallback(){
+					@Override
+					public void done(CloudUser object, CloudException e)	throws CloudException {
+						if(e != null){
+							Assert.fail(e.getMessage());
+						}
+						if(object != null){
+							Assert.assertEquals(object.get("username"), username);
+						}
+					}
+				});
+		}
+		@Test(timeout=20000)
 		public void shouldCreateNewUserWithVersion() throws CloudException{
 				initialize();
 				CloudUser obj = new CloudUser();

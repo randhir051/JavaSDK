@@ -23,7 +23,7 @@ public class CloudNotificationTest{
 						Assert.fail("failed to subscribe");
 					}
 					else{
-						System.out.println("object is "+x.toString());
+//						System.out.println("object is "+x.toString());
 						Assert.assertTrue(true);
 					}
 			}	

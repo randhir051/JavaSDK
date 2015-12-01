@@ -13,7 +13,7 @@ import org.junit.Test;
  *
  */
 
-public class AppTest{
+public class AppTest2{
 	void initialize(){
 //		CloudApp.init("egimabengitest", "yiBh75txY35CB+LSb/1XLQ==");
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");

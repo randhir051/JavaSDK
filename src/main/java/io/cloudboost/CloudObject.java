@@ -6,6 +6,7 @@ import io.cloudboost.util.CloudSocket;
 import io.socket.client.Ack;
 import io.socket.emitter.Emitter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -52,7 +53,7 @@ public class CloudObject {
 		// letter pass to serialization
 		document = new JSONObject();
 		try {
-			document.put("_id", (Object) null);
+			document.put("_id", JSONObject.NULL);
 
 			document.put("_tableName", tableName);
 			document.put("_type", "custom");
@@ -63,7 +64,7 @@ public class CloudObject {
 			document.put("_modifiedColumns", this._modifiedColumns);
 			document.put("_isModified", true);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -95,11 +96,12 @@ public class CloudObject {
 			document.put("_modifiedColumns", this._modifiedColumns);
 			document.put("_isModified", true);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 
+	
 	/**
 	 * 
 	 * @return
@@ -108,7 +110,7 @@ public class CloudObject {
 		try {
 			return (document.get("_id")).toString();
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -122,7 +124,7 @@ public class CloudObject {
 		try {
 			return (Date) document.get("createdAt");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -136,7 +138,7 @@ public class CloudObject {
 		try {
 			document.put("createdAt", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 
 		}
@@ -150,7 +152,7 @@ public class CloudObject {
 		try {
 			return (Date) document.get("updatedAt");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -164,7 +166,7 @@ public class CloudObject {
 		try {
 			document.put("updatedAt", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -177,7 +179,7 @@ public class CloudObject {
 		try {
 			return (boolean) document.get("_isSearchable");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -191,7 +193,7 @@ public class CloudObject {
 		try {
 			document.put("_isSearchable", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -204,7 +206,7 @@ public class CloudObject {
 		try {
 			return (Calendar) document.get("expires");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -218,11 +220,12 @@ public class CloudObject {
 		try {
 			document.put("expires", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
-	public boolean hasKey(String key){
+
+	public boolean hasKey(String key) {
 		return document.has(key);
 	}
 
@@ -237,7 +240,7 @@ public class CloudObject {
 	public void set(String columnName, Object data) throws CloudException {
 		String keywords[] = { "_tableName", "_type", "operator" };
 		int index = -1;
-		if(columnName.equals("id")||columnName.equals("_id"))
+		if (columnName.equals("id") || columnName.equals("_id"))
 			throw new CloudException("You cannot set Id on a CloudObject");
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
@@ -256,9 +259,12 @@ public class CloudObject {
 			data = ((CloudObject) data).document;
 		}
 
-		 if (data instanceof CloudGeoPoint) {
-		 data = ((CloudGeoPoint) data).document;
-		 }
+		if (data instanceof CloudGeoPoint) {
+			data = ((CloudGeoPoint) data).document;
+		}
+		if (data instanceof CloudFile) {
+			data = ((CloudFile) data).getDocument();
+		}
 		try {
 			if (data == null) {
 
@@ -272,7 +278,7 @@ public class CloudObject {
 			document.put("_modifiedColumns", this._modifiedColumns);
 			document.put("_isModified", true);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -288,7 +294,7 @@ public class CloudObject {
 	public void set(String columnName, Object[] data) throws CloudException {
 		String keywords[] = { "_tableName", "_type", "operator" };
 		int index = -1;
-		if(columnName.equals("id")||columnName.equals("_id"))
+		if (columnName.equals("id") || columnName.equals("_id"))
 			throw new CloudException("You cannot set Id on a CloudObject");
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
@@ -316,7 +322,7 @@ public class CloudObject {
 
 				this._modifiedColumns.add(columnName);
 				document.put("_modifiedColumns", this._modifiedColumns);
-			}else if(data instanceof CloudGeoPoint[]){
+			} else if (data instanceof CloudGeoPoint[]) {
 				CloudGeoPoint[] arrayList = (CloudGeoPoint[]) data;
 				ArrayList<Object> objectArray = new ArrayList<Object>();
 				for (int i = 0; i < arrayList.length; i++) {
@@ -327,14 +333,13 @@ public class CloudObject {
 
 				this._modifiedColumns.add(columnName);
 				document.put("_modifiedColumns", this._modifiedColumns);
-			}
-			else {
+			} else {
 				document.put(columnName, data);
 				this._modifiedColumns.add(columnName);
 				document.put("_modifiedColumns", this._modifiedColumns);
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -343,7 +348,7 @@ public class CloudObject {
 			throws CloudException {
 		String keywords[] = { "_tableName", "_type", "operator" };
 		int index = -1;
-		if(columnName.equals("id")||columnName.equals("_id"))
+		if (columnName.equals("id") || columnName.equals("_id"))
 			throw new CloudException("You cannot set Id on a CloudObject");
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
@@ -369,7 +374,7 @@ public class CloudObject {
 			this._modifiedColumns.add(columnName);
 			document.put("_modifiedColumns", this._modifiedColumns);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -389,7 +394,7 @@ public class CloudObject {
 		try {
 			return document.get(columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -403,8 +408,8 @@ public class CloudObject {
 		try {
 			return (Integer) document.get(columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			
+			// e.printStackTrace();
 			return 0;
 		}
 	}
@@ -417,7 +422,7 @@ public class CloudObject {
 		try {
 			return (Boolean) document.get(columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -431,7 +436,7 @@ public class CloudObject {
 		try {
 			return (Double) document.get(columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return 0.0;
 		}
@@ -445,7 +450,7 @@ public class CloudObject {
 		try {
 			return (String) document.get(columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -466,7 +471,7 @@ public class CloudObject {
 			try {
 				this.document.put(columnName, "");
 			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 		}
@@ -493,7 +498,7 @@ public class CloudObject {
 			try {
 				this.document.put(columnName, new String[10]);
 			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 		}
@@ -509,7 +514,7 @@ public class CloudObject {
 		try {
 			data = document.getJSONArray(columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		Object[] object = new Object[data.length()];
@@ -517,7 +522,7 @@ public class CloudObject {
 			try {
 				object[i] = data.get(i);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
@@ -534,7 +539,7 @@ public class CloudObject {
 		try {
 			document.put(columnName, (Object) null);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -563,7 +568,7 @@ public class CloudObject {
 		try {
 			this.document.put(columnName, object.document);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		PrivateMethod._isModified(this, columnName);
@@ -572,26 +577,28 @@ public class CloudObject {
 	public static void on(String tableName, String eventType,
 			final CloudQuery cloudQuery,
 			final CloudObjectCallback callbackObject) throws CloudException {
-		
-		try{
-        if(!cloudQuery.getTableName().equals(tableName)){
-            throw new CloudException("CloudQuery TableName and CloudNotification TableName should be same.");
-        }
 
-        if(cloudQuery.hasQuery()){
-            if(cloudQuery.include.size()>0||cloudQuery.includeList.size()>0){
-                throw new CloudException("Include with CloudNotificaitons is not supported right now.");
+		try {
+			if (!cloudQuery.getTableName().equals(tableName)) {
+				throw new CloudException(
+						"CloudQuery TableName and CloudNotification TableName should be same.");
+			}
 
-                
-            }
-        }
+			if (cloudQuery.hasQuery()) {
+				if (cloudQuery.include.size() > 0
+						|| cloudQuery.includeList.size() > 0) {
+					throw new CloudException(
+							"Include with CloudNotificaitons is not supported right now.");
 
-        if(!cloudQuery.getSelect().toString().equals("{}")){
-            throw new CloudException("You cannot pass the query with select in CloudNotifications.");
+				}
+			}
 
-            
-        }
-		}catch(CloudException e){
+			if (!cloudQuery.getSelect().toString().equals("{}")) {
+				throw new CloudException(
+						"You cannot pass the query with select in CloudNotifications.");
+
+			}
+		} catch (CloudException e) {
 			callbackObject.done(null, e);
 			return;
 		}
@@ -607,14 +614,15 @@ public class CloudObject {
 
 				payload.put("sessionId", PrivateMethod._getSessionId());
 				CloudSocket.getSocket().connect();
-				CloudSocket.getSocket().emit("join-object-channel", payload,new Ack() {
-					
-					@Override
-					public void call(Object... args) {
-						System.out.println("Acknow received for on:"+args[0].toString() );
-						
-					}
-				});
+				CloudSocket.getSocket().emit("join-object-channel", payload,
+						new Ack() {
+
+							@Override
+							public void call(Object... args) {
+
+
+							}
+						});
 				CloudSocket.getSocket().on((str).toLowerCase(),
 						new Emitter.Listener() {
 							@Override
@@ -626,36 +634,40 @@ public class CloudObject {
 									CloudObject object = new CloudObject(body
 											.getString("_tableName"));
 									object.document = body;
-									boolean valid=CloudObject.validateNotificationQuery(object, cloudQuery);
-//									System.out.println("validation query: "+valid);
-									if(valid)
-									try {
-										
-										callbackObject.done(object, null);
-									} catch (CloudException e) {
+									boolean valid = CloudObject
+											.validateNotificationQuery(object,
+													cloudQuery);
+									if (valid)
 										try {
-											callbackObject.done(null, e);
-										} catch (CloudException e1) {
-											e1.printStackTrace();
+
+											callbackObject.done(object, null);
+										} catch (CloudException e) {
+											try {
+												callbackObject.done(null, e);
+											} catch (CloudException e1) {
+												e1.printStackTrace();
+											}
+											e.printStackTrace();
 										}
-										e.printStackTrace();
-									}
 								} catch (JSONException e2) {
-									// TODO Auto-generated catch block
+									
 									e2.printStackTrace();
 								}
 							}
 						});
 			} catch (JSONException e2) {
-				// TODO Auto-generated catch block
+				
 				e2.printStackTrace();
 			}
 		} else {
-			callbackObject.done(null,new CloudException("created, updated, deleted are supported notification types"));
-			
+			callbackObject
+					.done(null,
+							new CloudException(
+									"created, updated, deleted are supported notification types"));
 
 		}
 	}
+
 	/**
 	 * 
 	 * CloudObject On
@@ -682,14 +694,15 @@ public class CloudObject {
 
 				payload.put("sessionId", PrivateMethod._getSessionId());
 				CloudSocket.getSocket().connect();
-				CloudSocket.getSocket().emit("join-object-channel", payload,new Ack() {
-					
-					@Override
-					public void call(Object... args) {
-						System.out.println("Acknow received for on:"+args[0].toString() );
-						
-					}
-				});
+				CloudSocket.getSocket().emit("join-object-channel", payload,
+						new Ack() {
+
+							@Override
+							public void call(Object... args) {
+
+
+							}
+						});
 				CloudSocket.getSocket().on((str).toLowerCase(),
 						new Emitter.Listener() {
 							@Override
@@ -712,18 +725,20 @@ public class CloudObject {
 										e.printStackTrace();
 									}
 								} catch (JSONException e2) {
-									// TODO Auto-generated catch block
+									
 									e2.printStackTrace();
 								}
 							}
 						});
 			} catch (JSONException e2) {
-				// TODO Auto-generated catch block
+				
 				e2.printStackTrace();
 			}
 		} else {
-			callbackObject.done(null,new CloudException("created, updated, deleted are supported notification types"));
-			
+			callbackObject
+					.done(null,
+							new CloudException(
+									"created, updated, deleted are supported notification types"));
 
 		}
 	}
@@ -741,18 +756,22 @@ public class CloudObject {
 			CloudObject.on(tableName, eventType[i], callbackObject);
 		}
 	}
-	public static void on(String tableName, String[] eventType,CloudQuery query,
-			final CloudObjectCallback callbackObject) throws CloudException {
+
+	public static void on(String tableName, String[] eventType,
+			CloudQuery query, final CloudObjectCallback callbackObject)
+			throws CloudException {
 		for (int i = 0; i < eventType.length; i++) {
-			CloudObject.on(tableName, eventType[i],query, callbackObject);
+			CloudObject.on(tableName, eventType[i], query, callbackObject);
 		}
 	}
+
 	public static void off(String tableName, String[] eventType,
 			final CloudStringCallback callbackObject) throws CloudException {
 		for (int i = 0; i < eventType.length; i++) {
 			CloudObject.off(tableName, eventType[i], callbackObject);
 		}
 	}
+
 	/**
 	 * 
 	 * CloudObject Off
@@ -769,65 +788,48 @@ public class CloudObject {
 
 		if (eventType == "created" || eventType == "updated"
 				|| eventType == "deleted") {
-			JSONObject payload=new JSONObject();
-			String str=(CloudApp.getAppId() + "table" + tableName + eventType)
+			JSONObject payload = new JSONObject();
+			String str = (CloudApp.getAppId() + "table" + tableName + eventType)
 					.toLowerCase();
 			try {
 				payload.put("room", str);
 				payload.put("sessionId", PrivateMethod._getSessionId());
 
 			} catch (JSONException e2) {
-				// TODO Auto-generated catch block
+				
 				e2.printStackTrace();
 			}
-			CloudSocket.getSocket().emit(
-					"leave-object-channel",payload,new Ack() {
-								
-								@Override
-								public void call(Object... args) {
-									System.out.println("Acknowledgement arrived: "+args[0].toString());
-									
-								}
-							});
-//			CloudSocket.getSocket().
-			CloudSocket.getSocket()
-					.off(str, new Emitter.Listener() {
-						@Override
-						public void call(final Object... args) {
-							try {
-								callbackObj.done("success", null);
-							} catch (CloudException e) {
+			CloudSocket.getSocket().emit("leave-object-channel", payload,
+					new Ack() {
 
-								try {
-									callbackObj.done(null, e);
-								} catch (CloudException e1) {
-									e1.printStackTrace();
-								}
-								e.printStackTrace();
-							}
+						@Override
+						public void call(Object... args) {
+
+
 						}
 					});
+			CloudSocket.getSocket().off(str, new Emitter.Listener() {
+				@Override
+				public void call(final Object... args) {
+					try {
+						callbackObj.done("success", null);
+					} catch (CloudException e) {
+
+						try {
+							callbackObj.done(null, e);
+						} catch (CloudException e1) {
+							e1.printStackTrace();
+						}
+						e.printStackTrace();
+					}
+				}
+			});
 		} else {
 			throw new CloudException(
 					"created, updated, deleted are supported notification types");
 		}
 
 	}
-
-	/**
-	 * 
-	 * @param tableName
-	 * @param eventType
-	 * @param callbackObj
-	 * @throws CloudException
-	 */
-	// public static void off(String tableName, String[] eventType,
-	// final CloudStringCallback callbackObj) throws CloudException {
-	//
-	// for (int i = 0; i < eventType.length; i++) {
-	// CloudObject.off(tableName, eventType[i], callbackObj);
-	// }
-	// }
 
 	/**
 	 * 
@@ -846,32 +848,32 @@ public class CloudObject {
 		CBResponse response = null;
 
 		try {
-		data.put("document", document);
-		data.put("key", CloudApp.getAppKey());
-		url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
-				+ this.document.get("_tableName");
-
-		
+			data.put("document", document);
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
+					+ this.document.get("_tableName");
 
 			response = CBParser.callJson(url, "PUT", data);
 
-		
-		if (response.getStatusCode() == 200) {
-			String responseBody = response.getResponseBody();
-			JSONObject body = new JSONObject(responseBody);
-			thisObj = new CloudObject(body.get("_tableName").toString());
-			thisObj.document = body;
-			callbackObject.done(thisObj, null);
-		} else {
-			CloudException e = new CloudException(response.getStatusMessage());
-			callbackObject.done(null, e);
-		}} catch (Exception e1) {
+			if (response.getStatusCode() == 200) {
+				String responseBody = response.getResponseBody();
+				JSONObject body = new JSONObject(responseBody);
+				thisObj = new CloudObject(body.get("_tableName").toString());
+				thisObj.document = body;
+				callbackObject.done(thisObj, null);
+			} else {
+				CloudException e = new CloudException(
+						response.getStatusMessage());
+				callbackObject.done(null, e);
+			}
+		} catch (Exception e1) {
 			e1.printStackTrace();
 			CloudException e = new CloudException(e1.getMessage());
 			callbackObject.done(null, e);
 		}
 
 	}
+
 	public void deleteAll(CloudObject[] array, CloudObjectArrayCallback callback)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -913,6 +915,7 @@ public class CloudObject {
 			callback.done(null, e1);
 		}
 	}
+
 	public void saveAll(CloudObject[] array, CloudObjectArrayCallback callback)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -973,16 +976,18 @@ public class CloudObject {
 			throw new CloudException("Can't fetch an object which is not saved");
 		}
 		try {
-			CloudQuery q=null;
-			if(this.document.getString("_type").equals("file"))
-				q=new CloudQuery("File");
-			else q=new CloudQuery(this.document.getString("_tableName"));
+			CloudQuery q = null;
+			if (this.document.getString("_type").equals("file"))
+				q = new CloudQuery("File");
+			else
+				q = new CloudQuery(this.document.getString("_tableName"));
 			q.findById(getId(), new CloudObjectCallback() {
-				
+
 				@Override
-				public void done(CloudObject x, CloudException t) throws CloudException {
+				public void done(CloudObject x, CloudException t)
+						throws CloudException {
 					callbackObject.done(x, t);
-					
+
 				}
 			});
 		} catch (JSONException e) {
@@ -1033,31 +1038,32 @@ public class CloudObject {
 			callbackObject.done(null, new CloudException(e2.getMessage()));
 		}
 	}
-	public static boolean validateNotificationQuery(CloudObject object,CloudQuery query){
-		boolean valid=false;
-		if(query==null)
+
+	public static boolean validateNotificationQuery(CloudObject object,
+			CloudQuery query) {
+		boolean valid = false;
+		if (query == null)
 			return valid;
-		if(!query.hasQuery())
+		if (!query.hasQuery())
 			return valid;
-		if(query.getLimit()==0)
+		if (query.getLimit() == 0)
 			return valid;
-		if(query.getSkip()>0){
-			query.setSkip(query.getSkip()-1);
+		if (query.getSkip() > 0) {
+			query.setSkip(query.getSkip() - 1);
 			return valid;
 		}
-		JSONObject realQuery=query.getQuery();
+		JSONObject realQuery = query.getQuery();
 		realQuery.remove("$include");
 		realQuery.remove("$all");
 		realQuery.remove("$includeList");
 		try {
-			if(CloudQuery.validateQuery(object, realQuery))
-				valid=true;
+			if (CloudQuery.validateQuery(object, realQuery))
+				valid = true;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			return valid;
 		}
-		
-		
+
 		return valid;
 	}
 }

@@ -15,9 +15,34 @@ public class Column{
 	protected JSONObject document;
 	
 	public enum DataType{
-		Text, Email, URL, Number, Boolean, DateTime, GeoPoint, File, List, Relation, Object, Id, Password, ACL
+		Text, Email, URL, Number, Boolean, DateTime, GeoPoint, File, List, Relation, Object, Id, EncryptedText, ACL
 	}
-	
+	public Column(String columnName, DataType dataType){
+		if(!PrivateMethod._columnNameValidation(columnName)){
+			try {
+				throw new CloudException("Invalid Column Name");
+			} catch (CloudException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		this.document  = new JSONObject();
+		try{
+		this.document.put("name", columnName);
+		this.document.put("dataType", dataType);
+		this.document.put("_type", "column");
+		this.document.put("required", false);
+		this.document.put("unique", false);
+		this.document.put("relatedTo", JSONObject.NULL);
+		this.document.put("relationType",JSONObject.NULL);
+		this.document.put("isDeletable", true);
+		this.document.put("isEditable", true);
+		this.document.put("isRenamable", false);
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+	}
 	public Column(String columnName, DataType dataType, boolean required, boolean unique){
 		if(!PrivateMethod._columnNameValidation(columnName)){
 			try {
@@ -40,7 +65,7 @@ public class Column{
 		this.document.put("isEditable", true);
 		this.document.put("isRenamable", false);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -54,9 +79,17 @@ public class Column{
 		try {
 			return this.document.getString("name");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
+		}
+	}
+	public void setColumnName(String value){
+		 try {
+			this.document.put("name", value);
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
 		}
 	}
 	
@@ -68,9 +101,18 @@ public class Column{
 		try {
 			return (DataType) this.document.get("dataType");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public void setDataType(DataType type){
+		try {
+			this.document.put("dataType",type);
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
 		}
 	}
 	
@@ -84,7 +126,7 @@ public class Column{
 		try {
 			this.document.put("required", required);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -93,7 +135,7 @@ public class Column{
 		try {
 			return this.document.getBoolean("required");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -109,7 +151,7 @@ public class Column{
 		try {
 			this.document.put("unique", unique);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -122,7 +164,7 @@ public class Column{
 		try {
 			return this.document.getBoolean("unique");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -138,7 +180,7 @@ public class Column{
 		try {
 			this.document.put("relatedTo", table.document.toString());
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -147,7 +189,7 @@ public class Column{
 		try {
 			this.document.put("relatedTo", type);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -164,7 +206,7 @@ public class Column{
 		
 		object = new CloudTable(table.getString("name"));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		object.document = table;
@@ -181,7 +223,7 @@ public class Column{
 		try {
 			this.document.put("relatedTotype", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -190,7 +232,7 @@ public class Column{
 		try {
 			return this.document.getString("relatedToType");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -206,7 +248,7 @@ public class Column{
 		try {
 			this.document.put("relationType", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -219,7 +261,7 @@ public class Column{
 		try {
 			return this.document.getString("relationType");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -235,7 +277,7 @@ public class Column{
 		try {
 			this.document.put("isDeletable", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -244,7 +286,7 @@ public class Column{
 		try {
 			return this.document.getBoolean("isDeletable");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -260,7 +302,7 @@ public class Column{
 		try {
 			this.document.put("isEditable", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -269,7 +311,7 @@ public class Column{
 		try {
 			return this.document.getBoolean("isEditable");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -285,7 +327,7 @@ public class Column{
 		try {
 			this.document.put("isRenamable", value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -294,7 +336,7 @@ public class Column{
 		try {
 			return this.document.getBoolean("isRenamable");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}

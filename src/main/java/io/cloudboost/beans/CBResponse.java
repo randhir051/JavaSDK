@@ -52,11 +52,4 @@ public class CBResponse {
 	public void setStatusCode(int statusCode) {
 		this.statusCode = statusCode;
 	}
-
-//	public CBResponse(String responseBody, String statusMessage, int statusCode) {
-//		super();
-//		this.responseBody = responseBody;
-//		this.statusMessage = statusMessage;
-//		this.statusCode = statusCode;
-//	}
 }

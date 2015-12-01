@@ -1,46 +1,554 @@
 package io.cloudboost;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 import junit.framework.Assert;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
+
 /**
  * 
  * @author cloudboost
- *
+ * 
  */
-public class CloudFileTest{
-	void initialize(){
+public class CloudFileTest {
+	void initialize() {
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
-	
-	@Test(timeout=50000)
-	public void saveFileFromData() throws IOException, CloudException {
+
+//	@Test(timeout = 50000)
+//	public void shouldSaveFileGetFromRelation() throws IOException,
+//			CloudException, JSONException {
+//		initialize();
+//		final CloudFile cf = new CloudFile("myFile", "sampletest", "txt");
+//		cf.save(new CloudFileCallback() {
+//
+//			@Override
+//			public void done(final CloudFile x1, CloudException t)
+//					throws CloudException {
+//				// TODO Auto-generated method stub
+//
+//				if (t != null) {
+//					Assert.fail(t.getMessage());
+//				}
+//				String url = x1.getFileUrl();
+//				if ("".equals(url) && null == url && "null".equals(url))
+//					Assert.fail("No url");
+//				else {
+//					CloudObject object = new CloudObject("Employee");
+//					CloudObject object2 = new CloudObject("Company");
+//					object2.set("File", x1);
+//					object.set("Company", object2);
+//
+//					object.save(new CloudObjectCallback() {
+//
+//						@Override
+//						public void done(CloudObject x, CloudException t)
+//								throws CloudException {
+//							if (t != null)
+//								Assert.fail(t.getMessage());
+//							else {
+//								String objId = x.getId();
+//								CloudQuery query = new CloudQuery("Employee");
+//								query.equalTo("id", objId);
+//								query.include("Company.File");
+//								query.find(new CloudObjectArrayCallback() {
+//
+//									@Override
+//									public void done(CloudObject[] x,
+//											CloudException t)
+//											throws CloudException {
+//										System.out.println("finished querying");
+//
+//									}
+//								});
+//							}
+//
+//						}
+//					});
+//				}
+//
+//			}
+//		});
+//	}
+
+	@Test(timeout = 50000)
+	public void shouldIncludeOverFile() throws IOException, CloudException,
+			JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		final CloudFile cf = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(final CloudFile x1, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x1.getFileUrl();
+				if ("".equals(url) && null == url && "null".equals(url))
+					Assert.fail("No url");
+				else {
+					CloudObject object = new CloudObject("Sample");
+					object.set("file", x1);
+					object.set("name", "egima");
+					object.save(new CloudObjectCallback() {
+
+						@Override
+						public void done(CloudObject x, CloudException t)
+								throws CloudException {
+							if (t != null)
+								Assert.fail(t.getMessage());
+							else {
+								String objId = x.getId();
+								CloudQuery query = new CloudQuery("Sample");
+								query.equalTo("id", objId);
+								query.include("file");
+								query.find(new CloudObjectArrayCallback() {
+
+									@Override
+									public void done(CloudObject[] x,
+											CloudException t)
+											throws CloudException {
+										// TODO Auto-generated method stub
+
+									}
+								});
+							}
+
+						}
+					});
+				}
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldSaveFileAndFetchGetFileContent() throws IOException,
+			CloudException, JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		final CloudFile cf = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(final CloudFile x1, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x1.getFileUrl();
+				if ("".equals(url) && null == url && "null".equals(url))
+					Assert.fail("No url");
+				else {
+					System.out.println("fetching file content");
+					CloudFile file = x1;
+					file.getFileContent(new ObjectCallback() {
+
+						@Override
+						public void done(Object x, CloudException t)
+								throws CloudException {
+							Assert.assertTrue(x != null);
+
+						}
+					});
+				}
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldSaveFileAndFetchIt() throws IOException, CloudException,
+			JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		final CloudFile cf = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(final CloudFile x1, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x1.getFileUrl();
+				if ("".equals(url) && null == url && "null".equals(url))
+					Assert.fail("No url");
+				else {
+					x1.fetch(new CloudFileArrayCallback() {
+
+						@Override
+						public void done(CloudFile[] x, CloudException t)
+								throws CloudException {
+							if (t != null) {
+								Assert.fail(t.getMessage());
+							}
+
+						}
+					});
+				}
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldSaveFileList() throws IOException, CloudException,
+			JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		final CloudFile cf = new CloudFile(f);
+		final CloudFile cf2 = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(final CloudFile x1, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x1.getFileUrl();
+				if ("".equals(url) && null == url && "null".equals(url))
+					Assert.fail("No url");
+				else {
+					try {
+						cf2.save(new CloudFileCallback() {
+
+							@Override
+							public void done(final CloudFile x2,
+									CloudException t) throws CloudException {
+								if (t != null) {
+									Assert.fail(t.getMessage());
+								}
+								String url = x2.getFileUrl();
+								if ("".equals(url) && null == url
+										&& "null".equals(url))
+									Assert.fail("No url");
+								else {
+									CloudObject ob = new CloudObject("Sample");
+									ob.set("name", "Egima");
+									ob.set("fileList",
+											new CloudFile[] { x1, x2 });
+									ob.save(new CloudObjectCallback() {
+
+										@Override
+										public void done(CloudObject x,
+												CloudException t)
+												throws CloudException {
+											if (t != null) {
+												Assert.fail(t.getMessage());
+											} else {
+												Object[] filelist = x
+														.getArray("fileList");
+												JSONObject file = (JSONObject) filelist[0];
+												JSONObject file2 = (JSONObject) filelist[1];
+												try {
+													Assert.assertTrue(file
+															.getString("id")
+															.equals(x1.getId())
+															&& file2.getString(
+																	"id")
+																	.equals(x2
+																			.getId()));
+												} catch (JSONException e) {
+													// TODO Auto-generated catch
+													// block
+													e.printStackTrace();
+												}
+											}
+
+										}
+									});
+								}
+
+							}
+						});
+					} catch (IOException | JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldDeleteNewFile() throws IOException, CloudException,
+			JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		CloudFile cf = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(CloudFile x, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x.getFileUrl();
+				if ("".equals(url) && null == url && "null".equals(url))
+					Assert.fail("Failed to get url");
+				else {
+					x.delete(new CloudStringCallback() {
+
+						@Override
+						public void done(String x, CloudException e)
+								throws CloudException {
+							// TODO Auto-generated method stub
+							if (e != null) {
+								Assert.fail(e.getMessage());
+							}
+							Assert.assertEquals("OK", x);
+						}
+					});
+				}
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldSaveNewFile() throws IOException, CloudException,
+			JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		CloudFile cf = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(CloudFile x, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x.getFileUrl();
+				Assert.assertFalse("".equals(url) && null == url
+						&& "null".equals(url));
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void deleteFile() throws IOException, CloudException, JSONException {
 		initialize();
 		CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
-		file.save(new CloudStringCallback(){
+		file.save(new CloudFileCallback() {
 			@Override
-			public void done(String x, CloudException e) throws CloudException {
-				if(e != null){
+			public void done(CloudFile x, CloudException e)
+					throws CloudException {
+				if (e != null) {
 					Assert.fail(e.getMessage());
 				}
-				System.out.println(x);
+				String url = x.getFileUrl();
+				Assert.assertFalse("".equals(url) && null == url
+						&& "null".equals(url));
+				x.delete(new CloudStringCallback() {
+
+					@Override
+					public void done(String x, CloudException t)
+							throws CloudException {
+						if (t != null) {
+							Assert.fail(t.getMessage());
+						}
+						Assert.assertEquals("OK", x);
+
+					}
+				});
 			}
 		});
 	}
-	
-	@Test(timeout=50000)
-	public void saveFileFromURL() throws IOException, CloudException {
+
+	@Test(timeout = 50000)
+	public void saveFileAndGiveUrl() throws IOException, CloudException,
+			JSONException {
 		initialize();
-		CloudFile file = new CloudFile("http://static.giantbomb.com/uploads/scale_small/0/316/520157-apple_logo_dec07.jpg");
-		file.save(new CloudStringCallback(){
+		CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
+		file.save(new CloudFileCallback() {
 			@Override
-			public void done(String x, CloudException e) throws CloudException {
-				if(e != null){
+			public void done(CloudFile x, CloudException e)
+					throws CloudException {
+				if (e != null) {
 					Assert.fail(e.getMessage());
 				}
-				System.out.println(x);
+				String url = x.getFileUrl();
+				Assert.assertFalse("".equals(url) && null == url
+						&& "null".equals(url));
 			}
 		});
 	}
+
+	@Test(timeout = 50000)
+	public void saveFileWithDataAndName() throws IOException, CloudException,
+			JSONException {
+		initialize();
+		CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
+		file.save(new CloudFileCallback() {
+			@Override
+			public void done(CloudFile x, CloudException e)
+					throws CloudException {
+				if (e != null) {
+					Assert.fail(e.getMessage());
+				}
+				String url = x.getFileUrl();
+				Assert.assertFalse("".equals(url) && null == url
+						&& "null".equals(url));
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void returnFileWithCloudObject() throws IOException, CloudException,
+			JSONException {
+		initialize();
+		CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
+		file.save(new CloudFileCallback() {
+			@Override
+			public void done(final CloudFile x, CloudException e)
+					throws CloudException {
+				if (e != null) {
+					Assert.fail(e.getMessage());
+				}
+				String url = x.getFileUrl();
+				if (!("".equals(url) && null == url && "null".equals(url))) {
+					CloudObject ob = new CloudObject("Company");
+					JSONObject json = x.getDocument();
+					json.remove("ACL");
+					ob.set("File", json);
+					ob.save(new CloudObjectCallback() {
+
+						@Override
+						public void done(CloudObject o, CloudException t)
+								throws CloudException {
+							if (t != null) {
+								Assert.fail(t.getMessage());
+							}
+							JSONObject obj = (JSONObject) o.get("File");
+							String url = null;
+							try {
+								url = obj.getString("url");
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							Assert.assertFalse("".equals(url) && null == url
+									&& "null".equals(url));
+
+						}
+					});
+
+				}
+			}
+		});
+	}
+
 }

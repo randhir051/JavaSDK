@@ -1,7 +1,11 @@
 package io.cloudboost;
 import java.util.ArrayList;
 
+import junit.framework.Assert;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Test;
 
 public class ACLTest{
 	
@@ -24,9 +28,52 @@ public class ACLTest{
 	}
 	
 	void initialize(){
-		CloudApp.init("sample123","9SPxp6D3OPWvxj0asw5ryA==");
+		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
-	
+	@Test(timeout=20000)
+	public void shouldUpdateAcl() throws CloudException{
+		initialize();
+		CloudObject obj=new CloudObject("Employee");
+		ACL acl=new ACL();
+		acl.setRoleWriteAccess("x", true);
+		acl.setPublicWriteAccess(true);
+		obj.acl=acl;
+		obj.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				x.acl.setRoleWriteAccess("y", true);
+				x.acl.setPublicWriteAccess(true);
+				x.save(new CloudObjectCallback() {
+					
+					@Override
+					public void done(CloudObject x, CloudException t) throws CloudException {
+						String id=x.getId();
+						CloudQuery query=new CloudQuery("Employee");
+						query.findById(id, new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								if(t!=null)
+									Assert.fail(t.getMessage());
+								else{
+									try {
+										Assert.assertTrue(((ArrayList<String>)(x.acl.write.getJSONObject("allow").get("role"))).size()==2);
+									} catch (JSONException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+								
+							}
+						});
+						
+					}
+				});
+				
+			}
+		});
+	}
 //	@Test(timeout=20000)
 //	public void revokePublicWriteAccess() throws CloudException{
 //		initialize();

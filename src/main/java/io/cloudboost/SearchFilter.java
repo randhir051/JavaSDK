@@ -33,7 +33,7 @@ public class SearchFilter{
 		this.bool.put("should", this.should);
 		this.bool.put("must_not", this.must_not);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -59,7 +59,7 @@ public class SearchFilter{
 		this.must_not.add(term);
 		this.bool.put("must_not", this.must_not);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -87,7 +87,7 @@ public class SearchFilter{
 		this.must_not.add(term);
 		this.bool.put("must_not", this.must_not);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -114,7 +114,7 @@ public class SearchFilter{
 		this.must.add(term);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -141,7 +141,7 @@ public class SearchFilter{
 		this.must.add(term);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -168,7 +168,7 @@ public class SearchFilter{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -195,7 +195,7 @@ public class SearchFilter{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -224,7 +224,7 @@ public class SearchFilter{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -253,7 +253,7 @@ public class SearchFilter{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -283,7 +283,7 @@ public class SearchFilter{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -312,7 +312,7 @@ public class SearchFilter{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -337,7 +337,7 @@ public class SearchFilter{
 		try {
 			this.bool.put("must", this.must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -363,7 +363,7 @@ public class SearchFilter{
 		try {
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -389,7 +389,7 @@ public class SearchFilter{
 		try {
 			this.bool.put("must_not", this.must_not);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

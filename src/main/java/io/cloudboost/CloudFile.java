@@ -1,19 +1,28 @@
 package io.cloudboost;
 
+import io.cloudboost.beans.CBResponse;
+import io.cloudboost.util.CBParser;
+
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Blob;
 import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
+/** 
+ * <p>Title: Abstract wrapper for File objects</p>
+ * <p>CloudFile is an object that represents an arbitrary file format, can save and retrieve these from CloudBoost</p>
  * 
  * @author cloudboost
  *
  */
 public class CloudFile{
+	public void setDocument(JSONObject document) {
+		this.document = document;
+	}
 	private JSONObject document;
 	
 	/**
@@ -23,7 +32,55 @@ public class CloudFile{
 	 */
 	private File file = null;
 	private Blob blobFile = null;
-	private Object data = new Object();
+	private Object data = null;
+	/**
+	 * Constructor that builds a CloudFile object from {@link java.io.File } and content type of the file
+	 * @param fileObj a Java file object
+	 * @param contentType String representing content/mime type of this file
+	 * @throws CloudException
+	 */
+	public CloudFile(File fileObj,String contentType) throws CloudException{
+		
+		if(fileObj == null){
+			throw new CloudException("File is null");
+		}
+		
+		this.file = fileObj;
+		this.document = new JSONObject();
+		try {
+			this.document.put("_id", JSONObject.NULL);
+
+			this.document.put("_type", "file");
+			this.document.put("ACL", (new ACL()).getACL());
+
+		this.document.put("name", file.getName());
+		this.document.put("size", file.length());
+		this.document.put("url", JSONObject.NULL);
+		this.document.put("expires", JSONObject.NULL);
+		this.document.put("contentType", contentType);
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * returns the Id assigned to this file after saving, an unsaved CloudFile object has no Id
+	 * @return
+	 */
+	public String getId(){
+		try {
+			return document.getString("_id");
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
+	/**
+	 * Constructor that builds a CloudFile object from {@link java.io.File} and tries to guess the mimetype
+	 * @param fileObj a java file object
+	 * @throws CloudException
+	 */
 	public CloudFile(File fileObj) throws CloudException{
 		
 		if(fileObj == null){
@@ -33,20 +90,24 @@ public class CloudFile{
 		this.file = fileObj;
 		this.document = new JSONObject();
 		try {
+			this.document.put("_id", JSONObject.NULL);
+
 			this.document.put("_type", "file");
-		
+			this.document.put("ACL", (new ACL()).getACL());
+
 		this.document.put("name", file.getName());
 		this.document.put("size", file.length());
-		this.document.put("url", (Object)null);
+		this.document.put("url", JSONObject.NULL);
+		this.document.put("expires", JSONObject.NULL);
 		this.document.put("contentType", this.getFileExtension(file));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * 
+	 * Constructor that builds CloudFile Object from a {@link java.sql.Blob}
 	 * @param file
 	 * @throws CloudException
 	 */
@@ -72,13 +133,13 @@ public class CloudFile{
 		
 		this.document.put("url", (Object)null);
 		this.document.put("contentType", (Object)null);} catch (JSONException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 	}
 	
 	/**
-	 * 
+	 * A Constructor that takes the URL of a file and downloads it to create a CloudFile Object
 	 * @param file
 	 * @throws CloudException
 	 */
@@ -101,7 +162,7 @@ public class CloudFile{
 			this.document.put("contentType", JSONObject.NULL);
 			
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}else{
@@ -109,10 +170,16 @@ public class CloudFile{
 		}
 		
 	}
-	
-	public CloudFile(String file, Object data, String type) throws CloudException{
+	/**
+	 * Constructor that builds a CloudFile object out of arbitrary data
+	 * @param fileName the name under which the file should be stored
+	 * @param data the content of the file
+	 * @param type mimetype of the file
+	 * @throws CloudException
+	 */
+	public CloudFile(String fileName, Object data, String type) throws CloudException{
 		this.document = new JSONObject();
-		if(file.isEmpty()){
+		if(fileName.isEmpty()){
 			throw new CloudException("file name is required");
 		}
 		if(type.isEmpty()){
@@ -125,119 +192,96 @@ public class CloudFile{
 		
 		this.document.put("_type", "file");
 		this.document.put("expires", JSONObject.NULL);
-		this.document.put("ACL", new ACL());
-		this.document.put("name", JSONObject.NULL);
-		this.document.put("size", JSONObject.NULL);
+		this.document.put("ACL", (new ACL()).getACL());
+		this.document.put("name", fileName);
+		this.document.put("size", (Object)null);
 		this.document.put("url", JSONObject.NULL);
-		this.document.put("contentType", "type");
+		this.document.put("contentType", type);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
+	public CloudFile(JSONObject jsonObject) {
+		setDocument(jsonObject);
+	}
 	/**
-	 * 
-	 * @param type
+	 * Changes the type of the file to the given String
+	 * @param type mime type of file
 	 */
 	public void setFileType(String type){
 		try {
 			this.document.put("_type", type);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * 
+	 * returns the mime type of the file as a {@link java.lang.String)
 	 * @return
 	 */
 	public String getFileType(){
 		try {
 			return this.document.getString("_type");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
 	/**
-	 * 
-	 * @param url
-	 */
-	public void setFileUrl(String url){
-		try {
-			this.document.put("url", url);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * 
+	 * returns the URL of the file as saved in cloudboost, unsaved files have no URL's
 	 * @return
 	 */
 	public String getFileUrl(){
 		try {
 			return this.document.getString("url");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
 	/**
-	 * 
-	 * @param name
+	 * Gives the file a name as should be saved in CloudBoost
+	 * @param name the name the file should be saved under
 	 */
 	public void setFileName(String name){
 		try {
 			this.document.put("name", name);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * 
+	 * returns the name of the file
 	 * @return
 	 */
 	public String getFileName(){
 		try {
 			return this.document.getString("name");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
 	/**
-	 * 
-	 * @param size
-	 */
-	public void setFileSize(long size){
-		try {
-			this.document.put("size", size);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * 
+	 * Returns the size of the file in Bytes
 	 * @return
 	 */
 	public int getFileSize(){
 		try {
 			return this.document.getInt("size");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return 0;
 		}
@@ -249,7 +293,7 @@ public class CloudFile{
 	 * @param file
 	 * @return
 	 */
-	public String getFileExtension(File file){
+	private String getFileExtension(File file){
 		 String name = file.getName();
 		 int lastIndexOf = name.lastIndexOf(".");
 		 if (lastIndexOf == -1) {
@@ -258,35 +302,58 @@ public class CloudFile{
 		 return name.substring(lastIndexOf);
 	}
 	
-	
-	public void save(CloudStringCallback callbackObject) throws CloudException, FileNotFoundException{
+	/**
+	 * Makes an HTTP POST request to upload the file and save all attributes to CloudBoost
+	 * @param callbackObject callback to be triggered when the call has completed
+	 * @throws CloudException
+	 * @throws IOException
+	 * @throws JSONException
+	 */
+	public void save(CloudFileCallback callbackObject) throws CloudException, IOException, JSONException{
 		if(CloudApp.getAppId() == null){
 			throw new CloudException("App Id is null");
 		}
-			
+		
 		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId();
-		if(this.data.equals(null)){
-			//Future<Response> f = client.preparePost(url).addHeader("Content-Type", "multipart/form-data; boundary=" + BOUNDARY).setBodyEncoding("UTF-8").addBodyPart(part).addBodyPart(new StringPart("from", "1")).addFormParam("key",CloudApp.getAppKey()).setBody(this.file).execute();
-			//Future<Response> f = client.preparePost(url).addHeader("Content-Type", "multipart/form-data; boundary=" + BOUNDARY).addBodyPart(part).addFormParam("key",CloudApp.getAppKey()).execute();
-//			f = client.preparePost(url).setBody(this.file).addFormParam("key",CloudApp.getAppKey()).addFormParam("fileObj", this.document.toString()).setBody(new FileInputStream(this.file)).execute();
-		}else{
-			JSONObject params = new JSONObject();
-			try {
-				params.put("data", this.data);
-			
-			params.put("fileObj", this.document);
+		CBResponse response=null;
+		if(data==null)
+		response=CBParser.postFormData(url, "POST", document, new FileInputStream(file));
+		
+		else {
+			JSONObject params=new JSONObject();
 			params.put("key", CloudApp.getAppKey());
+			params.put("fileObj", document);
+			params.put("data", data);
+			response=CBParser.callJson(url, "POST", params);}
+		if (response.getStatusCode() == 200) {
+			String responseBody = response.getResponseBody();
+			JSONObject body=null;
+			try {
+				body = new JSONObject(responseBody);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
-//			f = client.preparePost(url).addHeader("sessionId", PrivateMethod._getSessionId()).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
+			document = body;
+			callbackObject.done(this, null);
+		} else {
+			CloudException e = new CloudException(
+					response.getStatusMessage());
+			callbackObject.done(null, e);
 		}
 		
 	}
 	/**
-	 * 
-	 * @param callbackObject
+	 * returns the raw JSONObject wrapped by this class, only make direct changes to the underlying JSONObject
+	 * if you absolutely know what you are doing
+	 * @return
+	 */
+	public JSONObject getDocument() {
+		return document;
+	}
+	/**
+	 * deletes a saved CloudFile
+	 * @param callbackObject callback triggered when the call completes
 	 * @throws CloudException
 	 */
 	public void delete(CloudStringCallback callbackObject) throws CloudException{
@@ -299,21 +366,63 @@ public class CloudFile{
 				throw new CloudException("You cannot delete a file which does not have an URL");
 			}
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}
 		
 		JSONObject params  = new JSONObject();
 		try {
-			params.put("url", this.document.getString("url"));
+			params.put("fileObj", this.document);
 				
 		params.put("key", CloudApp.getAppKey());
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-//		client = new AsyncHttpClient();
-		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId()+"/delete";
-//		Future<Response> f = client.preparePost(url).addHeader("Content-type", "application/json").setBody(params.toString()).execute();
+		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId()+"/"+getId();
+		CBResponse response=CBParser.callJson(url, "DELETE", params);
+	if (response.getStatusCode() == 200) {
+		callbackObject.done(response.getStatusMessage(), null);
+	} else {
+		CloudException e = new CloudException(
+				response.getStatusMessage());
+		callbackObject.done(null, e);
+	}
+	}
+	public void getFileContent(ObjectCallback callback){
+		String url=CloudApp.getServerUrl()+"/file/" + CloudApp.getAppId() + "/" + getId()  ;
+		JSONObject params=new JSONObject();
+		try {
+			params.put("key", CloudApp.getAppKey());
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		CBResponse response=CBParser.callJson(url, "POST", params);
+		if(response.getStatusCode()==200){
+			try {
+				callback.done(response.getResponseBody(), null);
+			} catch (CloudException e) {
+				e.printStackTrace();
+			}
+			
+		} else
+			try {
+				callback.done(null, new CloudException(response.getStatusMessage()));
+			} catch (CloudException e) {
+				
+				e.printStackTrace();
+			}
+	}
+	public void fetch(final CloudFileArrayCallback callback) throws CloudException{
+		CloudQuery query=new CloudQuery("File");
+		query.equalTo("id", getId());
+		query.find(new CloudFileArrayCallback() {
+			
+			@Override
+			public void done(CloudFile[] x, CloudException t) throws CloudException {
+				callback.done(x, t);
+				
+			}
+		});
 	}
 }

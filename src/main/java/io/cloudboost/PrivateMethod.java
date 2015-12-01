@@ -1,6 +1,5 @@
 package io.cloudboost;
 
-//import io.cloudboost.util.SqlLite;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -69,7 +68,7 @@ public class PrivateMethod{
 	        email.setIsDeletable(false);
 	        email.setIsEditable(false);
 	        
-	        Column password = new Column("password", Column.DataType.Password, true, false);
+	        Column password = new Column("password", Column.DataType.EncryptedText, true, false);
 	        password.setIsDeletable(false);
 	        password.setIsEditable(false);
 	        
@@ -212,21 +211,21 @@ public class PrivateMethod{
 		try {
 			col = new JSONArray(object.document.get("_modifiedColumns").toString());
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}
 		for(int i=0;i < col.length();i++){
 			try {
 				modifiedColumns.add( col.getString(i));
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
 		try {
 			object.document.put("_isModified", true);
 		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		
@@ -239,7 +238,7 @@ public class PrivateMethod{
 		try {
 			object.document.put("_modifiedColumns", modifiedColumns);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -268,18 +267,15 @@ public class PrivateMethod{
 	}
 	
 	public static  String _getSessionId(){
-//		String session = SqlLite.getSessionId();
 		String session=CloudApp.SESSION_ID;
 		return session;
 	}
 	
 	public static  void  _setSessionId(String session){
-//		SqlLite.setSessionId(session);
 		CloudApp.SESSION_ID=session;
 	}
 	
 	public static  void  _deleteSessionId(){
-//		SqlLite.deleteSessionId();
 		CloudApp.SESSION_ID=null;
 	}
 	
@@ -289,7 +285,7 @@ public class PrivateMethod{
 			try {
 				obj.add(obj1.getString(i));
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
@@ -302,7 +298,7 @@ public class PrivateMethod{
 			try {
 				obj.add(obj1.get(i));
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

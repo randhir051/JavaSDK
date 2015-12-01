@@ -56,7 +56,7 @@ public class CloudSearch{
 				filtered.put("filter", new JSONObject());
 			}
 			} catch (JSONException e2) {
-				// TODO Auto-generated catch block
+				
 				e2.printStackTrace();
 			}
 			this.from = 0;
@@ -89,7 +89,7 @@ public class CloudSearch{
 				filtered.put("filter", new JSONObject());
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		this.from = 0;
@@ -140,7 +140,7 @@ public class CloudSearch{
 		
 		obj.put(columnName, column);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		this.sort.add(obj);
@@ -167,7 +167,7 @@ public class CloudSearch{
 		
 		obj.put(columnName, column);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		this.sort.add(obj);

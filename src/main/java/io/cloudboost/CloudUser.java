@@ -23,7 +23,7 @@ public class CloudUser extends CloudObject{
 		try {
 			this.document.put("_type", "user");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -53,7 +53,7 @@ public class CloudUser extends CloudObject{
 		try {
 			this.document.put("username", username);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		PrivateMethod._isModified(this, "username");
@@ -67,7 +67,7 @@ public class CloudUser extends CloudObject{
 		try {
 			return this.document.getString("username");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -81,7 +81,7 @@ public class CloudUser extends CloudObject{
 		try {
 			this.document.put("password", password);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		PrivateMethod._isModified(this, "password");
@@ -95,7 +95,7 @@ public class CloudUser extends CloudObject{
 		try {
 			return this.document.getString("password");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -109,7 +109,7 @@ public class CloudUser extends CloudObject{
 		try {
 			this.document.put("email", email);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		PrivateMethod._isModified(this, "email");
@@ -123,7 +123,7 @@ public class CloudUser extends CloudObject{
 		try {
 			return this.document.getString("email");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -327,7 +327,7 @@ public class CloudUser extends CloudObject{
 		}else{
 			return false;
 		}} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 			return false;
 		}

@@ -3,6 +3,8 @@ package io.cloudboost;
 /*
  * @author cloudboost
  */
+import io.cloudboost.util.CBParser;
+
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -68,7 +70,6 @@ class ACL{
 		acl = new JSONObject();
 		acl.put("read", read);
 		acl.put("write", write);} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -90,7 +91,7 @@ class ACL{
 			allowedWriteUser.add(i, user.getString(i));
 		}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return allowedWriteUser;
@@ -107,7 +108,7 @@ class ACL{
 			allowedReadUser.add(i, user.getString(i));
 		}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return allowedReadUser;
@@ -124,7 +125,7 @@ class ACL{
 			deniedWriteUser.add(i, user.getString(i));
 		}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return deniedWriteUser;
@@ -141,7 +142,7 @@ class ACL{
 			deniedReadUser.add(i, user.getString(i));
 		}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return deniedReadUser;
@@ -156,7 +157,6 @@ class ACL{
 		else{ // remove "all" from list
 			int index = allowedWriteUser.indexOf("all");
 			if (index >=0) {
-				System.out.println(allowedWriteUser.toString());
 				allowedWriteUser.remove("all");
 			}
 		}
@@ -166,7 +166,7 @@ class ACL{
 		
 			acl.put("write", write);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -190,7 +190,7 @@ class ACL{
 		read.put("allow", allowRead);
 		acl.put("read", read);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -224,7 +224,7 @@ class ACL{
 		write.put("allow", allowWrite);
 		acl.put("write", write);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}	
@@ -259,7 +259,7 @@ class ACL{
 		read.put("allow", allowRead);
 		acl.put("read", read);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}	
@@ -275,13 +275,13 @@ class ACL{
 		
 		//allowedRole
 		allowWrite = (JSONObject) write.get("allow");
-		allowedWriteRole = (ArrayList<String>) allowWrite.get("role");
+		allowedWriteRole =CBParser.jsonToList((JSONArray) allowWrite.get("role"));
 		
 		//deniedRole
 		denyWrite = (JSONObject) write.get("deny");
-		deniedWriteRole = (ArrayList<String>) denyWrite.get("role");
+		deniedWriteRole = CBParser.jsonToList((JSONArray) denyWrite.get("role"));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -315,7 +315,7 @@ class ACL{
 		write.put("allow", allowWrite);
 		acl.put("write", write);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -331,13 +331,13 @@ class ACL{
 		
 		//allowedReadRole
 		allowRead = (JSONObject) read.get("allow");
-		allowedReadRole = (ArrayList<String>) allowRead.get("role");
+		allowedReadRole = CBParser.jsonToList((JSONArray)  allowRead.get("role"));
 		
 		//deniedReadRole
 		denyRead = (JSONObject) read.get("deny");
-		deniedReadRole = (ArrayList<String>) denyRead.get("role");
+		deniedReadRole = CBParser.jsonToList((JSONArray)  denyRead.get("role"));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		if(value){
@@ -370,7 +370,7 @@ class ACL{
 		read.put("allow", allowRead);
 		acl.put("read", read);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

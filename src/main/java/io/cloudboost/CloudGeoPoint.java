@@ -41,7 +41,7 @@ public class CloudGeoPoint{
 	    }else{
 	    	throw new CloudException("latitude and longitudes are not in range");
 	    }} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -66,7 +66,7 @@ public class CloudGeoPoint{
             this.coordinates.set(0, longitude);
             this.document.put("coordinates", this.coordinates);
             this.document.put("_isModified", true);} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
         }else{
@@ -84,7 +84,7 @@ public class CloudGeoPoint{
 		try {
 			return this.document.getDouble("longitude");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return 0.0;
 		}
@@ -110,7 +110,7 @@ public class CloudGeoPoint{
             this.document.put("coordinates", this.coordinates);
             this.document.put("_isModified", true);
             } catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
         }else{
@@ -128,7 +128,7 @@ public class CloudGeoPoint{
 		try {
 			return this.document.getDouble("latitude");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return 0.0;
 		}
@@ -178,7 +178,7 @@ public class CloudGeoPoint{
 		
 		point.coordinates = (ArrayList<Double>) point.document.get("coordinates");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	    Double dLat =toRad(this.coordinates.get(1) - point.coordinates.get(1));

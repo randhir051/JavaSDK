@@ -33,7 +33,7 @@ public class SearchQuery{
 		this.bool.put("should", this.should);
 		this.bool.put("must_not", this.must_not);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -64,7 +64,7 @@ public class SearchQuery{
 	    match.put(columnName, column);
 	    obj.put("match", match);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 		return obj;
@@ -84,7 +84,7 @@ public class SearchQuery{
 	    }
 	    obj.put("multi_match", multi_match);
 } catch (JSONException e) {
-	// TODO Auto-generated catch block
+	
 	e.printStackTrace();
 }
 		return obj;
@@ -112,7 +112,7 @@ public class SearchQuery{
 	    match.put(columnName, column);
 	    obj.put("match", match);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 	    return obj;
@@ -125,7 +125,7 @@ public class SearchQuery{
 		multi_match.put("type", "best_fields");
 	    obj.put("multi_match",multi_match);
 } catch (JSONException e) {
-	// TODO Auto-generated catch block
+	
 	e.printStackTrace();
 }
 	    return obj;
@@ -154,7 +154,7 @@ public class SearchQuery{
 	    match.put(columnName, column);
 	    obj.put("match", match);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 	    return obj;
@@ -167,7 +167,7 @@ public class SearchQuery{
 		multi_match.put("type", "most_fields");
 	    obj.put("multi_match", multi_match);
 } catch (JSONException e) {
-	// TODO Auto-generated catch block
+	
 	e.printStackTrace();
 }
 	    return obj;
@@ -221,7 +221,7 @@ public class SearchQuery{
         match.put(columnName, column);
         obj.put("match", match);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 		return obj;
@@ -260,7 +260,7 @@ public class SearchQuery{
      
         obj.put("multi_match", multi_match);
 } catch (JSONException e) {
-	// TODO Auto-generated catch block
+	
 	e.printStackTrace();
 }
 		return obj;
@@ -291,7 +291,7 @@ public class SearchQuery{
 		try {
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -315,7 +315,7 @@ public class SearchQuery{
 		try {
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		    
@@ -351,7 +351,7 @@ public class SearchQuery{
 		try {
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -386,7 +386,7 @@ public class SearchQuery{
 		try {
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -418,7 +418,7 @@ public class SearchQuery{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 		return this;
@@ -449,7 +449,7 @@ public class SearchQuery{
 		this.should.add(obj);
 		this.bool.put("should", this.should);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 		return this;
@@ -480,7 +480,7 @@ public class SearchQuery{
 		this.must.add(obj);
 		this.bool.put("must", this.must);
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	} 
 		return this;
@@ -499,7 +499,7 @@ public class SearchQuery{
 		try {
 			this.bool.put("must", must);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	    
@@ -520,7 +520,7 @@ public class SearchQuery{
 			this.should.add(obj);
 			this.bool.put("should", this.should);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -540,7 +540,7 @@ public class SearchQuery{
 		try {
 			this.bool.put("must_not", this.must_not);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

@@ -49,7 +49,7 @@ public class CloudQuery {
 			this.query.put("$includeList", $includeList);
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		sort = new JSONObject();
@@ -160,7 +160,7 @@ public class CloudQuery {
 		try {
 			object.query.put("$or", array);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -331,7 +331,7 @@ public class CloudQuery {
 
 				this.query.put(columnName, obj);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		} else {
@@ -369,7 +369,7 @@ public class CloudQuery {
 					$ne = new JSONObject("{ $ne: " + "" + " }");
 					this.query.put(columnName, $ne);
 				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 
@@ -399,7 +399,7 @@ public class CloudQuery {
 			exists.put("$exists", true);
 			this.query.put(columnName, exists);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -424,7 +424,7 @@ public class CloudQuery {
 			exists.put("$exists", false);
 			this.query.put(columnName, exists);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -448,7 +448,7 @@ public class CloudQuery {
 
 			this.query.put("$includeList", this.includeList);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -472,7 +472,7 @@ public class CloudQuery {
 
 			this.query.put("$include", this.include);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -492,7 +492,7 @@ public class CloudQuery {
 		try {
 			this.query.put("$all", columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -513,7 +513,7 @@ public class CloudQuery {
 		try {
 			this.query.put("$any", columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -534,7 +534,7 @@ public class CloudQuery {
 		try {
 			this.query.put("$first", columnName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -562,7 +562,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $gt);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -590,7 +590,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $gte);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -618,7 +618,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $lt);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -647,7 +647,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $lte);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -669,7 +669,7 @@ public class CloudQuery {
 		try {
 			this.sort.put(columnName, 1);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -691,7 +691,7 @@ public class CloudQuery {
 		try {
 			this.sort.put(columnName, -1);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -748,7 +748,7 @@ public class CloudQuery {
 
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -767,7 +767,7 @@ public class CloudQuery {
 			try {
 				this.select.put(columnNames[i], 0);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
@@ -798,7 +798,7 @@ public class CloudQuery {
 			try {
 				this.query.put(columnName, (Object)null);
 			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 		}
@@ -825,11 +825,6 @@ public class CloudQuery {
 						dataz[i] = object[i].getId();
 					}
 					data=dataz;
-//					if(!this.query.has(columnName))
-//						this.query.put(columnName, (Object) null);
-//					if (this.query.get(columnName) == null) {
-//						this.query.put(columnName, (Object) null);
-//					}
 					if(!column.has("$in"))
 						column.put("$in", new ArrayList<String>());
 						if(column.get("$in") == null){
@@ -889,7 +884,7 @@ public class CloudQuery {
 
 				}
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		} else {
@@ -949,18 +944,13 @@ public class CloudQuery {
 
 					if (column.get("$in") == null) {
 						$in = new ArrayList<String>();
-						// column.put("$in", $in);
 					}
 
 					if (column.get("$nin") == null) {
 						$nin = new ArrayList<String>();
 						column.put("$nin", $nin);
 					}
-					// JSONArray in = column.getJSONArray("$in");
 					JSONArray nin = column.getJSONArray("$nin");
-					// for (int i = 0; i < in.length(); i++) {
-					// $in.add(in.get(i).toString());
-					// }
 					for (int i = 0; i < nin.length(); i++) {
 						$nin.add(nin.get(i).toString());
 					}
@@ -976,7 +966,6 @@ public class CloudQuery {
 
 						if ($in.contains(data[i].toString())) {
 							$in.remove(data[i].toString());
-							// column.put("$in", $in);
 							column.remove("$in");
 							this.query.put(columnName, column);
 						}
@@ -1047,8 +1036,6 @@ public class CloudQuery {
 				if (this.query.has(columnName)) {
 					column = this.query.getJSONObject(columnName);
 				}
-//				columnName = columnName + "._id";
-
 				if (data instanceof CloudObject[]) {
 
 					for (int i = 0; i < data.length; i++) {
@@ -1130,7 +1117,7 @@ public class CloudQuery {
 			args.put("$options", "im");
 			this.query.put(columnName, args);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -1158,7 +1145,7 @@ public class CloudQuery {
 					+ ", '$minDistance': " + minDistance + "}";
 			this.query.put(columnName, $near);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -1186,7 +1173,7 @@ public class CloudQuery {
 					/ 3963.2 + "] }";
 			this.query.put(columnName, $geoWithin);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -1217,7 +1204,7 @@ public class CloudQuery {
 					+ coordinates.toString() + "} }";
 			this.query.put(columnName, $geoWithin);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return this;
@@ -1237,33 +1224,17 @@ public class CloudQuery {
 			params.put("skip", this.skip);
 			params.put("key", CloudApp.getAppKey());
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}
-		// client = new AsyncHttpClient();
 		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/count";
-		Future<?> f = null;
-		// client.preparePost(url).addHeader("Content-type",
-		// "application/json").setBody(params.toString()).execute();
-		// try {
-		// if(f.get().getHeader("sessionId") != null){
-		// PrivateMethod._setSessionId(f.get().getHeader("sessionId"));
-		// }else{
-		// PrivateMethod._deleteSessionId();
-		// }
-		// if(f.get().getStatusCode() == 200){
-		// callbackObject.done(Integer.parseInt(f.get().getResponseBody()),
-		// null);
-		// }else{
-		// CloudException e = new CloudException(f.get().getResponseBody());
-		// callbackObject.done((Integer)null, e);
-		// }
-		// } catch (InterruptedException | ExecutionException | IOException e) {
-		// CloudException e1 = new CloudException(e.toString());
-		// callbackObject.done((Integer)null, e1);
-		// e.printStackTrace();
-		// }
+		CBResponse response=CBParser.callJson(url, "POST", params);
+		if(response.getStatusCode()==200){
+			callbackObject.done(Integer.valueOf(response.getResponseBody()), null);
+			
+		}else callbackObject.done(null, new CloudException(response.getStatusMessage()));
+
 	}
 
 	public void distinct(String[] keys, CloudObjectArrayCallback callbackObject)
@@ -1306,20 +1277,7 @@ public class CloudQuery {
 		 e.printStackTrace();
 		 }
 	}
-//
-//	 protected String getASCIIContentFromEntity(HttpEntity entity)
-//	 throws IllegalStateException, IOException {
-//	 InputStream in = entity.getContent();
-//	 StringBuffer out = new StringBuffer();
-//	 int n = 1;
-//	 while (n > 0) {
-//	 byte[] b = new byte[4096];
-//	 n = in.read(b);
-//	 if (n > 0)
-//	 out.append(new String(b, 0, n));
-//	 }
-//	 return out.toString();
-//	 }
+
 	@Override
 	public String toString(){
 		JSONObject params=new JSONObject();
@@ -1335,6 +1293,52 @@ public class CloudQuery {
 		}
 		return params.toString();
 	}
+	public void find(CloudFileArrayCallback callbackObject)
+			throws CloudException {
+		if (CloudApp.getAppId() == null) {
+			throw new CloudException("App Id is null");
+		}
+
+		JSONObject params = new JSONObject();
+		try {
+			params.put("query", this.query);
+
+			params.put("select", this.select);
+			params.put("limit", this.limit);
+			params.put("skip", this.skip);
+			params.put("sort", this.sort);
+			params.put("key", CloudApp.getAppKey());
+		} catch (JSONException e2) {
+			e2.printStackTrace();
+		}
+		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+				+ "/" + this.tableName + "/find";
+		CBResponse response = CBParser.callJson(url, "POST", params);
+		try {
+
+			if (response.getStatusCode() == 200) {
+				JSONArray body = new JSONArray(response.getResponseBody());
+					CloudFile[] object = new CloudFile[body.length()];
+
+					for (int i = 0; i < object.length; i++) {
+						CloudFile file=new CloudFile(body.getJSONObject(i));
+
+						object[i]= file;
+					}
+					callbackObject.done(object, null);
+
+			} else {
+				CloudException e = new CloudException(
+						response.getResponseBody());
+				callbackObject.done((CloudFile[]) null, e);
+			}
+		} catch (JSONException e) {
+			CloudException e1 = new CloudException(e.toString());
+			callbackObject.done((CloudFile[]) null, e1);
+			e.printStackTrace();
+		}
+	}
+
 	public void find(CloudObjectArrayCallback callbackObject)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -1444,7 +1448,7 @@ public class CloudQuery {
 			params.put("sort", this.sort);
 			params.put("key", CloudApp.getAppKey());
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}
 		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()

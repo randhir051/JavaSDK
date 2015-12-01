@@ -1,9 +1,10 @@
 package io.cloudboost;
 
 import io.cloudboost.Column.DataType;
-import io.cloudboost.util.UUID;
 import junit.framework.Assert;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
 
 /**
@@ -102,6 +103,25 @@ public class CloudTableTest {
 	}
 
 	@Test(timeout = 60000)
+	public void shouldGetAllTable() throws CloudException {
+		initialize();
+		CloudTable.getAll(new CloudTableArrayCallback() {
+
+			@Override
+			public void done(CloudTable[] table, CloudException e)
+					throws CloudException {
+				if (e != null) {
+					Assert.fail(e.getMessage());
+				}
+				if (table.length > 0) {
+					Assert.assertTrue(table.length > 0);
+				}
+			}
+
+		});
+	}
+
+	@Test(timeout = 60000)
 	public void GetAllTable() throws CloudException {
 		initialize();
 		CloudTable.getAll(new CloudTableArrayCallback() {
@@ -179,6 +199,35 @@ public class CloudTableTest {
 		});
 	}
 
+	@Test(timeout = 50000)
+	public void shouldCreateAndDeleteTable() throws CloudException {
+		initialize();
+		final String tableName = PrivateMethod._makeString();
+		CloudTable obj = new CloudTable(tableName);
+		obj.save(new CloudTableCallback() {
+			@Override
+			public void done(CloudTable table, CloudException e)
+					throws CloudException {
+				table.delete(new CloudStringCallback() {
+					@Override
+					public void done(String response, CloudException e) {
+
+						if (e != null) {
+							Assert.fail(e.getMessage());
+						}
+
+						if (response == null) {
+							Assert.fail("Should have delete the  table");
+						} else {
+							Assert.assertEquals(response, "Success");
+						}
+
+					}
+				});
+			}
+		});
+	}
+
 	@Test(timeout = 40000)
 	public void addColumnAfterSave() throws CloudException {
 		initialize();
@@ -207,6 +256,65 @@ public class CloudTableTest {
 				}
 			}
 		});
+	}
+
+	@Test(timeout = 40000)
+	public void setTableType() throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Sample");
+		CloudTable.get(table, new CloudTableCallback() {
+			@Override
+			public void done(CloudTable newTable, CloudException e)
+					throws CloudException {
+				try {
+					newTable.document.put("_type", "newType");
+				} catch (JSONException e1) {
+					e1.printStackTrace();
+				}
+				newTable.save(new CloudTableCallback() {
+					@Override
+					public void done(CloudTable table, CloudException e)
+							throws CloudException {
+						if (e != null) {
+							Assert.assertEquals(e.getMessage(),
+									"Internal Server Error");
+						}
+						if (table != null) {
+							Assert.assertEquals("table", table.getType());
+						}
+					}
+				});
+			}
+		});
+
+	}
+
+	@Test(timeout = 40000)
+	public void addColumnToExistingTable() throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Sample");
+		CloudTable.get(table, new CloudTableCallback() {
+			@Override
+			public void done(CloudTable newTable, CloudException e)
+					throws CloudException {
+				final String name = PrivateMethod._makeString();
+				Column col = new Column(name, DataType.Text, false, false);
+				newTable.addColumn(col);
+				newTable.save(new CloudTableCallback() {
+					@Override
+					public void done(CloudTable table, CloudException e)
+							throws CloudException {
+						if (e != null) {
+							Assert.fail(e.getMessage());
+						}
+						if (table != null) {
+							Assert.assertFalse(table.getColumn(name) == null);
+						}
+					}
+				});
+			}
+		});
+
 	}
 
 	@Test(timeout = 40000)
@@ -524,7 +632,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createListTable() throws CloudException {
 		initialize();
-		final String name=PrivateMethod._makeString();
+		final String name = PrivateMethod._makeString();
 		CloudTable obj = new CloudTable(name);
 		Column subject = new Column("subject", DataType.List, false, false);
 		subject.setRelatedTo(DataType.Text);
@@ -560,7 +668,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableAllDataTypes() throws CloudException {
 		initialize();
-		final String name=PrivateMethod._makeString();
+		final String name = PrivateMethod._makeString();
 		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("email", DataType.Email, false, false);
 		custom.addColumn(newColumn);
@@ -589,7 +697,7 @@ public class CloudTableTest {
 				}
 
 				if (table != null) {
-					Assert.assertEquals(table.getTableName(),name);
+					Assert.assertEquals(table.getTableName(), name);
 					table.delete(new CloudStringCallback() {
 						@Override
 						public void done(String response, CloudException e)
@@ -605,14 +713,327 @@ public class CloudTableTest {
 	}
 
 	@Test(timeout = 50000)
-	public void updateTableCustom() {
+	public void shouldGiveAllTable() throws CloudException {
+		initialize();
 
+	}
+	@Test(timeout = 50000)
+	public void shouldGiveSpecificTable() throws CloudException {
+		initialize();
+
+	}
+	@Test(timeout = 50000)
+	public void shouldGiveSpecificTableByName() throws CloudException {
+		initialize();
+		CloudTable.get("Employee", new CloudTableCallback() {
+			
+			@Override
+			public void done(CloudTable table, CloudException e) throws CloudException {
+				if(e!=null)
+					Assert.fail(e.getMessage());
+				else Assert.assertFalse(table==null);
+				
+			}
+		});
+
+	}
+	@Test(timeout = 50000)
+	public void shouldCreateColumnThenDelete() throws CloudException {
+		initialize();
+		CloudTable.get("Employee", new CloudTableCallback() {
+			
+			@Override
+			public void done(CloudTable table, CloudException e) throws CloudException {
+				if(e!=null)
+					Assert.fail(e.getMessage());
+				else{
+					Column col=new Column("Test2", DataType.Text);
+					table.addColumn(col);
+					table.save(new CloudTableCallback() {
+						
+						@Override
+						public void done(CloudTable table, CloudException e) throws CloudException {
+							if(e!=null)
+								Assert.fail(e.getMessage());
+							else{
+								if(table.getColumn("Test2")==null)
+									Assert.fail("Failed to add column");
+								table.deleteColumn("Test2");
+								table.save(new CloudTableCallback() {
+									
+									@Override
+									public void done(CloudTable table, CloudException e) throws CloudException {
+										if(e!=null)
+											Assert.fail(e.getMessage());
+										else{
+											Assert.assertEquals(null,table.getColumn("Test2"));
+											}
+										
+									}
+								});
+							}
+							
+						}
+					});
+				}
+				
+			}
+		});
+
+	}
+
+	@Test(timeout = 50000)
+	public void shouldUpdateColumnInTable() throws CloudException {
+		CloudTable table = new CloudTable("abcd");
+		Column col = new Column("name", DataType.Text, false, true);
+		System.out.println("column=" + col.document.toString());
+		table.addColumn(col);
+		Column col2 = table.getColumn("name");
+		System.out.println("column2=" + col2);
+		col2.setRequired(false);
+		table.updateColumn(col2);
+		Column col3 = table.getColumn("name");
+		Assert.assertEquals(col3.getRequired(), false);
+		// update column cant take string in java because of serious type
+		// management
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotDeleteDefaultColumn() throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Company");
+		CloudTable.get(table, new CloudTableCallback() {
+
+			@Override
+			public void done(CloudTable table, CloudException ee)
+					throws CloudException {
+				try {
+					table.deleteColumn(table.getColumn("id"));
+				} catch (CloudException e) {
+					Assert.assertEquals("Can Not Delete a Reserved Column",
+							e.getMessage());
+				}
+
+			}
+		});
+		// update column cant take string in java because of java type
+		// restriction
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotPassStringToUpdateColumn() throws CloudException {
+		CloudTable table = new CloudTable("abcd");
+		Column col = new Column("name", DataType.Text, false, true);
+		table.addColumn(col);
+		// update column cant take string in java because of java type
+		// restriction
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotChangeDataTypeOfColumn() throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable(PrivateMethod._makeString());
+		Column col = new Column("name", DataType.Text, false, true);
+		table.addColumn(col);
+		table.save(new CloudTableCallback() {
+
+			@Override
+			public void done(CloudTable table, CloudException e)
+					throws CloudException {
+				Column col = table.getColumn("name");
+				try {
+					col.document.put("dataType", DataType.valueOf("Number"));
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				table.updateColumn(col);
+				table.save(new CloudTableCallback() {
+
+					@Override
+					public void done(CloudTable table, CloudException e)
+							throws CloudException {
+						try {
+							DataType dt = DataType.valueOf("Text");
+							Assert.assertEquals(dt,
+									table.getColumn("name").document
+											.get("dataType"));
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				});
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldGetColumnFromTable() throws CloudException {
+		CloudTable table = new CloudTable("abcd");
+		Column col = new Column("name", DataType.Text, false, true);
+		table.addColumn(col);
+		Assert.assertTrue(table.getColumn("name") != null);
+		// update column cant take string in java because of java type
+		// restriction
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotRenameColumn() throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Company");
+		CloudTable.get(table, new CloudTableCallback() {
+
+			@Override
+			public void done(final CloudTable table, CloudException e)
+					throws CloudException {
+				Column col = table.getColumn(0);
+				final String colname = col.getColumnName();
+				col.setColumnName("abcd");
+				table.updateColumn(col);
+				table.save(new CloudTableCallback() {
+
+					@Override
+					public void done(CloudTable nutable, CloudException e)
+							throws CloudException {
+						if (e == null) {
+							Assert.assertFalse(nutable.getColumn(colname) == null);
+						}
+
+					}
+				});
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotChangeUniquePropertyOfPreDefinedColumn()
+			throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Company");
+		CloudTable.get(table, new CloudTableCallback() {
+
+			@Override
+			public void done(final CloudTable table, CloudException e)
+					throws CloudException {
+				Column col = table.getColumn(0);
+				final boolean comparer = col.getUnique();
+				final String colname = col.getColumnName();
+				col.setUnique(!comparer);
+				table.updateColumn(col);
+				table.save(new CloudTableCallback() {
+
+					@Override
+					public void done(CloudTable nutable, CloudException e)
+							throws CloudException {
+						if (e == null) {
+							Assert.assertEquals(nutable.getColumn(colname)
+									.getUnique(), comparer);
+						}
+
+					}
+				});
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotChangeUniquePropertyOfDefaultColumn()
+			throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Company");
+		CloudTable.get(table, new CloudTableCallback() {
+			@Override
+			public void done(final CloudTable table, CloudException e)
+					throws CloudException {
+				Column col = table.getColumn(0);
+				final String colname = col.getColumnName();
+				final boolean comparer = col.getUnique();
+				col.setUnique(!comparer);
+				table.updateColumn(col);
+				table.save(new CloudTableCallback() {
+
+					@Override
+					public void done(CloudTable nutable, CloudException e)
+							throws CloudException {
+						if (e == null)
+							Assert.assertEquals(nutable.getColumn(colname)
+									.getUnique(), comparer);
+
+					}
+				});
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldNotChangeRequiredPropertyOfDefaultColumn()
+			throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Company");
+		CloudTable.get(table, new CloudTableCallback() {
+			@Override
+			public void done(final CloudTable table, CloudException e)
+					throws CloudException {
+				table.getColumn(0).setRequired(false);
+				table.save(new CloudTableCallback() {
+
+					@Override
+					public void done(CloudTable nutable, CloudException e)
+							throws CloudException {
+						if (e == null)
+							Assert.assertEquals(nutable.getColumn(0)
+									.getRequired(), table.getColumn(0)
+									.getRequired());
+
+					}
+				});
+
+			}
+		});
+	}
+
+	@Test(timeout = 50000)
+	public void shouldChangeRequiredPropertyOfUserDefinedColumn()
+			throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable(PrivateMethod._makeString());
+		Column col = new Column("name", DataType.Text, false, true);
+		table.addColumn(col);
+		table.save(new CloudTableCallback() {
+
+			@Override
+			public void done(CloudTable table, CloudException e)
+					throws CloudException {
+
+				Column name = table.getColumn("name");
+				name.setRequired(false);
+				table.updateColumn(name);
+				table.save(new CloudTableCallback() {
+
+					@Override
+					public void done(CloudTable table, CloudException e)
+							throws CloudException {
+						if (e == null)
+							Assert.assertFalse(table.getColumn("name")
+									.getRequired());
+
+					}
+				});
+
+			}
+		});
 	}
 
 	@Test(timeout = 50000)
 	public void createTableStoreGeoPoint() throws CloudException {
 		initialize();
-		final String name=PrivateMethod._makeString();
+		final String name = PrivateMethod._makeString();
 		CloudTable custom = new CloudTable(name);
 		Column newColumn = new Column("location", DataType.GeoPoint, false,
 				false);
@@ -639,7 +1060,6 @@ public class CloudTableTest {
 			}
 		});
 	}
-
 
 	@Test(timeout = 50000)
 	public void createTableSetRelationsToExistingTables() throws CloudException {

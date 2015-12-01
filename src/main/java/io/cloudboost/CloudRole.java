@@ -44,7 +44,7 @@ public class CloudRole extends CloudObject{
 		try {
 			this.document.put("name", roleName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -59,7 +59,7 @@ public class CloudRole extends CloudObject{
 		try {
 			return this.document.getString("name");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -91,7 +91,7 @@ public class CloudRole extends CloudObject{
 			callbackObject.done(null, e1);
 		} 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

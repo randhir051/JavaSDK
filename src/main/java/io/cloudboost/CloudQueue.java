@@ -40,7 +40,7 @@ public class CloudQueue {
 					: queueType);
 			document.put("messages", this.messages);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		this.thisObj=this;
@@ -82,7 +82,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -117,7 +117,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -128,7 +128,7 @@ public class CloudQueue {
 		try {
 			document.put(propertyName, value);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -188,7 +188,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -235,7 +235,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -283,7 +283,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -332,7 +332,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -668,7 +668,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -688,7 +688,7 @@ public class CloudQueue {
 			try {
 				document.put(key, obj.get(key));
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
@@ -709,7 +709,6 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-//					merge(body);
 					this.thisObj.document=body;
 					
 					callback.done(this.thisObj, null);
@@ -725,7 +724,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -758,7 +757,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -796,7 +795,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 

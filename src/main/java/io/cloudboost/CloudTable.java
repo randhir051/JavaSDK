@@ -8,7 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 /**
- * 
+ * An abstract wrapper for tables in CloudBoost, with methods to fetch table details, create
+ * tables, delete etc.
  * @author cloudboost
  *
  */
@@ -42,12 +43,18 @@ public class CloudTable{
 		
 		this.document.put("columns", PrivateMethod._defaultColumns(this.document.getString("type")));
 	} catch (JSONException e2) {
-		// TODO Auto-generated catch block
+		
 		e2.printStackTrace();
 	}	
 	}
 	
-	
+	public String getType(){
+		try {
+			return this.document.getString("_type");
+		} catch (JSONException e) {
+			return null;
+		}
+	}
 	/***
 	 * 
 	 * @param tableName
@@ -56,7 +63,7 @@ public class CloudTable{
 		try {
 			this.document.put("name", tableName);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -65,7 +72,7 @@ public class CloudTable{
 		try {
 			return this.document.getString("name");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -75,7 +82,7 @@ public class CloudTable{
 		try {
 			return this.document.getString("type");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -105,27 +112,69 @@ public class CloudTable{
 		columnList.put(column.document);
 		this.document.put("columns", columnList);
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}	
 	}
+	public void setColumn(Column column) throws CloudException{
+		if(!PrivateMethod._columnValidation(column, this)){
+			throw new CloudException("Invalid Column Found, Do Not Use Reserved Column Names");
+		}
+		try{
+			String name=column.getColumnName();
+		JSONArray columnList = new JSONArray( this.document.get("columns").toString());
+		for(int i=0; i<columnList.length(); i++){
+			if(columnList.getJSONObject(i).getString("name").equals(name)){
+				columnList.remove(i);
+				columnList.put(i, column.document);
+				break;
+			}
+		}
+		this.document.put("columns", columnList);
+		} catch (JSONException e2) {
+			
+			e2.printStackTrace();
+		}	
+	}
+	public JSONArray getColumns(){
+		JSONArray arr=null;
+		try {
+			arr= new JSONArray( this.document.get("columns").toString());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+
 	public Column getColumn(String name){
 		Column col = null;
 		try {
 			JSONArray columnList = new JSONArray( this.document.get("columns").toString());
 			for(int i=0; i<columnList.length(); i++){
-				if(columnList.getJSONObject(i).get("name") == name){
+				if(columnList.getJSONObject(i).getString("name").equals(name)){
 					JSONObject obj=columnList.getJSONObject(i);
-					col=new Column(name, (DataType)obj.get("dataType"), obj.getBoolean("required"), obj.getBoolean("unique"));
+					col=new Column(name, DataType.valueOf(obj.getString("dataType")), obj.getBoolean("required"), obj.getBoolean("unique"));
 					break;
 				}
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return col;
 
+	}
+	public Column getColumn(int index){
+		Column col=null;
+		try {
+			JSONArray columnList = new JSONArray( this.document.get("columns").toString());
+			col=new Column("name", DataType.Text, false, false);
+			col.document=columnList.getJSONObject(index);
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		return col;
 	}
 	public void updateColumn(Column column){
 		Column col = null;
@@ -139,7 +188,7 @@ public class CloudTable{
 				}
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -171,14 +220,36 @@ public class CloudTable{
 		}else{try{
 			JSONArray col = new JSONArray( this.document.get("columns").toString());
 			for(int i=0; i<col.length(); i++){
-				if(col.getJSONObject(i).get("name") == column.document.get("name")){
+				if(col.getJSONObject(i).getString("name").equals(column.document.getString("name"))){
 					col.remove(i);
 					break;
 				}
 			}
 			this.document.put("columns", col);
 		} catch (JSONException e2) {
-			// TODO Auto-generated catch block
+			
+			e2.printStackTrace();
+		}	
+		}
+	}
+	public void deleteColumn(String name) throws CloudException{
+		Column column=getColumn(name);
+		if(column==null)
+			throw new CloudException("Trying to delete inexistent column");
+		if(!PrivateMethod._columnValidation(column, this)){
+			throw new CloudException("Can Not Delete a Reserved Column");
+		}else{try{
+			JSONArray col = new JSONArray( this.document.get("columns").toString());
+			for(int i=0; i<col.length(); i++){
+				
+				if(col.getJSONObject(i).getString("name") .equals(column.document.getString("name"))){
+					col.remove(i);
+					break;
+				}
+			}
+			this.document.put("columns", col);
+		} catch (JSONException e2) {
+			
 			e2.printStackTrace();
 		}	
 		}
@@ -293,7 +364,6 @@ public class CloudTable{
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getServiceUrl()+"/"+CloudApp.getAppId()+"/table/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "PUT", params);
-
 			if(response.getStatusCode() == 200){
 				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
@@ -342,5 +412,16 @@ public class CloudTable{
 			callbackObject.done((String)null, e1);
 			e.printStackTrace();
 		}
+	}
+
+	public static void get(String string, CloudTableCallback callbackObject) {
+		CloudTable table=new CloudTable(string);
+		try {
+			get(table, callbackObject);
+		} catch (CloudException e) {
+			
+			e.printStackTrace();
+		}
+		
 	}
 }
