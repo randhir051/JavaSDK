@@ -276,7 +276,7 @@ class ACL{
 		//allowedRole
 		allowWrite = (JSONObject) write.get("allow");
 		allowedWriteRole =CBParser.jsonToList((JSONArray) allowWrite.get("role"));
-		
+		System.out.println("allowedwriterole="+allowedWriteRole);
 		//deniedRole
 		denyWrite = (JSONObject) write.get("deny");
 		deniedWriteRole = CBParser.jsonToList((JSONArray) denyWrite.get("role"));
@@ -291,9 +291,13 @@ class ACL{
 				allowedWriteUser.remove(index);
 			}			
 			index = allowedWriteRole.indexOf(roleId);
+			System.out.println("index="+index);
+			System.out.println("allowedwriterole="+allowedWriteRole);
 			if(index <= -1){
+				System.out.println("adding roleid");
 				allowedWriteRole.add(roleId);
 			}
+			System.out.println("allowwriterole now="+allowedWriteRole);
 		}else{
 			index = allowedWriteRole.indexOf(roleId);
 			if(index > -1){
@@ -314,6 +318,7 @@ class ACL{
 		write.put("deny", denyWrite);
 		write.put("allow", allowWrite);
 		acl.put("write", write);
+		System.out.println("acl="+acl.toString());
 		} catch (JSONException e) {
 			
 			e.printStackTrace();

@@ -13,159 +13,163 @@ public class CreateTableTest {
 				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
 	}
 
-//	@Test(timeout = 50000)
-//	public void sequentialTests_0() throws CloudException {
-//		initialize();
-//		CloudTable table = new CloudTable("Address");
-//		CloudTable.get(table, new CloudTableCallback() {
-//
-//			@Override
-//			public void done(CloudTable table, CloudException e)
-//					throws CloudException {
-//				if(e!=null)
-//					Assert.fail(e.getMessage());
-//				else
-//				table.delete(new CloudStringCallback() {
-//
-//					@Override
-//					public void done(String x, CloudException e)
-//							throws CloudException {
-//						if (e != null)
-//							Assert.fail(e.getMessage());
-//						else if ("Success".equals(x)) {
-//							CloudTable company = new CloudTable("Company");
-//							CloudTable.get(company, new CloudTableCallback() {
-//
-//								@Override
-//								public void done(CloudTable table,
-//										CloudException e) throws CloudException {
-//									table.delete(new CloudStringCallback() {
-//
-//										@Override
-//										public void done(String x,
-//												CloudException e)
-//												throws CloudException {
-//											if (e != null)
-//												Assert.fail(e.getMessage());
-//											else if ("Success".equals(x)) {
-//												CloudTable employee = new CloudTable(
-//														"Employee");
-//												CloudTable
-//														.get(employee,
-//																new CloudTableCallback() {
-//
-//																	@Override
-//																	public void done(
-//																			CloudTable table,
-//																			CloudException e)
-//																			throws CloudException {
-//																		table.delete(new CloudStringCallback() {
-//
-//																			@Override
-//																			public void done(
-//																					String x,
-//																					CloudException e)
-//																					throws CloudException {
-//																				if (e != null)
-//																					Assert.fail(e
-//																							.getMessage());
-//																				else if ("Success"
-//																						.equals(x)) {
-//																					// create
-//																					// employee
-//																					// table
-//																					CloudTable employee = createEmployee();
-//																					employee.save(new CloudTableCallback() {
-//
-//																						@Override
-//																						public void done(
-//																								CloudTable table,
-//																								CloudException e)
-//																								throws CloudException {
-//																							if (e != null)
-//																								Assert.fail(e
-//																										.getMessage());
-//																							CloudTable company = createCompany();
-//																							company.save(new CloudTableCallback() {
-//
-//																								@Override
-//																								public void done(
-//																										CloudTable table,
-//																										CloudException e)
-//																										throws CloudException {
-//																									if (e != null)
-//																										Assert.fail(e
-//																												.getMessage());
-//																									CloudTable address = createAddress();
-//																									address.save(new CloudTableCallback() {
-//
-//																										@Override
-//																										public void done(
-//																												CloudTable table,
-//																												CloudException e)
-//																												throws CloudException {
-//																											if (e != null)
-//																												Assert.fail(e
-//																														.getMessage());
-//																											updateEmployeeSchema(new CloudTableCallback() {
-//
-//																												@Override
-//																												public void done(
-//																														CloudTable table,
-//																														CloudException e)
-//																														throws CloudException {
-//																													if (e != null)
-//																														Assert.fail(e
-//																																.getMessage());
-//																													updateCompanySchema(new CloudTableCallback() {
-//
-//																														@Override
-//																														public void done(
-//																																CloudTable table,
-//																																CloudException e)
-//																																throws CloudException {
-//																															if (e != null)
-//																																Assert.fail(e
-//																																		.getMessage());
-//																															Assert.assertTrue(table != null);
-//
-//																														}
-//																													});
-//
-//																												}
-//																											});
-//
-//																										}
-//																									});
-//
-//																								}
-//																							});
-//
-//																						}
-//																					});
-//																				}
-//
-//																			}
-//																		});
-//
-//																	}
-//																});
-//											}
-//
-//										}
-//									});
-//
-//								}
-//							});
-//						}
-//
-//					}
-//				});
-//
-//			}
-//		});
-//
-//	}
+	@Test(timeout = 50000)
+	public void sequentialTests_0() throws CloudException {
+		initialize();
+		CloudTable table = new CloudTable("Address");
+		CloudTable.get(table, new CloudTableCallback() {
+
+			@Override
+			public void done(CloudTable table, CloudException e)
+					throws CloudException {
+				if (e != null)
+					Assert.fail(e.getMessage());
+				else
+					table.delete(new CloudStringCallback() {
+
+						@Override
+						public void done(String x, CloudException e)
+								throws CloudException {
+							if (e != null)
+								Assert.fail(e.getMessage());
+							else if ("Success".equals(x)) {
+								CloudTable company = new CloudTable("Company");
+								CloudTable.get(company,
+										new CloudTableCallback() {
+
+											@Override
+											public void done(CloudTable table,
+													CloudException e)
+													throws CloudException {
+												table.delete(new CloudStringCallback() {
+
+													@Override
+													public void done(String x,
+															CloudException e)
+															throws CloudException {
+														if (e != null)
+															Assert.fail(e
+																	.getMessage());
+														else if ("Success"
+																.equals(x)) {
+															CloudTable employee = new CloudTable(
+																	"Employee");
+															CloudTable
+																	.get(employee,
+																			new CloudTableCallback() {
+
+																				@Override
+																				public void done(
+																						CloudTable table,
+																						CloudException e)
+																						throws CloudException {
+																					table.delete(new CloudStringCallback() {
+
+																						@Override
+																						public void done(
+																								String x,
+																								CloudException e)
+																								throws CloudException {
+																							if (e != null)
+																								Assert.fail(e
+																										.getMessage());
+																							else if ("Success"
+																									.equals(x)) {
+																								// create
+																								// employee
+																								// table
+																								CloudTable employee = createEmployee();
+																								employee.save(new CloudTableCallback() {
+
+																									@Override
+																									public void done(
+																											CloudTable table,
+																											CloudException e)
+																											throws CloudException {
+																										if (e != null)
+																											Assert.fail(e
+																													.getMessage());
+																										CloudTable company = createCompany();
+																										company.save(new CloudTableCallback() {
+
+																											@Override
+																											public void done(
+																													CloudTable table,
+																													CloudException e)
+																													throws CloudException {
+																												if (e != null)
+																													Assert.fail(e
+																															.getMessage());
+																												CloudTable address = createAddress();
+																												address.save(new CloudTableCallback() {
+
+																													@Override
+																													public void done(
+																															CloudTable table,
+																															CloudException e)
+																															throws CloudException {
+																														if (e != null)
+																															Assert.fail(e
+																																	.getMessage());
+																														updateEmployeeSchema(new CloudTableCallback() {
+
+																															@Override
+																															public void done(
+																																	CloudTable table,
+																																	CloudException e)
+																																	throws CloudException {
+																																if (e != null)
+																																	Assert.fail(e
+																																			.getMessage());
+																																updateCompanySchema(new CloudTableCallback() {
+
+																																	@Override
+																																	public void done(
+																																			CloudTable table,
+																																			CloudException e)
+																																			throws CloudException {
+																																		if (e != null)
+																																			Assert.fail(e
+																																					.getMessage());
+																																		Assert.assertTrue(table != null);
+
+																																	}
+																																});
+
+																															}
+																														});
+
+																													}
+																												});
+
+																											}
+																										});
+
+																									}
+																								});
+																							}
+
+																						}
+																					});
+
+																				}
+																			});
+														}
+
+													}
+												});
+
+											}
+										});
+							}
+
+						}
+					});
+
+			}
+		});
+
+	}
 
 	public CloudTable createEmployee() {
 		Column age = new Column("age", DataType.Number, false, false);
@@ -272,7 +276,7 @@ public class CreateTableTest {
 			@Override
 			public void done(CloudTable table, CloudException e)
 					throws CloudException {
-				if(e!=null)
+				if (e != null)
 					Assert.fail(e.getMessage());
 				table.delete(new CloudStringCallback() {
 
@@ -308,36 +312,38 @@ public class CreateTableTest {
 			@Override
 			public void done(CloudTable table, CloudException e)
 					throws CloudException {
-				if(e!=null)
+				if (e != null)
 					Assert.fail(e.getMessage());
 				else
-				table.delete(new CloudStringCallback() {
+					table.delete(new CloudStringCallback() {
 
-					@Override
-					public void done(String x, CloudException e)
-							throws CloudException {
-						if ("Success".equals(x)) {
-							CloudTable underscore = new CloudTable(
-									"UnderScoreTable_a");
-							Column age_a = new Column("Age_a", DataType.Text,
-									false, false);
-							Column age_b = new Column("Age_b", DataType.Text,
-									false, false);
+						@Override
+						public void done(String x, CloudException e)
+								throws CloudException {
+							if ("Success".equals(x)) {
+								CloudTable underscore = new CloudTable(
+										"UnderScoreTable_a");
+								Column age_a = new Column("Age_a",
+										DataType.Text, false, false);
+								Column age_b = new Column("Age_b",
+										DataType.Text, false, false);
 
-							underscore.addColumn(new Column[] { age_a, age_b });
-							underscore.save(new CloudTableCallback() {
+								underscore.addColumn(new Column[] { age_a,
+										age_b });
+								underscore.save(new CloudTableCallback() {
 
-								@Override
-								public void done(CloudTable table,
-										CloudException e) throws CloudException {
-									Assert.assertTrue(table != null);
+									@Override
+									public void done(CloudTable table,
+											CloudException e)
+											throws CloudException {
+										Assert.assertTrue(table != null);
 
-								}
-							});
+									}
+								});
+							}
+
 						}
-
-					}
-				});
+					});
 
 			}
 		});
@@ -572,51 +578,65 @@ public class CreateTableTest {
 					Assert.fail(e.getMessage());
 				else {
 					table.delete(new CloudStringCallback() {
-						
+
 						@Override
-						public void done(String x, CloudException e) throws CloudException {
+						public void done(String x, CloudException e)
+								throws CloudException {
 							if (e != null)
 								Assert.fail(e.getMessage());
-							else if("Success".equals(x)){
+							else if ("Success".equals(x)) {
 								CloudTable custom = new CloudTable("Custom");
-								Column column1 = new Column("newColumn1", DataType.Email, false, false);
-								Column column2 = new Column("newColumn2", DataType.Text, false, false);
-								Column column3 = new Column("newColumn3", DataType.URL, false, false);
-								Column column4 = new Column("newColumn4", DataType.Number, false, false);
-								Column column5 = new Column("newColumn5", DataType.Boolean, false,
-										false);
-								Column column6 = new Column("newColumn6", DataType.DateTime, false,
-										false);
-								Column column7 = new Column("newColumn7", DataType.Object, false, false);
-								Column column8 = new Column("newColumn8", DataType.GeoPoint, false,
-										false);
-								custom.addColumn(new Column[] { column1, column2, column3, column4,
-										column5, column6, column7, column8 });
+								Column column1 = new Column("newColumn1",
+										DataType.Email, false, false);
+								Column column2 = new Column("newColumn2",
+										DataType.Text, false, false);
+								Column column3 = new Column("newColumn3",
+										DataType.URL, false, false);
+								Column column4 = new Column("newColumn4",
+										DataType.Number, false, false);
+								Column column5 = new Column("newColumn5",
+										DataType.Boolean, false, false);
+								Column column6 = new Column("newColumn6",
+										DataType.DateTime, false, false);
+								Column column7 = new Column("newColumn7",
+										DataType.Object, false, false);
+								Column column8 = new Column("newColumn8",
+										DataType.GeoPoint, false, false);
+								custom.addColumn(new Column[] { column1,
+										column2, column3, column4, column5,
+										column6, column7, column8 });
 								custom.save(new CloudTableCallback() {
-									
+
 									@Override
-									public void done(CloudTable table, CloudException e) throws CloudException {
-										if(e!=null)
+									public void done(CloudTable table,
+											CloudException e)
+											throws CloudException {
+										if (e != null)
 											Assert.fail(e.getMessage());
-										else{
-											Column col = table.getColumn("newColumn7");
+										else {
+											Column col = table
+													.getColumn("newColumn7");
 											col.setDataType(DataType.List);
-											col.setRelatedTo(new CloudTable("Custom"));
+											col.setRelatedTo(new CloudTable(
+													"Custom"));
 											table.setColumn(col);
 											table.save(new CloudTableCallback() {
 
 												@Override
-												public void done(CloudTable table, CloudException e)
+												public void done(
+														CloudTable table,
+														CloudException e)
 														throws CloudException {
-													if(e!=null)
-														Assert.fail(e.getMessage());
+													if (e != null)
+														Assert.fail(e
+																.getMessage());
 													else
-													Assert.assertTrue(table != null);
+														Assert.assertTrue(table != null);
 
 												}
 											});
 										}
-										
+
 									}
 								});
 
@@ -665,57 +685,64 @@ public class CreateTableTest {
 		initialize();
 		CloudTable table = new CloudTable("Sample");
 		CloudTable.get(table, new CloudTableCallback() {
-			
+
 			@Override
-			public void done(CloudTable table, CloudException e) throws CloudException {
-				if(e!=null)
+			public void done(CloudTable table, CloudException e)
+					throws CloudException {
+				if (e != null)
 					Assert.fail(e.getMessage());
 				else
-				table.delete(new CloudStringCallback() {
-					
-					@Override
-					public void done(String x, CloudException e) throws CloudException {
-						if(e!=null)
-							Assert.fail(e.getMessage());
-						else{
-							if("Success".equals(x)){
-								CloudTable table=new CloudTable("Sample");
-								Column col1 = new Column("name", DataType.Text, true, false);
-								Column col2 = new Column("unique", DataType.Text, false, true);
-								Column col3 = new Column("stringArray", DataType.List, false, false);
-								col3.setRelatedTo(DataType.Text);
-								Column col4 = new Column("objectArray", DataType.List, false, false);
-								col4.setRelatedTo(DataType.Text);
-								Column col5 = new Column("file", DataType.File, false, false);
-								Column col6 = new Column("fileList", DataType.List, false, false);
-								col6.setRelatedTo(DataType.File);
-								table.addColumn(new Column[] { col1, col2, col3, col4, col5, col6 });
-								table.save(new CloudTableCallback() {
+					table.delete(new CloudStringCallback() {
 
-									@Override
-									public void done(CloudTable table, CloudException e)
-											throws CloudException {
-										Assert.assertFalse(table==null);
+						@Override
+						public void done(String x, CloudException e)
+								throws CloudException {
+							if (e != null)
+								Assert.fail(e.getMessage());
+							else {
+								if ("Success".equals(x)) {
+									CloudTable table = new CloudTable("Sample");
+									Column col1 = new Column("name",
+											DataType.Text, true, false);
+									Column col2 = new Column("unique",
+											DataType.Text, false, true);
+									Column col3 = new Column("stringArray",
+											DataType.List, false, false);
+									col3.setRelatedTo(DataType.Text);
+									Column col4 = new Column("objectArray",
+											DataType.List, false, false);
+									col4.setRelatedTo(DataType.Text);
+									Column col5 = new Column("file",
+											DataType.File, false, false);
+									Column col6 = new Column("fileList",
+											DataType.List, false, false);
+									col6.setRelatedTo(DataType.File);
+									table.addColumn(new Column[] { col1, col2,
+											col3, col4, col5, col6 });
+									table.save(new CloudTableCallback() {
+
+										@Override
+										public void done(CloudTable table,
+												CloudException e)
+												throws CloudException {
+											Assert.assertFalse(table == null);
 										}
 
-									
-								});
+									});
+								}
 							}
+
 						}
-						
-					}
-				});
-				
+					});
+
 			}
 		});
-
 
 	}
 
 	@Test(timeout = 50000)
 	public void updateTableSample() throws CloudException {
 		initialize();
-
 
 	}
 

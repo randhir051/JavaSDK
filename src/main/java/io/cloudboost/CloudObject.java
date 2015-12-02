@@ -846,8 +846,10 @@ public class CloudObject {
 		JSONObject data = new JSONObject();
 		String url = null;
 		CBResponse response = null;
+		
 
 		try {
+			document.put("ACL", acl.getACL());
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"

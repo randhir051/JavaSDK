@@ -28,6 +28,7 @@ public class CBParser {
 
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
         String params=parameters.toString(); 
+        System.out.println("params="+params);
         URL url=null;
 		try {
 			url = new URL(myUrl);
@@ -64,15 +65,22 @@ public class CBParser {
 	        dos.writeBytes(params);
 	        dos.flush();
 	        dos.close();
+
 	        respCode=conn.getResponseCode();
+
 	        respMsg=conn.getResponseMessage();
+	        if(respCode!=200)
+	        	return new CBResponse(null, respMsg, respCode, null);
 	        inputString=inputStreamToString(conn.getInputStream());
+	       
+
 	        
 		} catch (IOException e) {
 			CBResponse resp=new CBResponse(respMsg, respMsg, respCode, sid);
 			return resp;
 		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
+        System.out.println(rr.toString());
        return rr;
     }
     private static void writeName(String name) throws IOException {
