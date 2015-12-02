@@ -1,6 +1,7 @@
 package io.cloudboost;
 import junit.framework.Assert;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -13,8 +14,258 @@ public class CloudQueryTest{
 		void initialize(){
 			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 		}
-//		
-		
+		@Test(timeout=50000)
+		public void shouldRetrieveWhenNotNullColumn() throws CloudException{
+			initialize();
+			CloudObject obj=new CloudObject("student1");
+			obj.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					CloudQuery q=new CloudQuery("student1");
+					q.notEqualTo("name", null);
+					q.find(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x.length>0){
+								for(CloudObject o:x){
+									if(!o.hasKey("name"))
+										Assert.fail("should retrieve col");
+								}
+								Assert.assertTrue(true);
+							}
+							
+						}
+					});
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void shouldRetrieveWhenNotNullColumnNotEqFunc() throws CloudException{
+			initialize();
+			CloudObject obj=new CloudObject("student1");
+			obj.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					CloudQuery q=new CloudQuery("student1");
+					q.equalTo("id", x.getId());
+					q.find(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x.length>0){
+								
+								Assert.assertTrue(x.length==1);
+							}
+							
+						}
+					});
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void shouldRetrieveWhenNullColumn() throws CloudException{
+			initialize();
+			CloudObject obj=new CloudObject("student1");
+			obj.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					CloudQuery q=new CloudQuery("student1");
+					q.equalTo("name", null);
+					q.find(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x.length>0){
+								for(CloudObject o:x){
+									if(o.hasKey("name"))
+										Assert.fail("should not retrieve col");
+								}
+								Assert.assertTrue(true);
+							}
+							
+						}
+					});
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void selectColumnShouldWorkOnDistinct() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("Custom1");
+			ob.set("newColumn", "sample");
+			ob.set("description", "sample1");
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					CloudQuery q=new CloudQuery("Custom1");
+					q.equalTo("id", x.getId());
+					q.selectColumn(new String[]{"newColumn"});
+					q.distinct(new String[]{"id"},new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x.length>0){
+								Assert.assertFalse(x[0].hasKey("description"));
+							}
+							
+						}
+					});
+					
+					
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void selectColumnShouldWorkOnFind() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("Custom1");
+			ob.set("newColumn", "sample");
+			ob.set("description", "sample1");
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					CloudQuery q=new CloudQuery("Custom1");
+					q.equalTo("id", x.getId());
+					q.selectColumn(new String[]{"newColumn"});
+					q.find(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							if(x.length>0){
+								Assert.assertFalse(x[0].hasKey("description"));
+							}
+							
+						}
+					});
+					
+					
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void saveListInColumn() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student4");
+			ob.set("subject", new String[]{"java","python"});
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail();
+					JSONArray arr=(JSONArray) x.get("subject");
+					Assert.assertTrue(arr.length()==2);
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void saveDataWithParticularValue() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student1");
+			ob.set("name", "vipul");
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					Assert.assertEquals("vipul", x.getString("name"));
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void saveDataWithGivenValue() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student1");
+			ob.set("name", "vipul");
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					Assert.assertEquals("vipul", x.getString("name"));
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void retrieveDataWithParticularValue() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student1");
+			ob.set("name", "vipul");
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail();
+					CloudQuery q=new CloudQuery("student1");
+					q.equalTo("name", "vipul");
+					q.find(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							if(t!=null)
+								Assert.fail();
+							for(CloudObject o:x){
+								if(!o.getString("name").equals("vipul"))
+									Assert.fail();
+							}
+							Assert.assertTrue(true);
+							
+						}
+					});
+					
+				}
+			});
+		}
+		@Test(timeout=50000)
+		public void saveListwithInColumn() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student4");
+			ob.set("subject", new String[]{"java","c#"});
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail();
+					JSONArray arr=(JSONArray) x.get("subject");
+					Assert.assertTrue(arr.length()==2);
+					
+				}
+			});
+		}
 		@Test(timeout=50000)
 		public void selectColumn() throws CloudException{
 			initialize();
@@ -77,7 +328,20 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		@Test(timeout=50000)
+		public void saveDataWithAParticularValue() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student1");
+			ob.set("name", "vipul");
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					Assert.assertEquals("vipul", x.getString("name"));
+					
+				}
+			});
+		}
 		@Test(timeout=50000)
 		public void equalToWithNull() throws CloudException{
 			initialize();
@@ -158,6 +422,74 @@ public class CloudQueryTest{
 			});
 		}
 //		
+		@Test(timeout=50000)
+		public void findItemById() throws CloudException{
+			initialize();
+			CloudObject o=new CloudObject("student1");
+			o.set("name", "egima");
+			o.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t != null){
+						Assert.fail(t.getMessage());
+					}
+					CloudQuery cbQuery = new CloudQuery("student1");
+					cbQuery.equalTo("id", x.getId());
+					cbQuery.find(new CloudObjectArrayCallback(){
+						@Override
+						public void done(CloudObject[] list, CloudException t)throws CloudException {
+								if(t != null){
+									Assert.fail(t.getMessage());
+								}
+								if(list.length > 0){
+		
+										Assert.assertEquals(list[0].get("name"), "egima");
+									
+								}else{
+									Assert.fail("object could not queried properly");
+								}
+						}
+					});
+					
+				}
+			});
+
+		}
+		@Test(timeout=50000)
+		public void findDataWithId() throws CloudException{
+			initialize();
+			CloudObject o=new CloudObject("student1");
+			o.set("name", "egima");
+			o.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t != null){
+						Assert.fail(t.getMessage());
+					}
+					CloudQuery cbQuery = new CloudQuery("student1");
+					cbQuery.equalTo("id", x.getId());
+					cbQuery.find(new CloudObjectArrayCallback(){
+						@Override
+						public void done(CloudObject[] list, CloudException t)throws CloudException {
+								if(t != null){
+									Assert.fail(t.getMessage());
+								}
+								if(list.length > 0){
+		
+										Assert.assertEquals(list[0].get("name"), "egima");
+									
+								}else{
+									Assert.fail("object could not queried properly");
+								}
+						}
+					});
+					
+				}
+			});
+
+		}
 		@Test(timeout=50000)
 		public void findData() throws CloudException{
 			initialize();
@@ -891,7 +1223,7 @@ public class CloudQueryTest{
 		public void shouldReturnCountAsInteger() throws CloudException {
 
 			initialize();
-			CloudQuery q=new CloudQuery("Student1");
+			CloudQuery q=new CloudQuery("student1");
 			
 			q.count(new CloudIntegerCallback() {
 				
@@ -1319,6 +1651,59 @@ public class CloudQueryTest{
 							}
 						}
 					});
+				}
+			});
+		}
+		@Test(timeout = 50000)
+		public void retrieveElementWithGivenId() throws CloudException {
+			initialize();
+			CloudObject obj=new CloudObject("student4");
+			obj.set("age", 25);
+//			obj.set("name", "egima");
+			obj.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					if(x!=null){
+						CloudQuery query = new CloudQuery("student4");
+						
+						query.findById(x.getId(), new CloudObjectCallback() {
+							@Override
+							public void done(CloudObject object, CloudException t)
+									throws CloudException {
+								if (t != null) {
+									Assert.fail(t.getMessage());
+								}
+								if (object != null) {
+										Assert.assertEquals(25, object.get("age"));
+								} else {
+									Assert.fail("object could not queried properly");
+								}
+							}
+						});
+					}
+					
+				}
+			});
+			
+
+		}
+		@Test(timeout=50000)
+		public void saveListWithinColumn() throws CloudException{
+			initialize();
+			CloudObject ob=new CloudObject("student4");
+			ob.set("subject", new String[]{"java","python"});
+			ob.save(new CloudObjectCallback() {
+				
+				@Override
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail();
+					JSONArray arr=(JSONArray) x.get("subject");
+					Assert.assertTrue(arr.length()==2);
+					
 				}
 			});
 		}

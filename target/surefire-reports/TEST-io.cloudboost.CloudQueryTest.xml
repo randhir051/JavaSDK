@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="39" failures="13" name="io.cloudboost.CloudQueryTest" time="304.45" errors="3" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
+    <property name="java.vm.version" value="25.5-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Engineer\programming\projects\javaSDK\git_repo"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Engineer\programming\projects\javaSDK\git_repo"/>
+    <property name="java.runtime.version" value="1.8.0_05-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\jdk1.8.0_05\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\new\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="classworlds.conf" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\jdk1.8.0_05\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\apache-ant-1.9.6\bin;C:\Program Files\jdk1.8.0_05\bin;E:\Engineer\eclipse\android-sdk-windows\tools;E:\Engineer\eclipse\android-sdk-windows\platform-tools;C:\Program Files\jdk1.8.0_05\bin;C:\Program Files\MongoDB\Server\3.0\bin;E:\Engineer\eclipse\eclipse;E:\Engineer\eclipse\myeclipse;C:\Program Files (x86)\apache-maven-3.3.3\bin;C:\Program Files (x86)\GNU\GnuPG;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="C:\Users\new"/>
+    <property name="user.timezone" value="Africa/Nairobi"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="new"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files\jdk1.8.0_05\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_05"/>
+    <property name="java.ext.dirs" value="C:\Program Files\jdk1.8.0_05\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\jdk1.8.0_05\jre\lib\resources.jar;C:\Program Files\jdk1.8.0_05\jre\lib\rt.jar;C:\Program Files\jdk1.8.0_05\jre\lib\sunrsasign.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jsse.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jce.jar;C:\Program Files\jdk1.8.0_05\jre\lib\charsets.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jfr.jar;C:\Program Files\jdk1.8.0_05\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="startsWith" time="6.752"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="containsAll" time="0.765"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="exists" time="4.256"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldIncludeRelationObjectWhenIncludeIsRequestedInQuery" time="2.336"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="ascendingOrder" time="16.976"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="saveRelation" time="1.52"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="selectColumn" time="3.28"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="notContianedIn" time="10.006">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$7.done(CloudQueryTest.java:195)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest.notContianedIn(CloudQueryTest.java:190)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="greaterThan" time="18.427"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="lessThanEqualTo" time="2.104"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="descendingOrder" time="1.905"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="equalToWithNull" time="1.801"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="saveMultiJoin" time="10.01">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$21.done(CloudQueryTest.java:644)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.saveMultiJoin(CloudQueryTest.java:640)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="doesNotExists" time="17.764"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="includeFindById" time="1.101">
+    <failure message="Bad Request" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$22.done(CloudQueryTest.java:662)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.includeFindById(CloudQueryTest.java:658)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldQueryOverLinkedColumn" time="11.392">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$37.done(CloudQueryTest.java:1221)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.shouldQueryOverLinkedColumn(CloudQueryTest.java:1215)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldReturnCountAsInteger" time="11.375">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$28.done(CloudQueryTest.java:901)
+	at io.cloudboost.CloudQuery.count(CloudQuery.java:1236)
+	at io.cloudboost.CloudQueryTest.shouldReturnCountAsInteger(CloudQueryTest.java:896)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="containedInShouldWorkOnId" time="6.841"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="getEncryptedPasswordOverQuery" time="10.012">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$26.done(CloudQueryTest.java:805)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudQueryTest.getEncryptedPasswordOverQuery(CloudQueryTest.java:802)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+    <system-err>java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$26.done(CloudQueryTest.java:805)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.getEncryptedPasswordOverQuery(CloudQueryTest.java:802)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</system-err>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldQueryOverBooleanType" time="13.723">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$34.done(CloudQueryTest.java:1066)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.shouldQueryOverBooleanType(CloudQueryTest.java:1060)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="containedInOverListOfCloudObject" time="4.908">
+    <failure message="Bad Request" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$38.done(CloudQueryTest.java:1258)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.containedInOverListOfCloudObject(CloudQueryTest.java:1253)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="getEncryptedPasswordOverOr" time="3.539"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldIncludeRelationOnDistinct" time="11.193">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$36$1.done(CloudQueryTest.java:1181)
+	at io.cloudboost.CloudQuery.distinct(CloudQuery.java:1272)
+	at io.cloudboost.CloudQueryTest$36.done(CloudQueryTest.java:1174)
+	at io.cloudboost.CloudObject.save(CloudObject.java:875)
+	at io.cloudboost.CloudQueryTest.shouldIncludeRelationOnDistinct(CloudQueryTest.java:1164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldLimitNumberOfDataItems" time="11.605">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$30.done(CloudQueryTest.java:954)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest.shouldLimitNumberOfDataItems(CloudQueryTest.java:949)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="queryOverLinkedColumnWithEqualTo" time="8.44"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldIncludeWithFindById" time="0.934">
+    <failure message="Bad Request" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$39.done(CloudQueryTest.java:1301)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.shouldIncludeWithFindById(CloudQueryTest.java:1295)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldNotRetrieveDataWithAparticularValue" time="1.741"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="findOne" time="0.814"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="lessThan" time="34.443">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$14$1.done(CloudQueryTest.java:445)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest$14.done(CloudQueryTest.java:442)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudQueryTest.lessThan(CloudQueryTest.java:437)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+    <system-err>java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$14$1.done(CloudQueryTest.java:445)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest$14.done(CloudQueryTest.java:442)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.lessThan(CloudQueryTest.java:437)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</system-err>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="findData" time="3.982"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="findById" time="2.056"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="greaterThanEqualTo" time="1.971"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="selectColumnDistinct" time="10.001">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$2.done(CloudQueryTest.java:59)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudQueryTest.selectColumnDistinct(CloudQueryTest.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+    <system-err>java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$2.done(CloudQueryTest.java:59)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.selectColumnDistinct(CloudQueryTest.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</system-err>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="getEncryptedPassword" time="22.221">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$25$1.done(CloudQueryTest.java:781)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest$25.done(CloudQueryTest.java:777)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.getEncryptedPassword(CloudQueryTest.java:771)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="notEqualToWithNull" time="8.068"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldNotEncryptAlreadyEncryptedPassword" time="2.638"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldLimitNumberOfDataItemsToOne" time="0.76"/>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldNotGiveElementWithGivenRelation" time="10.979">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$33$1.done(CloudQueryTest.java:1021)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest$33.done(CloudQueryTest.java:1015)
+	at io.cloudboost.CloudObject.save(CloudObject.java:875)
+	at io.cloudboost.CloudQueryTest.shouldNotGiveElementWithGivenRelation(CloudQueryTest.java:1005)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueryTest" name="shouldGetElementNotHavingGivenColumnName" time="11.811">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$32.done(CloudQueryTest.java:987)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest.shouldGetElementNotHavingGivenColumnName(CloudQueryTest.java:982)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+</testsuite>

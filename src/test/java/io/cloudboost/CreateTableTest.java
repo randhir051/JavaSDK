@@ -7,8 +7,7 @@ import org.junit.Test;
 
 public class CreateTableTest {
 	void initialize() {
-		// CloudApp.init("sample123",
-		// "Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=");
+
 		CloudApp.init("travis123",
 				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
 	}
@@ -528,7 +527,8 @@ public class CreateTableTest {
 	@Test(timeout = 50000)
 	public void createTableCustom() throws CloudException {
 		initialize();
-		CloudTable custom = new CloudTable("CustomAll");
+		String name=PrivateMethod._makeString();
+		CloudTable custom = new CloudTable(name);
 		Column column1 = new Column("newColumn1", DataType.Email, false, false);
 		Column column2 = new Column("newColumn2", DataType.Text, false, false);
 		Column column3 = new Column("newColumn3", DataType.URL, false, false);

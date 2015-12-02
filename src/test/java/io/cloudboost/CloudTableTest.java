@@ -15,8 +15,6 @@ import org.junit.Test;
 public class CloudTableTest {
 
 	void initialize() {
-		// CloudApp.init("sample123",
-		// "Qopoy/kXd+6G734HsjQMqGPGOvwEJYmBG84lQawRmWM=");
 		CloudApp.init("travis123",
 				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
 	}
@@ -331,8 +329,8 @@ public class CloudTableTest {
 					public void done(CloudTable table, CloudException e)
 							throws CloudException {
 						if (e != null) {
-							Assert.assertEquals(e.getMessage(),
-									"Internal Server Error");
+							Assert.assertEquals("Internal Server Error",e.getMessage()
+									);
 						}
 						if (table != null) {
 							Assert.fail("Should not have rename the table");

@@ -24,61 +24,61 @@ public class CloudFileTest {
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
 
-//	@Test(timeout = 50000)
-//	public void shouldSaveFileGetFromRelation() throws IOException,
-//			CloudException, JSONException {
-//		initialize();
-//		final CloudFile cf = new CloudFile("myFile", "sampletest", "txt");
-//		cf.save(new CloudFileCallback() {
-//
-//			@Override
-//			public void done(final CloudFile x1, CloudException t)
-//					throws CloudException {
-//				// TODO Auto-generated method stub
-//
-//				if (t != null) {
-//					Assert.fail(t.getMessage());
-//				}
-//				String url = x1.getFileUrl();
-//				if ("".equals(url) && null == url && "null".equals(url))
-//					Assert.fail("No url");
-//				else {
-//					CloudObject object = new CloudObject("Employee");
-//					CloudObject object2 = new CloudObject("Company");
-//					object2.set("File", x1);
-//					object.set("Company", object2);
-//
-//					object.save(new CloudObjectCallback() {
-//
-//						@Override
-//						public void done(CloudObject x, CloudException t)
-//								throws CloudException {
-//							if (t != null)
-//								Assert.fail(t.getMessage());
-//							else {
-//								String objId = x.getId();
-//								CloudQuery query = new CloudQuery("Employee");
-//								query.equalTo("id", objId);
-//								query.include("Company.File");
-//								query.find(new CloudObjectArrayCallback() {
-//
-//									@Override
-//									public void done(CloudObject[] x,
-//											CloudException t)
-//											throws CloudException {
-//										System.out.println("finished querying");
-//
-//									}
-//								});
-//							}
-//
-//						}
-//					});
-//				}
-//
-//			}
-//		});
-//	}
+	@Test(timeout = 50000)
+	public void shouldSaveFileGetFromRelation() throws IOException,
+			CloudException, JSONException {
+		initialize();
+		final CloudFile cf = new CloudFile("myFile", "sampletest", "txt");
+		cf.save(new CloudFileCallback() {
+
+			@Override
+			public void done(final CloudFile x1, CloudException t)
+					throws CloudException {
+				// TODO Auto-generated method stub
+
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				String url = x1.getFileUrl();
+				if ("".equals(url) && null == url && "null".equals(url))
+					Assert.fail("No url");
+				else {
+					CloudObject object = new CloudObject("Employee");
+					CloudObject object2 = new CloudObject("Company");
+					object2.set("File", x1);
+					object.set("Company", object2);
+
+					object.save(new CloudObjectCallback() {
+
+						@Override
+						public void done(CloudObject x, CloudException t)
+								throws CloudException {
+							if (t != null)
+								Assert.fail(t.getMessage());
+							else {
+								String objId = x.getId();
+								CloudQuery query = new CloudQuery("Employee");
+								query.equalTo("id", objId);
+								query.include("Company.File");
+								query.find(new CloudObjectArrayCallback() {
+
+									@Override
+									public void done(CloudObject[] x,
+											CloudException t)
+											throws CloudException {
+										System.out.println("finished querying");
+
+									}
+								});
+							}
+
+						}
+					});
+				}
+
+			}
+		});
+	}
 
 	@Test(timeout = 50000)
 	public void shouldIncludeOverFile() throws IOException, CloudException,

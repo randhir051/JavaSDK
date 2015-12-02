@@ -1,4 +1,6 @@
 package io.cloudboost;
+import io.cloudboost.Column.DataType;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +19,62 @@ import org.junit.Test;
 public class CloudSearchTest{
 	void initialize(){
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+	}
+	void initMaster() {
+		CloudApp.init("travis123","vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+	}
+	@Test(timeout=50000)
+	public void saveLatitudeLongitudePassedAsString () throws CloudException{
+			initialize();
+			CloudObject obj = new CloudObject("Custom5");
+			CloudGeoPoint loc = new CloudGeoPoint("17.7"," 78.9");
+			
+			obj.set("location", loc);
+			obj.save(new CloudObjectCallback(){
+
+				@Override
+				public void done(CloudObject x, CloudException e)throws CloudException {
+						if(e != null){
+							Assert.fail(e.getMessage());
+						}
+				}
+			});
+	}
+	@Test(timeout=50000)
+	public void saveLatitudeLongitudeWhenPassedAsNumType () throws CloudException{
+			initialize();
+			CloudObject obj = new CloudObject("Custom5");
+			CloudGeoPoint loc = new CloudGeoPoint(17.7, 78.9);
+			
+			obj.set("location", loc);
+			obj.save(new CloudObjectCallback(){
+
+				@Override
+				public void done(CloudObject x, CloudException e)throws CloudException {
+						if(e != null){
+							Assert.fail(e.getMessage());
+						}
+				}
+			});
+	}
+	@Test(timeout=50000)
+	public void getDataNearFunction() throws CloudException{
+		initialize();
+		CloudGeoPoint loc = new CloudGeoPoint(17.7, 80.3);
+		CloudQuery query = new CloudQuery("Custom5");
+		query.near("location", loc, 100000.0, 0.0);
+		query.find(new CloudObjectArrayCallback(){
+			@Override
+			public void done(CloudObject[] x, CloudException t)throws CloudException {
+				if(t != null){
+					Assert.fail(t.getMessage());
+				}
+				
+				if(x.length < 0){
+					Assert.fail("failed to retrive data");
+				}
+			}
+		});
 	}
     @Test(timeout = 50000)
     public void shouldOrderByAsc() throws CloudException{
@@ -580,7 +638,40 @@ public class CloudSearchTest{
 			}
 		});
 	}
-	
+	@Test(timeout=50000)
+	public void shouldSkipElements() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
+		initialize();
+		SearchFilter filter=new SearchFilter();
+		filter.notEqualTo("age", 19);
+		
+		CloudSearch cs = new CloudSearch("Student", null, filter);
+		cs.setSkip(9999999);
+		cs.search(new CloudObjectArrayCallback(){
+			@Override
+			public void done(CloudObject[] x, CloudException t)	throws CloudException {
+				if(t != null){
+					Assert.fail(t.getMessage());
+				}
+				
+				if(x.length ==0){
+					SearchFilter filter=new SearchFilter();
+					filter.notEqualTo("age", 19);
+					
+					CloudSearch cs = new CloudSearch("Student", null, filter);
+					cs.setSkip(1);
+					cs.search(new CloudObjectArrayCallback() {
+						
+						@Override
+						public void done(CloudObject[] x, CloudException t) throws CloudException {
+							Assert.assertTrue(x.length>0);
+							
+						}
+					});
+					
+				}else Assert.fail("should skip");
+			}
+		});
+	}
 	@Test(timeout=50000)
 	public void searchObjectWithPhrase() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
@@ -718,5 +809,51 @@ public class CloudSearchTest{
 				Assert.assertEquals(x.length, 0);				
 			}
 		});
+	}
+	@Test(timeout=50000)
+	public void equalToShouldWorkOnCloudSearchOverCloudObject () throws CloudException{
+			initMaster();
+			final String tableau=PrivateMethod._makeString();
+			CloudTable obj = new CloudTable(tableau);
+			Column col=new Column("newColumn7", DataType.Relation);
+			col.setRelatedTo(new CloudTable("student1"));
+			obj.addColumn(col);
+			obj.save(new CloudTableCallback() {
+				
+				@Override
+				public void done(CloudTable table, CloudException e) throws CloudException {
+					if(e!=null)
+						Assert.fail(e.getMessage());
+					else{
+						CloudObject co=new CloudObject(tableau);
+						CloudObject ob=new CloudObject("student1");
+						ob.set("name", "vipul");
+						co.set("newColumn7", ob);
+						co.save(new CloudObjectCallback() {
+							
+							@Override
+							public void done(CloudObject x, CloudException t) throws CloudException {
+								if(t!=null)
+									Assert.fail(t.getMessage());
+								else{
+									SearchFilter filter=new SearchFilter();
+									filter.equalTo("newColumn7", x.get("newColumn7"));
+									CloudSearch cs=new CloudSearch(tableau, null, filter); 
+									cs.search(new CloudObjectArrayCallback() {
+										
+										@Override
+										public void done(CloudObject[] x, CloudException t) throws CloudException {
+											Assert.assertTrue(x!=null);
+											
+										}
+									});
+								}
+								
+							}
+						});
+					}
+					
+				}
+			});
 	}
 }

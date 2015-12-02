@@ -78,8 +78,42 @@ class ACL{
 	public JSONObject getACL(){
 		return acl;
 	}
+	public ArrayList<String> getAllowedWriteRole(){
+		JSONArray role;
+		try {
+			write = (JSONObject) acl.get("write");
+		
+		allowWrite = (JSONObject) write.get("allow");
+		role = new JSONArray(allowWrite.get("role").toString());
+		allowedWriteUser.clear();
+		for(int i=0; i<role.length(); i++){
+			allowedWriteUser.add(i, role.getString(i));
+		}
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		return allowedWriteUser;
+	}
+	public ArrayList<String> getAllowedReadRole(){
+		JSONArray role;
+		try {
+			read = (JSONObject) acl.get("read");
+		
+		allowRead = (JSONObject) read.get("allow");
+		role = new JSONArray(allowRead.get("role").toString());
+		allowedReadUser.clear();
+		for(int i=0; i<role.length(); i++){
+			allowedReadUser.add(i, role.getString(i));
+		}
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		return allowedReadUser;
+	}
 	@SuppressWarnings({ })
-	private ArrayList<String> getWriteList(JSONObject acl){
+	public ArrayList<String> getAllowedWriteUser(){
 		JSONArray user;
 		try {
 			write = (JSONObject) acl.get("write");
@@ -97,7 +131,7 @@ class ACL{
 		return allowedWriteUser;
 	}
 	
-	private ArrayList<String> getReadList(JSONObject acl){
+	public ArrayList<String> getAllowedReadUser(){
 		try {
 			read = (JSONObject) acl.get("read");
 		
@@ -131,7 +165,7 @@ class ACL{
 		return deniedWriteUser;
 	}
 	
-	private ArrayList<String> getDeniedReadList(JSONObject acl){
+	public ArrayList<String> getDeniedReadUser(){
 		try {
 			read = (JSONObject) acl.get("read");
 		
@@ -149,7 +183,7 @@ class ACL{
 	}
 	
 	public void setPublicWriteAccess(boolean value){  //allow write permission to all user
-		allowedWriteUser = getWriteList(acl);
+		allowedWriteUser = getAllowedWriteUser();
 		if(value == true){	//if value is true then clear the existing list and add "all" and push it to jsonObject
 			allowedWriteUser.clear();
 			allowedWriteUser.add("all");
@@ -173,7 +207,7 @@ class ACL{
 	}
 
 	public void setPublicReadAccess(boolean value){  //allow read permission to all user
-		allowedReadUser = getReadList(acl);
+		allowedReadUser = getAllowedReadUser();
 		if(value){	//if value is true then clear the existing list and add "all" and push it to jsonObject
 			allowedReadUser.clear();
 			allowedReadUser.add("all");
@@ -197,7 +231,7 @@ class ACL{
 
 	public void setUserWriteAccess(String userId, boolean value){ //for setting the user write access
 		int index;
-		allowedWriteUser = getWriteList(acl);
+		allowedWriteUser = getAllowedWriteUser();
 		deniedWriteUser = getDeniedWriteList(acl);
 		if(value){
 			index = allowedWriteUser.indexOf("all");
@@ -232,8 +266,8 @@ class ACL{
 	public void setUserReadAccess(String userId, boolean value){ //for setting the user read access
 		int index;
 		
-		allowedReadUser = getReadList(acl);
-		deniedReadUser = getDeniedReadList(acl);
+		allowedReadUser = getAllowedReadUser();
+		deniedReadUser = getDeniedReadUser();
 		if(value){
 			index = allowedReadUser.indexOf("all");
 			if(index > -1){
@@ -267,9 +301,9 @@ class ACL{
 	@SuppressWarnings("unchecked")
 	public void setRoleWriteAccess(String roleId, boolean value){
 		int index;
-		allowedWriteUser = getWriteList(acl);
+		allowedWriteUser = getAllowedWriteUser();
 		deniedWriteUser = getDeniedWriteList(acl);
-		
+		System.out.println("ACL="+acl);
 		try {
 			write = (JSONObject) acl.get("write");
 		
@@ -328,8 +362,8 @@ class ACL{
 	@SuppressWarnings("unchecked")
 	public void setRoleReadAccess(String roleId, boolean value){
 		int index;
-		allowedReadUser = getReadList(acl);
-		deniedWriteUser = getDeniedReadList(acl);
+		allowedReadUser = getAllowedReadUser();
+		deniedWriteUser = getDeniedReadUser();
 		
 		try {
 			write = (JSONObject) acl.get("write");

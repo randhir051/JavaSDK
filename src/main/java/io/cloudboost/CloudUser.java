@@ -253,6 +253,7 @@ public class CloudUser extends CloudObject{
 		
 		String url = CloudApp.getApiUrl()+"/user/"+CloudApp.getAppId()+"/logout";
 		CBResponse response=CBParser.callJson(url, "POST", data);
+		response.toString();
 		if(response.getStatusCode() == 200){
 				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
@@ -266,7 +267,6 @@ public class CloudUser extends CloudObject{
 		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
 			callbackObject.done(null, e1);
-			e.printStackTrace();
 		}
 	}
 	

@@ -1427,9 +1427,8 @@ public class CloudQuery {
 				callbackObject.done((CloudObject) null, e);
 			}
 		} catch (JSONException e) {
-			CloudException e1 = new CloudException(e.toString());
+			CloudException e1 = new CloudException("No object returned");
 			callbackObject.done((CloudObject) null, e1);
-			e.printStackTrace();
 		}
 	}
 

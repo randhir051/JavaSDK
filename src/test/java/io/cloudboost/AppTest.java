@@ -15,18 +15,17 @@ import org.junit.Test;
 
 public class AppTest{
 	void initialize(){
-//		CloudApp.init("egimabengitest", "yiBh75txY35CB+LSb/1XLQ==");
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 
 
 	}
-	@Test(timeout=2000)
+	@Test(timeout=10000)
 	public void cloudAppTest(){
 		CloudApp.init("sample123", "9SPxp6D3OPWvxj0asw5ryA==");
 		Assert.assertEquals("sample123", CloudApp.getAppId());
 		Assert.assertEquals("9SPxp6D3OPWvxj0asw5ryA==", CloudApp.getAppKey());
 	}
-	@Test(timeout=10000)
+	@Test(timeout=80000)
 	public void shouldCreateAnApp() throws JSONException{
 		initialize();
 			JSONObject params=new JSONObject();
@@ -48,7 +47,7 @@ public class AppTest{
 				
 			}else Assert.fail(response.getStatusMessage());
 	}
-	@Test(timeout=10000)
+	@Test(timeout=80000)
 	public void shouldCreateATable() throws CloudException{
 		CloudApp.init("travis123", "vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
 		CloudTable table=new CloudTable(PrivateMethod._makeString());
@@ -69,7 +68,7 @@ public class AppTest{
 		Assert.assertEquals("sample123", CloudApp.getAppId());
 		Assert.assertEquals("9SPxp6D3OPWvxj0asw5ryA==", CloudApp.getAppKey());	
 	}
-	@Test(timeout=10000)
+	@Test(timeout=80000)
 	public void shouldSaveRecord() throws CloudException{
 		CloudApp.init("travis123", "vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
 		final String name=PrivateMethod._makeString();
@@ -93,7 +92,7 @@ public class AppTest{
 			}
 		});
 	}
-	@Test(timeout=10000)
+	@Test(timeout=80000)
 	public void shouldDeleteAnApp() throws JSONException{
 		initialize();
 		JSONObject params=new JSONObject();

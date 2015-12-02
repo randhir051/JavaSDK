@@ -31,8 +31,58 @@ public class CloudGeoPointTest{
 					}
 				});
 		}
-		
-		@Test(timeout=20000)
+		@Test(timeout=50000)
+		public void saveLatitudeLongitudePassedAsString () throws CloudException{
+				initialize();
+				CloudObject obj = new CloudObject("Custom5");
+				CloudGeoPoint loc = new CloudGeoPoint("17.7"," 78.9");
+				
+				obj.set("location", loc);
+				obj.save(new CloudObjectCallback(){
+
+					@Override
+					public void done(CloudObject x, CloudException e)throws CloudException {
+							if(e != null){
+								Assert.fail(e.getMessage());
+							}
+					}
+				});
+		}
+		@Test(timeout=50000)
+		public void saveLatitudeLongitudeWhenPassedAsNumType () throws CloudException{
+				initialize();
+				CloudObject obj = new CloudObject("Custom5");
+				CloudGeoPoint loc = new CloudGeoPoint(17.7, 78.9);
+				
+				obj.set("location", loc);
+				obj.save(new CloudObjectCallback(){
+
+					@Override
+					public void done(CloudObject x, CloudException e)throws CloudException {
+							if(e != null){
+								Assert.fail(e.getMessage());
+							}
+					}
+				});
+		}
+		@Test(timeout=50000)
+		public void saveLatitudeLongitudePassedAsStringType () throws CloudException{
+				initialize();
+				CloudObject obj = new CloudObject("Custom5");
+				CloudGeoPoint loc = new CloudGeoPoint("17.7"," 78.9");
+				
+				obj.set("location", loc);
+				obj.save(new CloudObjectCallback(){
+
+					@Override
+					public void done(CloudObject x, CloudException e)throws CloudException {
+							if(e != null){
+								Assert.fail(e.getMessage());
+							}
+					}
+				});
+		}
+		@Test(timeout=50000)
 		public void getDataNearFunction() throws CloudException{
 			initialize();
 			CloudGeoPoint loc = new CloudGeoPoint(17.7, 80.3);
@@ -52,7 +102,7 @@ public class CloudGeoPointTest{
 			});
 		}
 		
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void getListPolygonGeowithin() throws CloudException{
 			initialize();
 	        CloudGeoPoint loc1 = new CloudGeoPoint(18.4, 78.9);
@@ -75,7 +125,7 @@ public class CloudGeoPointTest{
 			});
 		}
 		
-		@Test(timeout=10000)
+		@Test(timeout=50000)
 		public void getListPolygonGeowithinEqualToLimit() throws CloudException{
 			initialize();
 			CloudGeoPoint loc1 = new CloudGeoPoint(18.4,78.9);
@@ -99,7 +149,7 @@ public class CloudGeoPointTest{
 			});
 		}
 		
-		@Test(timeout=10000)
+		@Test(timeout=50000)
 		public void getListCircleGeowithin() throws CloudException{
 			initialize();
 	     	CloudGeoPoint loc = new CloudGeoPoint(17.3,78.3);
@@ -140,7 +190,7 @@ public class CloudGeoPointTest{
 			});
 		}
 		
-		@Test(timeout=30000)
+		@Test(timeout=50000)
 		public void updateGeoPoint() throws CloudException{
 			initialize();
 			CloudObject obj = new CloudObject("Custom5");

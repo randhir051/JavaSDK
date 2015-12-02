@@ -1,10 +1,8 @@
 package io.cloudboost;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import junit.framework.Assert;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -384,7 +382,16 @@ public class CloudCacheTests {
 							
 							@Override
 							public void done(Object x, CloudException t) throws CloudException {
-								Assert.assertTrue(x instanceof Object[]);
+								if(t!=null)
+									Assert.fail(t.getMessage());
+								try {
+									JSONArray arr=new JSONArray(x.toString());
+									Assert.assertTrue(arr.length()>0);
+
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
+
 								
 							}
 						});
@@ -423,6 +430,19 @@ public class CloudCacheTests {
 		initialize();
 		CloudCache cache=new CloudCache("wrongCache");
 		cache.delete(new ObjectCallback() {
+			
+			@Override
+			public void done(Object x, CloudException t) throws CloudException {
+				Assert.assertTrue(t!=null);
+				
+			}
+		});
+	}
+	@Test(timeout = 30000)
+	public void shouldErrWhenClearingWrongCache() throws CloudException {
+		initialize();
+		CloudCache cache=new CloudCache("wrongCache");
+		cache.clear(new ObjectCallback() {
 			
 			@Override
 			public void done(Object x, CloudException t) throws CloudException {

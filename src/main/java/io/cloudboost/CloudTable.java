@@ -338,9 +338,8 @@ public class CloudTable{
 			}
 			
 		} catch (JSONException e) {
-			CloudException e1 = new CloudException(e.toString());
+			CloudException e1 = new CloudException("Failed to get table, may be inexistent");
 			callbackObject.done((CloudTable)null, e1);
-			e.printStackTrace();
 		}
 	}
 	

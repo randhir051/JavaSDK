@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="40" failures="15" name="io.cloudboost.CloudQueueTest" time="338.928" errors="2" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
+    <property name="java.vm.version" value="25.5-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Engineer\programming\projects\javaSDK\git_repo"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Engineer\programming\projects\javaSDK\git_repo"/>
+    <property name="java.runtime.version" value="1.8.0_05-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\jdk1.8.0_05\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\new\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="classworlds.conf" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\jdk1.8.0_05\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\apache-ant-1.9.6\bin;C:\Program Files\jdk1.8.0_05\bin;E:\Engineer\eclipse\android-sdk-windows\tools;E:\Engineer\eclipse\android-sdk-windows\platform-tools;C:\Program Files\jdk1.8.0_05\bin;C:\Program Files\MongoDB\Server\3.0\bin;E:\Engineer\eclipse\eclipse;E:\Engineer\eclipse\myeclipse;C:\Program Files (x86)\apache-maven-3.3.3\bin;C:\Program Files (x86)\GNU\GnuPG;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="C:\Users\new"/>
+    <property name="user.timezone" value="Africa/Nairobi"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="new"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files\jdk1.8.0_05\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_05"/>
+    <property name="java.ext.dirs" value="C:\Program Files\jdk1.8.0_05\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\jdk1.8.0_05\jre\lib\resources.jar;C:\Program Files\jdk1.8.0_05\jre\lib\rt.jar;C:\Program Files\jdk1.8.0_05\jre\lib\sunrsasign.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jsse.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jce.jar;C:\Program Files\jdk1.8.0_05\jre\lib\charsets.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jfr.jar;C:\Program Files\jdk1.8.0_05\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="push" time="10.271"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shoulGetAll" time="6.964"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeekTwo" time="31.022"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="noPushNull" time="0"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushArray" time="1.022"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushMessageArray" time="10.003">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$3.done(CloudQueueTest.java:80)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.pushMessageArray(CloudQueueTest.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPullTwo" time="11.715">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$13.done(CloudQueueTest.java:477)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.shouldPullTwo(CloudQueueTest.java:472)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="deleteById" time="11.631">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$18.done(CloudQueueTest.java:664)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.deleteById(CloudQueueTest.java:659)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldClearQueue" time="4.572"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetQueue" time="11.101">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$30$1.done(CloudQueueTest.java:1102)
+	at io.cloudboost.CloudQueue.get(CloudQueue.java:749)
+	at io.cloudboost.CloudQueueTest$30.done(CloudQueueTest.java:1097)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
+	at io.cloudboost.CloudQueueTest.shouldGetQueue(CloudQueueTest.java:1088)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeek" time="11.776">
+    <failure message="null expected:&lt;null&gt; but was:&lt;Object Validation Failure&gt;" type="junit.framework.ComparisonFailure">junit.framework.ComparisonFailure: null expected:&lt;null&gt; but was:&lt;Object Validation Failure&gt;
+	at junit.framework.Assert.assertEquals(Assert.java:81)
+	at junit.framework.Assert.assertEquals(Assert.java:87)
+	at io.cloudboost.CloudQueueTest$9.done(CloudQueueTest.java:262)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.shouldPeek(CloudQueueTest.java:257)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotPullFromInexistentQueue" time="5.348"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shoulNotPullSameMessageTwice" time="4.197"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotSubscribeInvalidUrl" time="0.82"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotPullMessageWithDelay" time="2.763"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetNullForWrongMessageById" time="11.027">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueueTest$17$1.done(CloudQueueTest.java:644)
+	at io.cloudboost.CloudQueue.getMessageById(CloudQueue.java:324)
+	at io.cloudboost.CloudQueueTest$17.done(CloudQueueTest.java:638)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
+	at io.cloudboost.CloudQueueTest.shouldGetNullForWrongMessageById(CloudQueueTest.java:630)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddMultiplerSubscribers" time="9.436"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddSubscriberToQueue" time="1.454"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddandRemoveSubscriber" time="2.863"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetTheQueueWithNullName" time="1.948"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetInexistentQueue" time="2.351"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteMultipleSubscribers" time="12.466">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.CloudQueueTest$24$1.done(CloudQueueTest.java:875)
+	at io.cloudboost.CloudQueue.deleteSubscriber(CloudQueue.java:373)
+	at io.cloudboost.CloudQueueTest$24.done(CloudQueueTest.java:869)
+	at io.cloudboost.CloudQueue.addSubscriber(CloudQueue.java:421)
+	at io.cloudboost.CloudQueueTest.shouldDeleteMultipleSubscribers(CloudQueueTest.java:864)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutUnSpecifiedTimeout" time="13.824">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$38.done(CloudQueueTest.java:1395)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.refreshMessageTimeoutUnSpecifiedTimeout(CloudQueueTest.java:1390)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutSpecifiedTimeout" time="8.016"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="deleteByMessageObject" time="1.841"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeekTwoMessages" time="21.476">
+    <failure message="Bad Request" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$12$1$1.done(CloudQueueTest.java:448)
+	at io.cloudboost.CloudQueue.peek(CloudQueue.java:180)
+	at io.cloudboost.CloudQueueTest$12$1.done(CloudQueueTest.java:443)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest$12.done(CloudQueueTest.java:438)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
+	at io.cloudboost.CloudQueueTest.shouldPeekTwoMessages(CloudQueueTest.java:430)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetAfterDelete" time="11.443">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$20.done(CloudQueueTest.java:724)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.shouldNotGetAfterDelete(CloudQueueTest.java:719)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteTheQueue" time="6.509"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetQueueByName" time="10.927">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$31.done(CloudQueueTest.java:1136)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.shouldGetQueueByName(CloudQueueTest.java:1130)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteQueueByName" time="11.877">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$27.done(CloudQueueTest.java:973)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.shouldDeleteQueueByName(CloudQueueTest.java:968)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pullMessageAfterTimeout" time="11.469">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$36.done(CloudQueueTest.java:1302)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.pullMessageAfterTimeout(CloudQueueTest.java:1297)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="dontAllowEmptyQueueName" time="0"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushDuplicateMessages" time="3.514"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldUpdateQueue" time="11.333">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$40$1.done(CloudQueueTest.java:1480)
+	at io.cloudboost.CloudQueue.addSubscriber(CloudQueue.java:423)
+	at io.cloudboost.CloudQueueTest$40.done(CloudQueueTest.java:1475)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
+	at io.cloudboost.CloudQueueTest.shouldUpdateQueue(CloudQueueTest.java:1466)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteSubscriber" time="11.879">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$23.done(CloudQueueTest.java:850)
+	at io.cloudboost.CloudQueue.addSubscriber(CloudQueue.java:423)
+	at io.cloudboost.CloudQueueTest.shouldDeleteSubscriber(CloudQueueTest.java:821)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="getMessagesInFIFO" time="8.426"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pullMessageAfterDelay" time="10.008">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$35.done(CloudQueueTest.java:1259)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.pullMessageAfterDelay(CloudQueueTest.java:1253)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetMessageById" time="11.58">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueueTest$8.done(CloudQueueTest.java:223)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:549)
+	at io.cloudboost.CloudQueueTest.shouldGetMessageById(CloudQueueTest.java:218)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushAndPullSameMessage" time="8.21"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutPulledMessage" time="11.846"/>
+</testsuite>

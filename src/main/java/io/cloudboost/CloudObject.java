@@ -68,7 +68,13 @@ public class CloudObject {
 			e.printStackTrace();
 		}
 	}
-
+	public void setAcl(ACL acl){
+		try {
+			set("ACL", acl);
+		} catch (CloudException e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 
 	 * Constructor
@@ -264,6 +270,9 @@ public class CloudObject {
 		}
 		if (data instanceof CloudFile) {
 			data = ((CloudFile) data).getDocument();
+		}
+		if(data instanceof ACL){
+			data=((ACL)data).getACL();
 		}
 		try {
 			if (data == null) {
@@ -849,7 +858,8 @@ public class CloudObject {
 		
 
 		try {
-			document.put("ACL", acl.getACL());
+			System.out.println("ACL GOING INTO SAVE IS: "+getAcl().getACL());
+			document.put("ACL", getAcl().getACL());
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
@@ -1067,5 +1077,17 @@ public class CloudObject {
 		}
 
 		return valid;
+	}
+
+	public ACL getAcl() {
+		
+		try {
+			JSONObject ob=(JSONObject) document.get("ACL");
+			acl.acl=ob;
+			
+			return acl;
+		} catch (JSONException e) {
+			return null;
+		}
 	}
 }

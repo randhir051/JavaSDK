@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="io.cloudboost.CloudFileTest" time="0.012" errors="0" skipped="0">
+<testsuite tests="10" failures="4" name="io.cloudboost.CloudFileTest" time="129.523" errors="4" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\jdk1.8.0_05\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -63,6 +63,188 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudFileTest" name="saveFileFromData" time="0.009"/>
-  <testcase classname="io.cloudboost.CloudFileTest" name="saveFileFromURL" time="0.003"/>
+  <testcase classname="io.cloudboost.CloudFileTest" name="shouldSaveFileAndFetchGetFileContent" time="12.85">
+    <error message="Read timed out" type="java.net.SocketTimeoutException">java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
+	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
+	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at io.cloudboost.util.CBParser.post(CBParser.java:160)
+	at io.cloudboost.util.CBParser.postFormData(CBParser.java:148)
+	at io.cloudboost.CloudFile.save(CloudFile.java:320)
+	at io.cloudboost.CloudFileTest.shouldSaveFileAndFetchGetFileContent(CloudFileTest.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="shouldIncludeOverFile" time="14.202"/>
+  <testcase classname="io.cloudboost.CloudFileTest" name="deleteFile" time="10.01">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudFileTest$7.done(CloudFileTest.java:450)
+	at io.cloudboost.CloudFile.save(CloudFile.java:342)
+	at io.cloudboost.CloudFileTest.deleteFile(CloudFileTest.java:445)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="returnFileWithCloudObject" time="12.55">
+    <failure message="Bad Request" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudFileTest$10$1.done(CloudFileTest.java:533)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudFileTest$10.done(CloudFileTest.java:527)
+	at io.cloudboost.CloudFile.save(CloudFile.java:338)
+	at io.cloudboost.CloudFileTest.returnFileWithCloudObject(CloudFileTest.java:514)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
+</system-out>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="saveFileWithDataAndName" time="1.86"/>
+  <testcase classname="io.cloudboost.CloudFileTest" name="shouldSaveFileAndFetchIt" time="11.357">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudFileTest$3$1.done(CloudFileTest.java:243)
+	at io.cloudboost.CloudFile$1.done(CloudFile.java:423)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1333)
+	at io.cloudboost.CloudFile.fetch(CloudFile.java:419)
+	at io.cloudboost.CloudFileTest$3.done(CloudFileTest.java:237)
+	at io.cloudboost.CloudFile.save(CloudFile.java:338)
+	at io.cloudboost.CloudFileTest.shouldSaveFileAndFetchIt(CloudFileTest.java:224)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="saveFileAndGiveUrl" time="11.424">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudFileTest$8.done(CloudFileTest.java:481)
+	at io.cloudboost.CloudFile.save(CloudFile.java:342)
+	at io.cloudboost.CloudFileTest.saveFileAndGiveUrl(CloudFileTest.java:476)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="shouldSaveFileList" time="4.183">
+    <error message="Server returned HTTP response code: 500 for URL: https://api.cloudboost.io/file/travis123" type="java.io.IOException">java.io.IOException: Server returned HTTP response code: 500 for URL: https://api.cloudboost.io/file/travis123
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1838)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at io.cloudboost.util.CBParser.post(CBParser.java:160)
+	at io.cloudboost.util.CBParser.postFormData(CBParser.java:148)
+	at io.cloudboost.CloudFile.save(CloudFile.java:320)
+	at io.cloudboost.CloudFileTest.shouldSaveFileList(CloudFileTest.java:276)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="shouldSaveNewFile" time="35.733">
+    <error message="Server returned HTTP response code: 400 for URL: https://api.cloudboost.io/file/travis123" type="java.io.IOException">java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.cloudboost.io/file/travis123
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1838)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at io.cloudboost.util.CBParser.post(CBParser.java:160)
+	at io.cloudboost.util.CBParser.postFormData(CBParser.java:148)
+	at io.cloudboost.CloudFile.save(CloudFile.java:320)
+	at io.cloudboost.CloudFileTest.shouldSaveNewFile(CloudFileTest.java:424)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudFileTest" name="shouldDeleteNewFile" time="15.354">
+    <error message="Read timed out" type="java.net.SocketTimeoutException">java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
+	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
+	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+	at io.cloudboost.util.CBParser.post(CBParser.java:160)
+	at io.cloudboost.util.CBParser.postFormData(CBParser.java:148)
+	at io.cloudboost.CloudFile.save(CloudFile.java:320)
+	at io.cloudboost.CloudFileTest.shouldDeleteNewFile(CloudFileTest.java:372)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
 </testsuite>

@@ -1,0 +1,265 @@
+-------------------------------------------------------------------------------
+Test set: io.cloudboost.CloudQueryTest
+-------------------------------------------------------------------------------
+Tests run: 39, Failures: 13, Errors: 3, Skipped: 0, Time elapsed: 304.45 sec <<< FAILURE!
+notContianedIn(io.cloudboost.CloudQueryTest)  Time elapsed: 10.006 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$7.done(CloudQueryTest.java:195)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest.notContianedIn(CloudQueryTest.java:190)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+saveMultiJoin(io.cloudboost.CloudQueryTest)  Time elapsed: 10.01 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$21.done(CloudQueryTest.java:644)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.saveMultiJoin(CloudQueryTest.java:640)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+includeFindById(io.cloudboost.CloudQueryTest)  Time elapsed: 1.101 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$22.done(CloudQueryTest.java:662)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.includeFindById(CloudQueryTest.java:658)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldQueryOverLinkedColumn(io.cloudboost.CloudQueryTest)  Time elapsed: 11.392 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$37.done(CloudQueryTest.java:1221)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.shouldQueryOverLinkedColumn(CloudQueryTest.java:1215)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldReturnCountAsInteger(io.cloudboost.CloudQueryTest)  Time elapsed: 11.375 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$28.done(CloudQueryTest.java:901)
+	at io.cloudboost.CloudQuery.count(CloudQuery.java:1236)
+	at io.cloudboost.CloudQueryTest.shouldReturnCountAsInteger(CloudQueryTest.java:896)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+getEncryptedPasswordOverQuery(io.cloudboost.CloudQueryTest)  Time elapsed: 10.012 sec  <<< ERROR!
+java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$26.done(CloudQueryTest.java:805)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudQueryTest.getEncryptedPasswordOverQuery(CloudQueryTest.java:802)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldQueryOverBooleanType(io.cloudboost.CloudQueryTest)  Time elapsed: 13.723 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$34.done(CloudQueryTest.java:1066)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.shouldQueryOverBooleanType(CloudQueryTest.java:1060)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+containedInOverListOfCloudObject(io.cloudboost.CloudQueryTest)  Time elapsed: 4.908 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$38.done(CloudQueryTest.java:1258)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.containedInOverListOfCloudObject(CloudQueryTest.java:1253)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldIncludeRelationOnDistinct(io.cloudboost.CloudQueryTest)  Time elapsed: 11.193 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$36$1.done(CloudQueryTest.java:1181)
+	at io.cloudboost.CloudQuery.distinct(CloudQuery.java:1272)
+	at io.cloudboost.CloudQueryTest$36.done(CloudQueryTest.java:1174)
+	at io.cloudboost.CloudObject.save(CloudObject.java:875)
+	at io.cloudboost.CloudQueryTest.shouldIncludeRelationOnDistinct(CloudQueryTest.java:1164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldLimitNumberOfDataItems(io.cloudboost.CloudQueryTest)  Time elapsed: 11.605 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$30.done(CloudQueryTest.java:954)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest.shouldLimitNumberOfDataItems(CloudQueryTest.java:949)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldIncludeWithFindById(io.cloudboost.CloudQueryTest)  Time elapsed: 0.934 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: Bad Request
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$39.done(CloudQueryTest.java:1301)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.shouldIncludeWithFindById(CloudQueryTest.java:1295)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+lessThan(io.cloudboost.CloudQueryTest)  Time elapsed: 34.443 sec  <<< ERROR!
+java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$14$1.done(CloudQueryTest.java:445)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest$14.done(CloudQueryTest.java:442)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudQueryTest.lessThan(CloudQueryTest.java:437)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+selectColumnDistinct(io.cloudboost.CloudQueryTest)  Time elapsed: 10.001 sec  <<< ERROR!
+java.lang.NullPointerException
+	at io.cloudboost.CloudQueryTest$2.done(CloudQueryTest.java:59)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudQueryTest.selectColumnDistinct(CloudQueryTest.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+getEncryptedPassword(io.cloudboost.CloudQueryTest)  Time elapsed: 22.221 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$25$1.done(CloudQueryTest.java:781)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest$25.done(CloudQueryTest.java:777)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest.getEncryptedPassword(CloudQueryTest.java:771)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldNotGiveElementWithGivenRelation(io.cloudboost.CloudQueryTest)  Time elapsed: 10.979 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$33$1.done(CloudQueryTest.java:1021)
+	at io.cloudboost.CloudObject.save(CloudObject.java:879)
+	at io.cloudboost.CloudQueryTest$33.done(CloudQueryTest.java:1015)
+	at io.cloudboost.CloudObject.save(CloudObject.java:875)
+	at io.cloudboost.CloudQueryTest.shouldNotGiveElementWithGivenRelation(CloudQueryTest.java:1005)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldGetElementNotHavingGivenColumnName(io.cloudboost.CloudQueryTest)  Time elapsed: 11.811 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudQueryTest$32.done(CloudQueryTest.java:987)
+	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
+	at io.cloudboost.CloudQueryTest.shouldGetElementNotHavingGivenColumnName(CloudQueryTest.java:982)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
