@@ -72,7 +72,6 @@ public class CBParser {
 	        respMsg=conn.getResponseMessage();
 	        if(respCode!=200){
 	        	String error=inputStreamToString(conn.getErrorStream());
-	        	System.out.println(error);
 	        	CBResponse response=new CBResponse(respMsg, respMsg, respCode, null);
 	        	return response; 
 	        	}
@@ -85,7 +84,6 @@ public class CBParser {
 			return resp;
 		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
-        System.out.println(rr.toString());
        return rr;
     }
     private static void writeName(String name) throws IOException {
