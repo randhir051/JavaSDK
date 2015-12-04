@@ -13,7 +13,6 @@ import org.junit.Test;
 
 public class CloudQueueTest {
 	void initialize() {
-		// CloudApp.init("egimabengitest", "yiBh75txY35CB+LSb/1XLQ==");
 		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
 	}
 
@@ -439,7 +438,6 @@ public class CloudQueueTest {
 						
 						@Override
 						public void done(QueueMessage[] msgs, CloudException e) {
-							// TODO Auto-generated method stub
 							que.peek(2, new CloudQueueMessageCallback() {
 
 								@Override
@@ -828,7 +826,6 @@ public class CloudQueueTest {
 
 								@Override
 								public void done(CloudQueue q, CloudException e) {
-									// TODO Auto-generated method stub
 									try {
 										JSONArray array = q.document
 												.getJSONArray("subscribers");
@@ -870,7 +867,6 @@ public class CloudQueueTest {
 
 						@Override
 						public void done(CloudQueue q, CloudException e) {
-							// TODO Auto-generated method stub
 							try {
 								JSONArray array = q.document
 										.getJSONArray("subscribers");
@@ -942,8 +938,7 @@ public class CloudQueueTest {
 														Assert.assertTrue(arr
 																.length() == 0);
 													} catch (JSONException e1) {
-														// TODO Auto-generated
-														// catch block
+	
 														e1.printStackTrace();
 													}
 
@@ -1106,7 +1101,6 @@ public class CloudQueueTest {
 													.getInt("totalMessages");
 											Assert.assertTrue(msgCount == 2);
 										} catch (JSONException e1) {
-											// TODO Auto-generated catch block
 											e1.printStackTrace();
 										}
 
@@ -1148,7 +1142,7 @@ public class CloudQueueTest {
 													.getInt("totalMessages");
 											Assert.assertTrue(msgCount == 2);
 										} catch (JSONException e1) {
-											// TODO Auto-generated catch block
+											
 											e1.printStackTrace();
 										}
 
@@ -1315,7 +1309,7 @@ public class CloudQueueTest {
 									try {
 										Thread.sleep(7000);
 									} catch (InterruptedException e1) {
-										// TODO Auto-generated catch block
+										
 										e1.printStackTrace();
 									}
 									que.pull(1,

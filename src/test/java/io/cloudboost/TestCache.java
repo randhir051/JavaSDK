@@ -35,7 +35,7 @@ public class TestCache {
 										&& ob.getString("sex").equals("m")
 										&& ob.getString("age").equals("25"));
 							} catch (JSONException e1) {
-								// TODO Auto-generated catch block
+								
 								e1.printStackTrace();
 							}
 						}
@@ -152,7 +152,7 @@ public class TestCache {
 					Assert.assertEquals("student", object.getString("name"));
 
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 
@@ -278,8 +278,6 @@ public class TestCache {
 												Assert.fail(t.getMessage());
 											else {
 												if (o instanceof Object[]) {
-													System.out
-															.println("array got");
 													Object[] obs = (Object[]) o;
 													Assert.assertTrue(obs.length > 1);
 												}
@@ -329,7 +327,7 @@ public class TestCache {
 										Assert.assertEquals("kb", size
 												.substring(size.length() - 2));
 									} catch (JSONException e) {
-										// TODO Auto-generated catch block
+										
 										e.printStackTrace();
 									}
 
@@ -480,10 +478,8 @@ public class TestCache {
 												JSONObject object = new JSONObject(o
 														.toString());
 												String size = object.getString("size");
-												System.out.println("size="+size);
 												size=size.replaceAll("kb", "");
 												Double size0=Double.parseDouble(size);
-												System.out.println("double="+size0);
 
 												Assert.assertEquals(0.0, size0);
 											} catch (JSONException e) {

@@ -81,7 +81,6 @@ public class TestNotificationAcl {
 						
 						@Override
 						public void done(CloudObject x, CloudException t) throws CloudException {
-//							Assert.fail("Received notification despite false public read access");
 							
 						}
 					});
@@ -140,7 +139,7 @@ public class TestNotificationAcl {
 								
 								@Override
 								public void done(String x, CloudException e) throws CloudException {
-									// TODO Auto-generated method stub
+									
 									
 								}
 							});
@@ -286,7 +285,6 @@ public class TestNotificationAcl {
 			}
 		});
 	}
-	//--------------------------------------------------------------------------------------------
 	@Test(timeout=30000)
 	public void shouldNotReceiveUserLoggedOff() throws CloudException{
 		initMaster();
@@ -341,7 +339,6 @@ public class TestNotificationAcl {
 										try {
 											Thread.sleep(2000);
 										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
 									
@@ -411,7 +408,6 @@ public class TestNotificationAcl {
 										try {
 											Thread.sleep(2000);
 										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
 									

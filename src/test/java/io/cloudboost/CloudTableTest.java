@@ -91,7 +91,7 @@ public class CloudTableTest {
 		try {
 			table.addColumn(new Column[] { age, name, dob, password });
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return table;
@@ -106,7 +106,7 @@ public class CloudTableTest {
 		try {
 			table.addColumn(new Column[] { revenue, name, file });
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return table;
@@ -120,7 +120,7 @@ public class CloudTableTest {
 		try {
 			table.addColumn(new Column[] { city, pincode });
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return table;
@@ -147,7 +147,7 @@ public class CloudTableTest {
 				}
 			});
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -172,7 +172,7 @@ public class CloudTableTest {
 				}
 			});
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -241,8 +241,6 @@ public class CloudTableTest {
 					@Override
 					public void done(CloudTable table, CloudException e) {
 						if (e != null) {
-							// Assert.assertEquals("Table already exists.",
-							// e.getMessage().trim());
 							Assert.assertEquals("Internal Server Error", e
 									.getMessage().trim());
 						}
@@ -466,7 +464,6 @@ public class CloudTableTest {
 						public void done(CloudTable anotherTable,
 								CloudException e) throws CloudException {
 							if (anotherTable != null) {
-								// need to learn more jsonobject usage
 								Assert.assertEquals("success", "success");
 							}
 							if (e != null)
@@ -803,7 +800,7 @@ public class CloudTableTest {
 				try {
 					col.document.put("dataType", DataType.valueOf("Number"));
 				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 				table.updateColumn(col);
@@ -818,7 +815,7 @@ public class CloudTableTest {
 									table.getColumn("name").document
 											.get("dataType"));
 						} catch (JSONException e1) {
-							// TODO Auto-generated catch block
+							
 							e1.printStackTrace();
 						}
 

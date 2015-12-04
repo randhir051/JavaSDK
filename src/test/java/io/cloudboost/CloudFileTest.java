@@ -34,7 +34,7 @@ public class CloudFileTest {
 			@Override
 			public void done(final CloudFile x1, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 
 				if (t != null) {
 					Assert.fail(t.getMessage());
@@ -105,7 +105,7 @@ public class CloudFileTest {
 			@Override
 			public void done(final CloudFile x1, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 				if (t != null) {
 					Assert.fail(t.getMessage());
 				}
@@ -134,7 +134,7 @@ public class CloudFileTest {
 									public void done(CloudObject[] x,
 											CloudException t)
 											throws CloudException {
-										// TODO Auto-generated method stub
+										
 
 									}
 								});
@@ -174,7 +174,7 @@ public class CloudFileTest {
 			@Override
 			public void done(final CloudFile x1, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 				if (t != null) {
 					Assert.fail(t.getMessage());
 				}
@@ -224,7 +224,7 @@ public class CloudFileTest {
 			@Override
 			public void done(final CloudFile x1, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 				if (t != null) {
 					Assert.fail(t.getMessage());
 				}
@@ -276,7 +276,7 @@ public class CloudFileTest {
 			@Override
 			public void done(final CloudFile x1, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 				if (t != null) {
 					Assert.fail(t.getMessage());
 				}
@@ -324,8 +324,7 @@ public class CloudFileTest {
 																	.equals(x2
 																			.getId()));
 												} catch (JSONException e) {
-													// TODO Auto-generated catch
-													// block
+													
 													e.printStackTrace();
 												}
 											}
@@ -372,7 +371,7 @@ public class CloudFileTest {
 			@Override
 			public void done(CloudFile x, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 				if (t != null) {
 					Assert.fail(t.getMessage());
 				}
@@ -385,7 +384,7 @@ public class CloudFileTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							// TODO Auto-generated method stub
+							
 							if (e != null) {
 								Assert.fail(e.getMessage());
 							}
@@ -424,7 +423,7 @@ public class CloudFileTest {
 			@Override
 			public void done(CloudFile x, CloudException t)
 					throws CloudException {
-				// TODO Auto-generated method stub
+				
 				if (t != null) {
 					Assert.fail(t.getMessage());
 				}

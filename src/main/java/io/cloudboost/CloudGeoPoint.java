@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 
 /**
- * 
+ * An abstract wrapper around CloudBoost location functions
  * @author cloudboost
  *
  */
@@ -18,7 +18,7 @@ public class CloudGeoPoint{
 	
 	/**
 	 * 
-	 * Constructor
+	 * Builds a CloudGeoPoint object
 	 * 
 	 * @param latitude
 	 * @param longitude
@@ -45,7 +45,12 @@ public class CloudGeoPoint{
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param latitud
+	 * @param longitud
+	 * @throws CloudException
+	 */
 	public CloudGeoPoint(String latitud, String longitud) throws CloudException {
 		Double latitude=0.0;
 		Double longitude=0.0;
@@ -231,7 +236,13 @@ public class CloudGeoPoint{
 	private Double toRad(Double number){
 		return number * Math.PI / 180;
 	}
-	
+	/**
+	 * get a geopont out of an object (specifically an {@link org.json.JSONOabject})
+	 * @param object
+	 * @return
+	 * @throws JSONException
+	 * @throws CloudException
+	 */
 	public static CloudGeoPoint toGeoPoint(Object object) throws JSONException, CloudException{
 		JSONObject doc = new JSONObject(object.toString());
 		CloudGeoPoint loc = new CloudGeoPoint(doc.getDouble("latitude"), doc.getDouble("longitude"));

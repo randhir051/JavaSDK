@@ -48,14 +48,13 @@ public class CloudObjectTest{
 							
 						}
 					});
-//					Assert.assertTrue(x.getInteger("Revenue")==2567);
 				}
 			}
 		});
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		CloudObject ob=new CloudObject("Company");
@@ -306,7 +305,7 @@ public class CloudObjectTest{
 			obj1.put("sample", "sample");
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		JSONArray string = new JSONArray();
@@ -423,7 +422,6 @@ public class CloudObjectTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					//System.out.println(x.getCloudObject("newColumn7").get("_tableName"));
 					if(x.getCloudObject("newColumn2").get("_tableName").equals("Custom3") && x.getCloudObject("newColumn7").get("_tableName").equals("student1")){
 						
 					}
@@ -678,7 +676,7 @@ public class CloudObjectTest{
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		CloudObject ob1=new CloudObject("Student");
@@ -689,11 +687,10 @@ public class CloudObjectTest{
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-//				System.out.println("saved");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				x.set("name", "egima");
@@ -703,22 +700,20 @@ public class CloudObjectTest{
 					public void done(CloudObject x, CloudException t) throws CloudException {
 						if(t!=null)
 							Assert.fail(t.getMessage());
-//						System.out.println("updated");
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 						}
 						x.delete(new CloudObjectCallback() {
 							
 							@Override
 							public void done(CloudObject x, CloudException t) throws CloudException {
-//								System.out.println("deleted");
 								try {
 									Thread.sleep(2000);
 								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
+									
 									e.printStackTrace();
 								}
 								
@@ -825,7 +820,7 @@ public class CloudObjectTest{
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		CloudObject ob1=new CloudObject("Student");
@@ -836,11 +831,10 @@ public class CloudObjectTest{
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-//				System.out.println("saved");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				x.set("name", "egima");
@@ -850,22 +844,20 @@ public class CloudObjectTest{
 					public void done(CloudObject x, CloudException t) throws CloudException {
 						if(t!=null)
 							Assert.fail(t.getMessage());
-//						System.out.println("updated");
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 						}
 						x.delete(new CloudObjectCallback() {
 							
 							@Override
 							public void done(CloudObject x, CloudException t) throws CloudException {
-//								System.out.println("deleted");
 								try {
 									Thread.sleep(2000);
 								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
+									
 									e.printStackTrace();
 								}
 								
@@ -885,14 +877,13 @@ public class CloudObjectTest{
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
-//				System.out.println("real time bingooo");
 				
 			}
 		});
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		CloudObject ob1=new CloudObject("Student");
@@ -903,22 +894,20 @@ public class CloudObjectTest{
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-//				System.out.println("saved");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				x.delete(new CloudObjectCallback() {
 					
 					@Override
 					public void done(CloudObject x, CloudException t) throws CloudException {
-//						System.out.println("deleted");
 						try {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 						}
 						

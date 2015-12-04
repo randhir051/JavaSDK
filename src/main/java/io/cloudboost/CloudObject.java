@@ -174,7 +174,7 @@ public class CloudObject {
 	}
 
 	/**
-	 * 
+	 * should this object appear in searches
 	 * @param value
 	 */
 	void setIsSearchable(boolean value) {
@@ -187,7 +187,7 @@ public class CloudObject {
 	}
 
 	/**
-	 * 
+	 * get when this cloudobject will expire
 	 * @return
 	 */
 	Calendar getExpires() {
@@ -203,7 +203,7 @@ public class CloudObject {
 	}
 
 	/**
-	 * 
+	 * set expiry time for this cloudobject, after which it will not appear in queries and searches
 	 * @param value
 	 */
 	void setExpires(Calendar value) {
@@ -214,14 +214,18 @@ public class CloudObject {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * returns true if this cloudobject contains a given key
+ * @param key key to search for
+ * @return
+ */
 	public boolean hasKey(String key) {
 		return document.has(key);
 	}
 
 	/**
 	 * 
-	 * Set
+	 * Set a value to this cloudobject as object
 	 * 
 	 * @param columnName
 	 * @param data
@@ -278,7 +282,7 @@ public class CloudObject {
 
 	/**
 	 * 
-	 * Set
+	 * Set a value as an array
 	 * 
 	 * @param columnName
 	 * @param data
@@ -401,8 +405,6 @@ public class CloudObject {
 		try {
 			return (Integer) document.get(columnName);
 		} catch (JSONException e) {
-			
-			// e.printStackTrace();
 			return 0;
 		}
 	}
@@ -448,7 +450,11 @@ public class CloudObject {
 			return null;
 		}
 	}
-
+/**
+ * get a cloud object saved in this cloudobject
+ * @param columnName
+ * @return
+ */
 	public CloudObject getCloudObject(String columnName) {
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
@@ -471,6 +477,11 @@ public class CloudObject {
 		object.document = obj;
 		return object;
 	}
+	/**
+	 * get an array of cloudobjects in this cloudobject
+	 * @param columnName column name under which they are saved
+	 * @return
+	 */
 
 	public CloudObject[] getCloudObjectArray(String columnName) {
 		if (columnName == "id" || columnName == "isSearchable") {
@@ -497,7 +508,11 @@ public class CloudObject {
 		}
 		return object;
 	}
-
+/**
+ * get a value from this object as an array, cast to {@link org.json.JSONArray}
+ * @param columnName
+ * @return
+ */
 	public Object[] getArray(String columnName) {
 		if (columnName == "id" || columnName == "isSearchable") {
 			columnName = "_" + columnName;
@@ -539,11 +554,11 @@ public class CloudObject {
 
 	/**
 	 * 
-	 * Relate
+	 * Relates another CloudObject to this one
 	 * 
-	 * @param columnName
-	 * @param tableName
-	 * @param objectId
+	 * @param columnName column name to save to, should be of type relate and related to table in parameter
+	 * @param tableName table the relation column is related to
+	 * @param objectId the object's ID, it should have been already saved
 	 * @throws CloudException
 	 */
 	public void relate(String columnName, String tableName, String objectId)
@@ -566,7 +581,14 @@ public class CloudObject {
 		}
 		PrivateMethod._isModified(this, columnName);
 	}
-
+/**
+ * start listening to events
+ * @param tableName table to listen to events from
+ * @param eventType one of created, deleted, updated
+ * @param cloudQuery filter to apply on the data
+ * @param callbackObject
+ * @throws CloudException
+ */
 	public static void on(String tableName, String eventType,
 			final CloudQuery cloudQuery,
 			final CloudObjectCallback callbackObject) throws CloudException {
@@ -662,13 +684,10 @@ public class CloudObject {
 	}
 
 	/**
-	 * 
-	 * CloudObject On
-	 * 
-	 * @param tableName
-	 * @param eventType
-	 * @param queryObject
-	 * @param callbackObj
+	 * start listening to an event
+	 * @param tableName tablename to listen from
+	 * @param eventType one of "created","deleted" and "updated"
+	 * @param callbackObject fired when event occurs
 	 * @throws CloudException
 	 */
 
@@ -737,10 +756,10 @@ public class CloudObject {
 	}
 
 	/**
-	 * 
-	 * @param tableName
-	 * @param eventType
-	 * @param callbackObject
+	 * start listening to an array of events
+	 * @param tableName tablename to listen from
+	 * @param eventType one of "created","deleted" and "updated"
+	 * @param callbackObject fired when event occurs
 	 * @throws CloudException
 	 */
 	public static void on(String tableName, String[] eventType,
@@ -749,7 +768,14 @@ public class CloudObject {
 			CloudObject.on(tableName, eventType[i], callbackObject);
 		}
 	}
-
+/**
+ * start listening to an array of events
+ * @param tableName tablename to listen from
+ * @param eventType any of "created","deleted" and "updated"
+ * @param query a filter to specify details of the record to receive notifications for
+ * @param callbackObject
+ * @throws CloudException
+ */
 	public static void on(String tableName, String[] eventType,
 			CloudQuery query, final CloudObjectCallback callbackObject)
 			throws CloudException {
@@ -767,11 +793,11 @@ public class CloudObject {
 
 	/**
 	 * 
-	 * CloudObject Off
+	 * stop listening to events
 	 * 
-	 * @param tableName
-	 * @param eventType
-	 * @param callbackObj
+	 * @param tableName table name to stop listening from
+	 * @param eventType one of "created","deleted" and "updated"
+	 * @param callbackObj callback fired when the event is cancelled
 	 * @throws CloudException
 	 */
 	public static void off(String tableName, String eventType,
@@ -826,7 +852,7 @@ public class CloudObject {
 
 	/**
 	 * 
-	 * Save
+	 * writes this cloudobject to the database
 	 * 
 	 * @param callbackObject
 	 * @throws CloudException
@@ -868,7 +894,12 @@ public class CloudObject {
 		}
 
 	}
-
+/**
+ * delete an array of cloudobjects
+ * @param array
+ * @param callback
+ * @throws CloudException
+ */
 	public void deleteAll(CloudObject[] array, CloudObjectArrayCallback callback)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -910,7 +941,12 @@ public class CloudObject {
 			callback.done(null, e1);
 		}
 	}
-
+/**
+ * save an array of cloudobjects at once
+ * @param array
+ * @param callback
+ * @throws CloudException
+ */
 	public void saveAll(CloudObject[] array, CloudObjectArrayCallback callback)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -1034,7 +1070,7 @@ public class CloudObject {
 		}
 	}
 
-	public static boolean validateNotificationQuery(CloudObject object,
+	protected static boolean validateNotificationQuery(CloudObject object,
 			CloudQuery query) {
 		boolean valid = false;
 		if (query == null)
@@ -1061,7 +1097,10 @@ public class CloudObject {
 
 		return valid;
 	}
-
+/**
+ * returns the underlying permission object of this object
+ * @return
+ */
 	public ACL getAcl() {
 		
 		try {

@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/**
+ * ACL-Access Control Lists is a wrapper around CloudBoost access and permission management system. It forms part of every record, file,data saved
+ * in the database. This enables fine-grained control over access to all resources in the App
+ */
 class ACL{
 	
 	private ArrayList<String> allowedReadUser; 
@@ -29,8 +32,7 @@ class ACL{
 	JSONObject write;
 	JSONObject acl;
 	/**
-	 * ACL-Access Control Lists is a wrapper around CloudBoost access and permission management system. It forms part of every record, file,data saved
-	 * in the database. This enables fine-grained control over access to all resources in the App
+	 * creates ACL object with default properties i.e. all access rights to every body
 	 */
 	public ACL()
 	{

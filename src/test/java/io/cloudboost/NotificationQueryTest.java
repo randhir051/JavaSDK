@@ -40,8 +40,6 @@ public class NotificationQueryTest {
 													public void done(String x,
 															CloudException e)
 															throws CloudException {
-														// TODO Auto-generated
-														// method stub
 
 													}
 												});
@@ -111,7 +109,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "ben");
 		obj.save(new CloudObjectCallback() {
@@ -119,7 +117,7 @@ public class NotificationQueryTest {
 			public void done(CloudObject x, CloudException t)
 					throws CloudException {
 				if (t != null) {
-					// Assert.fail(t.getMessage());
+					
 				}
 			}
 		});
@@ -132,7 +130,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -160,7 +158,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "nawaz");
 		obj.save(new CloudObjectCallback() {
@@ -168,7 +166,7 @@ public class NotificationQueryTest {
 			public void done(CloudObject x, CloudException t)
 					throws CloudException {
 				if (t != null) {
-					// Assert.fail(t.getMessage());
+					
 				}
 			}
 		});
@@ -181,7 +179,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -212,7 +210,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("age", 10);
 		obj.save(new CloudObjectCallback() {
@@ -233,7 +231,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -260,12 +258,12 @@ public class NotificationQueryTest {
 							}
 						});
 				
-				// ;
+				
 			}
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "ben");
 		obj.save(new CloudObjectCallback() {
@@ -287,7 +285,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -313,12 +311,12 @@ public class NotificationQueryTest {
 
 							}
 						});
-				// ;
+				
 			}
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("age", 11);
 		obj.save(new CloudObjectCallback() {
@@ -340,7 +338,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -366,12 +364,12 @@ public class NotificationQueryTest {
 
 							}
 						});
-				// ;
+				
 			}
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "nawaz");
 		obj.save(new CloudObjectCallback() {
@@ -392,7 +390,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -416,12 +414,12 @@ public class NotificationQueryTest {
 							}
 						});
 				
-				// ;
+				
 			}
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 12);
@@ -444,7 +442,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -468,12 +466,12 @@ public class NotificationQueryTest {
 							}
 						});
 				Assert.assertTrue(true);
-				// ;
+				
 			}
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -496,7 +494,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -521,12 +519,12 @@ public class NotificationQueryTest {
 							}
 						});
 				
-				// ;
+				
 			}
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -549,7 +547,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -576,7 +574,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 12);
@@ -599,7 +597,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -627,7 +625,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -650,7 +648,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -679,7 +677,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -702,7 +700,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -729,8 +727,6 @@ public class NotificationQueryTest {
 											public void done(String x,
 													CloudException e)
 													throws CloudException {
-												// TODO Auto-generated method
-												// stub
 
 											}
 										});
@@ -741,7 +737,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -764,7 +760,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -792,7 +788,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.save(new CloudObjectCallback() {
@@ -814,7 +810,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -841,8 +837,6 @@ public class NotificationQueryTest {
 											public void done(String x,
 													CloudException e)
 													throws CloudException {
-												// TODO Auto-generated method
-												// stub
 
 											}
 										});
@@ -853,7 +847,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.save(new CloudObjectCallback() {
@@ -875,7 +869,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -903,7 +897,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -926,7 +920,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -955,7 +949,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -978,7 +972,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1007,7 +1001,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 9);
@@ -1030,7 +1024,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1058,7 +1052,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 10);
@@ -1081,7 +1075,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1110,7 +1104,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -1133,7 +1127,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1162,7 +1156,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 10);
@@ -1185,7 +1179,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1213,7 +1207,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 9);
@@ -1236,7 +1230,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1265,7 +1259,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 9);
@@ -1288,7 +1282,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1316,7 +1310,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 11);
@@ -1339,7 +1333,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1367,7 +1361,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 10);
@@ -1390,7 +1384,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1419,7 +1413,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.set("age", 9);
@@ -1442,7 +1436,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1492,7 +1486,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1541,7 +1535,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1570,7 +1564,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample1");
 		obj.save(new CloudObjectCallback() {
@@ -1592,7 +1586,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 
@@ -1717,7 +1711,7 @@ public class NotificationQueryTest {
 		});
 
 		Thread.sleep(2000);
-		// for(int i=0;i<3;i++){
+		
 		CloudObject obj = new CloudObject("Student");
 		obj.set("name", "sample");
 		obj.save(new CloudObjectCallback() {
@@ -1739,7 +1733,7 @@ public class NotificationQueryTest {
 
 			}
 		});
-		// }
+		
 
 	}
 

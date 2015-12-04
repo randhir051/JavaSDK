@@ -289,7 +289,7 @@ public class CloudFile{
 	
 	
 	/**
-	 * 
+	 * Returns a String of the file extension e.g. .json, .txt
 	 * @param file
 	 * @return
 	 */
@@ -388,6 +388,10 @@ public class CloudFile{
 		callbackObject.done(null, e);
 	}
 	}
+	/**
+	 * returns the file content as an object
+	 * @param callback
+	 */
 	public void getFileContent(ObjectCallback callback){
 		String url=CloudApp.getServerUrl()+"/file/" + CloudApp.getAppId() + "/" + getId()  ;
 		JSONObject params=new JSONObject();
@@ -413,6 +417,10 @@ public class CloudFile{
 				e.printStackTrace();
 			}
 	}
+	/**
+	 * returns the ACL object representing the access rights on this file
+	 * @return
+	 */
 	public ACL getAcl(){
 		try {
 			JSONObject ob=(JSONObject) document.get("ACL");
@@ -423,6 +431,10 @@ public class CloudFile{
 			return null;
 		}
 	}
+	/**
+	 * replaces the existing ACL object
+	 * @param acl new ACL object
+	 */
 	public void setAcl(ACL acl){
 		try {
 			document.put("ACL", acl.getACL());
@@ -430,6 +442,11 @@ public class CloudFile{
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * fetches this file from the database
+	 * @param callback
+	 * @throws CloudException
+	 */
 	public void fetch(final CloudFileArrayCallback callback) throws CloudException{
 		CloudQuery query=new CloudQuery("File");
 		query.equalTo("id", getId());

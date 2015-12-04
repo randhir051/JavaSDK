@@ -49,18 +49,24 @@ public class CloudApp {
 	}
 	
 /**
- * 
+ * URL for connecting to API
  * @return
  */
 	public static String getApiUrl(){
 		return apiUrl;
 	}
-	
+	/**
+	 * URL for accessing the server, can connect, disconnect the server
+	 * @return
+	 */
 
 	public static String getServerUrl() {
 		return serverUrl;
 	}
-
+/**
+ * 
+ * @return
+ */
 	public static String getServiceUrl(){
 		return serviceUrl;
 	}

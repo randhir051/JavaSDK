@@ -139,10 +139,7 @@ public class CloudUserTest {
 								us.logOut(new CloudUserCallback(){
 									@Override
 									public void done(CloudUser x, CloudException t)	throws CloudException {
-//										if(t!=null)
-//											Assert.fail(t.getMessage());
-//										if(x!=null)
-//											Assert.assertEquals(x.getUserName(), name);
+
 									}
 
 						
@@ -197,10 +194,7 @@ public class CloudUserTest {
 								us.logOut(new CloudUserCallback(){
 									@Override
 									public void done(CloudUser x, CloudException t)	throws CloudException {
-//										if(t!=null)
-//											Assert.fail(t.getMessage());
-//										if(x!=null)
-//											Assert.assertEquals(x.getUserName(), name);
+
 									}
 
 						

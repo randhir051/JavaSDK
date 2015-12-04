@@ -89,66 +89,12 @@ public class CreateTableTest {
 		try {
 			table.addColumn(new Column[] { age, name, dob, password,com });
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return table;
 
 	}
-//
-//	@Test(timeout = 50000)
-//	public void create() throws CloudException {
-//		initialize();
-//		CloudTable.get("Sample", new CloudTableCallback() {
-//
-//			@Override
-//			public void done(CloudTable table, CloudException e)
-//					throws CloudException {
-////				Assert.assertTrue(table != null);
-//				table.delete(new CloudStringCallback() {
-//					
-//					@Override
-//					public void done(String x, CloudException e) throws CloudException {
-//						CloudTable table = new CloudTable("Sample");
-//						Column col1 = new Column("name", DataType.Text, true, false);
-//						Column col2 = new Column("unique", DataType.Text, false, true);
-//						Column col3 = new Column("stringArray", DataType.List, false, false);
-//						col3.setRelatedTo(DataType.Text);
-//						Column col4 = new Column("objectArray", DataType.List, false, false);
-//						col4.setRelatedTo(DataType.Object);
-//						Column col5 = new Column("file", DataType.File, false, false);
-//						Column col6 = new Column("fileList", DataType.List, false, false);
-//						col6.setRelatedTo(DataType.File);
-//						Column col7 = new Column("sameRelation", DataType.Relation, false,
-//								false);
-//						col7.setRelatedTo(new CloudTable("Sample"));
-//						Column col8 = new Column("relationArray", DataType.List, false,
-//								false);
-//						col8.setRelatedTo(new CloudTable("Sample"));
-//						Column col9 = new Column("uniqueRelation", DataType.Relation, false,
-//								true);
-//						col9.setRelatedTo(new CloudTable("Sample"));
-//						table.addColumn(new Column[] { col1, col2, col3, col4, col5, col6,
-//								col7, col8,col9 });
-//						table.save(new CloudTableCallback() {
-//
-//							@Override
-//							public void done(CloudTable table, CloudException e)
-//									throws CloudException {
-//								if (e != null)
-//									Assert.fail(e.getMessage());
-//								Assert.assertFalse(table == null);
-//							}
-//
-//						});
-//						
-//					}
-//				});
-//
-//			}
-//		});
-//		
-//	}
 
 	public CloudTable createCompany() {
 		Column revenue = new Column("Revenue", DataType.Number, false, false);
@@ -158,7 +104,7 @@ public class CreateTableTest {
 		try {
 			table.addColumn(new Column[] { revenue, name, file });
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return table;
@@ -172,7 +118,7 @@ public class CreateTableTest {
 		try {
 			table.addColumn(new Column[] { city, pincode });
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return table;
@@ -199,7 +145,7 @@ public class CreateTableTest {
 				}
 			});
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -224,7 +170,7 @@ public class CreateTableTest {
 				}
 			});
 		} catch (CloudException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

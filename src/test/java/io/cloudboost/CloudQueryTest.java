@@ -296,7 +296,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//	
+	
 		@Test(timeout=50000)
 		public void selectColumnDistinct() throws CloudException{
 			initialize();
@@ -370,7 +370,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+	
 		@Test(timeout=50000)
 		public void notEqualToWithNull() throws CloudException{
 			initialize();
@@ -399,8 +399,8 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
-//		
+		
+		
 		@Test(timeout=50000)
 		public void findOne() throws CloudException{
 			initialize();
@@ -421,7 +421,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void findItemById() throws CloudException{
 			initialize();
@@ -637,7 +637,7 @@ public class CloudQueryTest{
 			initialize();
 			CloudObject obj=new CloudObject("student4");
 			obj.set("age", 25);
-//			obj.set("name", "egima");
+			obj.set("name", "egima");
 			obj.save(new CloudObjectCallback() {
 				
 				@Override
@@ -732,7 +732,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void greaterThanEqualTo() throws CloudException{
 			initialize();
@@ -760,7 +760,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void lessThan() throws CloudException{
 			initialize();
@@ -788,7 +788,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void lessThanEqualTo() throws CloudException{
 			initialize();
@@ -846,7 +846,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void descendingOrder() throws CloudException{
 			initialize();
@@ -876,9 +876,9 @@ public class CloudQueryTest{
 					}
 				});
 		}
-//		
+		
 
-//		
+		
 		@Test(timeout=50000)
 		public void exists() throws CloudException{
 			initialize();
@@ -906,7 +906,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void doesNotExists() throws CloudException{
 			initialize();
@@ -954,7 +954,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void saveMultiJoin() throws CloudException{
 			initialize();
@@ -1011,7 +1011,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout = 50000)
 		public void getEncryptedPasswordOverOr() throws CloudException {
 			initialize();
@@ -1122,7 +1122,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout=50000)
 		public void getEncryptedPasswordOverQuery() throws CloudException{
 			initialize();
@@ -1158,7 +1158,7 @@ public class CloudQueryTest{
 				}
 			});
 		}
-//		
+		
 		@Test(timeout = 50000)
 		public void containedInShouldWorkOnId() throws CloudException {
 
@@ -1393,7 +1393,6 @@ public class CloudQueryTest{
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
-					// TODO Auto-generated method stub
 					if(t!=null)
 						Assert.fail(t.getMessage());
 					if(x!=null){
@@ -1455,7 +1454,6 @@ public class CloudQueryTest{
 							@Override
 							public void done(CloudObject[] x, CloudException t)
 									throws CloudException {
-								// TODO Auto-generated method stub
 								if (t != null)
 									Assert.fail(t.getMessage());
 								if (x != null) {
@@ -1646,7 +1644,6 @@ public class CloudQueryTest{
 							try {
 								Assert.assertTrue(obj.has("newColumn1")&&obj.getString("newColumn1").equals("sample"));
 							} catch (JSONException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
@@ -1659,7 +1656,7 @@ public class CloudQueryTest{
 			initialize();
 			CloudObject obj=new CloudObject("student4");
 			obj.set("age", 25);
-//			obj.set("name", "egima");
+			obj.set("name", "egima");
 			obj.save(new CloudObjectCallback() {
 				
 				@Override

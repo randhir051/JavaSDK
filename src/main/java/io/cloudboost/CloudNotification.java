@@ -3,7 +3,7 @@ package io.cloudboost;
 import io.socket.emitter.Emitter;
 import io.cloudboost.util.CloudSocket;
 /**
- * 
+ * Abstract wrapper class for real time functionality of CloudBoost
  * @author cloudboost
  *
  */
@@ -11,11 +11,11 @@ public class CloudNotification{
 	
 	/**
 	 * 
-	 * CloudNotification On
+	 * Start listening to events
 	 * 
 	 * 
-	 * @param channelName
-	 * @param callbackObject
+	 * @param channelName channel to start listening on
+	 * @param callbackObject a listener which is called when the event is triggered
 	 * @throws CloudException
 	 */
 	public static void on(String channelName, final CloudNotificationCallback callbackObject) throws CloudException{
@@ -43,8 +43,7 @@ public class CloudNotification{
 	
 	/**
 	 * 
-	 * Publish
-	 * 
+	 * Write data to a channel, any client subscribed to this channel will receive a notification
 	 * 
 	 * @param channelName
 	 * @param data
@@ -59,7 +58,12 @@ public class CloudNotification{
 		}
 		CloudSocket.getSocket().emit("publish-custom-channel", "{\"channel\":\""+CloudApp.getAppId()+channelName+"\",\"data\":\""+data+"\"" );
 	}
-	
+	/**
+	 * stop listening to events
+	 * @param channelName channel to stop listening from
+	 * @param callbackObject
+	 * @throws CloudException
+	 */
 	public static void off(String channelName, final CloudStringCallback callbackObject) throws CloudException{
 		if(CloudApp.getAppId() == null){
 			throw new CloudException("CloudApp id is null");
