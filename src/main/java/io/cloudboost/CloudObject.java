@@ -17,18 +17,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * 
+ *Wraps a single record from a table
  * @author cloudboost
  * 
  */
 public class CloudObject {
 	public ACL acl;
 	protected JSONObject document;
-
+	/**
+	 * returns the underlying json document with all data about the record, do not modify this object unless you are absolutely sure
+	 * of what you are doing
+	 * @return
+	 */
 	public JSONObject getDocument() {
 		return document;
 	}
-
+/**
+ * replaces the underlying json object
+ * @param document
+ */
 	public void setDocument(JSONObject document) {
 		this.document = document;
 	}
@@ -37,10 +44,10 @@ public class CloudObject {
 	protected ArrayList<String> _modifiedColumns;
 
 	/**
-	 * 
+	 * Create a new CloudObject
 	 * Constructor
 	 * 
-	 * @param tableName
+	 * @param tableName -name of table to wrap
 	 */
 	public CloudObject(String tableName) {
 		this.acl = new ACL();
@@ -53,7 +60,7 @@ public class CloudObject {
 		// letter pass to serialization
 		document = new JSONObject();
 		try {
-			document.put("_id", JSONObject.NULL);
+			document.put("_id",(Object) null);
 
 			document.put("_tableName", tableName);
 			document.put("_type", "custom");
@@ -68,6 +75,10 @@ public class CloudObject {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * set the Access Control List for this record
+	 * @param acl
+	 */
 	public void setAcl(ACL acl){
 		try {
 			set("ACL", acl);
@@ -109,7 +120,7 @@ public class CloudObject {
 
 	
 	/**
-	 * 
+	 * get the id of this object if its already saved, otherwise null
 	 * @return
 	 */
 	String getId() {
@@ -117,13 +128,12 @@ public class CloudObject {
 			return (document.get("_id")).toString();
 		} catch (JSONException e) {
 			
-			e.printStackTrace();
 			return null;
 		}
 	}
 
 	/**
-	 * 
+	 * get the date of creation of this object
 	 * @return
 	 */
 	Date getCreatedAt() {
@@ -137,48 +147,20 @@ public class CloudObject {
 	}
 
 	/**
-	 * 
-	 * @param value
-	 */
-	void setCreatedAt(Date value) {
-		try {
-			document.put("createdAt", value);
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-
-		}
-	}
-
-	/**
-	 * 
+	 * get the last update date of this object
 	 * @return
 	 */
 	Date getUpdatedAt() {
 		try {
 			return (Date) document.get("updatedAt");
 		} catch (JSONException e) {
-			
-			e.printStackTrace();
 			return null;
 		}
 	}
 
-	/**
-	 * 
-	 * @param value
-	 */
-	void setUpdatedAt(Date value) {
-		try {
-			document.put("updatedAt", value);
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-	}
 
 	/**
-	 * 
+	 * returns true if search can be performed on this object
 	 * @return
 	 */
 	boolean getIsSearchable() {
@@ -210,6 +192,8 @@ public class CloudObject {
 	 */
 	Calendar getExpires() {
 		try {
+			String str=document.getString("expires");
+			
 			return (Calendar) document.get("expires");
 		} catch (JSONException e) {
 			
@@ -858,7 +842,6 @@ public class CloudObject {
 		
 
 		try {
-			System.out.println("ACL GOING INTO SAVE IS: "+getAcl().getACL());
 			document.put("ACL", getAcl().getACL());
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());

@@ -9,6 +9,7 @@ io\cloudboost\util\UUID.class
 io\cloudboost\CloudObject$1.class
 io\cloudboost\CloudNotification$2.class
 io\cloudboost\CloudTableCallback.class
+io\cloudboost\CloudApp$2.class
 io\cloudboost\CloudQueueCallback.class
 io\cloudboost\ACL.class
 io\cloudboost\CloudFile.class
@@ -30,6 +31,7 @@ io\cloudboost\CloudObject$3.class
 io\cloudboost\CloudException.class
 io\cloudboost\CloudNotification.class
 io\cloudboost\CloudObject.class
+io\cloudboost\CloudApp$1.class
 io\cloudboost\CloudObjectArrayCallback.class
 io\cloudboost\CloudStringCallback.class
 io\cloudboost\QueueMessage.class

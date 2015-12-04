@@ -413,6 +413,23 @@ public class CloudFile{
 				e.printStackTrace();
 			}
 	}
+	public ACL getAcl(){
+		try {
+			JSONObject ob=(JSONObject) document.get("ACL");
+			ACL acl=new ACL();
+			acl.acl=ob;
+			return acl;
+		} catch (JSONException e) {
+			return null;
+		}
+	}
+	public void setAcl(ACL acl){
+		try {
+			document.put("ACL", acl.getACL());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 	public void fetch(final CloudFileArrayCallback callback) throws CloudException{
 		CloudQuery query=new CloudQuery("File");
 		query.equalTo("id", getId());

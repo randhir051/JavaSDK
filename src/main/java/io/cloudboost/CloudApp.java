@@ -2,34 +2,56 @@ package io.cloudboost;
 
 
 import io.cloudboost.util.CloudSocket;
-
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter.Listener;
+/**
+ * An abstract representation of CloudBoost, it manages connection parameters, URLs and authentication 
+ * to the CloudBoost server
+ * @author new
+ *
+ */
 
 public class CloudApp {
-	private static String appId;
-	private static String appKey;
-	private static String serverUrl = "https://api.cloudboost.io";
-	private static String serviceUrl = "https://service.cloudboost.io";
-	private static String appUrl = serverUrl+"/api";
-	private static String apiUrl = serverUrl;
-	private static String socketUrl = "https://realtime.cloudboost.io";
+	protected static String appId;
+	protected static String appKey;
+	protected static String serverUrl = "https://api.cloudboost.io";
+	protected static String serviceUrl = "https://service.cloudboost.io";
+	protected static String appUrl = serverUrl+"/api";
+	protected static String apiUrl = serverUrl;
+	protected static String socketUrl = "https://realtime.cloudboost.io";
 	public static String SESSION_ID=null;
+	public static String masterKey=null;
+	public static String socketIoUrl=null;
 	
-	
+	/**
+	 * gives the App ID to connect to
+	 * @return
+	 */
 	public static String getAppId() {
 		return appId;
 	}
 	
-
+/**
+ * returns the authentication key to connect to the App, every App created in cloudboost has an ID
+ * and client key
+ * @return
+ */
 	public static String getAppKey() {
 		return appKey;
 	}
 	
-
+/**
+ * get the URL for connecting to an App on CloudBoost
+ * @return
+ */
 	public static String getAppUrl() {
 		return appUrl;
 	}
 	
-
+/**
+ * 
+ * @return
+ */
 	public static String getApiUrl(){
 		return apiUrl;
 	}
@@ -46,6 +68,32 @@ public class CloudApp {
 
 	public static String getSocketUrl(){
 		return socketUrl;
+	}
+	public static void onConnect(){
+		CloudSocket.getSocket().on(Socket.EVENT_CONNECT,new Listener() {
+			
+			@Override
+			public void call(Object... args) {
+				System.out.println("conneced");
+				
+			}
+		});
+	}
+	public static void connect(){
+		CloudSocket.getSocket().connect();
+	}
+	public static void disconnect(){
+		CloudSocket.getSocket().disconnect();
+	}
+	public static void onDisconnect(){
+		CloudSocket.getSocket().on(Socket.EVENT_DISCONNECT,new Listener() {
+			
+			@Override
+			public void call(Object... args) {
+				System.out.println("disconnected");
+				
+			}
+		});
 	}
 
 	public static void init(String appId, String appKey) {

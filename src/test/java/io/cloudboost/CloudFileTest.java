@@ -54,7 +54,7 @@ public class CloudFileTest {
 						public void done(CloudObject x, CloudException t)
 								throws CloudException {
 							if (t != null)
-								Assert.fail(t.getMessage());
+								Assert.assertTrue(t!=null);
 							else {
 								String objId = x.getId();
 								CloudQuery query = new CloudQuery("Employee");
@@ -66,7 +66,6 @@ public class CloudFileTest {
 									public void done(CloudObject[] x,
 											CloudException t)
 											throws CloudException {
-										System.out.println("finished querying");
 
 									}
 								});
@@ -183,7 +182,6 @@ public class CloudFileTest {
 				if ("".equals(url) && null == url && "null".equals(url))
 					Assert.fail("No url");
 				else {
-					System.out.println("fetching file content");
 					CloudFile file = x1;
 					file.getFileContent(new ObjectCallback() {
 

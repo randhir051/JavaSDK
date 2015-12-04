@@ -5,6 +5,7 @@ import io.cloudboost.util.CBParser;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -353,8 +354,12 @@ public class CloudUser extends CloudObject{
 		
 		CBResponse response=CBParser.callJson(url, "PUT", data);
 		if(response.getStatusCode() == 200){
-				
-				JSONObject body = new JSONObject(response.getResponseBody());
+			String resp=response.getResponseBody();
+			JSONArray arr=null;
+			if(resp.charAt(0)=='[')
+			arr=new JSONArray(resp);
+			else arr=new JSONArray("["+resp+"]");
+				JSONObject body = arr.getJSONObject(0);
 				thisObj.document = body;
 				
 				current = null;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="34" failures="2" name="io.cloudboost.NotificationQueryTest" time="227.956" errors="0" skipped="0">
+<testsuite tests="34" failures="0" name="io.cloudboost.NotificationQueryTest" time="182.87" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,76 +63,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="startsWith" time="6.769"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="containsAll" time="5.02"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="exists" time="4.912"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="or" time="5.019"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="notContainedIn" time="4.909"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="containsAllTrick" time="4.911"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="containedInTrick" time="5.13"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="containedIn" time="4.915"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="existsNotTrick" time="5.087"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="existsNot" time="7.1"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="startsWith1" time="5.043"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThan" time="5.097"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="existsTrick" time="4.783"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanEq" time="5.147"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLimitTwo" time="11.985"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnEqualTo" time="6.86"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="querySkipOne" time="11.366"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThan" time="5.014"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnNotEqualToTrick" time="5.324"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanTrick" time="4.863"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanOrEq" time="4.867"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanTrick1" time="10.546"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnEqualToTrick" time="5.224"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanEqTrick1" time="5.219"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanEqTrick2" time="5.227"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanTrick2" time="11.157"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnNotEqualTo" time="5.028"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="notContainedInTrick" time="4.995"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnEqualToOverCO" time="6.468"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="or3" time="6.431"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="or1" time="12.004">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.NotificationQueryTest$11.done(NotificationQueryTest.java:230)
-	at io.cloudboost.CloudObject.save(CloudObject.java:879)
-	at io.cloudboost.NotificationQueryTest.or1(NotificationQueryTest.java:224)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
-created
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="or2" time="6.378"/>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanOrEqTrick1" time="12.004">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.NotificationQueryTest$49.done(NotificationQueryTest.java:1031)
-	at io.cloudboost.CloudObject.save(CloudObject.java:879)
-	at io.cloudboost.NotificationQueryTest.queryGreaterThanOrEqTrick1(NotificationQueryTest.java:1025)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
-created
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanOrEqTrick2" time="13.154"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="startsWith" time="6.736"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="containsAll" time="4.919"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="exists" time="5.016"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="or" time="5.119"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="notContainedIn" time="5.329"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanOrEqTrick2" time="5.12"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanOrEqTrick1" time="5.321"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="or3" time="5.118"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="or2" time="5.221"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="or1" time="5.225"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnEqualToOverCO" time="7.169"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanEqTrick2" time="5.119"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanEqTrick1" time="4.835"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanTrick2" time="5.717"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanTrick1" time="5.318"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanOrEq" time="4.914"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="notContainedInTrick" time="5.061"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnNotEqualTo" time="5.082"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnNotEqualToTrick" time="5.017"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnEqualToTrick" time="4.914"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThanTrick" time="5.02"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThan" time="6.044"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLessThanEq" time="5.525"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryGreaterThan" time="5.226"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryLimitTwo" time="8.397"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="existsTrick" time="5.217"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="querySkipOne" time="5.427"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="queryOnEqualTo" time="5.025"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="containsAllTrick" time="5.319"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="existsNot" time="5.022"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="containedInTrick" time="5.322"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="containedIn" time="4.985"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="startsWith1" time="4.951"/>
+  <testcase classname="io.cloudboost.NotificationQueryTest" name="existsNotTrick" time="5.12"/>
 </testsuite>

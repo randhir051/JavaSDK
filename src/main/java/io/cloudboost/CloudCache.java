@@ -13,7 +13,11 @@ public class CloudCache {
 	String cacheName;
 	JSONArray items;
 	String _tableName;
-
+/**
+ * Abstract class that wraps CloudBoost cache, with ability to create, delete, inspect,clear and add items to Cache
+ * @param cacheName
+ * @throws CloudException
+ */
 	public CloudCache(String cacheName) throws CloudException {
 		if (cacheName == null || "null".equals(cacheName)
 				|| "".equals(cacheName))
@@ -35,7 +39,9 @@ public class CloudCache {
 		}
 
 	}
-
+	/**
+	 * updates the data in this cache object
+	 */
 	public void invalidateAttributes() {
 		try {
 			document.put("_tableName", this._tableName);
@@ -46,7 +52,13 @@ public class CloudCache {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Add data to the cache
+	 * @param key -a key word to identify the data in the cache
+	 * @param value -the data to be cached
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void addItem(String key, Object value, ObjectCallback call)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -79,7 +91,12 @@ public class CloudCache {
 		}
 
 	}
-
+	/**
+	 * remove an item from the cache
+	 * @param key -key under which the item was stored
+	 * @param call -a listener to be fired when item is received
+	 * @throws CloudException
+	 */
 	public void deleteItem(String key, ObjectCallback call)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -104,7 +121,12 @@ public class CloudCache {
 		}
 
 	}
-
+/**
+ * get item from cache
+ * @param key -key under which the item was saved in cache
+ * @param call
+ * @throws CloudException
+ */
 	public void getCache(String key, ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -129,7 +151,11 @@ public class CloudCache {
 		}
 
 	}
-
+	/**
+	 * creates a new cache using the parameters set on this CloudCache Object
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void create(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -153,7 +179,11 @@ public class CloudCache {
 		}
 
 	}
-
+	/**
+	 * it counts all items under unique keys in the cache, returns an integer in the callback
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void getItemsCount(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -177,6 +207,11 @@ public class CloudCache {
 		}
 
 	}
+	/**
+	 * returns all caches
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void getAll_0(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -199,6 +234,11 @@ public class CloudCache {
 		}
 
 	}
+	/**
+	 * returns all items in this cache
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void getAll(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -222,7 +262,12 @@ public class CloudCache {
 		}
 
 	}
-	public static void getAllCaches(ObjectCallback call) throws CloudException {
+	/**
+	 * returns all caches
+	 * @param call
+	 * @throws CloudException
+	 */
+	public static void getAllCache(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
 				throw new CloudException("App Id is null");
@@ -244,6 +289,11 @@ public class CloudCache {
 		}
 
 	}
+	/**
+	 * clears the cache, after this operation, the cache size is 0.0kb
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void clear(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -266,7 +316,11 @@ public class CloudCache {
 			call.done(null, new CloudException(e.getMessage()));
 		}
 	}
-
+/**
+ * delete this cache
+ * @param call
+ * @throws CloudException
+ */
 	public void delete(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -290,6 +344,11 @@ public class CloudCache {
 		}
 
 	}
+	/**
+	 * delete all caches
+	 * @param call
+	 * @throws CloudException
+	 */
 	public static void deleteAll(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -312,6 +371,12 @@ public class CloudCache {
 		}
 
 	}
+	/**
+	 * get item from this cache
+	 * @param key -key under which this data was saved in the cache
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void get(String key,ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
@@ -335,6 +400,11 @@ public class CloudCache {
 		}
 
 	}
+	/**
+	 * returns info about this cache
+	 * @param call
+	 * @throws CloudException
+	 */
 	public void getInfo(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {

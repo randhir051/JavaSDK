@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="io.cloudboost.AppTest" time="35.381" errors="3" skipped="0">
+<testsuite tests="6" failures="0" name="io.cloudboost.AppTest" time="25.717" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,104 +63,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.AppTest" name="testKey" time="0"/>
-  <testcase classname="io.cloudboost.AppTest" name="shouldSaveRecord" time="5.351"/>
-  <testcase classname="io.cloudboost.AppTest" name="cloudAppTest" time="0"/>
-  <testcase classname="io.cloudboost.AppTest" name="shouldCreateAnApp" time="10.028">
-    <error message="test timed out after 10000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 10000 milliseconds
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:150)
-	at java.net.SocketInputStream.read(SocketInputStream.java:121)
-	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
-	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
-	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
-	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
-	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
-	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
-	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
-	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
-	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
-	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
-	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
-	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:338)
-	at io.cloudboost.util.CBParser.callJson(CBParser.java:70)
-	at io.cloudboost.AppTest.shouldCreateAnApp(AppTest.java:46)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.AppTest" name="shouldDeleteAnApp" time="10.001">
-    <error message="test timed out after 10000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 10000 milliseconds
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:150)
-	at java.net.SocketInputStream.read(SocketInputStream.java:121)
-	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
-	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
-	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
-	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
-	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
-	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
-	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
-	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
-	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
-	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
-	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
-	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:338)
-	at io.cloudboost.util.CBParser.callJson(CBParser.java:70)
-	at io.cloudboost.AppTest.shouldDeleteAnApp(AppTest.java:103)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.AppTest" name="shouldCreateATable" time="10.001">
-    <error message="test timed out after 10000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 10000 milliseconds
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:150)
-	at java.net.SocketInputStream.read(SocketInputStream.java:121)
-	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
-	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
-	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
-	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
-	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
-	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
-	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
-	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
-	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
-	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
-	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
-	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:338)
-	at io.cloudboost.util.CBParser.callJson(CBParser.java:70)
-	at io.cloudboost.CloudTable.save(CloudTable.java:365)
-	at io.cloudboost.AppTest.shouldCreateATable(AppTest.java:55)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
+  <testcase classname="io.cloudboost.AppTest" name="testKey" time="0.02"/>
+  <testcase classname="io.cloudboost.AppTest" name="shouldSaveRecord" time="6.857"/>
+  <testcase classname="io.cloudboost.AppTest" name="cloudAppTest" time="0.005"/>
+  <testcase classname="io.cloudboost.AppTest" name="shouldCreateATable" time="1.737"/>
+  <testcase classname="io.cloudboost.AppTest" name="shouldCreateAnApp" time="4.3"/>
+  <testcase classname="io.cloudboost.AppTest" name="shouldDeleteAnApp" time="12.798"/>
 </testsuite>

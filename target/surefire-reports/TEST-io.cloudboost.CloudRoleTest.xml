@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="2" name="io.cloudboost.CloudRoleTest" time="16.833" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="io.cloudboost.CloudRoleTest" time="2.948" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,38 +63,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudRoleTest" name="createRole" time="10.871">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudRoleTest$2.done(CloudRoleTest.java:41)
-	at io.cloudboost.CloudRole.save(CloudRole.java:87)
-	at io.cloudboost.CloudRoleTest.createRole(CloudRoleTest.java:36)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudRoleTest" name="createRoleWithVersion" time="5.962">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudRoleTest$1.done(CloudRoleTest.java:25)
-	at io.cloudboost.CloudRole.save(CloudRole.java:87)
-	at io.cloudboost.CloudRoleTest.createRoleWithVersion(CloudRoleTest.java:20)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
+  <testcase classname="io.cloudboost.CloudRoleTest" name="createRoleWithVersion" time="1.125"/>
+  <testcase classname="io.cloudboost.CloudRoleTest" name="createRole" time="1.823"/>
 </testsuite>

@@ -7,6 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import javax.net.ssl.HttpsURLConnection;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,10 +35,10 @@ public class CBParser {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-        HttpsURLConnection conn=null;
+        HttpURLConnection conn=null;
 		try {
 			
-			conn = (HttpsURLConnection) url.openConnection();
+			conn = (HttpURLConnection) url.openConnection();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -66,9 +67,11 @@ public class CBParser {
 	        dos.close();
 
 	        respCode=conn.getResponseCode();
+	        
 
 	        respMsg=conn.getResponseMessage();
 	        if(respCode!=200){
+	        	String error=inputStreamToString(conn.getErrorStream());
 	        	CBResponse response=new CBResponse(respMsg, respMsg, respCode, null);
 	        	return response; 
 	        	}
@@ -111,7 +114,7 @@ public class CBParser {
         writeln(value);
       }
     public static  DataOutputStream dos=null;
-    public static  HttpsURLConnection conn=null;
+    public static  HttpURLConnection conn=null;
     public static CBResponse postFormData(String myurl,String httpMethod,JSONObject params,InputStream is) throws IOException{
         URL url=null;
   		try {
@@ -121,7 +124,7 @@ public class CBParser {
   		}
   		try {
   			
-  			conn = (HttpsURLConnection) url.openConnection();
+  			conn = (HttpURLConnection) url.openConnection();
   		} catch (IOException e) {
   			e.printStackTrace();
   		}
@@ -177,7 +180,7 @@ public class CBParser {
         write("\"");
         newline();
         write("Content-Type: ");
-        String type = HttpsURLConnection.guessContentTypeFromName(filename);
+        String type = HttpURLConnection.guessContentTypeFromName(filename);
         if (type == null) type = "application/octet-stream";
         writeln(type);
         newline();

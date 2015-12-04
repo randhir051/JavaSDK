@@ -4,7 +4,8 @@ import io.cloudboost.beans.CBResponse;
 import io.cloudboost.util.CBParser;
 
 import java.util.ArrayList;
-import java.util.concurrent.Future;
+import java.util.Arrays;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -167,17 +168,19 @@ public class CloudQuery {
 		return object;
 	}
 	public static boolean validateQuery(CloudObject co,JSONObject query) throws JSONException{
-		boolean valid=false;
 		String[] names=JSONObject.getNames(query);
 		if(names==null)
-			return valid;
+			return false;
 		for(String key:names){
+			if(key.equals("$include")||key.equals("$includeList"))
+				continue;
 			Object val=query.get(key);
 			if(val instanceof JSONObject||val instanceof JSONArray){
 				if(key.equals("$or")){
 					JSONArray arr=query.getJSONArray(key);
-					
+					boolean valid=false;
 					if(arr.length()>0){
+						
 						for(int i=0;i<arr.length();i++){
 							if(CloudQuery.validateQuery(co, arr.getJSONObject(i))){
 								valid=true;
@@ -185,97 +188,138 @@ public class CloudQuery {
 								
 							}
 						}
+						if(!valid)
+							return false;
 					}
 					
 				}
 				if(val instanceof JSONObject){
 					String[] subkeys=JSONObject.getNames((JSONObject)val);
+					List<String> subk=	Arrays.asList(subkeys);
+
 					for(String subkey:subkeys){
+						if(subkey.equals("$regex")){
+							if(co.hasKey(key)){
+							if(subk.contains("$options"))
+							{
+								String options=((JSONObject)val).getString("$options");
+								if(options.equals("im")){
+									String reg=((JSONObject)val).getString("$regex");
+									reg=reg.replace("^", "");
+									if(co.hasKey(key)){
+									String value=co.getString(key);
+									if(!(String.valueOf(value.charAt(0)).equals(reg))){
+										return false;
+									}}
+								}
+							}}
+						}
 						if(subkey.equals("$ne"))
 							{
+							
 							Object subval=((JSONObject) val).get(subkey);
-							if(subval instanceof Double )
-								valid=co.getDouble(key)!=((JSONObject)val).getDouble(subkey);
-							else if(subval instanceof Integer)
-								valid=co.getInteger(key)!=((JSONObject)val).getInt(subkey);
+							if(co.hasKey(key)){
+							if(subval instanceof Double ){
+								if(co.getDouble(key)==((JSONObject)val).getDouble(subkey))
+									return false;}
+							else if(subval instanceof Integer){
+								if(co.getInteger(key)==((JSONObject)val).getInt(subkey))
+									return false;}
 							else if(subval instanceof String)
-								valid=!co.getString(key).equals(((JSONObject)val).getString(subkey));
-							if(!valid)
-								return valid;
+								if(co.getString(key).equals(((JSONObject)val).getString(subkey)))
+									return false;}
 							}
 						if(subkey.equals("$gt")){
+							if(co.hasKey(key)){
 							Object subval=((JSONObject) val).get(subkey);
-							if(subval instanceof Double )
-								valid=co.getDouble(key)>((JSONObject)val).getDouble(subkey);
-							else if(subval instanceof Integer)
-								valid=co.getInteger(key)>((JSONObject)val).getInt(subkey);
-							if(!valid)
-								return valid;
+							if(subval instanceof Double ){
+								if(co.getDouble(key)<=((JSONObject)val).getDouble(subkey))
+									return false;}
+							else if(subval instanceof Integer){
+								if(co.getInteger(key)<=((JSONObject)val).getInt(subkey))
+									return false;}}
 						}
 						if(subkey.equals("$gte")){
 							Object subval=((JSONObject) val).get(subkey);
-							if(subval instanceof Double )
-								valid=co.getDouble(key)>=((JSONObject)val).getDouble(subkey);
-							else if(subval instanceof Integer)
-								valid=co.getInteger(key)>=((JSONObject)val).getInt(subkey);
-							if(!valid)
-								return valid;
+							if(co.hasKey(key)){
+							if(subval instanceof Double ){
+								if(co.getDouble(key)<((JSONObject)val).getDouble(subkey))
+									return false;}
+							else if(subval instanceof Integer){
+								if(co.getInteger(key)<((JSONObject)val).getInt(subkey))
+									return false;
+								
+							}}
 						}
 						if(subkey.equals("$lt")){
+							if(co.hasKey(key)){
 							Object subval=((JSONObject) val).get(subkey);
-							if(subval instanceof Double )
-								valid=co.getDouble(key)<((JSONObject)val).getDouble(subkey);
-							else if(subval instanceof Integer)
-								valid=co.getInteger(key)<((JSONObject)val).getInt(subkey);
-							if(!valid)
-								return valid;
+							if(subval instanceof Double ){
+								if(co.getDouble(key)>=((JSONObject)val).getDouble(subkey))
+									return false;
+								}
+							else if(subval instanceof Integer){
+								if(co.getInteger(key)>=((JSONObject)val).getInt(subkey))
+									return false;}}
 						}
 						if(subkey.equals("$lte")){
 							Object subval=((JSONObject) val).get(subkey);
+							if(co.hasKey(key)){
 							if(subval instanceof Double )
-								valid=co.getDouble(key)<=((JSONObject)val).getDouble(subkey);
+								if(co.getDouble(key)>((JSONObject)val).getDouble(subkey))
+									return false;
 							else if(subval instanceof Integer)
-								valid=co.getInteger(key)<=((JSONObject)val).getInt(subkey);
-							if(!valid)
-								return valid;
+								if(co.getInteger(key)>((JSONObject)val).getInt(subkey))
+									return false;}
 						}
 						if(subkey.equals("$exists")){
 							boolean exists=((JSONObject) val).getBoolean(subkey);
-							if(exists&&!co.hasKey(key)||!exists&&co.hasKey(subkey))
-								return valid;
+							if(co.hasKey(key))
+							if(exists&&!co.hasKey(key)||!exists&&co.hasKey(key)){
+								return false;
+								}
 						}
 						if(subkey.equals("$in")){
 							JSONArray arr=((JSONObject) val).getJSONArray(subkey);
 							Object value=null;
-							if(key.indexOf(".")!=-1)
+							if(key.indexOf(".")!=-1&&!co.hasKey(key)){
+								if(co.hasKey(key.substring(0, key.indexOf("."))))
 								value=co.get(key.substring(0, key.indexOf(".")));
-							else value=co.get(key);
+								}
+							else {
+								if(co.hasKey(key))
+								value=co.get(key);}
+							boolean vali=false;
 							for(int i=0;i<arr.length();i++){
-								if(arr.get(i).equals(value))
+								if(arr.get(i).equals(""+value))
 								{
-									valid=true;
+									vali=true;
 									break;
 								}
 							}
-							if(!valid)
-								return valid;
+							if(!vali)
+								return vali;
 
 						}
 						if(subkey.equals("$nin")){
 							JSONArray arr=((JSONObject) val).getJSONArray(subkey);
 							Object value=null;
-							if(key.indexOf(".")!=-1)
+							if(key.indexOf(".")!=-1&&!co.hasKey(key))
+								if(co.hasKey(key.substring(0, key.indexOf("."))))
 								value=co.get(key.substring(0, key.indexOf(".")));
-							else value=co.get(key);
+							else {
+								if(co.hasKey(key))
+								value=co.get(key);}
+							boolean vali=true;
 							for(int i=0;i<arr.length();i++){
-								if(arr.get(i).equals(value))
+								if(arr.get(i).equals(""+value))
 								{
-									valid=false;
+									vali=false;
 									break;
 								}
 							}
-							if(!valid)
-								return valid;
+							if(!vali)
+								return vali;
 						}
 						if(subkey.equals("$all"));
 
@@ -291,19 +335,22 @@ public class CloudQuery {
 				
 			}
 			else{
-				if(key.indexOf(".")!=-1)
-					key=key.substring(0, key.indexOf("."));
-				if(!co.hasKey(key))
-					return valid;
-				if(val instanceof Double )
-					valid=co.getDouble(key)==query.getDouble(key);
-				if(val instanceof Integer)
-					valid=co.getInteger(key)==query.getInt(key);
-				if(val instanceof Boolean)
-					valid=co.getBoolean(key)&&query.getBoolean(key);
-				if(!valid)
-					return valid;
-				
+				String makey=key;
+				if(makey.indexOf(".")!=-1&&!co.hasKey(makey)){
+					
+					makey=makey.substring(0, makey.indexOf("."));}
+				if(!co.hasKey(makey))
+					return false;
+					String queryVal=val+"";
+					String realVal=co.get(makey)+"";
+					if(queryVal.equals(realVal)){
+						
+					}
+					else{
+						return false;
+					}
+							
+//				}
 			}
 		}
 		return true;

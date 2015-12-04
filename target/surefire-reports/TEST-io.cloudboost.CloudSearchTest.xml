@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="22" failures="3" name="io.cloudboost.CloudSearchTest" time="70.651" errors="0" skipped="0">
+<testsuite tests="27" failures="0" name="io.cloudboost.CloudSearchTest" time="38.711" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,110 +63,31 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="indexObject" time="8.29"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="indexData" time="3.481"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldOrderByAsc" time="0.815">
-    <failure message="Fetched records but failed to arrange in ascending order" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Fetched records but failed to arrange in ascending order
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudSearchTest$1.done(CloudSearchTest.java:38)
-	at io.cloudboost.CloudSearch.search(CloudSearch.java:223)
-	at io.cloudboost.CloudSearchTest.shouldOrderByAsc(CloudSearchTest.java:26)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-err>Exception in thread &quot;EventThread&quot; junit.framework.AssertionFailedError: Wrong data received
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudObjectTest$22.done(CloudObjectTest.java:559)
-	at io.cloudboost.CloudObject$4.call(CloudObject.java:727)
-	at io.socket.emitter.Emitter.emit(Emitter.java:117)
-	at io.socket.client.Socket.onevent(Socket.java:317)
-	at io.socket.client.Socket.onpacket(Socket.java:280)
-	at io.socket.client.Socket.access$100(Socket.java:18)
-	at io.socket.client.Socket$2$2.call(Socket.java:101)
-	at io.socket.emitter.Emitter.emit(Emitter.java:117)
-	at io.socket.client.Manager.ondecoded(Manager.java:381)
-	at io.socket.client.Manager.access$1200(Manager.java:20)
-	at io.socket.client.Manager$3.call(Manager.java:355)
-	at io.socket.emitter.Emitter.emit(Emitter.java:117)
-	at io.socket.parser.Parser$Decoder.add(Parser.java:156)
-	at io.socket.client.Manager.ondata(Manager.java:373)
-	at io.socket.client.Manager.access$1000(Manager.java:20)
-	at io.socket.client.Manager$2.call(Manager.java:346)
-	at io.socket.emitter.Emitter.emit(Emitter.java:117)
-	at io.socket.engineio.client.Socket.onPacket(Socket.java:497)
-	at io.socket.engineio.client.Socket.access$900(Socket.java:30)
-	at io.socket.engineio.client.Socket$5.call(Socket.java:300)
-	at io.socket.emitter.Emitter.emit(Emitter.java:117)
-	at io.socket.engineio.client.Transport.onPacket(Transport.java:124)
-	at io.socket.engineio.client.Transport.onData(Transport.java:116)
-	at io.socket.engineio.client.transports.WebSocket.access$300(WebSocket.java:26)
-	at io.socket.engineio.client.transports.WebSocket$1$3.run(WebSocket.java:102)
-	at io.socket.thread.EventThread$2.run(EventThread.java:75)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-</system-err>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldIncludeArelationOnSearch" time="10.035">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudSearchTest$2.done(CloudSearchTest.java:65)
-	at io.cloudboost.CloudObject.save(CloudObject.java:879)
-	at io.cloudboost.CloudSearchTest.shouldIncludeArelationOnSearch(CloudSearchTest.java:60)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithStartsWith" time="2.539"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithBestColumn" time="0.84"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithMostColumn" time="0.82"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithNotEqualTo" time="0.82"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="orShouldWorkBetweenTables" time="10.01">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudSearchTest$6.done(CloudSearchTest.java:223)
-	at io.cloudboost.CloudObject.save(CloudObject.java:879)
-	at io.cloudboost.CloudSearchTest.orShouldWorkBetweenTables(CloudSearchTest.java:218)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldArrangeInAscendingOrder" time="3.508"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldRunMultiTableSearch" time="9.011"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldGiveRecordsWithinACertainRange" time="0.921"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldSortElementsInDescendingOrder" time="1.13"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldRunMinimumPercentPrecisionQuery" time="1.941"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldGiveElementsWhereCertainColumnExists" time="0.845"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldGiveElementsWhereCertainColumnNotExists" time="0.795"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectForValue" time="0.82"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithWildCard" time="0.92"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldRunPrecisionQuery" time="10.752"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithPhrase" time="0.733"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="searchindexedObject" time="0.804"/>
-  <testcase classname="io.cloudboost.CloudSearchTest" name="limitNumberOfSearch" time="0.821"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="saveLatitudeLongitudePassedAsString" time="0.938"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="saveLatitudeLongitudeWhenPassedAsNumType" time="1.213"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectForValue" time="0.821"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldRunPrecisionQuery" time="2.362"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchindexedObject" time="0.81"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldSkipElements" time="1.537"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="limitNumberOfSearch" time="0.921"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithWildCard" time="0.715"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithPhrase" time="0.82"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldOrderByAsc" time="0.78"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="indexObject" time="1.165"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="indexData" time="3.276"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="equalToShouldWorkOnCloudSearchOverCloudObject" time="4.404"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldGiveElementsWhereCertainColumnNotExists" time="0.819"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldGiveElementsWhereCertainColumnExists" time="0.721"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="getDataNearFunction" time="0.921"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldRunMinimumPercentPrecisionQuery" time="1.947"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldGiveRecordsWithinACertainRange" time="0.83"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldSortElementsInDescendingOrder" time="0.858"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithNotEqualTo" time="0.767"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldIncludeArelationOnSearch" time="1.941"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="orShouldWorkBetweenTables" time="3.448"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithBestColumn" time="0.751"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldArrangeInAscendingOrder" time="1.536"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithStartsWith" time="0.716"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="searchObjectWithMostColumn" time="0.715"/>
+  <testcase classname="io.cloudboost.CloudSearchTest" name="shouldRunMultiTableSearch" time="2.979"/>
 </testsuite>

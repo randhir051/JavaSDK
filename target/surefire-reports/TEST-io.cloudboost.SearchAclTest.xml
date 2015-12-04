@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="1" name="io.cloudboost.SearchAclTest" time="22.097" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="io.cloudboost.SearchAclTest" time="5.104" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,23 +63,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.SearchAclTest" name="shouldCreateNewUser" time="9.993">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.SearchAclTest$1.done(SearchAclTest.java:24)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:172)
-	at io.cloudboost.SearchAclTest.shouldCreateNewUser(SearchAclTest.java:19)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.SearchAclTest" name="shouldSetPublicReadAccessToFalse" time="3.308"/>
-  <testcase classname="io.cloudboost.SearchAclTest" name="shouldRetrieveObjectWithReadPermission" time="8.796"/>
+  <testcase classname="io.cloudboost.SearchAclTest" name="shouldCreateNewUser" time="1.313"/>
+  <testcase classname="io.cloudboost.SearchAclTest" name="shouldSetPublicReadAccessToFalse" time="1.945"/>
+  <testcase classname="io.cloudboost.SearchAclTest" name="shouldRetrieveObjectWithReadPermission" time="1.846"/>
 </testsuite>

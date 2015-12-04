@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="34" failures="1" name="io.cloudboost.CreateTableTest" time="89.27" errors="0" skipped="0">
+<testsuite tests="34" failures="0" name="io.cloudboost.CreateTableTest" time="57.979" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,54 +63,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableWith2UnderscoreColumns" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="sequentialTests_0" time="17.489"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableRole" time="2.28"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableUser" time="0.496"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteEmptyTable" time="0.005"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createEmptyTable" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom1" time="4.9"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="deleteAddressTable" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="deleteEmployeeTable" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="updateEmployeeSchema" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="updateCompanySchema" time="0"/>
   <testcase classname="io.cloudboost.CreateTableTest" name="deleteCompanyTable" time="0"/>
   <testcase classname="io.cloudboost.CreateTableTest" name="createEmployeeTable" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteCreatestudent_4" time="0.526"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="updateCompanySchema" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteCreateEmpty" time="4.592"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteAddressTable" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteUnderscoreTable" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="updateEmployeeSchema" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableStudent" time="2.151"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom18" time="2.575"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableSample" time="3.06"/>
   <testcase classname="io.cloudboost.CreateTableTest" name="createCompanyTable" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableHostel" time="4.399"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="updateCustomTable" time="14.035"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTablestudent1" time="4.156"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom7" time="3.62"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom4" time="8.91"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="updateTableSample" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom14" time="3.276"/>
   <testcase classname="io.cloudboost.CreateTableTest" name="createAddressTable" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteEmployeeTable" time="0.005"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="deleteUnderscoreTable" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="sequentialTests_0" time="9.444"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="deleteCreateUnderscore" time="2.511"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="deleteCreatestudent_4" time="0.521"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="updateCustomTable" time="3.575"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom" time="2.247"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom5" time="2.355"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableSample" time="1.746"/>
   <testcase classname="io.cloudboost.CreateTableTest" name="createTableStudent4" time="0"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom" time="0.54">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CreateTableTest$9.done(CreateTableTest.java:551)
-	at io.cloudboost.CloudTable.save(CloudTable.java:372)
-	at io.cloudboost.CreateTableTest.createTableCustom(CreateTableTest.java:545)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom3" time="3.858"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom2" time="2.15"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="deleteCreateUnderscore" time="4.101"/>
-  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom5" time="2.146"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableWith2UnderscoreColumns" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTablestudent1" time="3.066"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom2" time="2.356"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom18" time="2.153"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableStudent" time="5.629"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="updateTableSample" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom4" time="2.561"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom7" time="2.546"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom3" time="3.087"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom1" time="2.254"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableCustom14" time="3.071"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableHostel" time="2.245"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createEmpty" time="1.341"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createEmptyTable" time="0"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableRole" time="1.84"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="createTableUser" time="3.431"/>
+  <testcase classname="io.cloudboost.CreateTableTest" name="deleteEmptyTable" time="0"/>
 </testsuite>

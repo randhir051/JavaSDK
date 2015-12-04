@@ -46,6 +46,36 @@ public class CloudGeoPoint{
 		}
 	}
 	
+	public CloudGeoPoint(String latitud, String longitud) throws CloudException {
+		Double latitude=0.0;
+		Double longitude=0.0;
+		try{
+		latitude=Double.parseDouble(latitud);
+		longitude=Double.parseDouble(longitud);
+		}catch(NumberFormatException e){
+			throw new NumberFormatException();
+		}
+		document = new JSONObject();
+		this.coordinates = new ArrayList<Double>();
+		try {
+			document.put("_type", "point");
+		
+		document.put("_isModified", true);
+		if((latitude >= -90.0 && latitude <= 90.0)&&( longitude >= -180.0 && longitude<=180.0)) {
+			this.coordinates.add(longitude);
+			this.coordinates.add(latitude);
+			this.document.put("coordinates", this.coordinates);
+			this.document.put("longitude", longitude);
+			this.document.put("latitude", latitude);
+			
+	    }else{
+	    	throw new CloudException("latitude and longitudes are not in range");
+	    }} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * 
 	 * Set Longitude

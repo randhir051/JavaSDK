@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="5" name="io.cloudboost.CloudGeoPointTest" time="57.991" errors="1" skipped="0">
+<testsuite tests="12" failures="0" name="io.cloudboost.CloudGeoPointTest" time="12.06" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,129 +63,16 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListPolygonGeowithinEqualToLimit" time="9.957">
-    <error message="test timed out after 10000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 10000 milliseconds
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.read(SocketInputStream.java:150)
-	at java.net.SocketInputStream.read(SocketInputStream.java:121)
-	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
-	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
-	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
-	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
-	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
-	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
-	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
-	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
-	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
-	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
-	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
-	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
-	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:338)
-	at io.cloudboost.util.CBParser.callJson(CBParser.java:70)
-	at io.cloudboost.CloudQuery.find(CloudQuery.java:1362)
-	at io.cloudboost.CloudGeoPointTest.getListPolygonGeowithinEqualToLimit(CloudGeoPointTest.java:88)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListCircleGeowithinEqualToLimit" time="4.85">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudGeoPointTest$6.done(CloudGeoPointTest.java:133)
-	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
-	at io.cloudboost.CloudGeoPointTest.getListCircleGeowithinEqualToLimit(CloudGeoPointTest.java:129)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="updateGeoPoint" time="11.46">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudGeoPointTest$7.done(CloudGeoPointTest.java:153)
-	at io.cloudboost.CloudObject.save(CloudObject.java:879)
-	at io.cloudboost.CloudGeoPointTest.updateGeoPoint(CloudGeoPointTest.java:149)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="saveLatitudeLongitude" time="13.42">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudGeoPointTest$1.done(CloudGeoPointTest.java:29)
-	at io.cloudboost.CloudObject.save(CloudObject.java:879)
-	at io.cloudboost.CloudGeoPointTest.saveLatitudeLongitude(CloudGeoPointTest.java:24)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>ACL GOING INTO SAVE IS: {&quot;read&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}},&quot;write&quot;:{&quot;allow&quot;:{&quot;role&quot;:[],&quot;user&quot;:[&quot;all&quot;]},&quot;deny&quot;:{&quot;role&quot;:[],&quot;user&quot;:[]}}}
-</system-out>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getDataNearFunction" time="6.371">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudGeoPointTest$2.done(CloudGeoPointTest.java:45)
-	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
-	at io.cloudboost.CloudGeoPointTest.getDataNearFunction(CloudGeoPointTest.java:41)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="takeLongitudeInRange" time="0.005"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="saveLatitudeLongitudePassedAsString" time="1.101"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="saveLatitudeLongitudeWhenPassedAsNumType" time="1.13"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListCircleGeowithinEqualToLimit" time="1.024"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="saveLatitudeLongitudePassedAsStringType" time="1.225"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListPolygonGeowithinEqualToLimit" time="0.925"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="updateGeoPoint" time="2.251"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getDataNearFunction" time="0.82"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListCircleGeowithin" time="1.433"/>
   <testcase classname="io.cloudboost.CloudGeoPointTest" name="takeLatitudeInRange" time="0"/>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListCircleGeowithin" time="1.926"/>
-  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListPolygonGeowithin" time="10.002">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudGeoPointTest$3.done(CloudGeoPointTest.java:68)
-	at io.cloudboost.CloudQuery.find(CloudQuery.java:1379)
-	at io.cloudboost.CloudGeoPointTest.getListPolygonGeowithin(CloudGeoPointTest.java:64)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="takeLongitudeInRange" time="0.004"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="saveLatitudeLongitude" time="1.226"/>
+  <testcase classname="io.cloudboost.CloudGeoPointTest" name="getListPolygonGeowithin" time="0.921"/>
 </testsuite>

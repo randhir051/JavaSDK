@@ -28,7 +28,10 @@ class ACL{
 	JSONObject read;
 	JSONObject write;
 	JSONObject acl;
-	
+	/**
+	 * ACL-Access Control Lists is a wrapper around CloudBoost access and permission management system. It forms part of every record, file,data saved
+	 * in the database. This enables fine-grained control over access to all resources in the App
+	 */
 	public ACL()
 	{
 		allowedReadUser = new ArrayList<String>();
@@ -74,10 +77,18 @@ class ACL{
 		}
 		
 	}
-	
+	/**
+	 * get json object representing this ACL object, changing this object is not recommended, only 
+	 * do so if you absolutely know what you are doing
+	 * @return
+	 */
 	public JSONObject getACL(){
 		return acl;
 	}
+	/**
+	 * get a list of role Id's allowed to change resource, role Id's are instances of {@link io.cloudboost.CloudRole} 
+	 * @return
+	 */
 	public ArrayList<String> getAllowedWriteRole(){
 		JSONArray role;
 		try {
@@ -95,6 +106,10 @@ class ACL{
 		}
 		return allowedWriteUser;
 	}
+	/**
+	 * get an ArrayList of role Id's which are allowed to access resource,role Id's are instances of {@link io.cloudboost.CloudRole} 
+	 * @return
+	 */
 	public ArrayList<String> getAllowedReadRole(){
 		JSONArray role;
 		try {
@@ -112,6 +127,10 @@ class ACL{
 		}
 		return allowedReadUser;
 	}
+	/**
+	 * get an ArrayList of User Id's which are allowed to modify this resource 
+	 * @return
+	 */
 	@SuppressWarnings({ })
 	public ArrayList<String> getAllowedWriteUser(){
 		JSONArray user;
@@ -130,7 +149,10 @@ class ACL{
 		}
 		return allowedWriteUser;
 	}
-	
+	/**
+	 * get an ArrayList of User Id's which are allowed to access this resource 
+	 * @return
+	 */
 	public ArrayList<String> getAllowedReadUser(){
 		try {
 			read = (JSONObject) acl.get("read");
@@ -147,7 +169,10 @@ class ACL{
 		}
 		return allowedReadUser;
 	}
-	
+	/**
+	 * get an ArrayList of User Id's which are not allowed to modify this resource 
+	 * @return
+	 */
 	private ArrayList<String> getDeniedWriteList(JSONObject acl){
 		try {
 			write = (JSONObject) acl.get("write");
@@ -164,7 +189,10 @@ class ACL{
 		}
 		return deniedWriteUser;
 	}
-	
+	/**
+	 * get an ArrayList of User Id's which are not allowed to access this resource 
+	 * @return
+	 */
 	public ArrayList<String> getDeniedReadUser(){
 		try {
 			read = (JSONObject) acl.get("read");
@@ -181,7 +209,10 @@ class ACL{
 		}
 		return deniedReadUser;
 	}
-	
+	/**
+	 * allow write permission to all user
+	 * @param value
+	 */
 	public void setPublicWriteAccess(boolean value){  //allow write permission to all user
 		allowedWriteUser = getAllowedWriteUser();
 		if(value == true){	//if value is true then clear the existing list and add "all" and push it to jsonObject
@@ -205,7 +236,10 @@ class ACL{
 		}
 		
 	}
-
+/**
+ * allow read permission to all user
+ * @param value
+ */
 	public void setPublicReadAccess(boolean value){  //allow read permission to all user
 		allowedReadUser = getAllowedReadUser();
 		if(value){	//if value is true then clear the existing list and add "all" and push it to jsonObject
@@ -228,7 +262,11 @@ class ACL{
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * set if user should modify this resource or not
+ * @param userId -id of the user
+ * @param value
+ */
 	public void setUserWriteAccess(String userId, boolean value){ //for setting the user write access
 		int index;
 		allowedWriteUser = getAllowedWriteUser();
@@ -262,7 +300,11 @@ class ACL{
 			e.printStackTrace();
 		}
 	}	
-
+	/**
+	 * set if user should access this resource or not
+	 * @param userId -id of the user
+	 * @param value
+	 */
 	public void setUserReadAccess(String userId, boolean value){ //for setting the user read access
 		int index;
 		
@@ -297,20 +339,22 @@ class ACL{
 			e.printStackTrace();
 		}
 	}	
-	
+	/**
+	 * set if user with given role should modify this resource or not
+	 * @param userId -id of the role
+	 * @param value -boolean
+	 */
 	@SuppressWarnings("unchecked")
 	public void setRoleWriteAccess(String roleId, boolean value){
 		int index;
 		allowedWriteUser = getAllowedWriteUser();
 		deniedWriteUser = getDeniedWriteList(acl);
-		System.out.println("ACL="+acl);
 		try {
 			write = (JSONObject) acl.get("write");
 		
 		//allowedRole
 		allowWrite = (JSONObject) write.get("allow");
 		allowedWriteRole =CBParser.jsonToList((JSONArray) allowWrite.get("role"));
-		System.out.println("allowedwriterole="+allowedWriteRole);
 		//deniedRole
 		denyWrite = (JSONObject) write.get("deny");
 		deniedWriteRole = CBParser.jsonToList((JSONArray) denyWrite.get("role"));
@@ -325,13 +369,9 @@ class ACL{
 				allowedWriteUser.remove(index);
 			}			
 			index = allowedWriteRole.indexOf(roleId);
-			System.out.println("index="+index);
-			System.out.println("allowedwriterole="+allowedWriteRole);
 			if(index <= -1){
-				System.out.println("adding roleid");
 				allowedWriteRole.add(roleId);
 			}
-			System.out.println("allowwriterole now="+allowedWriteRole);
 		}else{
 			index = allowedWriteRole.indexOf(roleId);
 			if(index > -1){
@@ -352,13 +392,16 @@ class ACL{
 		write.put("deny", denyWrite);
 		write.put("allow", allowWrite);
 		acl.put("write", write);
-		System.out.println("acl="+acl.toString());
 		} catch (JSONException e) {
 			
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * set if user with given role should access this resource or not
+	 * @param userId -id of the role
+	 * @param value -boolean
+	 */
 	@SuppressWarnings("unchecked")
 	public void setRoleReadAccess(String roleId, boolean value){
 		int index;
