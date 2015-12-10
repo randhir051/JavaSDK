@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="2" name="io.cloudboost.TestAcl" time="59.125" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="io.cloudboost.TestAcl" time="35.402" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,64 +63,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldPersistACLObjectInsideCloudObjectAfterSave" time="12.327">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.TestAcl$3.done(TestAcl.java:97)
-	at io.cloudboost.CloudObject.save(CloudObject.java:893)
-	at io.cloudboost.TestAcl.shouldPersistACLObjectInsideCloudObjectAfterSave(TestAcl.java:92)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-    <system-out>conneced
-</system-out>
-    <system-err>java.lang.NullPointerException
-	at io.cloudboost.TestAcl$3$1.done(TestAcl.java:109)
-	at io.cloudboost.CloudQuery.find(CloudQuery.java:1426)
-	at io.cloudboost.TestAcl$3.done(TestAcl.java:105)
-	at io.cloudboost.CloudObject.save(CloudObject.java:884)
-	at io.cloudboost.TestAcl.shouldPersistACLObjectInsideCloudObjectAfterSave(TestAcl.java:92)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</system-err>
-  </testcase>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldSetThePublicWriteAccess" time="8.185"/>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldSetPublicReadAccess" time="1.789"/>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldAllowUsersOfRoleToRead" time="4.401"/>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldAllowUsersOfRoleToWrite" time="11.94">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.TestAcl$7$1.done(TestAcl.java:234)
-	at io.cloudboost.CloudObject.save(CloudObject.java:888)
-	at io.cloudboost.TestAcl$7.done(TestAcl.java:229)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:170)
-	at io.cloudboost.TestAcl.shouldAllowUsersOfRoleToWrite(TestAcl.java:217)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldUpdateACL" time="12.473"/>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldCreateNewUser" time="2.01"/>
-  <testcase classname="io.cloudboost.TestAcl" name="shouldSetUserReadAccess" time="6"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldPersistACLObjectInsideCloudObjectAfterSave" time="3.935"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldSetThePublicWriteAccess" time="3.259"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldAllowUsersOfRoleToRead" time="10.712"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldSetPublicReadAccess" time="1.616"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldAllowUsersOfRoleToWrite" time="4.679"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldUpdateACL" time="5.081"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldCreateNewUser" time="2.15"/>
+  <testcase classname="io.cloudboost.TestAcl" name="shouldSetUserReadAccess" time="3.97"/>
 </testsuite>

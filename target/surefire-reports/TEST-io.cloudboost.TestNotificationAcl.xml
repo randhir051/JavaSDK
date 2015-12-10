@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="1" name="io.cloudboost.TestNotificationAcl" time="66.903" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="io.cloudboost.TestNotificationAcl" time="65.891" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,27 +63,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveWhenUserReadAccessIsFalse" time="9.536"/>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldReceiveWhenUserLogsBackIn" time="10.002">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.TestNotificationAcl$7.done(TestNotificationAcl.java:376)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:173)
-	at io.cloudboost.TestNotificationAcl.shouldReceiveWhenUserLogsBackIn(TestNotificationAcl.java:371)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldCreateNewUserAndListen" time="11.806"/>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveUserLoggedOff" time="10.676"/>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldReceiveWhenUserReadAndNoPublic" time="8.329"/>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveNotificationWhenPublicReadAccessIsFalse" time="8.453"/>
-  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveWhenPublicReadAccessAndNoUserRead" time="8.101"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveWhenUserReadAccessIsFalse" time="7.806"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldCreateNewUserAndListen" time="12.239"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldReceiveWhenUserLogsBackIn" time="11.134"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveUserLoggedOff" time="9.853"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveNotificationWhenPublicReadAccessIsFalse" time="9.085"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldNotReceiveWhenPublicReadAccessAndNoUserRead" time="7.898"/>
+  <testcase classname="io.cloudboost.TestNotificationAcl" name="shouldReceiveWhenUserReadAndNoPublic" time="7.876"/>
 </testsuite>
