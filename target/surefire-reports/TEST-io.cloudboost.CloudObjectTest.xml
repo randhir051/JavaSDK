@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="45" failures="0" name="io.cloudboost.CloudObjectTest" time="134.973" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
+    <property name="java.vm.version" value="25.5-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Engineer\programming\projects\javaSDK\git_repo"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Engineer\programming\projects\javaSDK\git_repo"/>
+    <property name="java.runtime.version" value="1.8.0_05-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\jdk1.8.0_05\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\new\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="classworlds.conf" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\jdk1.8.0_05\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\apache-ant-1.9.6\bin;C:\Program Files\jdk1.8.0_05\bin;E:\Engineer\eclipse\android-sdk-windows\tools;E:\Engineer\eclipse\android-sdk-windows\platform-tools;C:\Program Files\jdk1.8.0_05\bin;C:\Program Files\MongoDB\Server\3.0\bin;E:\Engineer\eclipse\eclipse;E:\Engineer\eclipse\myeclipse;C:\Program Files (x86)\apache-maven-3.3.3\bin;C:\Program Files (x86)\GNU\GnuPG;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="C:\Users\new"/>
+    <property name="user.timezone" value="Africa/Nairobi"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="new"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files\jdk1.8.0_05\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_05"/>
+    <property name="java.ext.dirs" value="C:\Program Files\jdk1.8.0_05\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\jdk1.8.0_05\jre\lib\resources.jar;C:\Program Files\jdk1.8.0_05\jre\lib\rt.jar;C:\Program Files\jdk1.8.0_05\jre\lib\sunrsasign.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jsse.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jce.jar;C:\Program Files\jdk1.8.0_05\jre\lib\charsets.jar;C:\Program Files\jdk1.8.0_05\jre\lib\jfr.jar;C:\Program Files\jdk1.8.0_05\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\apache-maven-3.3.3\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveRequiredNumberAs0" time="1.721"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldUpdateVersionOnUpdate" time="2.789"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveEmptyArrayOfCloudObject" time="3.286"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldAlertOnMultipleEvents" time="8.304"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayWithWrongDataType" time="2.568"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveCloudObjectAsRelation" time="1.11"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveAnEmptyArrayOfCloudObject" time="2.063"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldAlertOnAllThreeEvents" time="12.212"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveWithWrongDataType" time="1.296"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveDuplicateValue" time="2.03"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveAndDeleteArrayOfCloudObject" time="7.2"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveStringIntoDate" time="0.83"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldRejectWrongEventType" time="0.002"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotUpdateCreatedAtOnUpdate" time="1.888"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveRelationWhenSchemaOfRelationObjectIsWrong" time="1.698"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="SaveData" time="0.97"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveJSON" time="0.001"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotDupValuesInListAfterUpdate" time="2.791"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveAnArrayOfDifferentObjects" time="3.589"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotAllowMultipleDataTypesInArray" time="0.99"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveWithoutRequiredColumn" time="0.959"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveDupRelationInUniqueFields" time="2.321"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveRelationWithRelate" time="3.178"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldGiveErrorWhenWrongDataIsPutInNumberField" time="0.839"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldUnsetField" time="2.14"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSetId" time="0.002"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="updateAfterSave" time="2.327"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="deleteAfterSave" time="5.08"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArray" time="1.051"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="createNotice" time="4.06"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayWithJSONObject" time="2.005"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveRelationWithVersion" time="1.1"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveARelationWithRelate" time="2.288"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveGeoPointList" time="1.09"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="updateObjectNotice" time="10.126"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayOfGeoPoint" time="0"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldStopListening" time="10.234"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveWrongRelation" time="1.16"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="updateListAfterSave" time="7.356"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayOfCloudObject" time="3.1"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveListNumberList" time="1.159"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="deleteObjectNotice" time="7.08"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="createObjectNotice" time="5.661"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldFetchCloudObject" time="1.879"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="keepRelationIntact" time="1.44"/>
+</testsuite>

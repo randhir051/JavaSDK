@@ -322,6 +322,7 @@ public class CloudFile{
 		else {
 			JSONObject params=new JSONObject();
 			params.put("key", CloudApp.getAppKey());
+			
 			params.put("fileObj", document);
 			params.put("data", data);
 			response=CBParser.callJson(url, "POST", params);}

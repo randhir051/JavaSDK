@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class SocketTest {
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	@Test(timeout=30000)
 	public void shouldFireEventOnConnect() throws InterruptedException{

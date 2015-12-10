@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class AppTest2{
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 
 
 	}
@@ -49,7 +49,7 @@ public class AppTest2{
 	}
 	@Test(timeout=80000)
 	public void shouldCreateATable() throws CloudException{
-		CloudApp.init("travis123", "vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initKisenyiMaster();
 		CloudTable table=new CloudTable(PrivateMethod._makeString());
 		table.save(new CloudTableCallback() {
 			
@@ -70,7 +70,7 @@ public class AppTest2{
 	}
 	@Test(timeout=80000)
 	public void shouldSaveRecord() throws CloudException{
-		CloudApp.init("travis123", "vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initKisenyiMaster();
 		final String name=PrivateMethod._makeString();
 		CloudTable table=new CloudTable(name);
 		table.save(new CloudTableCallback() {

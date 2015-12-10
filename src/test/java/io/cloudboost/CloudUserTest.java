@@ -13,15 +13,16 @@ import org.junit.Test;
 
 public class CloudUserTest {
 
-	String username = PrivateMethod._makeString();
-	String passwd = "abcd";
+
 
 	void initialize() {
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 
 	@Test(timeout = 20000)
 	public void createNewUser() throws CloudException {
+		final String username = PrivateMethod._makeString();
+		final String passwd = "abcd";
 		initialize();
 		CloudUser obj = new CloudUser();
 		obj.setUserName(username);
@@ -43,6 +44,8 @@ public class CloudUserTest {
 
 	@Test(timeout = 20000)
 	public void newUser() throws CloudException {
+		final String username = PrivateMethod._makeString();
+		final String passwd = "abcd";
 		initialize();
 		CloudUser obj = new CloudUser();
 		obj.setUserName(username);
@@ -64,6 +67,8 @@ public class CloudUserTest {
 
 	@Test(timeout = 20000)
 	public void shouldCreateNewUser() throws CloudException {
+		final String username = PrivateMethod._makeString();
+		final String passwd = "abcd";
 		initialize();
 		CloudUser obj = new CloudUser();
 		obj.setUserName(username);
@@ -85,6 +90,8 @@ public class CloudUserTest {
 
 	@Test(timeout = 20000)
 	public void shouldCreateNewUserWithVersion() throws CloudException {
+		final String username = PrivateMethod._makeString();
+		final String passwd = "abcd";
 		initialize();
 		CloudUser obj = new CloudUser();
 		obj.setUserName(username);
@@ -218,6 +225,7 @@ public class CloudUserTest {
 	public void createUserGetVersion() throws CloudException {
 		initialize();
 		CloudUser user = new CloudUser();
+		final String passwd = "abcd";
 		final String newUser = PrivateMethod._makeString();
 		user.setUserName(newUser);
 		user.setPassword(passwd);
@@ -275,7 +283,8 @@ public class CloudUserTest {
 	public void shouldDoQueryOnUser() throws CloudException {
 		initialize();
 		CloudUser obj = new CloudUser();
-		final String uuid = UUID.uuid(8);
+		final String uuid = PrivateMethod._makeString();
+		final String passwd = "abcd";
 		obj.setUserName(uuid);
 		obj.setPassword(passwd);
 		obj.setEmail(PrivateMethod._makeString() + "@abc.com");
@@ -304,7 +313,7 @@ public class CloudUserTest {
 							}
 						});
 					}
-					Assert.assertEquals(object.get("username"), username);
+					Assert.assertEquals(object.get("username"), uuid);
 				}
 			}
 		});
@@ -450,6 +459,8 @@ public class CloudUserTest {
 	@Test(timeout = 20000)
 	public void encryptUserPassword() throws CloudException {
 		initialize();
+		final String username = PrivateMethod._makeString();
+		final String passwd = "abcd";
 		CloudUser user = new CloudUser();
 		user.setUserName(username);
 		user.setPassword(passwd);

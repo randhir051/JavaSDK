@@ -9,26 +9,28 @@ public class CreateTableTest {
 	private static final String COMPANY = PrivateMethod._makeString();
 	private static final String EMPLOYEE = PrivateMethod._makeString();
 	private static final String ADDRESS = PrivateMethod._makeString();
+//	private static final String COMPANY = "Company";
+//	private static final String EMPLOYEE = "Employee";
+//	private static final String ADDRESS = "Address";
 
 	void initialize() {
-
-		CloudApp.init("travis123",
-				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
-	}
-
+				//client=yW0nFG/XF1GCfgaRdbj4KA==
+				CloudApp.init("kisenyi",
+						"3cau5aq6i85zzLiIpbZ84Y+NDkS7Ojlx4Mj26+oSsMg=");
+			}
 	@Test(timeout = 50000)
 	public void sequentialTests_0() throws CloudException {
 		initialize();
-		CloudTable employee = createEmployee();
-		employee.save(new CloudTableCallback() {
+		CloudTable company = createCompany();
+		company.save(new CloudTableCallback() {
 
 			@Override
 			public void done(CloudTable table, CloudException e)
 					throws CloudException {
 				if (e != null)
 					Assert.fail(e.getMessage());
-				CloudTable company = createCompany();
-				company.save(new CloudTableCallback() {
+				CloudTable employee = createEmployee();
+				employee.save(new CloudTableCallback() {
 
 					@Override
 					public void done(CloudTable table, CloudException e)
@@ -77,17 +79,56 @@ public class CreateTableTest {
 		});
 	}
 
+//	@Test(timeout=50000)
+//	public void create() throws CloudException{
+//		initialize();
+//		createEmployee().save(new CloudTableCallback() {
+//			
+//			@Override
+//			public void done(CloudTable table, CloudException e) throws CloudException {
+//				createCompany().save(new CloudTableCallback() {
+//					
+//					@Override
+//					public void done(CloudTable table, CloudException e) throws CloudException {
+//						createAddress().save(new CloudTableCallback() {
+//							
+//							@Override
+//							public void done(CloudTable table, CloudException e) throws CloudException {
+//								updateEmployeeSchema(new CloudTableCallback() {
+//									
+//									@Override
+//									public void done(CloudTable table, CloudException e) throws CloudException {
+//										updateCompanySchema(new CloudTableCallback() {
+//											
+//											@Override
+//											public void done(CloudTable table, CloudException e) throws CloudException {
+//												System.out
+//														.println("success");
+//												
+//											}
+//										});
+//										
+//									}
+//								});
+//								
+//							}
+//						});
+//						
+//					}
+//				});
+//				
+//			}
+//		});
+//	}
 	public CloudTable createEmployee() {
 		Column age = new Column("age", DataType.Number, false, false);
 		Column name = new Column("name", DataType.Text, false, false);
 		Column dob = new Column("dob", DataType.DateTime, false, false);
-		Column com=new Column("Company", DataType.Relation);
-		com.setRelatedTo(new CloudTable("Company"));
 		Column password = new Column("password", DataType.EncryptedText, false,
 				false);
 		CloudTable table = new CloudTable(EMPLOYEE);
 		try {
-			table.addColumn(new Column[] { age, name, dob, password,com });
+			table.addColumn(new Column[] { age, name, dob, password });
 		} catch (CloudException e) {
 			
 			e.printStackTrace();
@@ -158,7 +199,7 @@ public class CreateTableTest {
 				@Override
 				public void done(CloudTable table, CloudException e)
 						throws CloudException {
-					Column employee = new Column(COMPANY, DataType.List, false,
+					Column employee = new Column(EMPLOYEE, DataType.List, false,
 							false);
 					employee.setRelatedTo(new CloudTable(EMPLOYEE));
 					Column address = new Column(ADDRESS, DataType.Relation,
@@ -231,7 +272,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -336,7 +376,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -374,7 +413,6 @@ public class CreateTableTest {
 									@Override
 									public void done(String x, CloudException e)
 											throws CloudException {
-										Assert.assertEquals("Success", x);
 
 									}
 								});
@@ -420,7 +458,7 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
+							
 
 						}
 					});
@@ -433,7 +471,8 @@ public class CreateTableTest {
 	@Test(timeout = 50000)
 	public void updateCustomTable() throws CloudException {
 		initialize();
-		CloudTable custom = new CloudTable(PrivateMethod._makeString());
+		final String cust=PrivateMethod._makeString();
+		CloudTable custom = new CloudTable(cust);
 		Column column1 = new Column("newColumn1", DataType.Email, false, false);
 		Column column2 = new Column("newColumn2", DataType.Text, false, false);
 		Column column3 = new Column("newColumn3", DataType.URL, false, false);
@@ -457,7 +496,7 @@ public class CreateTableTest {
 				else {
 					Column col = table.getColumn("newColumn7");
 					col.setDataType(DataType.List);
-					col.setRelatedTo(new CloudTable("Custom"));
+					col.setRelatedTo(new CloudTable(cust));
 					table.setColumn(col);
 					table.save(new CloudTableCallback() {
 
@@ -482,6 +521,7 @@ public class CreateTableTest {
 	public void createTableCustom5() throws CloudException {
 		initialize();
 		CloudTable table = new CloudTable(PrivateMethod._makeString());
+
 		Column col = new Column("location", DataType.GeoPoint, false, false);
 		table.addColumn(col);
 		table.save(new CloudTableCallback() {
@@ -497,7 +537,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -552,6 +591,7 @@ public class CreateTableTest {
 	@Test(timeout = 50000)
 	public void createTableHostel() throws CloudException {
 		initialize();
+		
 		CloudTable table = new CloudTable(PrivateMethod._makeString());
 		Column col = new Column("room", DataType.Number);
 		Column col2 = new Column("name", DataType.Text);
@@ -569,7 +609,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -583,34 +622,44 @@ public class CreateTableTest {
 	@Test(timeout = 50000)
 	public void createTablestudent1() throws CloudException {
 		initialize();
-		CloudTable table = new CloudTable(PrivateMethod._makeString());
-		Column col = new Column("age", DataType.Number);
-		Column col2 = new Column("name", DataType.Text);
-		Column col3 = new Column("newColumn", DataType.Relation);
-		col3.setRelatedTo(new CloudTable("hostel"));
-
-		table.addColumn(new Column[] { col, col2, col3 });
-		table.save(new CloudTableCallback() {
-
+		final String hostel=PrivateMethod._makeString();
+		CloudTable table1=new CloudTable(hostel);
+		table1.save(new CloudTableCallback() {
+			
 			@Override
-			public void done(CloudTable table, CloudException e)
-					throws CloudException {
-				if (e != null)
-					Assert.fail(e.getMessage());
-				else {
-					table.delete(new CloudStringCallback() {
+			public void done(CloudTable table1, CloudException e) throws CloudException {
+				CloudTable table = new CloudTable(PrivateMethod._makeString());
+				Column col = new Column("age", DataType.Number);
+				Column col2 = new Column("name", DataType.Text);
+				Column col3 = new Column("newColumn", DataType.Relation);
+				col3.setRelatedTo(new CloudTable(hostel));
 
-						@Override
-						public void done(String x, CloudException e)
-								throws CloudException {
-							Assert.assertEquals("Success", x);
+				table.addColumn(new Column[] { col, col2, col3 });
+				table.save(new CloudTableCallback() {
 
+					@Override
+					public void done(CloudTable table, CloudException e)
+							throws CloudException {
+						if (e != null)
+							Assert.fail(e.getMessage());
+						else {
+							table.delete(new CloudStringCallback() {
+
+								@Override
+								public void done(String x, CloudException e)
+										throws CloudException {
+									
+
+								}
+							});
 						}
-					});
-				}
 
+					}
+				});
+				
 			}
 		});
+
 
 	}
 
@@ -637,7 +686,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -667,7 +715,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -697,7 +744,7 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
+							
 
 						}
 					});
@@ -727,7 +774,7 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
+							
 
 						}
 					});
@@ -740,74 +787,103 @@ public class CreateTableTest {
 	@Test(timeout = 50000)
 	public void createTableCustom2() throws CloudException {
 		initialize();
-		CloudTable table = new CloudTable(PrivateMethod._makeString());
-		Column col = new Column("newColumn1", DataType.Text);
-		Column col2 = new Column("newColumn7", DataType.Relation);
-		col2.setRelatedTo(new CloudTable("student1"));
-		Column col3 = new Column("newColumn2", DataType.Relation);
-		col3.setRelatedTo(new CloudTable("Custom3"));
-
-		table.addColumn(new Column[] { col, col2, col3 });
-		table.save(new CloudTableCallback() {
-
+		final String student1=PrivateMethod._makeString();
+		final String Custom3=PrivateMethod._makeString();
+	final	CloudTable tabl1=new CloudTable(student1);
+	final	CloudTable tabl2=new CloudTable(Custom3);
+		tabl1.save(new CloudTableCallback() {
+			
 			@Override
-			public void done(CloudTable table, CloudException e)
-					throws CloudException {
-				if (e != null)
-					Assert.fail(e.getMessage());
-				else {
-					table.delete(new CloudStringCallback() {
+			public void done(CloudTable table1, CloudException e) throws CloudException {
+				tabl2.save(new CloudTableCallback() {
+					
+					@Override
+					public void done(CloudTable table2, CloudException e) throws CloudException {
 
-						@Override
-						public void done(String x, CloudException e)
-								throws CloudException {
-							Assert.assertEquals("Success", x);
+						CloudTable table = new CloudTable("Custom2");
+						Column col = new Column("newColumn1", DataType.Text);
+						Column col2 = new Column("newColumn7", DataType.Relation);
+						col2.setRelatedTo(new CloudTable(student1));
+						Column col3 = new Column("newColumn2", DataType.Relation);
+						col3.setRelatedTo(new CloudTable(Custom3));
 
-						}
-					});
-				}
+						table.addColumn(new Column[] { col, col2, col3 });
+						table.save(new CloudTableCallback() {
 
+							@Override
+							public void done(CloudTable table, CloudException e)
+									throws CloudException {
+								if (e != null)
+									Assert.fail(e.getMessage());
+								else {
+									table.delete(new CloudStringCallback() {
+
+										@Override
+										public void done(String x, CloudException e)
+												throws CloudException {
+
+										}
+									});
+								}
+
+							}
+						});
+						
+					}
+				});
+				
 			}
-		});
+		});;
+
 
 	}
 
 	@Test(timeout = 50000)
 	public void createTableCustom4() throws CloudException {
 		initialize();
-		CloudTable table = new CloudTable(PrivateMethod._makeString());
-		Column col = new Column("newColumn1", DataType.Text);
-		Column col2 = new Column("newColumn7", DataType.List);
-		col2.setRelatedTo(new CloudTable("student1"));
+		final String rel=PrivateMethod._makeString();
+	final	CloudTable tabl1=new CloudTable(rel);
+	tabl1.save(new CloudTableCallback() {
+		
+		@Override
+		public void done(CloudTable table1, CloudException e) throws CloudException {
+			CloudTable table = new CloudTable(PrivateMethod._makeString());
+			Column col = new Column("newColumn1", DataType.Text);
+			Column col2 = new Column("newColumn7", DataType.List);
+			col2.setRelatedTo(new CloudTable(rel));
 
-		table.addColumn(new Column[] { col, col2 });
-		table.save(new CloudTableCallback() {
+			table.addColumn(new Column[] { col, col2 });
+			table.save(new CloudTableCallback() {
 
-			@Override
-			public void done(CloudTable table, CloudException e)
-					throws CloudException {
-				if (e != null)
-					Assert.fail(e.getMessage());
-				else {
-					table.delete(new CloudStringCallback() {
+				@Override
+				public void done(CloudTable table, CloudException e)
+						throws CloudException {
+					if (e != null)
+						Assert.fail(e.getMessage());
+					else {
+						table.delete(new CloudStringCallback() {
 
-						@Override
-						public void done(String x, CloudException e)
-								throws CloudException {
-							Assert.assertEquals("Success", x);
+							@Override
+							public void done(String x, CloudException e)
+									throws CloudException {
 
-						}
-					});
+							}
+						});
+					}
+
 				}
+			});
+			
+		}
+	});
 
-			}
-		});
 
 	}
 
 	@Test(timeout = 50000)
 	public void createTableCustom14() throws CloudException {
 		initialize();
+		
 		CloudTable table = new CloudTable(PrivateMethod._makeString());
 		Column col = new Column("ListNumber", DataType.List);
 		col.setRelatedTo(DataType.Number);
@@ -828,7 +904,6 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
 
 						}
 					});
@@ -842,6 +917,7 @@ public class CreateTableTest {
 	@Test(timeout = 50000)
 	public void createTableCustom1() throws CloudException {
 		initialize();
+		
 		CloudTable table = new CloudTable(PrivateMethod._makeString());
 		Column col = new Column("newColumn1", DataType.Boolean);
 		Column col2 = new Column("description", DataType.Text);
@@ -861,7 +937,7 @@ public class CreateTableTest {
 						@Override
 						public void done(String x, CloudException e)
 								throws CloudException {
-							Assert.assertEquals("Success", x);
+
 
 						}
 					});

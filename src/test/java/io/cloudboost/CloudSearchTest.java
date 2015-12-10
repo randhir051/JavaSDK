@@ -18,10 +18,10 @@ import org.junit.Test;
  */
 public class CloudSearchTest{
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	void initMaster() {
-		CloudApp.init("travis123","vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initMaster();
 	}
 	@Test(timeout=50000)
 	public void saveLatitudeLongitudePassedAsString () throws CloudException{
@@ -69,10 +69,7 @@ public class CloudSearchTest{
 				if(t != null){
 					Assert.fail(t.getMessage());
 				}
-				
-				if(x.length < 0){
-					Assert.fail("failed to retrive data");
-				}
+			
 			}
 		});
 	}
@@ -538,7 +535,7 @@ public class CloudSearchTest{
 	@Test(timeout=50000)
 	public void indexObject() throws CloudException{
 		 initialize();
-		CloudObject obj  = new CloudObject("Custom1");
+		CloudObject obj  = new CloudObject("DATA_1");
 		obj.set("description", "wi-fi");
 		obj.setIsSearchable(true);
 		obj.save(new CloudObjectCallback(){
@@ -557,20 +554,34 @@ public class CloudSearchTest{
 	@Test(timeout=50000)
 	public void searchindexedObject() throws JSONException, InterruptedException, ExecutionException, IOException, CloudException{
 		initialize();
-		SearchQuery sq = new SearchQuery();
-		sq = sq.searchOn("description", "wi-fi", null, null, null, null);
-		CloudSearch cs = new CloudSearch("Custom1",sq , null);
-		cs.search(new CloudObjectArrayCallback(){
+		CloudObject obj  = new CloudObject("DATA_1");
+		obj.set("description", "wi-fi");
+		obj.setIsSearchable(true);
+		obj.save(new CloudObjectCallback(){
 			@Override
-			public void done(CloudObject[] x, CloudException t)	throws CloudException {
-				if( t != null){
+			public void done(CloudObject x, CloudException t)	throws CloudException {
+				if(t != null){
 					Assert.fail(t.getMessage());
 				}
-				if(x.length <0){
-					Assert.fail("should search for indexed object");
+				if(x != null){
+					SearchQuery sq = new SearchQuery();
+					sq = sq.searchOn("description", "wi-fi", null, null, null, null);
+					CloudSearch cs = new CloudSearch("DATA_1",sq , null);
+					cs.search(new CloudObjectArrayCallback(){
+						@Override
+						public void done(CloudObject[] x, CloudException t)	throws CloudException {
+							if( t != null){
+								Assert.fail(t.getMessage());
+							}
+							if(x.length <0){
+								Assert.fail("should search for indexed object");
+							}
+						}
+					});
 				}
 			}
 		});
+
 	}
 	
 	@Test(timeout=50000)

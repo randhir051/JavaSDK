@@ -6,11 +6,10 @@ import org.junit.Test;
 
 public class TestNotificationAcl {
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	void initMaster() {
-		CloudApp.init("travis123",
-				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initMaster();
 	}
 	@Test(timeout=30000)
 	public void shouldCreateNewUserAndListen() throws CloudException{
@@ -300,7 +299,7 @@ public class TestNotificationAcl {
 				if(e!=null)
 					Assert.fail(e.getMessage());
 				else{
-					CloudObject.on("Custom1", "created", new CloudObjectCallback() {
+					CloudObject.on("NOTIFICATION_QUERY_0", "created", new CloudObjectCallback() {
 						
 						@Override
 						public void done(CloudObject x, CloudException t) throws CloudException {
@@ -322,8 +321,8 @@ public class TestNotificationAcl {
 							} catch (InterruptedException e1) {
 								e1.printStackTrace();
 							}
-							CloudObject user2=new CloudObject("Custom1");
-							user2.set("newColumn", "sample");
+							CloudObject user2=new CloudObject("NOTIFICATION_QUERY_0");
+							user2.set("name", "sample");
 							ACL acl=user2.getAcl();
 							acl.setPublicReadAccess(false);
 							acl.setPublicWriteAccess(true);
@@ -341,6 +340,13 @@ public class TestNotificationAcl {
 										} catch (InterruptedException e) {
 											e.printStackTrace();
 										}
+									CloudObject.off("NOTIFICATION_QUERY_0", "created", new CloudStringCallback() {
+										
+										@Override
+										public void done(String x, CloudException t) throws CloudException {
+											
+										}
+									});
 									
 								}
 							});
@@ -369,7 +375,7 @@ public class TestNotificationAcl {
 				if(e!=null)
 					Assert.fail(e.getMessage());
 				else{
-					CloudObject.on("Custom1", "created", new CloudObjectCallback() {
+					CloudObject.on("NOTIFICATION_QUERY_0", "created", new CloudObjectCallback() {
 						
 						@Override
 						public void done(CloudObject x, CloudException t) throws CloudException {
@@ -391,8 +397,8 @@ public class TestNotificationAcl {
 							} catch (InterruptedException e1) {
 								e1.printStackTrace();
 							}
-							CloudObject user2=new CloudObject("Custom1");
-							user2.set("newColumn", "sample");
+							CloudObject user2=new CloudObject("NOTIFICATION_QUERY_0");
+							user2.set("name", "sample");
 							ACL acl=user2.getAcl();
 							acl.setPublicReadAccess(false);
 							acl.setPublicWriteAccess(true);
@@ -410,6 +416,13 @@ public class TestNotificationAcl {
 										} catch (InterruptedException e) {
 											e.printStackTrace();
 										}
+									CloudObject.off("NOTIFICATION_QUERY_0", "created", new CloudStringCallback() {
+										
+										@Override
+										public void done(String x, CloudException t) throws CloudException {
+											
+										}
+									});
 									
 								}
 							});

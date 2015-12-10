@@ -127,7 +127,7 @@ public class CloudCache {
  * @param call
  * @throws CloudException
  */
-	public void getCache(String key, ObjectCallback call) throws CloudException {
+	public void getItem(String key, ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
 				throw new CloudException("App Id is null");
@@ -212,7 +212,7 @@ public class CloudCache {
 	 * @param call
 	 * @throws CloudException
 	 */
-	public void getAll_0(ObjectCallback call) throws CloudException {
+	public static void getAllCaches(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
 				throw new CloudException("App Id is null");
@@ -239,7 +239,7 @@ public class CloudCache {
 	 * @param call
 	 * @throws CloudException
 	 */
-	public void getAll(ObjectCallback call) throws CloudException {
+	public void getAllItems(ObjectCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
 				throw new CloudException("App Id is null");

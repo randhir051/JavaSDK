@@ -17,8 +17,7 @@ public class CloudTableTest {
 	private static final String EMPLOYEE = PrivateMethod._makeString();
 	private static final String ADDRESS = PrivateMethod._makeString();
 	void initialize() {
-		CloudApp.init("travis123",
-				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initMaster();
 	}
 	@Test(timeout = 50000)
 	public void sequentialTests() throws CloudException {
@@ -160,7 +159,7 @@ public class CloudTableTest {
 				@Override
 				public void done(CloudTable table, CloudException e)
 						throws CloudException {
-					Column employee = new Column(COMPANY, DataType.List, false,
+					Column employee = new Column(EMPLOYEE, DataType.List, false,
 							false);
 					employee.setRelatedTo(new CloudTable(EMPLOYEE));
 					Column address = new Column(ADDRESS, DataType.Relation,
@@ -229,7 +228,8 @@ public class CloudTableTest {
 	}
 	@Test(timeout = 40000)
 	public void duplicateTable() throws CloudException {
-		initialize();
+		UTIL.initKisenyiMaster();
+
 		final String tableName = PrivateMethod._makeString();
 		CloudTable obj = new CloudTable(tableName);
 		obj.save(new CloudTableCallback() {
@@ -240,10 +240,7 @@ public class CloudTableTest {
 				obj1.save(new CloudTableCallback() {
 					@Override
 					public void done(CloudTable table, CloudException e) {
-						if (e != null) {
-							Assert.assertEquals("Internal Server Error", e
-									.getMessage().trim());
-						}
+						Assert.assertTrue(e!=null);
 
 						if (table != null) {
 							Assert.fail("Should not create duplicate table");
@@ -536,7 +533,7 @@ public class CloudTableTest {
 
 	@Test(timeout = 40000)
 	public void renameTableFails() throws CloudException {
-		initialize();
+		UTIL.initKisenyiMaster();
 		CloudTable table = new CloudTable(PrivateMethod._makeString());
 		table.save(new CloudTableCallback() {
 			@Override
@@ -547,10 +544,7 @@ public class CloudTableTest {
 					@Override
 					public void done(CloudTable table, CloudException e)
 							throws CloudException {
-						if (e != null) {
-							Assert.assertEquals("Internal Server Error",
-									e.getMessage());
-						}
+						Assert.assertTrue(e!=null);
 						if (table != null) {
 							Assert.fail("Should not have rename the table");
 						}
@@ -1038,7 +1032,9 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableSetRelationsToExistingTables() throws CloudException {
 		initialize();
-		CloudTable custom = new CloudTable("Customx");
+		UTIL.initMaster();
+		final String tbl=PrivateMethod._makeString();
+		CloudTable custom = new CloudTable(tbl);
 		Column newColumn = new Column("newColumn1", DataType.Text, false, false);
 		custom.addColumn(newColumn);
 		Column newColumn1 = new Column("newColumn7", DataType.Relation, false,
@@ -1061,7 +1057,7 @@ public class CloudTableTest {
 				}
 
 				if (table != null) {
-					Assert.assertEquals(table.getTableName(), "Customx");
+					Assert.assertEquals(table.getTableName(), tbl);
 					table.delete(new CloudStringCallback() {
 						@Override
 						public void done(String response, CloudException e)
@@ -1078,6 +1074,7 @@ public class CloudTableTest {
 	@Test(timeout = 50000)
 	public void createTableWithTextListColumnRelation() throws CloudException {
 		initialize();
+		UTIL.initMaster();
 		CloudTable custom = new CloudTable("textlistrelation");
 		Column newColumn = new Column("newColumn1", DataType.Text, false, false);
 		custom.addColumn(newColumn);

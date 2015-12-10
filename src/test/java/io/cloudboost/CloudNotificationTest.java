@@ -6,7 +6,8 @@ import org.junit.Test;
 public class CloudNotificationTest{
 	
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		CloudApp.init("bengi123",
+				"mLiJB380x9fhPRCjCGmGRg==");
 	}
 	
 	@Test(timeout = 20000)
@@ -32,22 +33,17 @@ public class CloudNotificationTest{
 	}
 	
 	@Test(timeout=40000)
-	public void testPublish()throws CloudException{
-		initialize();		
+	public void testPublish()throws CloudException, InterruptedException{
+		initialize();
 		CloudNotification.on("custom-channel",new CloudNotificationCallback(){
 			@Override
 			public void done(Object x, CloudException t)throws CloudException {
-					if(t != null){
-						Assert.fail(t.getMessage());
-					}
-					
-					if(x == null){
-						Assert.fail("failed to subscribe");
-					}else{
-						CloudNotification.publish("custom-channel", "Hello World");
-					}
+				
 			}	
 		});
+		CloudNotification.publish("custom-channel", "Hello World");
+		Thread.sleep(3000);
+
 	}
 	
 	@Test(timeout=40000)
@@ -56,23 +52,16 @@ public class CloudNotificationTest{
 		CloudNotification.on("custom-channel",new CloudNotificationCallback(){
 			@Override
 			public void done(Object x, CloudException t)throws CloudException {
+				Assert.fail(t.getMessage());
+			}	
+		});
+		CloudNotification.off("custom-channel", new CloudStringCallback(){
+			@Override
+			public void done(String x, CloudException t)throws CloudException {
 				if(t != null){
 					Assert.fail(t.getMessage());
 				}
-				
-				if(x == null){
-					Assert.fail("failed to subscribe");
-				}else{
-					CloudNotification.off("custom-channel", new CloudStringCallback(){
-						@Override
-						public void done(String x, CloudException t)throws CloudException {
-							if(t != null){
-								Assert.fail(t.getMessage());
-							}
-						}
-					});
-				}
-			}	
+			}
 		});
 	}
 	@Test(timeout=20000)

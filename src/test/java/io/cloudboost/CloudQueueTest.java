@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class CloudQueueTest {
 	void initialize() {
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 
 	@Test(timeout = 50000)

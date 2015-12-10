@@ -219,7 +219,6 @@ public class CloudQueue {
 						JSONObject obj = body.getJSONObject(i);
 						QueueMessage msg = new QueueMessage();
 						msg.setDocument(obj);
-						;
 						msgArr[i] = msg;
 					}
 					callback.done(msgArr, null);
@@ -316,7 +315,6 @@ public class CloudQueue {
 						JSONObject obj = body.getJSONObject(i);
 						QueueMessage msg = new QueueMessage();
 						msg.setDocument(obj);
-						;
 						msgArr[i] = msg;
 					}
 					callback.done(msgArr, null);
@@ -681,18 +679,7 @@ public class CloudQueue {
 		CloudQueue queue=new CloudQueue(queueName, null);
 		queue.deleteQueue(callback);
 	}
-	public void merge(JSONObject obj){
-		Iterator<String> iter=obj.keys();
-		while(iter.hasNext()){
-			String key=iter.next();
-			try {
-				document.put(key, obj.get(key));
-			} catch (JSONException e) {
-				
-				e.printStackTrace();
-			}
-		}
-	}
+
 	public void update(CloudQueueCallback callback) {
 		validate();
 		JSONObject data = new JSONObject();

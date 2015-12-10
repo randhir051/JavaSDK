@@ -12,19 +12,20 @@ import org.junit.Test;
  */
 public class CloudQueryTest{
 		void initialize(){
-			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+			CloudApp.init("bengi123",
+					"mLiJB380x9fhPRCjCGmGRg==");
 		}
 		@Test(timeout=50000)
 		public void shouldRetrieveWhenNotNullColumn() throws CloudException{
 			initialize();
-			CloudObject obj=new CloudObject("student1");
+			CloudObject obj=new CloudObject("NOTIFICATION_QUERY_0");
 			obj.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					CloudQuery q=new CloudQuery("student1");
+					CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_0");
 					q.notEqualTo("name", null);
 					q.find(new CloudObjectArrayCallback() {
 						
@@ -49,14 +50,14 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void shouldRetrieveWhenNotNullColumnNotEqFunc() throws CloudException{
 			initialize();
-			CloudObject obj=new CloudObject("student1");
+			CloudObject obj=new CloudObject("NOTIFICATION_QUERY_1");
 			obj.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					CloudQuery q=new CloudQuery("student1");
+					CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_1");
 					q.equalTo("id", x.getId());
 					q.find(new CloudObjectArrayCallback() {
 						
@@ -78,14 +79,14 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void shouldRetrieveWhenNullColumn() throws CloudException{
 			initialize();
-			CloudObject obj=new CloudObject("student1");
+			CloudObject obj=new CloudObject("DATA_1");
 			obj.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					CloudQuery q=new CloudQuery("student1");
+					CloudQuery q=new CloudQuery("DATA_1");
 					q.equalTo("name", null);
 					q.find(new CloudObjectArrayCallback() {
 						
@@ -110,18 +111,18 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void selectColumnShouldWorkOnDistinct() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("Custom1");
-			ob.set("newColumn", "sample");
-			ob.set("description", "sample1");
+			CloudObject ob=new CloudObject("NOTIFICATION_QUERY_1");
+			ob.set("name", "sample");
+			ob.set("age", 11);
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					CloudQuery q=new CloudQuery("Custom1");
+					CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_1");
 					q.equalTo("id", x.getId());
-					q.selectColumn(new String[]{"newColumn"});
+					q.selectColumn(new String[]{"name"});
 					q.distinct(new String[]{"id"},new CloudObjectArrayCallback() {
 						
 						@Override
@@ -129,7 +130,7 @@ public class CloudQueryTest{
 							if(t!=null)
 								Assert.fail(t.getMessage());
 							if(x.length>0){
-								Assert.assertFalse(x[0].hasKey("description"));
+								Assert.assertFalse(x[0].hasKey("age"));
 							}
 							
 						}
@@ -143,18 +144,18 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void selectColumnShouldWorkOnFind() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("Custom1");
-			ob.set("newColumn", "sample");
-			ob.set("description", "sample1");
+			CloudObject ob=new CloudObject("NOTIFICATION_QUERY_1");
+			ob.set("name", "egima");
+			ob.set("age", 25);
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					CloudQuery q=new CloudQuery("Custom1");
+					CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_1");
 					q.equalTo("id", x.getId());
-					q.selectColumn(new String[]{"newColumn"});
+					q.selectColumn(new String[]{"name"});
 					q.find(new CloudObjectArrayCallback() {
 						
 						@Override
@@ -162,7 +163,7 @@ public class CloudQueryTest{
 							if(t!=null)
 								Assert.fail(t.getMessage());
 							if(x.length>0){
-								Assert.assertFalse(x[0].hasKey("description"));
+								Assert.assertFalse(x[0].hasKey("age"));
 							}
 							
 						}
@@ -176,15 +177,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveListInColumn() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student4");
-			ob.set("subject", new String[]{"java","python"});
+			CloudObject ob=new CloudObject("DATA_1");
+			ob.set("subjects", new String[]{"java","python"});
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail();
-					JSONArray arr=(JSONArray) x.get("subject");
+					JSONArray arr=(JSONArray) x.get("subjects");
 					Assert.assertTrue(arr.length()==2);
 					
 				}
@@ -193,7 +194,7 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveDataWithParticularValue() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student1");
+			CloudObject ob=new CloudObject("DATA_1");
 			ob.set("name", "vipul");
 			ob.save(new CloudObjectCallback() {
 				
@@ -207,13 +208,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveDataWithGivenValue() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student1");
-			ob.set("name", "vipul");
+			CloudObject ob=new CloudObject("DATA_1");
+			ob.set("name", "FELIX");
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
-					Assert.assertEquals("vipul", x.getString("name"));
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					Assert.assertEquals("FELIX", x.getString("name"));
 					
 				}
 			});
@@ -221,7 +224,7 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void retrieveDataWithParticularValue() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student1");
+			CloudObject ob=new CloudObject("DATA_1");
 			ob.set("name", "vipul");
 			ob.save(new CloudObjectCallback() {
 				
@@ -229,7 +232,7 @@ public class CloudQueryTest{
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail();
-					CloudQuery q=new CloudQuery("student1");
+					CloudQuery q=new CloudQuery("DATA_1");
 					q.equalTo("name", "vipul");
 					q.find(new CloudObjectArrayCallback() {
 						
@@ -252,15 +255,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveListwithInColumn() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student4");
-			ob.set("subject", new String[]{"java","c#"});
+			CloudObject ob=new CloudObject("DATA_1");
+			ob.set("subjects", new String[]{"java","c#"});
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail();
-					JSONArray arr=(JSONArray) x.get("subject");
+					JSONArray arr=(JSONArray) x.get("subjects");
 					Assert.assertTrue(arr.length()==2);
 					
 				}
@@ -269,15 +272,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void selectColumn() throws CloudException{
 			initialize();
-			CloudObject obj1 = new CloudObject("Custom1");
-			obj1.set("newColumn", "sample");
-			obj1.set("description", "sample2");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_4");
+			obj1.set("name", "egima");
+			obj1.set("age", 30);
 			obj1.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery cbQuery = new CloudQuery("Custom1");
+						CloudQuery cbQuery = new CloudQuery("NOTIFICATION_QUERY_4");
 						cbQuery.equalTo("id", x.get("id"));
-						String[] column = {"newColumn"};
+						String[] column = {"name"};
 						cbQuery.selectColumn(column);
 						cbQuery.find(new CloudObjectArrayCallback(){
 							@Override
@@ -300,15 +303,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void selectColumnDistinct() throws CloudException{
 			initialize();
-			CloudObject obj1 = new CloudObject("Custom1");
-			obj1.set("newColumn", "sample");
-			obj1.set("description", "sample2");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_4");
+			obj1.set("name", "sample");
+			obj1.set("age", 17);
 			obj1.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery cbQuery = new CloudQuery("Custom1");
+						CloudQuery cbQuery = new CloudQuery("NOTIFICATION_QUERY_4");
 						cbQuery.equalTo("id", x.get("id"));
-						String[] column = {"newColumn"};
+						String[] column = {"name"};
 						String[] keys = {"id"};
 						cbQuery.selectColumn(column);
 						cbQuery.distinct(keys, new CloudObjectArrayCallback(){
@@ -331,12 +334,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveDataWithAParticularValue() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student1");
+			CloudObject ob=new CloudObject("NOTIFICATION_QUERY_4");
 			ob.set("name", "vipul");
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
+						Assert.fail(t.getMessage());
+					else
 					Assert.assertEquals("vipul", x.getString("name"));
 					
 				}
@@ -345,11 +351,11 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void equalToWithNull() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student1");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_5");
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-					CloudQuery cbQuery = new CloudQuery("student1");
+					CloudQuery cbQuery = new CloudQuery("NOTIFICATION_QUERY_5");
 					cbQuery.equalTo("name", null);
 					cbQuery.find(new CloudObjectArrayCallback(){
 						@Override
@@ -374,11 +380,11 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void notEqualToWithNull() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student1");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_5");
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-					CloudQuery cbQuery = new CloudQuery("student1");
+					CloudQuery cbQuery = new CloudQuery("NOTIFICATION_QUERY_5");
 					cbQuery.notEqualTo("name", null);
 					cbQuery.find(new CloudObjectArrayCallback(){
 						@Override
@@ -404,8 +410,8 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void findOne() throws CloudException{
 			initialize();
-			CloudQuery cbQuery = new CloudQuery("student1");
-			cbQuery.equalTo("name", "vipul");
+			CloudQuery cbQuery = new CloudQuery("DATA_1");
+			cbQuery.equalTo("name", "sample");
 			cbQuery.findOne(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject object, CloudException t)throws CloudException {
@@ -414,7 +420,7 @@ public class CloudQueryTest{
 						}
 						
 						if(object != null){
-							Assert.assertEquals(object.get("name"), "vipul");
+							Assert.assertEquals(object.get("name"), "sample");
 						}else{
 							Assert.fail("object could not queried properly");
 						}
@@ -425,7 +431,7 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void findItemById() throws CloudException{
 			initialize();
-			CloudObject o=new CloudObject("student1");
+			CloudObject o=new CloudObject("DATA_1");
 			o.set("name", "egima");
 			o.save(new CloudObjectCallback() {
 				
@@ -434,7 +440,7 @@ public class CloudQueryTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					CloudQuery cbQuery = new CloudQuery("student1");
+					CloudQuery cbQuery = new CloudQuery("DATA_1");
 					cbQuery.equalTo("id", x.getId());
 					cbQuery.find(new CloudObjectArrayCallback(){
 						@Override
@@ -459,7 +465,7 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void findDataWithId() throws CloudException{
 			initialize();
-			CloudObject o=new CloudObject("student1");
+			CloudObject o=new CloudObject("DATA_1");
 			o.set("name", "egima");
 			o.save(new CloudObjectCallback() {
 				
@@ -468,7 +474,7 @@ public class CloudQueryTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					CloudQuery cbQuery = new CloudQuery("student1");
+					CloudQuery cbQuery = new CloudQuery("DATA_1");
 					cbQuery.equalTo("id", x.getId());
 					cbQuery.find(new CloudObjectArrayCallback(){
 						@Override
@@ -493,7 +499,7 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void findData() throws CloudException{
 			initialize();
-			CloudQuery cbQuery = new CloudQuery("student1");
+			CloudQuery cbQuery = new CloudQuery("DATA_1");
 			cbQuery.equalTo("name", "vipul");
 			cbQuery.find(new CloudObjectArrayCallback(){
 				@Override
@@ -516,9 +522,9 @@ public class CloudQueryTest{
 		public void notContianedIn() throws CloudException {
 			initialize();
 
-			CloudQuery query = new CloudQuery("student4");
+			CloudQuery query = new CloudQuery("DATA_1");
 			final String[] filter1 = { "java", "python" };
-			query.notContainedIn("subject", filter1);
+			query.notContainedIn("subjects", filter1);
 			query.find(new CloudObjectArrayCallback() {
 				@Override
 				public void done(CloudObject[] list, CloudException t)
@@ -531,8 +537,8 @@ public class CloudQueryTest{
 								CloudObject obj=list[i];
 								try {
 									String json=null;
-									if(obj.hasKey("subject"))
-										json=obj.getDocument().get("subject").toString();
+									if(obj.hasKey("subjects"))
+										json=obj.getDocument().get("subjects").toString();
 								if(json==null||"null".equals(json))
 									continue;
 								else{
@@ -557,47 +563,59 @@ public class CloudQueryTest{
 			initialize();
 
 			final String[] column = { "java", "python" };
-
-			CloudQuery query = new CloudQuery("student4");
-			query.containsAll("subject", column);
-			query.find(new CloudObjectArrayCallback() {
+			CloudObject ob=new CloudObject("DATA_1");
+			ob.set("subjects", column);
+			ob.save(new CloudObjectCallback() {
+				
 				@Override
-				public void done(CloudObject[] list, CloudException t)
-						throws CloudException {
-					if (t != null)
+				public void done(CloudObject x, CloudException t) throws CloudException {
+					if(t!=null)
 						Assert.fail(t.getMessage());
-					if (list != null)
-						if (list.length > 0) {
-							for (int i = 0; i < list.length; i++) {
-								String[] col=list[i].getDocument().toString().split(",");
-								if(col.length==2){
-									String str1=col[0].replace("[", "");
-									String str2=col[1].replace("]", "");
-									if(!str1.equals(column[0])&&!str2.equals(column[1]))
-										Assert.fail("should retrieve saved data with particular value");
-								}							
-							}
-						} else {
-							Assert.fail("object could not queried properly");
+					else 			
+						{CloudQuery query = new CloudQuery("DATA_1");
+					query.containsAll("subjects", column);
+					query.find(new CloudObjectArrayCallback() {
+						@Override
+						public void done(CloudObject[] list, CloudException t)
+								throws CloudException {
+							if (t != null)
+								Assert.fail(t.getMessage());
+							if (list != null)
+								if (list.length > 0) {
+									for (int i = 0; i < list.length; i++) {
+										String[] col=list[i].getDocument().toString().split(",");
+										if(col.length==2){
+											String str1=col[0].replace("[", "");
+											String str2=col[1].replace("]", "");
+											if(!str1.equals(column[0])&&!str2.equals(column[1]))
+												Assert.fail("should retrieve saved data with particular value");
+										}							
+									}
+								} else {
+									Assert.fail("object could not queried properly");
+								}
 						}
-				}
+					});
+					
+				}}
 			});
+
 		}
 		@Test(timeout=50000)
 		public void startsWith() throws CloudException{
 			initialize();
-			CloudObject ob1=new CloudObject("Sample");
+			CloudObject ob1=new CloudObject("DATA_1");
 			ob1.set("name", "vipul");
-			CloudObject ob2=new CloudObject("Sample");
+			CloudObject ob2=new CloudObject("DATA_1");
 			ob2.set("name", "vipul");
 
-			CloudObject ob3=new CloudObject("Sample");
+			CloudObject ob3=new CloudObject("DATA_1");
 			ob3.set("name", "vanessa");
 
-			CloudObject ob4=new CloudObject("Sample");
+			CloudObject ob4=new CloudObject("DATA_1");
 			ob4.set("name", "egima");
 
-			CloudObject ob5=new CloudObject("Sample");
+			CloudObject ob5=new CloudObject("DATA_1");
 			ob5.set("name", "ayiko");
 
 			CloudObject[] objects={ob1,ob2,ob3,ob4,ob5};
@@ -608,7 +626,7 @@ public class CloudQueryTest{
 					if(t!=null)
 						Assert.fail(t.getMessage());
 					if(x.length==5){
-						CloudQuery query = new CloudQuery("Sample");
+						CloudQuery query = new CloudQuery("DATA_1");
 						query.startsWith("name", "v");
 						query.find(new CloudObjectArrayCallback(){
 							@Override
@@ -635,7 +653,7 @@ public class CloudQueryTest{
 		@Test(timeout = 50000)
 		public void findById() throws CloudException {
 			initialize();
-			CloudObject obj=new CloudObject("student4");
+			CloudObject obj=new CloudObject("NOTIFICATION_QUERY_0");
 			obj.set("age", 25);
 			obj.set("name", "egima");
 			obj.save(new CloudObjectCallback() {
@@ -645,7 +663,7 @@ public class CloudQueryTest{
 					if(t!=null)
 						Assert.fail(t.getMessage());
 					if(x!=null){
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_0");
 						query.orderByAsc("age");
 						
 						query.findById(x.getId(), new CloudObjectCallback() {
@@ -673,19 +691,19 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void queryOverLinkedColumnWithEqualTo() throws CloudException{
 			initialize();
-			CloudObject student = new CloudObject("student1");
-			CloudObject hostel = new CloudObject("hostel");
-			hostel.set("room", 789);
-			student.set("newColumn", hostel);
+			CloudObject student = new CloudObject("NOTIFICATION_QUERY_8");
+			CloudObject hostel = new CloudObject("NOTIFICATION_QUERY_9");
+			hostel.set("name", "egima");
+			student.set("newColumn2", hostel);
 			student.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)throws CloudException {
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					CloudQuery query= new CloudQuery("student1");
-					CloudObject temp = x.getCloudObject("newColumn");
-					query.equalTo("newColumn", temp);
+					CloudQuery query= new CloudQuery("NOTIFICATION_QUERY_8");
+					CloudObject temp = x.getCloudObject("newColumn2");
+					query.equalTo("newColumn2", temp);
 					query.find(new CloudObjectArrayCallback(){
 						@Override
 						public void done(CloudObject[] list, CloudException err)	throws CloudException {
@@ -706,14 +724,13 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void greaterThan() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
-			final String[] column = {"C#", "C"};
-			obj.set("subject", column);
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
+			obj.set("name", "ayiko");
 			obj.set("age", 15);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.greaterThan("age", 10);
 						query.find(new CloudObjectArrayCallback(){
 							@Override
@@ -736,16 +753,18 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void greaterThanEqualTo() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 10);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.greaterThanEqualTo("age", 10);
 						query.find(new CloudObjectArrayCallback(){
 							@Override
 							public void done(CloudObject[] list,	CloudException t) throws CloudException {
+								if(t!=null)
+									Assert.fail(t.getMessage());
 								if(list.length > 0){
 										for(int i=0 ; i<list.length; i++){
 												if(list[i].getInteger("age") < 10){
@@ -764,12 +783,12 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void lessThan() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 20);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.lessThan("age", 20);
 						query.find(new CloudObjectArrayCallback(){
 							@Override
@@ -792,12 +811,14 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void lessThanEqualTo() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 15);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+					if(t!=null)
+						Assert.fail(t.getMessage());
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.lessThanEqualTo("age", 15);
 						query.find(new CloudObjectArrayCallback(){
 							@Override
@@ -820,12 +841,14 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void ascendingOrder() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 21);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+					if(t!=null)
+						Assert.fail(t.getMessage());
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.orderByAsc("age");
 						query.find(new CloudObjectArrayCallback(){
 							@Override
@@ -850,12 +873,12 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void descendingOrder() throws CloudException{
 			initialize();
-				CloudObject obj = new CloudObject("student4");
+				CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 				obj.set("age", 19);
 				obj.save(new CloudObjectCallback(){
 					@Override
 					public void done(CloudObject x, CloudException t)	throws CloudException {
-							CloudQuery query = new CloudQuery("student4");
+							CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 							query.orderByDesc("age");
 							query.find(new CloudObjectArrayCallback(){
 								@Override
@@ -882,19 +905,19 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void exists() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 18);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.exists("age");
 						query.find(new CloudObjectArrayCallback(){
 							@Override
 							public void done(CloudObject[] list,	CloudException t) throws CloudException {
 								if(list.length > 0){
 										for(int i=0 ; i<list.length; i++){
-												if(list[i].getInteger("age") == null){
+												if(!list[i].hasKey("age")){
 														Assert.fail("received wrong data");
 												}
 										}
@@ -910,20 +933,21 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void doesNotExists() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("student4");
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 17);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)	throws CloudException {
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_10");
 						query.doesNotExists("age");
 						query.find(new CloudObjectArrayCallback(){
 							@Override
 							public void done(CloudObject[] list,	CloudException t) throws CloudException {
 								if(list.length > 0){
-									for(int i=0 ; i<list.length; i++){
-									
-								}
+									for(int i=0 ; i<list.length; i++)
+										if(list[i].hasKey("age"))
+											Assert.fail("Wrong data");
+								
 								}else{
 									Assert.fail("object could not queried properly");
 								}
@@ -936,15 +960,14 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveRelation() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("Custom4");
-			obj.set("newColumn1", "Course");
-			CloudObject obj1 = new CloudObject("student1");
+			CloudObject obj = new CloudObject("DATA_1");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_0");
 			obj1.set("name", "Ranjeet");
 			
-			CloudObject obj2 = new CloudObject("student1");
+			CloudObject obj2 = new CloudObject("NOTIFICATION_QUERY_0");
 			obj2.set("name", "Ravi");
 			CloudObject[] obje = {obj1, obj2};
-			obj.set("newColumn7", obje);
+			obj.set("relationArray2", obje);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)throws CloudException {
@@ -958,17 +981,16 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveMultiJoin() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("Custom2");
-			obj.set("newColumn1", "Course");
-			CloudObject obj1 = new CloudObject("student1");
-			CloudObject obj2 = new CloudObject("hostel");
-			CloudObject obj3 = new CloudObject("Custom3");
-			obj3.set("address", "progress");
-			obj.set("newColumn2", obj3);
-			obj2.set("room", 509);
+			CloudObject obj = new CloudObject("NOTIFICATION_QUERY_8");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_9");
+			CloudObject obj2 = new CloudObject("NOTIFICATION_QUERY_10");
+			CloudObject obj3 = new CloudObject("NOTIFICATION_QUERY_0");
+			obj3.set("name", "ecuman");
+			obj.set("newColumn0", obj3);
+			obj2.set("age", 509);
 			obj1.set("name", "Ranjeet");
-			obj.set("newColumn7", obj1);
-			obj1.set("newColumn", obj2);
+			obj.set("newColumn2", obj1);
+			obj1.set("newColumn10", obj2);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)throws CloudException {
@@ -981,20 +1003,20 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void includeFindById() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("Custom");
-			CloudObject obj1 = new CloudObject("Custom");
-			CloudObject obj2 = new CloudObject("Custom");
-			obj2.set("newColumn1", "sample");
+			CloudObject obj = new CloudObject("DATA_1");
+			CloudObject obj1 = new CloudObject("DATA_1");
+			CloudObject obj2 = new CloudObject("DATA_1");
+			obj2.set("name", "ecuman");
 			CloudObject[] object = {obj2, obj1};
-			obj.set("newColumn7", object);
+			obj.set("relationArray", object);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)throws CloudException {
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					CloudQuery query= new CloudQuery("Custom");
-					query.include("newColumn7");
+					CloudQuery query= new CloudQuery("DATA_1");
+					query.include("relationArray");
 					query.findById(x.getId(), new CloudObjectCallback(){
 						@Override
 						public void done(CloudObject list, CloudException err)	throws CloudException {
@@ -1163,8 +1185,8 @@ public class CloudQueryTest{
 		public void containedInShouldWorkOnId() throws CloudException {
 
 			initialize();
-			final CloudObject obj=new CloudObject("Custom1");
-			obj.set("newColumn", "sample");
+			final CloudObject obj=new CloudObject("DATA_1");
+			obj.set("name", "sample");
 			obj.set("description", "sample2");
 			obj.save(new CloudObjectCallback() {
 				
@@ -1172,8 +1194,8 @@ public class CloudQueryTest{
 				public void done(final CloudObject x1, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					final CloudObject obj2=new CloudObject("Custom1");
-					obj2.set("newColumn", "sample");
+					final CloudObject obj2=new CloudObject("DATA_1");
+					obj2.set("name", "sample");
 					obj2.set("description", "sample2");
 					obj2.save(new CloudObjectCallback() {
 						
@@ -1181,8 +1203,8 @@ public class CloudQueryTest{
 						public void done(final CloudObject x2, CloudException t) throws CloudException {
 							if(t!=null)
 								Assert.fail(t.getMessage());
-							CloudObject obj3=new CloudObject("Custom1");
-							obj3.set("newColumn", "sample");
+							CloudObject obj3=new CloudObject("DATA_1");
+							obj3.set("name", "sample");
 							obj3.set("description", "sample2");
 							obj3.save(new CloudObjectCallback() {
 								
@@ -1190,7 +1212,7 @@ public class CloudQueryTest{
 								public void done(CloudObject x3, CloudException t) throws CloudException {
 									if(t!=null)
 										Assert.fail(t.getMessage());
-									CloudQuery q=new CloudQuery("Custom1");
+									CloudQuery q=new CloudQuery("DATA_1");
 									q=q.containedIn("id", new String[]{x1.getId(),x2.getId()});
 									q.find(new CloudObjectArrayCallback() {
 										
@@ -1223,7 +1245,7 @@ public class CloudQueryTest{
 		public void shouldReturnCountAsInteger() throws CloudException {
 
 			initialize();
-			CloudQuery q=new CloudQuery("student1");
+			CloudQuery q=new CloudQuery("DATA_1");
 			
 			q.count(new CloudIntegerCallback() {
 				
@@ -1249,7 +1271,7 @@ public class CloudQueryTest{
 
 			initialize();
 
-			CloudQuery q = new CloudQuery("student1");
+			CloudQuery q = new CloudQuery("NOTIFICATION_QUERY_2");
 			q = q.notEqualTo("name", "vipul");
 			q.find(new CloudObjectArrayCallback() {
 
@@ -1276,7 +1298,7 @@ public class CloudQueryTest{
 		public void shouldLimitNumberOfDataItems() throws CloudException {
 
 			initialize();
-			CloudQuery q=new CloudQuery("student4");
+			CloudQuery q=new CloudQuery("DATA_1");
 			q=q.setLimit(5);
 			q.find(new CloudObjectArrayCallback() {
 				
@@ -1295,7 +1317,7 @@ public class CloudQueryTest{
 		public void shouldLimitNumberOfDataItemsToOne() throws CloudException {
 
 			initialize();
-			CloudQuery q=new CloudQuery("student4");
+			CloudQuery q=new CloudQuery("DATA_1");
 			q.findOne(new CloudObjectCallback() {
 				
 				@Override
@@ -1309,7 +1331,7 @@ public class CloudQueryTest{
 		public void shouldGetElementNotHavingGivenColumnName() throws CloudException {
 
 			initialize();
-			CloudQuery q=new CloudQuery("student4");
+			CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_2");
 			q=q.doesNotExists("age");
 			q.find(new CloudObjectArrayCallback() {
 				
@@ -1332,8 +1354,8 @@ public class CloudQueryTest{
 		public void shouldNotGiveElementWithGivenRelation() throws CloudException {
 
 			initialize();
-			CloudObject q = new CloudObject("hostel");
-			q.set("room", 123);
+			CloudObject q = new CloudObject("NOTIFICATION_QUERY_0");
+			q.set("name", "bengi");
 			q.save(new CloudObjectCallback() {
 
 				@Override
@@ -1342,8 +1364,8 @@ public class CloudQueryTest{
 					if (t != null)
 						Assert.fail(t.getMessage());
 					if (x != null) {
-						CloudObject obj = new CloudObject("student1");
-						obj.set("newColumn", x);
+						CloudObject obj = new CloudObject("NOTIFICATION_QUERY_8");
+						obj.set("newColumn0", x);
 						obj.save(new CloudObjectCallback() {
 
 							@Override
@@ -1352,8 +1374,8 @@ public class CloudQueryTest{
 								if (t != null)
 									Assert.fail(t.getMessage());
 								if (x0 != null) {
-									CloudQuery qry = new CloudQuery("student1");
-									qry.notEqualTo("newColumn", x);
+									CloudQuery qry = new CloudQuery("NOTIFICATION_QUERY_8");
+									qry.notEqualTo("newColumn0", x);
 									qry.find(new CloudObjectArrayCallback() {
 
 										@Override
@@ -1364,9 +1386,9 @@ public class CloudQueryTest{
 												Assert.fail(t.getMessage());
 											if (x1 != null) {
 												for (CloudObject o : x1) {
-													if (o.hasKey("newColumn")) {
+													if (o.hasKey("newColumn0")) {
 														CloudObject obj = o
-																.getCloudObject("newColumn");
+																.getCloudObject("newColumn0");
 														if (obj.getId().equals(
 																x.getId()))
 															Assert.fail("Should not get data with given relation");
@@ -1387,8 +1409,8 @@ public class CloudQueryTest{
 		public void shouldQueryOverBooleanType() throws CloudException {
 
 			initialize();
-			CloudObject obj=new CloudObject("Custom1");
-			obj.set("newColumn1", false);
+			CloudObject obj=new CloudObject("DATA_1");
+			obj.set("boolfield", false);
 			obj.save(new CloudObjectCallback() {
 				
 				@Override
@@ -1396,8 +1418,8 @@ public class CloudQueryTest{
 					if(t!=null)
 						Assert.fail(t.getMessage());
 					if(x!=null){
-						CloudQuery qry=new CloudQuery("Custom1");
-						qry.equalTo("newColumn1", false);
+						CloudQuery qry=new CloudQuery("DATA_1");
+						qry.equalTo("boolfield", false);
 						qry.find(new CloudObjectArrayCallback() {
 							
 							@Override
@@ -1406,7 +1428,7 @@ public class CloudQueryTest{
 									Assert.fail(t.getMessage());
 								if(x!=null){
 									for(CloudObject o:x){
-										if(o.getBoolean("newColumn1"))
+										if(o.getBoolean("boolfield"))
 											Assert.fail("Wrong data retrieved");
 									}
 								}
@@ -1424,18 +1446,17 @@ public class CloudQueryTest{
 				throws CloudException {
 
 			initialize();
-			final CloudObject obj = new CloudObject("Custom2");
-			obj.set("newColumn1", "Course");
-			CloudObject obj1 = new CloudObject("student1");
-			CloudObject obj2 = new CloudObject("hostel");
-			CloudObject obj3 = new CloudObject("Custom3");
-			obj3.set("address", "progress");
+			final CloudObject obj = new CloudObject("NOTIFICATION_QUERY_8");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_0");
+			CloudObject obj2 = new CloudObject("NOTIFICATION_QUERY_10");
+			CloudObject obj3 = new CloudObject("NOTIFICATION_QUERY_9");
+			obj3.set("name", "progress");
 			obj.set("newColumn2", obj3);
-			obj2.set("room", 509);
+			obj2.set("age", 509);
 			obj1.set("name", "Vipul");
-			obj.set("newColumn7", obj1);
-			obj1.set("newColumn", obj2);
-			obj.set("newColumn7", obj1);
+			obj.set("newColumn7", obj2);
+			obj1.set("newColumn10", obj2);
+			obj.set("newColumn0", obj1);
 			obj.save(new CloudObjectCallback() {
 
 				@Override
@@ -1444,9 +1465,9 @@ public class CloudQueryTest{
 					if (t != null)
 						Assert.fail(t.getMessage());
 					if (x != null) {
-						CloudQuery query = new CloudQuery("Custom2");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_8");
 						query.include("newColumn7");
-						query.include("newColumn7.newColumn");
+						query.include("newColumn0.newColumn10");
 						query.include("newColumn2");
 						query.equalTo("id", x.getId());
 						query.find(new CloudObjectArrayCallback() {
@@ -1461,14 +1482,14 @@ public class CloudQueryTest{
 										for (CloudObject o : x) {
 
 											CloudObject student = o
-													.getCloudObject("newColumn7");
+													.getCloudObject("newColumn0");
 											CloudObject room = student
-													.getCloudObject("newColumn");
+													.getCloudObject("newColumn10");
 											CloudObject address = o
 													.getCloudObject("newColumn2");
-											if (!(student.hasKey("name")
-													|| room.hasKey("room") || address
-													.hasKey("address")))
+											if (!student.hasKey("name")
+													|| !room.hasKey("age") || !address
+													.hasKey("name"))
 												Assert.fail("Unsuccessful Join");
 
 										}
@@ -1485,9 +1506,9 @@ public class CloudQueryTest{
 		public void shouldIncludeRelationOnDistinct() throws CloudException {
 
 			initialize();
-			final CloudObject obj = new CloudObject("Custom2");
-			obj.set("newColumn1", "text");
-			CloudObject obj1 = new CloudObject("student1");
+			final CloudObject obj = new CloudObject("NOTIFICATION_QUERY_8");
+			obj.set("name", "text");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_10");
 			obj1.set("name", "vipul");
 			obj.set("newColumn7", obj1);
 
@@ -1499,9 +1520,9 @@ public class CloudQueryTest{
 					if (t != null)
 						Assert.fail(t.getMessage());
 					if (x != null) {
-						CloudQuery query = new CloudQuery("Custom2");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_8");
 						query.include("newColumn7");
-						query.distinct(new String[] { "newColumn1" },
+						query.distinct(new String[] { "name" },
 								new CloudObjectArrayCallback() {
 
 									@Override
@@ -1537,10 +1558,10 @@ public class CloudQueryTest{
 		public void shouldQueryOverLinkedColumn() throws CloudException {
 
 			initialize();
-			final CloudObject hostel = new CloudObject("hostel");
-			hostel.set("room", 789);
-			CloudObject student = new CloudObject("student1");
-			student.set("newColumn", hostel);
+			final CloudObject hostel = new CloudObject("NOTIFICATION_QUERY_9");
+			hostel.set("age", 789);
+			CloudObject student = new CloudObject("NOTIFICATION_QUERY_8");
+			student.set("newColumn2", hostel);
 
 			student.save(new CloudObjectCallback() {
 
@@ -1550,11 +1571,11 @@ public class CloudQueryTest{
 					if (t != null)
 						Assert.fail(t.getMessage());
 					if (x != null) {
-						CloudQuery query = new CloudQuery("student1");
-						JSONObject temp = (JSONObject) x.get("newColumn");
-						CloudObject obj=new CloudObject("student1");
+						CloudQuery query = new CloudQuery("NOTIFICATION_QUERY_8");
+						JSONObject temp = (JSONObject) x.get("newColumn2");
+						CloudObject obj=new CloudObject("NOTIFICATION_QUERY_8");
 						obj.document=temp;
-						query.equalTo("newColumn", obj);
+						query.equalTo("newColumn2", obj);
 						query.find(new CloudObjectArrayCallback() {
 
 							@Override
@@ -1575,11 +1596,11 @@ public class CloudQueryTest{
 		@Test(timeout = 50000)
 		public void containedInOverListOfCloudObject() throws CloudException {
 			initialize();
-			CloudObject obj = new CloudObject("Custom");
-			CloudObject obj1 = new CloudObject("Custom");
-			CloudObject obj2 = new CloudObject("Custom");
+			CloudObject obj = new CloudObject("DATA_1");
+			CloudObject obj1 = new CloudObject("DATA_1");
+			CloudObject obj2 = new CloudObject("DATA_1");
 			CloudObject[] object = { obj2, obj1 };
-			obj.set("newColumn7", object);
+			obj.set("relationArray", object);
 			obj.save(new CloudObjectCallback() {
 				@Override
 				public void done(CloudObject x, CloudException t)
@@ -1587,14 +1608,14 @@ public class CloudQueryTest{
 					if (t != null) {
 						Assert.fail(t.getMessage());
 					}
-					CloudQuery query = new CloudQuery("Custom");
-					Object[] objectList = x.getArray("newColumn7");
-					CloudObject obj1=new CloudObject("Custom");
+					CloudQuery query = new CloudQuery("DATA_1");
+					Object[] objectList = x.getArray("relationArray");
+					CloudObject obj1=new CloudObject("DATA_1");
 					obj1.document=(JSONObject) objectList[0];
-					CloudObject obj2=new CloudObject("Custom");
+					CloudObject obj2=new CloudObject("DATA_1");
 					obj2.document=(JSONObject) objectList[1];
 					CloudObject[] objectList2={obj1};
-					query.containedIn("newColumn7", objectList2);
+					query.containedIn("relationArray", objectList2);
 					query.find(new CloudObjectArrayCallback() {
 						@Override
 						public void done(CloudObject[] list, CloudException err)
@@ -1615,13 +1636,13 @@ public class CloudQueryTest{
 		@Test(timeout = 50000)
 		public void shouldIncludeWithFindById() throws CloudException {
 			initialize();
-			CloudObject obj = new CloudObject("Custom");
-			CloudObject obj1 = new CloudObject("Custom");
-			CloudObject obj2 = new CloudObject("Custom");
-			obj2.set("newColumn1", "sample");
+			CloudObject obj = new CloudObject("DATA_1");
+			CloudObject obj1 = new CloudObject("DATA_1");
+			CloudObject obj2 = new CloudObject("DATA_1");
+			obj2.set("name", "sample");
 			CloudObject[] object = { obj2, obj1 };
 
-			obj.set("newColumn7", object);
+			obj.set("relationArray", object);
 			obj.save(new CloudObjectCallback() {
 				@Override
 				public void done(CloudObject x, CloudException t)
@@ -1630,8 +1651,8 @@ public class CloudQueryTest{
 					if (t != null) {
 						Assert.fail(t.getMessage());
 					}
-					CloudQuery query = new CloudQuery("Custom");
-					query.include("newColumn7");
+					CloudQuery query = new CloudQuery("DATA_1");
+					query.include("relationArray");
 					query.findById(x.getId(),new CloudObjectCallback() {
 						@Override
 						public void done(CloudObject list, CloudException err)
@@ -1639,10 +1660,10 @@ public class CloudQueryTest{
 							if (err != null) {
 								Assert.fail(err.getMessage());
 							}
-							Object[] objects=list.getArray("newColumn7");
+							Object[] objects=list.getArray("relationArray");
 							JSONObject obj=(JSONObject) objects[0];
 							try {
-								Assert.assertTrue(obj.has("newColumn1")&&obj.getString("newColumn1").equals("sample"));
+								Assert.assertTrue(obj.has("name")&&obj.getString("name").equals("sample"));
 							} catch (JSONException e) {
 								e.printStackTrace();
 							}
@@ -1654,8 +1675,7 @@ public class CloudQueryTest{
 		@Test(timeout = 50000)
 		public void retrieveElementWithGivenId() throws CloudException {
 			initialize();
-			CloudObject obj=new CloudObject("student4");
-			obj.set("age", 25);
+			CloudObject obj=new CloudObject("DATA_1");
 			obj.set("name", "egima");
 			obj.save(new CloudObjectCallback() {
 				
@@ -1664,7 +1684,7 @@ public class CloudQueryTest{
 					if(t!=null)
 						Assert.fail(t.getMessage());
 					if(x!=null){
-						CloudQuery query = new CloudQuery("student4");
+						CloudQuery query = new CloudQuery("DATA_1");
 						
 						query.findById(x.getId(), new CloudObjectCallback() {
 							@Override
@@ -1674,7 +1694,7 @@ public class CloudQueryTest{
 									Assert.fail(t.getMessage());
 								}
 								if (object != null) {
-										Assert.assertEquals(25, object.get("age"));
+										Assert.assertEquals("egima", object.get("name"));
 								} else {
 									Assert.fail("object could not queried properly");
 								}
@@ -1690,15 +1710,15 @@ public class CloudQueryTest{
 		@Test(timeout=50000)
 		public void saveListWithinColumn() throws CloudException{
 			initialize();
-			CloudObject ob=new CloudObject("student4");
-			ob.set("subject", new String[]{"java","python"});
+			CloudObject ob=new CloudObject("DATA_1");
+			ob.set("stringArray", new String[]{"java","python"});
 			ob.save(new CloudObjectCallback() {
 				
 				@Override
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail();
-					JSONArray arr=(JSONArray) x.get("subject");
+					JSONArray arr=(JSONArray) x.get("stringArray");
 					Assert.assertTrue(arr.length()==2);
 					
 				}

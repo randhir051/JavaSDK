@@ -9,11 +9,10 @@ import org.junit.Test;
 
 public class TestAtomicity {
 	void initialize() {
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	void initMaster() {
-		CloudApp.init("travis123",
-				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initMaster();
 	}
 
 	@Test(timeout = 30000)
@@ -148,7 +147,6 @@ public class TestAtomicity {
 		CBResponse response=CBParser.callJson(url, "POST", new JSONObject());
 		if(response.getStatusCode()==200&&response.getResponseBody().equals("Success")){
 			final CloudTable table=new CloudTable(string);
-			System.out.println("saving table");
 			table.save(new CloudTableCallback() {
 				
 				@Override
@@ -157,7 +155,6 @@ public class TestAtomicity {
 					if(newtable!=null)
 						Assert.fail("Should not create table when disconnected");
 					else if(e!=null){
-						System.out.println("error="+e.getMessage());
 						String url=CloudApp.getServerUrl() + "/db/mongo/connect";
 						CBResponse response=CBParser.callJson(url, "POST", new JSONObject());
 						if(response.getStatusCode()==200&&response.getResponseBody().equals("Success")){

@@ -6,13 +6,12 @@ import org.junit.Test;
 
 public class TestMasterAcl {
 	void initialize() {
-		CloudApp.init("travis123",
-				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initMaster();
 	}
 	@Test(timeout=30000)
 	public void shouldSaveWithMasterWithNoPermission() throws CloudException{
 		initialize();
-		CloudObject ob=new CloudObject("student4");
+		CloudObject ob=new CloudObject("NOTIFICATION_QUERY_4");
 		ob.set("age", 10);
 		ACL acl=ob.getAcl();
 		acl.setPublicReadAccess(false);
@@ -22,6 +21,8 @@ public class TestMasterAcl {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
 				x.set("age", 19);
 				x.save(new CloudObjectCallback() {
 					

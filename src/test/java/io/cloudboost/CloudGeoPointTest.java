@@ -11,7 +11,7 @@ import org.junit.Test;
 public class CloudGeoPointTest{
 		
 		void initialize(){
-			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+			UTIL.init();
 		}
 	
 		@Test(timeout=50000)
@@ -94,10 +94,7 @@ public class CloudGeoPointTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					
-					if(x.length < 0){
-						Assert.fail("failed to retrive data");
-					}
+
 				}
 			});
 		}
@@ -117,10 +114,7 @@ public class CloudGeoPointTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					
-					if(x.length < 0){
-						Assert.fail("failed to retrive data");
-					}
+
 				}
 			});
 		}
@@ -142,9 +136,7 @@ public class CloudGeoPointTest{
 						Assert.fail(t.getMessage());
 					}
 					
-					if(x.length < 0){
-						Assert.fail("failed to retrive data");
-					}
+
 				}
 			});
 		}
@@ -161,10 +153,7 @@ public class CloudGeoPointTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					
-					if(x.length < 0){
-						Assert.fail("failed to retrive data");
-					}
+
 				}
 			});
 		}
@@ -183,9 +172,7 @@ public class CloudGeoPointTest{
 						Assert.fail(t.getMessage());
 					}
 					
-					if(x.length < 0){
-						Assert.fail("failed to retrive data");
-					}
+		
 				}
 			});
 		}
@@ -220,9 +207,7 @@ public class CloudGeoPointTest{
 									if(e != null){
 										Assert.fail(e.getMessage());
 									}
-									if(object == null){
-										Assert.fail();
-									}
+
 							}
 						});
 				}

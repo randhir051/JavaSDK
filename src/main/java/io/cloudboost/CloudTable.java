@@ -368,7 +368,7 @@ public class CloudTable{
 				thisObj.document = body;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(response.getResponseBody());
+				CloudException e = new CloudException(response.getError());
 				callbackObject.done((CloudTable)null, e);
 				
 			}

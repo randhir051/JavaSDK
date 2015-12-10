@@ -28,7 +28,13 @@ public class CBParser {
 	  static String boundary = "---------------------------" + randomString() + randomString() + randomString();
 
     public static CBResponse callJson(String myUrl,String httpMethod, JSONObject parameters) {
+    	try {
+			parameters.put("sdk", "java");
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
         String params=parameters.toString(); 
+//        System.out.println(params);
         URL url=null;
 		try {
 			url = new URL(myUrl);
@@ -65,14 +71,15 @@ public class CBParser {
 	        dos.writeBytes(params);
 	        dos.flush();
 	        dos.close();
-
 	        respCode=conn.getResponseCode();
-	        
+
 
 	        respMsg=conn.getResponseMessage();
 	        if(respCode!=200){
 	        	String error=inputStreamToString(conn.getErrorStream());
+//	        	System.out.println(error);
 	        	CBResponse response=new CBResponse(respMsg, respMsg, respCode, null);
+	        	response.setError(error);
 	        	return response; 
 	        	}
 	        inputString=inputStreamToString(conn.getInputStream());
@@ -84,6 +91,7 @@ public class CBParser {
 			return resp;
 		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
+//        System.out.println(rr.toString());
        return rr;
     }
     private static void writeName(String name) throws IOException {
@@ -143,6 +151,7 @@ public class CBParser {
 			dos = new DataOutputStream(conn.getOutputStream());
 			setParameter("key", CloudApp.getAppKey());
 			setParameter("fileObj", params.toString());
+			setParameter("sdk", "java");
 			setFile("fileToUpload", "blob", is);
 			InputStream stream=post();
 			int code=conn.getResponseCode();

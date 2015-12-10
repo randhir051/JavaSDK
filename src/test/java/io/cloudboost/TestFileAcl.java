@@ -9,12 +9,13 @@ import org.junit.Test;
 
 public class TestFileAcl {
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	@Test(timeout=30000)
 	public void shouldNotGetFileWithNoAccess() throws CloudException, IOException, JSONException{
 		initialize();
-		CloudFile file=new CloudFile("noread", "you aint reading me", "txt");
+		String fileName=PrivateMethod._makeString();
+		CloudFile file=new CloudFile(fileName, "you aint reading me", "txt");
 		ACL acl=file.getAcl();
 		acl.setPublicReadAccess(false);
 		file.setAcl(acl);
@@ -39,7 +40,9 @@ public class TestFileAcl {
 	@Test(timeout=30000)
 	public void shouldNotGetFileContentWithNoAccess() throws CloudException, IOException, JSONException{
 		initialize();
-		CloudFile file=new CloudFile("nocontent", "you aint reading me", "txt");
+		String fileName=PrivateMethod._makeString();
+
+		CloudFile file=new CloudFile(fileName, "you aint reading me", "txt");
 		ACL acl=file.getAcl();
 		acl.setPublicReadAccess(false);
 		file.setAcl(acl);
@@ -64,7 +67,8 @@ public class TestFileAcl {
 	@Test(timeout=30000)
 	public void shouldNotDeleteFileWithNoAccess() throws CloudException, IOException, JSONException{
 		initialize();
-		CloudFile file=new CloudFile("nocontent", "you aint reading me", "txt");
+		String fileName=PrivateMethod._makeString();
+		CloudFile file=new CloudFile(fileName, "you aint reading me", "txt");
 		ACL acl=file.getAcl();
 		acl.setPublicWriteAccess(false);
 		file.setAcl(acl);

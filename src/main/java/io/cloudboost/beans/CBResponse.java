@@ -5,6 +5,15 @@ public class CBResponse {
 	String statusMessage;
 	int statusCode;
 	String sessionId;
+	String error=null;
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
 
 	public String getSessionId() {
 		return sessionId;

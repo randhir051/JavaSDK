@@ -27,38 +27,32 @@ public class CloudObjectTest{
 		return new BigInteger(130, random).toString(32);
 	}
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		CloudApp.init("bengi123",
+				"mLiJB380x9fhPRCjCGmGRg==");
 
 
 	}
 	@Test(timeout=100000)
-	public void createNotice() throws CloudException{
+	public void createNotice() throws CloudException, InterruptedException{
 		initialize();
-		CloudObject.on("Company", "created", new CloudObjectCallback() {
+		CloudObject.on("NOTIFICATION_QUERY_1", "created", new CloudObjectCallback() {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
-				if(t!=null)
-					Assert.fail(t.getMessage());
-				if(x!=null){
-					CloudObject.off("Company", "created", new CloudStringCallback() {
+					CloudObject.off("NOTIFICATION_QUERY_1", "created", new CloudStringCallback() {
 						
 						@Override
 						public void done(String x, CloudException e) throws CloudException {
 							
 						}
 					});
-				}
+				
 			}
 		});
-		try {
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-		CloudObject ob=new CloudObject("Company");
-		ob.set("Revenue", 2567);
+
+		CloudObject ob=new CloudObject("NOTIFICATION_QUERY_1");
+		ob.set("name", "egima");
 		ob.save(new CloudObjectCallback() {
 			
 			@Override
@@ -66,11 +60,12 @@ public class CloudObjectTest{
 				
 			}
 		});
+		Thread.sleep(2000);
 	}
 	@Test(timeout=100000)
 	public void SaveData() throws CloudException{
 		 initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_0");
 
 		obj.set("name", "samplexyz");
 		obj.save(new CloudObjectCallback(){
@@ -89,7 +84,7 @@ public class CloudObjectTest{
 	@Test(timeout = 100000)
 	public void ShouldNotSaveStringIntoDate() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_2");
 
 		obj.set("createdAt", "abcd");
 		obj.set("name", "abcd");
@@ -110,7 +105,7 @@ public class CloudObjectTest{
 	@Test(timeout = 100000)
 	public void ShouldNotSaveWithoutRequiredColumn() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NAME_REQUIRED");
 
 		obj.save(new CloudObjectCallback(){
 
@@ -131,7 +126,7 @@ public class CloudObjectTest{
 	@Test(timeout = 10000)
 	public void ShouldNotSaveWithWrongDataType() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_3");
 
 		obj.set("name", 10);
 		obj.save(new CloudObjectCallback(){
@@ -152,19 +147,17 @@ public class CloudObjectTest{
 	@Test(timeout=100000)
 	public void ShouldNotSaveDuplicateValue() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("UNIQUE_NAME");
 		
 		final String text = PrivateMethod._makeString();
-		obj.set("name", "sample");
-		obj.set("unique", text);
+		obj.set("name", text);
 		obj.save(new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(x != null){
-					CloudObject obj = new CloudObject("Sample");
+					CloudObject obj = new CloudObject("UNIQUE_NAME");
 
-					obj.set("name", "sample");
-					obj.set("unique", text);
+					obj.set("name",text);
 					obj.save(new CloudObjectCallback(){
 						@Override
 						public void done(CloudObject x, CloudException t) {
@@ -184,7 +177,7 @@ public class CloudObjectTest{
 	@Test(timeout=100000)
 	public void shouldUpdateVersionOnUpdate() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_4");
      	obj.set("name", "sample");
      	obj.save(new CloudObjectCallback(){
 			@Override
@@ -200,7 +193,7 @@ public class CloudObjectTest{
 							Assert.fail(err.getMessage());
 						}
 						String id=object.getId();
-						CloudQuery q=new CloudQuery("Sample");
+						CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_4");
 						q.findById(id, new CloudObjectCallback() {
 							
 							@Override
@@ -217,7 +210,7 @@ public class CloudObjectTest{
 	@Test(timeout=70000)
 	public void updateAfterSave() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_5");
      	obj.set("name", "sample");
      	obj.save(new CloudObjectCallback(){
 			@Override
@@ -241,7 +234,7 @@ public class CloudObjectTest{
 	@Test(timeout=70000)
 	public void deleteAfterSave() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_6");
      	obj.set("name", "sample");
      	obj.save(new CloudObjectCallback(){
 			@Override
@@ -264,7 +257,7 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveArray() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "sample");
 		String text = PrivateMethod._makeString();
 		String[] string = {text , text};
@@ -282,7 +275,7 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveArrayWithWrongDataType() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		Integer[] string = {23, 45};
 		obj.set("stringArray", string);
 		obj.save(new CloudObjectCallback(){
@@ -298,7 +291,7 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveArrayWithJSONObject() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "sample");
 		JSONObject obj1 = new JSONObject();
 		try {
@@ -324,9 +317,9 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveRelationWithVersion() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "sample");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("DATA_1");
 		obj1.set("name", "sample");
 		obj.set("sameRelation", obj1);
 		obj.save(new CloudObjectCallback(){
@@ -343,9 +336,9 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveCloudObjectAsRelation() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "sample");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("DATA_1");
 		obj1.set("name", "sample");
 		obj.set("sameRelation", obj1);
 		obj.save(new CloudObjectCallback(){
@@ -360,9 +353,9 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveARelationWithRelate() throws CloudException{
 		initialize();
-		final CloudObject obj = new CloudObject("Sample");
+		final CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "samplex");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("DATA_1");
 		obj1.set("name", "samplex");
 		obj1.save(new CloudObjectCallback(){
 			@Override
@@ -370,7 +363,7 @@ public class CloudObjectTest{
 				if(t != null){
 					Assert.fail(t.getMessage());
 				}
-				obj.relate("sameRelation", "Sample", x.getId());
+				obj.relate("sameRelation", "DATA_1", x.getId());
 				obj.save(new CloudObjectCallback(){
 					@Override
 					public void done(CloudObject x, CloudException t)throws CloudException {
@@ -384,9 +377,9 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveRelationWithRelate() throws CloudException{
 		initialize();
-		final CloudObject obj = new CloudObject("Sample");
+		final CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "samplex");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("DATA_1");
 		obj1.set("name", "samplex");
 		obj1.save(new CloudObjectCallback(){
 			@Override
@@ -395,7 +388,7 @@ public class CloudObjectTest{
 					Assert.fail(t.getMessage());
 				}
 				
-				obj.relate("sameRelation", "Sample", x.getId());
+				obj.relate("sameRelation", "DATA_1", x.getId());
 				obj.save(new CloudObjectCallback(){
 					@Override
 					public void done(CloudObject x, CloudException t)throws CloudException {
@@ -411,9 +404,9 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void keepRelationIntact() throws CloudException{
 		initialize();
-		 CloudObject obj = new CloudObject("Custom2");
-		 CloudObject obj1 = new CloudObject("Custom3");
-		 CloudObject obj2 = new CloudObject("student1");
+		 CloudObject obj = new CloudObject("NOTIFICATION_QUERY_8");
+		 CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_9");
+		 CloudObject obj2 = new CloudObject("NOTIFICATION_QUERY_10");
 		 obj.set("newColumn2", obj1);
 		 obj.set("newColumn7", obj2);
 		 obj.save(new CloudObjectCallback(){
@@ -422,7 +415,7 @@ public class CloudObjectTest{
 					if(t != null){
 						Assert.fail(t.getMessage());
 					}
-					if(x.getCloudObject("newColumn2").get("_tableName").equals("Custom3") && x.getCloudObject("newColumn7").get("_tableName").equals("student1")){
+					if(x.getCloudObject("newColumn2").get("_tableName").equals("NOTIFICATION_QUERY_9") && x.getCloudObject("newColumn7").get("_tableName").equals("NOTIFICATION_QUERY_10")){
 						
 					}
 				else{
@@ -435,16 +428,16 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveWrongRelation() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "Sample");
-		CloudObject obj1 = new CloudObject("Student");
+		CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_10");
 		obj1.set("name", "sample");
 		obj.set("sameRelation", obj1);
 		obj.save(new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject x, CloudException t)throws CloudException {
 				if(t != null){
-					
+					Assert.assertTrue(true);
 				}else{
 					Assert.fail("Saved an object with a wrong relation.");
 				}
@@ -454,8 +447,8 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveAnEmptyArrayOfCloudObject() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
-		final CloudObject obj2 = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
+		final CloudObject obj2 = new CloudObject("DATA_1");
 		obj.set("name", "sample");
 		Integer[] string = {};
 		obj2.set("name", "sample");
@@ -480,10 +473,10 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveEmptyArrayOfCloudObject() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
-		final CloudObject obj2 = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
+		final CloudObject obj2 = new CloudObject("DATA_1");
 		obj.set("name", "sample");
-		Integer[] string = {};
+		CloudObject[] string = {};
 		obj2.set("name", "sample");
 		obj2.set("relationArray", string);
 		obj.save(new CloudObjectCallback(){
@@ -507,11 +500,11 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveArrayOfCloudObject() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "sample");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("DATA_1");
 		obj1.set("name", "sample");
-		final CloudObject obj2 = new CloudObject("Sample");
+		final CloudObject obj2 = new CloudObject("DATA_1");
 		obj2.set("name", "sample");
 		CloudObject[] string = {obj1,obj};
 		obj2.set("relationArray", string);
@@ -537,11 +530,11 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void updateListAfterSave() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("DATA_1");
 		obj.set("name", "sample");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("DATA_1");
 		obj1.set("name", "sample");
-		final CloudObject obj2 = new CloudObject("Sample");
+		final CloudObject obj2 = new CloudObject("DATA_1");
 		obj2.set("name", "sample");
 		CloudObject[] string = {obj1,obj};
 		obj2.set("relationArray", string);
@@ -591,18 +584,17 @@ public class CloudObjectTest{
 	}
 	
 	@Test(timeout=100000)
-	public void createObjectNotice() throws CloudException{
+	public void createObjectNotice() throws CloudException, InterruptedException{
 		initialize();
-		CloudObject obj = new CloudObject("Student");
-	    CloudObject.on("Student", "created", new CloudObjectCallback(){
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_11");
+	    CloudObject.on("NOTIFICATION_QUERY_11", "created", new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject data, CloudException t)	throws CloudException {
-				  CloudObject.off("Student","created", new CloudStringCallback(){
+				  CloudObject.off("NOTIFICATION_QUERY_11","created", new CloudStringCallback(){
 						@Override
 						public void done(String x, CloudException e)throws CloudException {
-							if(e != null){
-								Assert.fail(e.getMessage());
-							}
+							
+							
 						}
 			           });
 			}
@@ -617,16 +609,24 @@ public class CloudObjectTest{
 				}
 			}
 	    });
+	    Thread.sleep(3000);
+	    CloudObject.off("NOTIFICATION_QUERY_11","created", new CloudStringCallback(){
+			@Override
+			public void done(String x, CloudException e)throws CloudException {
+				
+				
+			}
+           });
 	}
 	
 	@Test(timeout=80000)
 	public void updateObjectNotice() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Student");
-	    CloudObject.on("Student", "updated", new CloudObjectCallback(){
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_12");
+	    CloudObject.on("NOTIFICATION_QUERY_12", "updated", new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject data, CloudException t)	throws CloudException {
-				  CloudObject.off("Student","created", new CloudStringCallback(){
+				  CloudObject.off("NOTIFICATION_QUERY_12","updated", new CloudStringCallback(){
 						@Override
 						public void done(String x, CloudException e)throws CloudException {
 							if(e != null){
@@ -648,7 +648,12 @@ public class CloudObjectTest{
 				x.save(new CloudObjectCallback(){
 					@Override
 					public void done(CloudObject x, CloudException t)	throws CloudException {
-						
+						try {
+							Thread.sleep(3000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 			}
@@ -657,11 +662,11 @@ public class CloudObjectTest{
 	@Test(timeout = 100000)
 	public void shouldStopListening() throws CloudException{
 		initialize();
-		CloudObject.on("Student", new String[]{"created","deleted","updated"}, new CloudObjectCallback() {
+		CloudObject.on("NOTIFICATION_QUERY_13", new String[]{"created","deleted","updated"}, new CloudObjectCallback() {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
-				CloudObject.off("Student", new String[]{"created","deleted","updated"}, new CloudStringCallback(){
+				CloudObject.off("NOTIFICATION_QUERY_13", new String[]{"created","deleted","updated"}, new CloudStringCallback(){
 
 					@Override
 					public void done(String x, CloudException t)
@@ -674,12 +679,12 @@ public class CloudObjectTest{
 			}
 		});
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			
 			e.printStackTrace();
 		}
-		CloudObject ob1=new CloudObject("Student");
+		CloudObject ob1=new CloudObject("NOTIFICATION_QUERY_13");
 		ob1.set("name", "sample");
 		ob1.save(new CloudObjectCallback() {
 			
@@ -727,13 +732,13 @@ public class CloudObjectTest{
 		});
 	}
 	@Test(timeout=80000)
-	public void deleteObjectNotice() throws CloudException{
+	public void deleteObjectNotice() throws CloudException, InterruptedException{
 		initialize();
-		CloudObject obj = new CloudObject("Student");
-	    CloudObject.on("Student", "deleted", new CloudObjectCallback(){
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_14");
+	    CloudObject.on("NOTIFICATION_QUERY_14", "deleted", new CloudObjectCallback(){
 			@Override
 			public void done(CloudObject data, CloudException t)	throws CloudException {
-				  CloudObject.off("Student","deleted", new CloudStringCallback(){
+				  CloudObject.off("NOTIFICATION_QUERY_14","deleted", new CloudStringCallback(){
 						@Override
 						public void done(String x, CloudException e)throws CloudException {
 							if(e != null){
@@ -743,6 +748,7 @@ public class CloudObjectTest{
 			           });
 			}
 	    });
+	    Thread.sleep(2000);
 	    obj.set("name", "sample");
 	    obj.save(new CloudObjectCallback(){
 			@Override
@@ -753,7 +759,12 @@ public class CloudObjectTest{
 				x.delete(new CloudObjectCallback(){
 					@Override
 					public void done(CloudObject x, CloudException t)	throws CloudException {
-						
+						try {
+							Thread.sleep(3000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 			}
@@ -764,14 +775,14 @@ public class CloudObjectTest{
 	@Test(timeout=80000)
 	public void saveAndDeleteArrayOfCloudObject() throws CloudException{
 		initialize();
-		CloudObject obj = new CloudObject("Sample");
+		CloudObject obj = new CloudObject("NOTIFICATION_QUERY_15");
 		obj.set("name", "sample11");
-		CloudObject obj1 = new CloudObject("Sample");
+		CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_15");
 		obj1.set("name", "sample22");
-		final CloudObject obj2 = new CloudObject("Sample");
+		final CloudObject obj2 = new CloudObject("NOTIFICATION_QUERY_15");
 		obj2.set("name", "sample33");
 		CloudObject[] objects={obj,obj1,obj2};
-		CloudObject saver=new CloudObject("Sample");
+		CloudObject saver=new CloudObject("NOTIFICATION_QUERY_15");
 		saver.saveAll(objects,new CloudObjectArrayCallback(){
 			@Override
 			public void done(CloudObject[] x, CloudException t)throws CloudException {
@@ -797,7 +808,7 @@ public class CloudObjectTest{
 	@Test(timeout = 20000)
 	public void shouldRejectWrongEventType() throws CloudException{
 		initialize();
-		CloudObject.on("sample", "wrongType", new CloudObjectCallback() {
+		CloudObject.on("NOTIFICATION_QUERY_15", "wrongType", new CloudObjectCallback() {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
@@ -810,7 +821,7 @@ public class CloudObjectTest{
 	@Test(timeout = 50000)
 	public void shouldAlertOnAllThreeEvents() throws CloudException{
 		initialize();
-		CloudObject.on("Student", new String[]{"created","deleted","updated"}, new CloudObjectCallback() {
+		CloudObject.on("NOTIFICATION_QUERY_16", new String[]{"created","deleted","updated"}, new CloudObjectCallback() {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
@@ -823,7 +834,7 @@ public class CloudObjectTest{
 			
 			e.printStackTrace();
 		}
-		CloudObject ob1=new CloudObject("Student");
+		CloudObject ob1=new CloudObject("NOTIFICATION_QUERY_16");
 		ob1.set("name", "sample");
 		ob1.save(new CloudObjectCallback() {
 			
@@ -833,6 +844,14 @@ public class CloudObjectTest{
 					Assert.fail(t.getMessage());
 				try {
 					Thread.sleep(2000);
+					CloudObject.off("NOTIFICATION_QUERY_16", "created", new CloudStringCallback() {
+						
+						@Override
+						public void done(String x, CloudException e) throws CloudException {
+							// TODO Auto-generated method stub
+							
+						}
+					});
 				} catch (InterruptedException e) {
 					
 					e.printStackTrace();
@@ -846,6 +865,14 @@ public class CloudObjectTest{
 							Assert.fail(t.getMessage());
 						try {
 							Thread.sleep(2000);
+							CloudObject.off("NOTIFICATION_QUERY_16", "updated", new CloudStringCallback() {
+								
+								@Override
+								public void done(String x, CloudException e) throws CloudException {
+									// TODO Auto-generated method stub
+									
+								}
+							});
 						} catch (InterruptedException e) {
 							
 							e.printStackTrace();
@@ -856,6 +883,14 @@ public class CloudObjectTest{
 							public void done(CloudObject x, CloudException t) throws CloudException {
 								try {
 									Thread.sleep(2000);
+									CloudObject.off("NOTIFICATION_QUERY_16", "deleted", new CloudStringCallback() {
+										
+										@Override
+										public void done(String x, CloudException e) throws CloudException {
+											// TODO Auto-generated method stub
+											
+										}
+									});
 								} catch (InterruptedException e) {
 									
 									e.printStackTrace();
@@ -873,7 +908,7 @@ public class CloudObjectTest{
 	@Test(timeout = 50000)
 	public void shouldAlertOnMultipleEvents() throws CloudException{
 		initialize();
-		CloudObject.on("Student", new String[]{"created","deleted"}, new CloudObjectCallback() {
+		CloudObject.on("NOTIFICATION_QUERY_17", new String[]{"created","deleted"}, new CloudObjectCallback() {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
@@ -886,7 +921,7 @@ public class CloudObjectTest{
 			
 			e.printStackTrace();
 		}
-		CloudObject ob1=new CloudObject("Student");
+		CloudObject ob1=new CloudObject("NOTIFICATION_QUERY_17");
 		ob1.set("name", "sample");
 		ob1.save(new CloudObjectCallback() {
 			
@@ -896,6 +931,14 @@ public class CloudObjectTest{
 					Assert.fail(t.getMessage());
 				try {
 					Thread.sleep(2000);
+CloudObject.off("NOTIFICATION_QUERY_17", "created", new CloudStringCallback() {
+						
+						@Override
+						public void done(String x, CloudException e) throws CloudException {
+							// TODO Auto-generated method stub
+							
+						}
+					});
 				} catch (InterruptedException e) {
 					
 					e.printStackTrace();
@@ -906,6 +949,14 @@ public class CloudObjectTest{
 					public void done(CloudObject x, CloudException t) throws CloudException {
 						try {
 							Thread.sleep(2000);
+							CloudObject.off("NOTIFICATION_QUERY_17", "deleted", new CloudStringCallback() {
+								
+								@Override
+								public void done(String x, CloudException e) throws CloudException {
+									// TODO Auto-generated method stub
+									
+								}
+							});
 						} catch (InterruptedException e) {
 							
 							e.printStackTrace();
@@ -919,8 +970,8 @@ public class CloudObjectTest{
 	@Test(timeout = 30000)
 	public void shouldFetchCloudObject() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("Custom18");
-		obj.set("number", 0);
+		CloudObject obj=new CloudObject("NOTIFICATION_QUERY_18");
+		obj.set("age", 10);
 		obj.save(new CloudObjectCallback() {
 			
 			@Override
@@ -933,7 +984,7 @@ public class CloudObjectTest{
 					public void done(CloudObject x, CloudException t) throws CloudException {
 						if(t!=null)
 							Assert.fail(t.getMessage());
-						Assert.assertTrue(x.getInteger("number")==0);
+						Assert.assertTrue(x.getInteger("age")==10);
 						
 					}
 				});
@@ -945,7 +996,7 @@ public class CloudObjectTest{
 	@Test(timeout = 30000)
 	public void shouldSaveRequiredNumberAs0() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("Custom18");
+		CloudObject obj=new CloudObject("REQUIRED_NUMBER");
 		obj.set("number", 0);
 		obj.save(new CloudObjectCallback() {
 			
@@ -960,20 +1011,20 @@ public class CloudObjectTest{
 	@Test(timeout = 30000)
 	public void shouldUnsetField() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("hostel");
-		obj.set("room", 123);
+		CloudObject obj=new CloudObject("NOTIFICATION_QUERY_19");
+		obj.set("name", "ayiko");
 		obj.save(new CloudObjectCallback() {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
 				if(t!=null)
 					Assert.fail(t.getMessage());
-				x.unset("room");
+				x.unset("name");
 				x.save(new CloudObjectCallback() {
 					
 					@Override
 					public void done(CloudObject x, CloudException t) throws CloudException {
-						Assert.assertFalse(x.hasKey("toom"));
+						Assert.assertFalse(x.hasKey("name"));
 						
 					}
 				});
@@ -984,8 +1035,8 @@ public class CloudObjectTest{
 	@Test(timeout = 30000)
 	public void shouldGiveErrorWhenWrongDataIsPutInNumberField() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("Custom14");
-		obj.set("requiredNumber", "sample");
+		CloudObject obj=new CloudObject("NOTIFICATION_QUERY_17");
+		obj.set("age", "sample");
 		obj.save(new CloudObjectCallback() {
 			
 			@Override
@@ -998,7 +1049,7 @@ public class CloudObjectTest{
 	@Test(timeout = 30000)
 	public void shouldSaveGeoPointList() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("Custom14");
+		CloudObject obj=new CloudObject("DATA_1");
 		CloudGeoPoint p1=new CloudGeoPoint(17.0, 89.0);
 		CloudGeoPoint p2=new CloudGeoPoint(66.0, 78.0);
 
@@ -1015,7 +1066,7 @@ public class CloudObjectTest{
 	@Test(timeout = 10000)
 	public void shouldSaveListNumberList() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("Custom14");
+		CloudObject obj=new CloudObject("DATA_1");
 		obj.set("ListNumber", new int[]{1,2,3});
 		obj.save(new CloudObjectCallback() {
 			
@@ -1029,11 +1080,11 @@ public class CloudObjectTest{
 	@Test(timeout = 50000)
 	public void shouldNotDupValuesInListAfterUpdate() throws CloudException{
 			initialize();
-			final CloudObject obj = new CloudObject("student1");
+			final CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("age", 5);
 			obj.set("name", "ben");
 			CloudObject[] arr={obj,obj};
-			CloudObject obj1 = new CloudObject("Custom4");
+			CloudObject obj1 = new CloudObject("NOTIFICATION_QUERY_11");
 			obj1.set("newColumn7", arr);
 
 			obj1.save(new CloudObjectCallback() {
@@ -1062,7 +1113,7 @@ public class CloudObjectTest{
 	@Test(timeout = 50000)
 	public void shouldNotSaveAnArrayOfDifferentObjects() throws CloudException{
 			initialize();
-			final CloudObject obj = new CloudObject("Student");
+			final CloudObject obj = new CloudObject("NOTIFICATION_QUERY_10");
 			obj.set("name", "sample");
 			obj.save(new CloudObjectCallback() {
 				
@@ -1070,9 +1121,9 @@ public class CloudObjectTest{
 				public void done(CloudObject x, CloudException t) throws CloudException {
 					if(t!=null)
 						Assert.fail(t.getMessage());
-					CloudObject obj1 = new CloudObject("Sample");
+					CloudObject obj1 = new CloudObject("DATA_1");
 					obj1.set("name", "sample");
-					CloudObject obj2=new CloudObject("Sample");
+					CloudObject obj2=new CloudObject("DATA_1");
 					CloudObject[] arr={obj1,x};
 					obj2.set("relationArray", arr);
 					obj2.set("name", "sample");
@@ -1093,9 +1144,9 @@ public class CloudObjectTest{
 	@Test(timeout = 10000)
 	public void shouldNotSaveDupRelationInUniqueFields() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("Sample");
+			CloudObject obj = new CloudObject("DATA_1");
 			obj.set("name", "sample");
-			final CloudObject obj1=new CloudObject("Sample");
+			final CloudObject obj1=new CloudObject("DATA_1");
 			obj1.set("name", "sample");
 			obj.set("uniqueRelation", obj1);
 			obj.save(new CloudObjectCallback(){
@@ -1104,10 +1155,10 @@ public class CloudObjectTest{
 					if(t!=null)
 						Assert.assertTrue(t!=null);
 					if(x!=null){
-						CloudObject obj2 = new CloudObject("Sample");
+						CloudObject obj2 = new CloudObject("DATA_1");
 						obj2.set("name", "sample");
-						JSONObject uniqRel=(JSONObject) x.get("uniqueRelation");
-						obj2.set("uniqueRelation", uniqRel);
+						JSONObject rel=(JSONObject) x.get("uniqueRelation");
+						obj2.set("uniqueRelation", rel);
 						obj2.save(new CloudObjectCallback() {
 							
 							@Override
@@ -1125,11 +1176,11 @@ public class CloudObjectTest{
 	@Test(timeout = 10000)
 	public void shouldNotSaveRelationWhenSchemaOfRelationObjectIsWrong() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("Sample");
+			CloudObject obj = new CloudObject("DATA_1");
 			obj.set("name", "sample");
-			CloudObject obj1=new CloudObject("Sample");
+			CloudObject obj1=new CloudObject("NAME_REQUIRED");
 			//name is required , which means the schema is wrong. 
-			obj.set("sameRelation", obj1);
+			obj.set("sameRelation2", obj1);
 			obj.save(new CloudObjectCallback(){
 				@Override
 				public void done(CloudObject x, CloudException t)throws CloudException {
@@ -1142,7 +1193,7 @@ public class CloudObjectTest{
 	@Test(timeout = 10000)
 	public void shouldNotAllowMultipleDataTypesInArray() throws CloudException{
 			initialize();
-			CloudObject obj = new CloudObject("Sample");
+			CloudObject obj = new CloudObject("DATA_1");
 			obj.set("name", "sample");
 			String text = PrivateMethod._makeString();
 			Object[] string = {text , 123};
@@ -1158,7 +1209,7 @@ public class CloudObjectTest{
 	}
 	@Test(timeout = 10000)
 	public void shouldNotSetId() throws CloudException{
-		CloudObject ob=new CloudObject("Employee");
+		CloudObject ob=new CloudObject("DATA_1");
 		try{
 		ob.set("id", UUID.uuid(6));
 		Assert.fail("Should not have set id on cloudobject");
@@ -1169,7 +1220,7 @@ public class CloudObjectTest{
 	@Test(timeout = 30000)
 	public void shouldNotUpdateCreatedAtOnUpdate() throws CloudException{
 		initialize();
-		CloudObject obj=new CloudObject("Sample");
+		CloudObject obj=new CloudObject("DATA_1");
 		obj.set("name", "egima");
 		obj.save(new CloudObjectCallback() {
 			

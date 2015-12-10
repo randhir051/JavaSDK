@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class StagingTest {
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	@Test(timeout=10000)
 	public void shouldCheckForLocalhost() throws CloudException{

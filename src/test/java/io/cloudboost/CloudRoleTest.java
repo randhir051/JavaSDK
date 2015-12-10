@@ -10,7 +10,7 @@ import org.junit.Test;
 public class CloudRoleTest{
 	
 		void initialize(){
-			CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+			UTIL.init();
 		}
 		@Test(timeout=50000)
 		public void createRoleWithVersion() throws CloudException{

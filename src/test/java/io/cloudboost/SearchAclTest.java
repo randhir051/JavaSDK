@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class SearchAclTest {
 	void initialize() {
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	@Test(timeout=30000)
 	public void shouldCreateNewUser() throws CloudException{
@@ -34,7 +34,7 @@ public class SearchAclTest {
 	@Test(timeout=30000)
 	public void shouldSetPublicReadAccessToFalse() throws CloudException{
 		initialize();
-		CloudObject ob=new CloudObject("student4");
+		CloudObject ob=new CloudObject("NOTIFICATION_QUERY_4");
 		ob.set("age", 150);
 		ACL acl=ob.getAcl();
 		acl.setPublicReadAccess(false);
@@ -43,11 +43,13 @@ public class SearchAclTest {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
 				ACL acl=x.getAcl();
 				if(!acl.getAllowedReadUser().contains("all")){
 					SearchQuery query=new SearchQuery();
 					query.searchOn("age", 150, null, null, null, null);
-					CloudSearch search=new CloudSearch("student4", query, null);
+					CloudSearch search=new CloudSearch("NOTIFICATION_QUERY_4", query, null);
 					search.search(new CloudObjectArrayCallback() {
 						
 						@Override
@@ -71,7 +73,7 @@ public class SearchAclTest {
 	@Test(timeout=30000)
 	public void shouldRetrieveObjectWithReadPermission() throws CloudException{
 		initialize();
-		CloudObject ob=new CloudObject("student4");
+		CloudObject ob=new CloudObject("NOTIFICATION_QUERY_4");
 		ob.set("age", 150);
 		ob.setAcl(new ACL());
 		ob.save(new CloudObjectCallback() {
@@ -80,12 +82,14 @@ public class SearchAclTest {
 			public void done(CloudObject x, CloudException t) throws CloudException {
 					SearchQuery query=new SearchQuery();
 					query.searchOn("age", 150, null, null, null, null);
-					CloudSearch search=new CloudSearch("student4", query, null);
+					CloudSearch search=new CloudSearch("NOTIFICATION_QUERY_4", query, null);
 					search.search(new CloudObjectArrayCallback() {
 						
 						@Override
 						public void done(CloudObject[] x, CloudException t) throws CloudException {
-							
+							if(t!=null)
+								Assert.fail(t.getMessage());
+							else
 							Assert.assertTrue(x.length>0);
 							
 						}

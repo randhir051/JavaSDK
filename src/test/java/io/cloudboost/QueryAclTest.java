@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class QueryAclTest {
 	void initialize(){
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
+		UTIL.init();
 	}
 	@Test(timeout=30000)
 	public void shouldCreateNewUser() throws CloudException{
@@ -34,7 +34,7 @@ public class QueryAclTest {
 	@Test(timeout=30000)
 	public void shouldSetPublicReadAccessToFalse() throws CloudException{
 		initialize();
-		CloudObject ob=new CloudObject("student4");
+		CloudObject ob=new CloudObject("NOTIFICATION_QUERY_4");
 		ob.set("age", 150);
 		ACL acl=ob.getAcl();
 		acl.setPublicReadAccess(false);
@@ -43,16 +43,17 @@ public class QueryAclTest {
 			
 			@Override
 			public void done(CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
 				ACL acl=x.getAcl();
 				if(!acl.getAllowedReadUser().contains("all")){
-					CloudQuery q=new CloudQuery("student4");
+					CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_4");
 					q.findById(x.getId(), new CloudObjectCallback() {
 						
 						@Override
 						public void done(CloudObject x, CloudException t) throws CloudException {
-							if(t!=null)
-								
-							Assert.assertEquals("No object returned",t.getMessage());
+							
+							Assert.assertTrue(t!=null);
 							
 						}
 					});
@@ -66,16 +67,18 @@ public class QueryAclTest {
 	@Test(timeout=30000)
 	public void shouldGetObjectWithUserReadAccess() throws CloudException{
 		initialize();
-		CloudObject ob=new CloudObject("student4");
+		CloudObject ob=new CloudObject("NOTIFICATION_QUERY_4");
 		ob.set("age", 150);
 		ob.setAcl(new ACL());
 		ob.save(new CloudObjectCallback() {
 			
 			@Override
 			public void done(final CloudObject x, CloudException t) throws CloudException {
+				if(t!=null)
+					Assert.fail(t.getMessage());
 				ACL acl=x.getAcl();
 				if(acl.getAllowedReadUser().contains("all")){
-					CloudQuery q=new CloudQuery("student4");
+					CloudQuery q=new CloudQuery("NOTIFICATION_QUERY_4");
 					q.findById(x.getId(), new CloudObjectCallback() {
 						
 						@Override

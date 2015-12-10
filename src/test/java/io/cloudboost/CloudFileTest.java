@@ -21,8 +21,11 @@ import org.junit.Test;
  */
 public class CloudFileTest {
 	void initialize() {
-		CloudApp.init("travis123", "6dzZJ1e6ofDamGsdgwxLlQ==");
-	}
+		//master=MjFWX9D3JqTa76tcEHt9GL2ITB8Gzsp68S1+3oq7CBE=
+				//client=mLiJB380x9fhPRCjCGmGRg==
+				CloudApp.init("bengi123",
+						"mLiJB380x9fhPRCjCGmGRg==");
+			}
 
 	@Test(timeout = 50000)
 	public void shouldSaveFileGetFromRelation() throws IOException,
@@ -113,9 +116,9 @@ public class CloudFileTest {
 				if ("".equals(url) && null == url && "null".equals(url))
 					Assert.fail("No url");
 				else {
-					CloudObject object = new CloudObject("Sample");
-					object.set("file", x1);
-					object.set("name", "egima");
+					CloudObject object = new CloudObject("Company");
+					object.set("File", x1);
+					object.set("Name", "egima");
 					object.save(new CloudObjectCallback() {
 
 						@Override
@@ -125,16 +128,16 @@ public class CloudFileTest {
 								Assert.fail(t.getMessage());
 							else {
 								String objId = x.getId();
-								CloudQuery query = new CloudQuery("Sample");
+								CloudQuery query = new CloudQuery("Company");
 								query.equalTo("id", objId);
-								query.include("file");
+								query.include("File");
 								query.find(new CloudObjectArrayCallback() {
 
 									@Override
 									public void done(CloudObject[] x,
 											CloudException t)
 											throws CloudException {
-										
+										Assert.assertTrue(x!=null);
 
 									}
 								});
@@ -298,8 +301,8 @@ public class CloudFileTest {
 										&& "null".equals(url))
 									Assert.fail("No url");
 								else {
-									CloudObject ob = new CloudObject("Sample");
-									ob.set("name", "Egima");
+									CloudObject ob = new CloudObject("Company");
+									ob.set("Name", "Egima");
 									ob.set("fileList",
 											new CloudFile[] { x1, x2 });
 									ob.save(new CloudObjectCallback() {

@@ -9,8 +9,7 @@ import org.junit.Test;
 
 public class TestCache {
 	void initialize() {
-		CloudApp.init("travis123",
-				"vfmMIbP4KaqxihajNqLNFGuub8CIOLREP1oH0QC0qy4=");
+		UTIL.initMaster();
 	}
 
 	@Test(timeout = 30000)
@@ -111,7 +110,7 @@ public class TestCache {
 									xx = xx.replace("\"", "");
 									boolean equal = "test1".equals(xx);
 									if (equal) {
-										cache.getCache("test1",
+										cache.getItem("test1",
 												new ObjectCallback() {
 
 													@Override
@@ -268,7 +267,7 @@ public class TestCache {
 									Assert.fail(t.getMessage());
 								else if (x.toString().replaceAll("\"", "")
 										.equals("data0")) {
-									cache.getAll(new ObjectCallback() {
+									cache.getAllItems(new ObjectCallback() {
 
 										@Override
 										public void done(Object o,
