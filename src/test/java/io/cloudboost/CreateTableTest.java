@@ -788,6 +788,7 @@ public class CreateTableTest {
 	public void createTableCustom2() throws CloudException {
 		initialize();
 		final String student1=PrivateMethod._makeString();
+		final String Custom2=PrivateMethod._makeString();
 		final String Custom3=PrivateMethod._makeString();
 	final	CloudTable tabl1=new CloudTable(student1);
 	final	CloudTable tabl2=new CloudTable(Custom3);
@@ -800,7 +801,7 @@ public class CreateTableTest {
 					@Override
 					public void done(CloudTable table2, CloudException e) throws CloudException {
 
-						CloudTable table = new CloudTable("Custom2");
+						CloudTable table = new CloudTable(Custom2);
 						Column col = new Column("newColumn1", DataType.Text);
 						Column col2 = new Column("newColumn7", DataType.Relation);
 						col2.setRelatedTo(new CloudTable(student1));
