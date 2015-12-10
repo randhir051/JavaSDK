@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="45" failures="0" name="io.cloudboost.CloudObjectTest" time="134.973" errors="0" skipped="0">
+<testsuite tests="45" failures="8" name="io.cloudboost.CloudObjectTest" time="273.436" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,49 +63,250 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveRequiredNumberAs0" time="1.721"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldUpdateVersionOnUpdate" time="2.789"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveEmptyArrayOfCloudObject" time="3.286"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldAlertOnMultipleEvents" time="8.304"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayWithWrongDataType" time="2.568"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveCloudObjectAsRelation" time="1.11"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveAnEmptyArrayOfCloudObject" time="2.063"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldAlertOnAllThreeEvents" time="12.212"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveWithWrongDataType" time="1.296"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveDuplicateValue" time="2.03"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveAndDeleteArrayOfCloudObject" time="7.2"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveStringIntoDate" time="0.83"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldRejectWrongEventType" time="0.002"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotUpdateCreatedAtOnUpdate" time="1.888"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveRelationWhenSchemaOfRelationObjectIsWrong" time="1.698"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="SaveData" time="0.97"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveJSON" time="0.001"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotDupValuesInListAfterUpdate" time="2.791"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveAnArrayOfDifferentObjects" time="3.589"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotAllowMultipleDataTypesInArray" time="0.99"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveWithoutRequiredColumn" time="0.959"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveDupRelationInUniqueFields" time="2.321"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveRelationWithRelate" time="3.178"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldGiveErrorWhenWrongDataIsPutInNumberField" time="0.839"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldUnsetField" time="2.14"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSetId" time="0.002"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="updateAfterSave" time="2.327"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="deleteAfterSave" time="5.08"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArray" time="1.051"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="createNotice" time="4.06"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayWithJSONObject" time="2.005"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveRelationWithVersion" time="1.1"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveARelationWithRelate" time="2.288"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveGeoPointList" time="1.09"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="updateObjectNotice" time="10.126"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveRelationWhenSchemaOfRelationObjectIsWrong" time="1.05"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveJSON" time="0"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="SaveData" time="1.29"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveRelationWithRelate" time="11.621"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayWithJSONObject" time="11.431">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$13.done(CloudObjectTest.java:312)
+	at io.cloudboost.CloudObject.save(CloudObject.java:888)
+	at io.cloudboost.CloudObjectTest.saveArrayWithJSONObject(CloudObjectTest.java:308)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveRelationWithVersion" time="3.721"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveARelationWithRelate" time="10.991"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="keepRelationIntact" time="8.409"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="createObjectNotice" time="4.109"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="updateListAfterSave" time="12.439"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayOfCloudObject" time="7.002"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldFetchCloudObject" time="11.162">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$39$1.done(CloudObjectTest.java:986)
+	at io.cloudboost.CloudObject$7.done(CloudObject.java:1020)
+	at io.cloudboost.CloudQuery.findById(CloudQuery.java:1474)
+	at io.cloudboost.CloudObject.fetch(CloudObject.java:1015)
+	at io.cloudboost.CloudObjectTest$39.done(CloudObjectTest.java:981)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudObjectTest.shouldFetchCloudObject(CloudObjectTest.java:975)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="updateObjectNotice" time="7.388"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldStopListening" time="14.577">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$30$1.done(CloudObjectTest.java:707)
+	at io.cloudboost.CloudObject.save(CloudObject.java:888)
+	at io.cloudboost.CloudObjectTest$30.done(CloudObjectTest.java:702)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudObjectTest.shouldStopListening(CloudObjectTest.java:689)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveListNumberList" time="6.678"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveWrongRelation" time="1.08"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveGeoPointList" time="1.021"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="deleteObjectNotice" time="9.829"/>
   <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayOfGeoPoint" time="0"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldStopListening" time="10.234"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveWrongRelation" time="1.16"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="updateListAfterSave" time="7.356"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayOfCloudObject" time="3.1"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveListNumberList" time="1.159"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="deleteObjectNotice" time="7.08"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="createObjectNotice" time="5.661"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldFetchCloudObject" time="1.879"/>
-  <testcase classname="io.cloudboost.CloudObjectTest" name="keepRelationIntact" time="1.44"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldGiveErrorWhenWrongDataIsPutInNumberField" time="1.554"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveAndDeleteArrayOfCloudObject" time="10.003">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$33.done(CloudObjectTest.java:790)
+	at io.cloudboost.CloudObject.saveAll(CloudObject.java:984)
+	at io.cloudboost.CloudObjectTest.saveAndDeleteArrayOfCloudObject(CloudObjectTest.java:786)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldSaveRequiredNumberAs0" time="3.689"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldUpdateVersionOnUpdate" time="2.91"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveWithWrongDataType" time="3.35"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveEmptyArrayOfCloudObject" time="10.629"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldRejectWrongEventType" time="0.002"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldAlertOnMultipleEvents" time="8.078"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveAnEmptyArrayOfCloudObject" time="4.001"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotUpdateCreatedAtOnUpdate" time="1.989"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveDuplicateValue" time="2.15"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveCloudObjectAsRelation" time="1.16"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldAlertOnAllThreeEvents" time="12.004">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$36.done(CloudObjectTest.java:844)
+	at io.cloudboost.CloudObject.save(CloudObject.java:888)
+	at io.cloudboost.CloudObjectTest.shouldAlertOnAllThreeEvents(CloudObjectTest.java:839)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveStringIntoDate" time="3.746"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArrayWithWrongDataType" time="0.829"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="createNotice" time="4.47"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="deleteAfterSave" time="11.082">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$10$1.done(CloudObjectTest.java:249)
+	at io.cloudboost.CloudObject.delete(CloudObject.java:1066)
+	at io.cloudboost.CloudObjectTest$10.done(CloudObjectTest.java:245)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudObjectTest.deleteAfterSave(CloudObjectTest.java:239)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="saveArray" time="8.4"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldUnsetField" time="2.079"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSetId" time="0.001"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="updateAfterSave" time="11.393">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$9$1.done(CloudObjectTest.java:226)
+	at io.cloudboost.CloudObject.save(CloudObject.java:888)
+	at io.cloudboost.CloudObjectTest$9.done(CloudObjectTest.java:222)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudObjectTest.updateAfterSave(CloudObjectTest.java:215)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveDupRelationInUniqueFields" time="10.001">
+    <error message="test timed out after 10000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 10000 milliseconds
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:954)
+	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:911)
+	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:701)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:647)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1534)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1439)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:338)
+	at io.cloudboost.util.CBParser.callJson(CBParser.java:74)
+	at io.cloudboost.CloudObject.save(CloudObject.java:877)
+	at io.cloudboost.CloudObjectTest.shouldNotSaveDupRelationInUniqueFields(CloudObjectTest.java:1152)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotDupValuesInListAfterUpdate" time="13.07">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.CloudObjectTest$45.done(CloudObjectTest.java:1095)
+	at io.cloudboost.CloudObject.save(CloudObject.java:893)
+	at io.cloudboost.CloudObjectTest.shouldNotDupValuesInListAfterUpdate(CloudObjectTest.java:1090)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+    <system-err>java.lang.NullPointerException
+	at io.cloudboost.CloudObjectTest$45$1.done(CloudObjectTest.java:1103)
+	at io.cloudboost.CloudObject.save(CloudObject.java:888)
+	at io.cloudboost.CloudObjectTest$45.done(CloudObjectTest.java:1099)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudObjectTest.shouldNotDupValuesInListAfterUpdate(CloudObjectTest.java:1090)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+java.lang.NullPointerException
+	at io.cloudboost.CloudObjectTest$45$1.done(CloudObjectTest.java:1103)
+	at io.cloudboost.CloudObject.save(CloudObject.java:893)
+	at io.cloudboost.CloudObjectTest$45.done(CloudObjectTest.java:1099)
+	at io.cloudboost.CloudObject.save(CloudObject.java:884)
+	at io.cloudboost.CloudObjectTest.shouldNotDupValuesInListAfterUpdate(CloudObjectTest.java:1090)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</system-err>
+  </testcase>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="ShouldNotSaveWithoutRequiredColumn" time="5.207"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotSaveAnArrayOfDifferentObjects" time="11.641"/>
+  <testcase classname="io.cloudboost.CloudObjectTest" name="shouldNotAllowMultipleDataTypesInArray" time="6.2"/>
 </testsuite>

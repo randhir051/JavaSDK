@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="40" failures="4" name="io.cloudboost.CloudQueueTest" time="184.392" errors="1" skipped="0">
+<testsuite tests="40" failures="3" name="io.cloudboost.CloudQueueTest" time="170.077" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,18 +63,15 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="push" time="2.448"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutPulledMessage" time="2.438"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotPullMessageWithDelay" time="4.665">
+  <testcase classname="io.cloudboost.CloudQueueTest" name="push" time="0.94"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="getMessagesInFIFO" time="3.32"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteSubscriber" time="1.73"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteQueueByName" time="10.003">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.assertTrue(Assert.java:20)
-	at junit.framework.Assert.assertTrue(Assert.java:27)
-	at io.cloudboost.CloudQueueTest$14$1.done(CloudQueueTest.java:547)
-	at io.cloudboost.CloudQueue.pull(CloudQueue.java:626)
-	at io.cloudboost.CloudQueueTest$14.done(CloudQueueTest.java:543)
-	at io.cloudboost.CloudQueue.push(CloudQueue.java:545)
-	at io.cloudboost.CloudQueueTest.shouldNotPullMessageWithDelay(CloudQueueTest.java:534)
+	at io.cloudboost.CloudQueueTest$27.done(CloudQueueTest.java:968)
+	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
+	at io.cloudboost.CloudQueueTest.shouldDeleteQueueByName(CloudQueueTest.java:963)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -86,55 +83,40 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddandRemoveSubscriber" time="2.96"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteMultipleSubscribers" time="4.307"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shoulNotPullSameMessageTwice" time="2.55"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotPullFromInexistentQueue" time="0.69"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetNullForWrongMessageById" time="11.871">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.CloudQueueTest$17$1.done(CloudQueueTest.java:642)
-	at io.cloudboost.CloudQueue.getMessageById(CloudQueue.java:322)
-	at io.cloudboost.CloudQueueTest$17.done(CloudQueueTest.java:636)
-	at io.cloudboost.CloudQueue.push(CloudQueue.java:545)
-	at io.cloudboost.CloudQueueTest.shouldGetNullForWrongMessageById(CloudQueueTest.java:628)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddSubscriberToQueue" time="9.597"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotSubscribeInvalidUrl" time="0.718"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetTheQueueWithNullName" time="1.64"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetInexistentQueue" time="0.681"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddMultiplerSubscribers" time="7"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shoulGetAll" time="2.778"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="noPushNull" time="0.001"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="deleteById" time="1.745"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldClearQueue" time="2.92"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeek" time="2.328"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="pushArray" time="1.001"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeekTwo" time="9.922"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetQueue" time="1.801"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPullTwo" time="8.423"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="pushMessageArray" time="0.938"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutSpecifiedTimeout" time="1.78"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutUnSpecifiedTimeout" time="1.969"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldUpdateQueue" time="3.09"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteTheQueue" time="5.723"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushDuplicateMessages" time="1.963"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetMessageById" time="9.348"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pullMessageAfterDelay" time="4.46"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldUpdateQueue" time="7.193"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetQueueByName" time="6.699"/>
   <testcase classname="io.cloudboost.CloudQueueTest" name="dontAllowEmptyQueueName" time="0.001"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="pushDuplicateMessages" time="11.13">
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pullMessageAfterTimeout" time="17.133"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushAndPullSameMessage" time="1.728"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeekTwoMessages" time="10.653"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="deleteByMessageObject" time="1.671"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetAfterDelete" time="2.359"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotPullFromInexistentQueue" time="1.149"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shoulNotPullSameMessageTwice" time="2.5"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotSubscribeInvalidUrl" time="0.73"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetTheQueueWithNullName" time="2.047"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetInexistentQueue" time="6.034"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddandRemoveSubscriber" time="1.826"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotPullMessageWithDelay" time="1.899"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetNullForWrongMessageById" time="6.966"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddSubscriberToQueue" time="0.828"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteMultipleSubscribers" time="1.862"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldAddMultiplerSubscribers" time="1.14"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutUnSpecifiedTimeout" time="1.96"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutSpecifiedTimeout" time="2.177"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPullTwo" time="3.013"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeekTwo" time="11.038">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudQueueTest$4$1.done(CloudQueueTest.java:112)
+	at io.cloudboost.CloudQueueTest$11$1.done(CloudQueueTest.java:383)
 	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
-	at io.cloudboost.CloudQueueTest$4.done(CloudQueueTest.java:106)
+	at io.cloudboost.CloudQueueTest$11.done(CloudQueueTest.java:377)
 	at io.cloudboost.CloudQueue.push(CloudQueue.java:545)
-	at io.cloudboost.CloudQueueTest.pushDuplicateMessages(CloudQueueTest.java:97)
+	at io.cloudboost.CloudQueueTest.shouldPeekTwo(CloudQueueTest.java:368)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -146,16 +128,18 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeekTwoMessages" time="5.04"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetQueueByName" time="11.01">
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushArray" time="3.601"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldPeek" time="2.001"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="pushMessageArray" time="3.319"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetQueue" time="2.118"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldClearQueue" time="11.706">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudQueueTest$31$1.done(CloudQueueTest.java:1138)
-	at io.cloudboost.CloudQueue.get(CloudQueue.java:736)
-	at io.cloudboost.CloudQueue.get(CloudQueue.java:676)
-	at io.cloudboost.CloudQueueTest$31.done(CloudQueueTest.java:1133)
+	at io.cloudboost.CloudQueueTest$29$1.done(CloudQueueTest.java:1054)
+	at io.cloudboost.CloudQueue.clear(CloudQueue.java:659)
+	at io.cloudboost.CloudQueueTest$29.done(CloudQueueTest.java:1049)
 	at io.cloudboost.CloudQueue.push(CloudQueue.java:545)
-	at io.cloudboost.CloudQueueTest.shouldGetQueueByName(CloudQueueTest.java:1124)
+	at io.cloudboost.CloudQueueTest.shouldClearQueue(CloudQueueTest.java:1040)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -167,30 +151,8 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="pullMessageAfterTimeout" time="14.872"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldGetMessageById" time="5.782"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldNotGetAfterDelete" time="2.23"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteTheQueue" time="2.239"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="pullMessageAfterDelay" time="11.71"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="pushAndPullSameMessage" time="3.249"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="getMessagesInFIFO" time="9.87"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="deleteByMessageObject" time="10.001">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudQueueTest$19.done(CloudQueueTest.java:692)
-	at io.cloudboost.CloudQueue.push(CloudQueue.java:547)
-	at io.cloudboost.CloudQueueTest.deleteByMessageObject(CloudQueueTest.java:687)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteSubscriber" time="4.627"/>
-  <testcase classname="io.cloudboost.CloudQueueTest" name="shouldDeleteQueueByName" time="2.37"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="deleteById" time="4.706"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="noPushNull" time="0.001"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="shoulGetAll" time="2.213"/>
+  <testcase classname="io.cloudboost.CloudQueueTest" name="refreshMessageTimeoutPulledMessage" time="10.319"/>
 </testsuite>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="4" name="io.cloudboost.CloudUserTest" time="75.113" errors="0" skipped="0">
+<testsuite tests="12" failures="0" name="io.cloudboost.CloudUserTest" time="30.903" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,84 +63,16 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createRole" time="3.184"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="newUser" time="10.005">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$2.done(CloudUserTest.java:59)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:173)
-	at io.cloudboost.CloudUserTest.newUser(CloudUserTest.java:54)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUserWithVersion" time="12.81">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$4.done(CloudUserTest.java:105)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:173)
-	at io.cloudboost.CloudUserTest.shouldCreateNewUserWithVersion(CloudUserTest.java:100)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
+  <testcase classname="io.cloudboost.CloudUserTest" name="createRole" time="3.212"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUserWithVersion" time="1.414"/>
   <testcase classname="io.cloudboost.CloudUserTest" name="queryOnUser" time="0"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="shouldLogoutUser" time="4.994"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="assignRoleToUser" time="12.329">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$10$1$1.done(CloudUserTest.java:354)
-	at io.cloudboost.CloudRole.save(CloudRole.java:87)
-	at io.cloudboost.CloudUserTest$10$1.done(CloudUserTest.java:349)
-	at io.cloudboost.CloudUser.logIn(CloudUser.java:216)
-	at io.cloudboost.CloudUserTest$10.done(CloudUserTest.java:342)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:170)
-	at io.cloudboost.CloudUserTest.assignRoleToUser(CloudUserTest.java:331)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createNewUser" time="4.724"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="loginLogoutUser" time="3.079"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createUserGetVersion" time="1.241"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="removeRoleFromUser" time="10.002">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.CloudUserTest$11.done(CloudUserTest.java:405)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:173)
-	at io.cloudboost.CloudUserTest.removeRoleFromUser(CloudUserTest.java:400)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUser" time="11.47"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="encryptUserPassword" time="1.275"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="loginLogoutUser" time="3.378"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="assignRoleToUser" time="5.087"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="shouldLogoutUser" time="3.203"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="createNewUser" time="1.541"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="newUser" time="3.665"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="encryptUserPassword" time="1.601"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="createUserGetVersion" time="1.917"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUser" time="1.207"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="removeRoleFromUser" time="4.678"/>
 </testsuite>
