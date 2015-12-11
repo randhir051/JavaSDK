@@ -89,7 +89,6 @@ public class CBParser {
 			return resp;
 		}
         CBResponse rr=new CBResponse(inputString, respMsg, respCode,sid);
-//        System.out.println(rr.toString());
        return rr;
     }
     private static void writeName(String name) throws IOException {

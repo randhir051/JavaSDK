@@ -137,7 +137,7 @@ public class CloudObjectTest{
 					Assert.assertNull(x);
 				
 				if(x!=null){
-					Assert.fail("saved data with wrong data type");
+					Assert.fail("Should not have saved data with wrong data type");
 				}				
 			}
 
@@ -292,7 +292,7 @@ public class CloudObjectTest{
 	public void saveArrayWithJSONObject() throws CloudException{
 		initialize();
 		CloudObject obj = new CloudObject("DATA_1");
-		obj.set("name", "ayiko");
+		obj.set("name", "sample");
 		JSONObject obj1 = new JSONObject();
 		try {
 			obj1.put("sample", "sample");

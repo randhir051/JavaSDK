@@ -21,6 +21,8 @@ import org.junit.Test;
  */
 public class CloudFileTest {
 	void initialize() {
+		//master=MjFWX9D3JqTa76tcEHt9GL2ITB8Gzsp68S1+3oq7CBE=
+				//client=mLiJB380x9fhPRCjCGmGRg==
 				CloudApp.init("bengi123",
 						"mLiJB380x9fhPRCjCGmGRg==");
 			}

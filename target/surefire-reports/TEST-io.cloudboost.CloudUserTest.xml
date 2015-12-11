@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="io.cloudboost.CloudUserTest" time="30.903" errors="0" skipped="0">
+<testsuite tests="12" failures="0" name="io.cloudboost.CloudUserTest" time="37.464" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,16 +63,16 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createRole" time="3.212"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUserWithVersion" time="1.414"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUserWithVersion" time="5.149"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="newUser" time="1.505"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="assignRoleToUser" time="8.13"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="shouldLogoutUser" time="7.147"/>
   <testcase classname="io.cloudboost.CloudUserTest" name="queryOnUser" time="0"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="loginLogoutUser" time="3.378"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="assignRoleToUser" time="5.087"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="shouldLogoutUser" time="3.203"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createNewUser" time="1.541"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="newUser" time="3.665"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="encryptUserPassword" time="1.601"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="createUserGetVersion" time="1.917"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUser" time="1.207"/>
-  <testcase classname="io.cloudboost.CloudUserTest" name="removeRoleFromUser" time="4.678"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="createNewUser" time="2.321"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="loginLogoutUser" time="4.201"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="createRole" time="1.783"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="shouldCreateNewUser" time="1.044"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="encryptUserPassword" time="1.161"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="createUserGetVersion" time="1.232"/>
+  <testcase classname="io.cloudboost.CloudUserTest" name="removeRoleFromUser" time="3.791"/>
 </testsuite>
