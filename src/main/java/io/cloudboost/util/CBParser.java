@@ -34,7 +34,6 @@ public class CBParser {
 			e1.printStackTrace();
 		}
         String params=parameters.toString(); 
-//        System.out.println(params);
         URL url=null;
 		try {
 			url = new URL(myUrl);
@@ -77,7 +76,6 @@ public class CBParser {
 	        respMsg=conn.getResponseMessage();
 	        if(respCode!=200){
 	        	String error=inputStreamToString(conn.getErrorStream());
-//	        	System.out.println(error);
 	        	CBResponse response=new CBResponse(respMsg, respMsg, respCode, null);
 	        	response.setError(error);
 	        	return response; 
