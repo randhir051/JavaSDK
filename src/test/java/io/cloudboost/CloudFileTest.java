@@ -1,5 +1,8 @@
 package io.cloudboost;
 
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,9 +12,6 @@ import java.net.URLConnection;
 
 import junit.framework.Assert;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 
 /**

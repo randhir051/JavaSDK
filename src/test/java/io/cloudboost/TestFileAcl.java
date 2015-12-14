@@ -1,10 +1,11 @@
 package io.cloudboost;
 
+import io.cloudboost.json.JSONException;
+
 import java.io.IOException;
 
 import junit.framework.Assert;
 
-import org.json.JSONException;
 import org.junit.Test;
 
 public class TestFileAcl {

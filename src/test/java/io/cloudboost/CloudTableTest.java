@@ -1,10 +1,9 @@
 package io.cloudboost;
 
 import io.cloudboost.Column.DataType;
+import io.cloudboost.json.JSONException;
 import junit.framework.Assert;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 
 /**

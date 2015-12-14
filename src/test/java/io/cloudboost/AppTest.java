@@ -1,10 +1,10 @@
 package io.cloudboost;
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
 import junit.framework.Assert;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 
 /**

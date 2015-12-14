@@ -1,9 +1,5 @@
 package io.cloudboost;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import io.cloudboost.Column.DataType;
 import junit.framework.Assert;
 

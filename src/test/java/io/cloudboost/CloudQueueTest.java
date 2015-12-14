@@ -1,5 +1,7 @@
 package io.cloudboost;
 
+import io.cloudboost.json.JSONArray;
+import io.cloudboost.json.JSONException;
 import io.cloudboost.util.UUID;
 
 import java.util.Arrays;
@@ -7,8 +9,6 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.junit.Test;
 
 public class CloudQueueTest {

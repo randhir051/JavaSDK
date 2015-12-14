@@ -1,10 +1,10 @@
 package io.cloudboost;
 
-import junit.framework.Assert;
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
+import junit.framework.Assert;
 
-import org.json.JSONObject;
 import org.junit.Test;
 
 public class TestAtomicity {

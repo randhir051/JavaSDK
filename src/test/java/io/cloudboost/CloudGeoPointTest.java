@@ -1,7 +1,7 @@
 package io.cloudboost;
+import io.cloudboost.json.JSONException;
 import junit.framework.Assert;
 
-import org.json.JSONException;
 import org.junit.Test;
 /**
  * 
