@@ -1,6 +1,8 @@
 package io.cloudboost;
 
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
 
 import java.io.File;
@@ -8,9 +10,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.util.regex.Pattern;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /** 
  * <p>Title: Abstract wrapper for File objects</p>

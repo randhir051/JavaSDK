@@ -1,9 +1,9 @@
 package io.cloudboost;
 
-import java.util.ArrayList;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 
 /**

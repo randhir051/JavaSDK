@@ -2,11 +2,10 @@ package io.cloudboost;
 
 import io.cloudboost.Column.DataType;
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONArray;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 /**
  * An abstract wrapper for tables in CloudBoost, with methods to fetch table details, create
  * tables, delete etc.

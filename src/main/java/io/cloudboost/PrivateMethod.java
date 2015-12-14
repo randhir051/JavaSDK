@@ -1,6 +1,10 @@
 package io.cloudboost;
 
 
+import io.cloudboost.json.JSONArray;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
+
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -8,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Pattern;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 

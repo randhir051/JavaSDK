@@ -2,6 +2,9 @@ package io.cloudboost.util;
 
 import io.cloudboost.CloudApp;
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONArray;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,15 +15,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
-
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class CBParser {
     static Random random = new Random();

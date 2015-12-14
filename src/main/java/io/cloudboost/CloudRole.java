@@ -1,13 +1,12 @@
 package io.cloudboost;
 
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONArray;
+import io.cloudboost.json.JSONException;
+import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
 
 import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * 
