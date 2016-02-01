@@ -2,13 +2,12 @@
 
 [![Join the chat at https://gitter.im/cloudboost/help](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cloudboost/help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  [![Build Status](http://cbjenkins.cloudapp.net:8080/buildStatus/icon?job=DataServicesPushProduction)](http://cbjenkins.cloudapp.net:8080/job/DataServicesPushProduction)
 
-This is the Java SDK for CloudBoost. It is available as a JAR. If you want to have a look into documentation, you can check them out here : [https://tutorials.cloudboost.io](https://tutorials.cloudboost.io) and API reference is available here : [https://docs.cloudboost.io](https://docs.cloudboost.io)
+This is the Java SDK for CloudBoost. It is available as a [JAR on Git](https://github.com/CloudBoost/JavaSDK/blob/master/target/JavaSDK-1.0.2.jar) and as a [maven dependency](http://mvnrepository.com/artifact/io.cloudboost/JavaSDK). If you want to have a look into documentation, you can check them out here : [https://tutorials.cloudboost.io](https://tutorials.cloudboost.io) and API reference is available here : [https://docs.cloudboost.io](https://docs.cloudboost.io)
 
 ### JAR Usage
 
 ``` java
 //Add cloudboost java sdk jar file in your project
-//get jar: https://github.com/CloudBoost/JavaSDK/blob/master/target/JavaSDK-1.0-SNAPSHOT.jar
 import io.cloudboost.*;
 ```
 
