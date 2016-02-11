@@ -5,7 +5,7 @@
 This is the Java SDK for CloudBoost. It is available as a [JAR on Git](https://github.com/CloudBoost/JavaSDK/blob/master/target/JavaSDK-1.0.2.jar) and as a [maven dependency](http://mvnrepository.com/artifact/io.cloudboost/JavaSDK). If you want to have a look into documentation, you can check them out here : [https://tutorials.cloudboost.io](https://tutorials.cloudboost.io) and API reference is available here : [https://docs.cloudboost.io](https://docs.cloudboost.io)
 
 ###Dependencies
-####The following dependencies are included in the repo in the libs folder. Add them to your project path to be able to use the SDK.
+####The following dependencies are included in the repo in the <code>libs</code> folder. Add them to your project path to be able to use the SDK.
 <ul>
 <li>Javasdk for cloudboost Javasdk-1.0.1.jar </li>
 <li>Socket-client.jar</li>
