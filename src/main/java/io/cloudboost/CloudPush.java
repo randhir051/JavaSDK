@@ -162,19 +162,20 @@ public class CloudPush{
     }
     
     public void setChannel(String[] list){
-        
+        this.document.put("channel", list);
     }
-    
-    public void setChannel(String channel){
         
+    public void setChannel(String channel){
+        String[] list = {channel}; 
+        this.setChannel(list); 
     }
     
     public void setMessage(String message){
-        
+        this.document.put("message", message);
     }
     
     public void setData(JSONObject object){
-        
+        this.document.put("data", object);
     }
     
     public void send(final CloudObjectCallback callbackObject)throws CloudException {
@@ -343,6 +344,4 @@ public class CloudPush{
              Log.e(TAG, ex);  
            }  
       } 
-      
-            
 }
