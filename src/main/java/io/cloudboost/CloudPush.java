@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class CloudPush{
     
@@ -41,12 +42,6 @@ public class CloudPush{
     public CloudPush(Activity activity){
         
         document = new JSONObject();
-        try{
-            
-            
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
         this.activity = activity;
         this.gcm = GoogleCloudMessaging.getInstance(activity);
         
@@ -55,10 +50,12 @@ public class CloudPush{
             public void onSuccess(String registrationId, boolean isNewRegistration) {
                 Log.d("Registration id", registrationId);
                 this.registrationId = registarationId;
-                //send this registrationId to your node server
-                //timezone
-                //type = android
-                
+                registerForPN(registarationId, new CloudStringCallback(){
+                    @Override
+	                void done(String x, CloudException e){
+                        //device is registered for Cloudboost PN Service
+                    } 
+                });
             }
             @Override
             public void onFailure(String ex) {
@@ -75,6 +72,8 @@ public class CloudPush{
         this.activity = activity;
         this(activity);
     }
+    
+    
        
     public static void subscribe(String[] list, final CloudStringCallback callbackObject) throws CloudException {
         
@@ -189,7 +188,7 @@ public class CloudPush{
             data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getPushUrl() + "/send/"+CloudApp.getAppId();
-			response = CBParser.callJson(url, "PUT", data);
+			response = CBParser.callJson(url, "POST", data);
             if (response.getStatusCode() == 200) {
 				String responseBody = response.getResponseBody();
 				JSONObject body = new JSONObject(responseBody);
@@ -260,6 +259,42 @@ public class CloudPush{
                 }  
            }.execute(null, null, null);  
       }  
+      
+      
+      private void registerForPN(String registrationId, CloudStringCallback callbackObject){
+          if (CloudApp.getAppId() == null) {
+			throw new CloudException("App Id is null");
+          }
+          
+          Calendar now = Calendar.getInstance();
+          TimeZone timeZone = now.getTimeZone();
+          JSONObject data = new JSONObject();
+          document = new JSONObject();
+          document.put("deviceType", "android");
+          document.put("deviceId", registarationId);
+          document.put("timeZone", timeZone);  
+          String url = null;
+          CBResponse response = null;
+          try {
+                data.put("document", document);
+                
+                data.put("key", CloudApp.getAppKey());
+                url = CloudApp.getPushUrl() + "/updateDevice/"+CloudApp.getAppId();
+                response = CBParser.callJson(url, "POST", data);
+                if (response.getStatusCode() == 200) {
+                    String responseBody = response.getResponseBody();
+                    callbackObject.done(responseBody, null);
+                } else {
+                    CloudException e = new CloudException(
+                    response.getStatusMessage());
+                    callbackObject.done(null, e);
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                CloudException e = new CloudException(e1.getMessage());
+                callbackObject.done(null, e);
+            }
+      }
       /**  
        * Gets the current registration ID for application on GCM service.  
        * <p>  
