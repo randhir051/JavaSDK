@@ -51,6 +51,46 @@ public class CloudCache {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Set data to key in the cache
+	 * @param key -a key word to identify the data in the cache
+	 * @param value -the data to be cached
+	 * @param call
+	 * @throws CloudException
+	 */
+	public void set(String key, Object value, ObjectCallback call)
+			throws CloudException {
+		if (CloudApp.getAppId() == null) {
+			try {
+				throw new CloudException("App Id is null");
+			} catch (CloudException e) {
+				e.printStackTrace();
+			}
+		}
+		if (key == null || "".equals(key)) {
+			throw new CloudException("Cache key is null");
+		}
+		if (value == null || "".equals(value))
+			throw new CloudException("Cache value is null");
+
+		JSONObject param = new JSONObject();
+		try {
+			param.put("key", CloudApp.getAppKey());
+			param.put("item", value);
+			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+					+ "/" + this.document.getString("name") + "/" + key;
+			CBResponse response = CBParser.callJson(url, "PUT", param);
+			if (response.getStatusCode() == 200) {
+
+				call.done(response.getResponseBody(), null);
+			} else
+				call.done(null, new CloudException(response.getStatusMessage()));
+		} catch (JSONException e) {
+			call.done(null, new CloudException(e.getMessage()));
+		}
+
+	}
 	/**
 	 * Add data to the cache
 	 * @param key -a key word to identify the data in the cache

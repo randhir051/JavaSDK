@@ -1,6 +1,8 @@
 package io.cloudboost;
 
 
+import javax.xml.ws.soap.Addressing;
+
 import io.cloudboost.util.CloudSocket;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter.Listener;

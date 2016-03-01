@@ -18,7 +18,7 @@ public class CloudQueue {
 	protected long timeout = 1800;
 	protected long delay = 1800;
 	protected ArrayList<QueueMessage> messages;
-	public static final String QUEUE_TYPE="queueType";
+	public static final String QUEUE_TYPE = "queueType";
 
 	public CloudQueue(String queueName, String queueType) {
 		this.acl = new ACL();
@@ -30,7 +30,7 @@ public class CloudQueue {
 		try {
 			document.put("subscribers", this.subscribers);
 			document.put("retry", JSONObject.NULL);
-			document.put("name", queueName==null?"null":queueName);
+			document.put("name", queueName == null ? "null" : queueName);
 			document.put("_type", "queue");
 			document.put("ACL", acl.getACL());
 			document.put("expires", JSONObject.NULL);
@@ -38,37 +38,40 @@ public class CloudQueue {
 					: queueType);
 			document.put("messages", this.messages);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
-		this.thisObj=this;
+		this.thisObj = this;
 	}
-	public Object getAttribute(String key){
+
+	public Object getAttribute(String key) {
 		try {
 			return document.get(key);
 		} catch (JSONException e) {
 			return null;
 		}
 	}
-	public void refreshMessageTimeout(QueueMessage msg,CloudQueueMessageCallback callback){
+
+	public void refreshMessageTimeout(QueueMessage msg,
+			CloudQueueMessageCallback callback) {
 		JSONObject data = new JSONObject();
 		String url;
-		String id=msg.getId();
+		String id = msg.getId();
 		try {
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
-					+ document.get("name") + "/"+id+"/refresh-message-timeout";
+					+ document.get("name") + "/" + id
+					+ "/refresh-message-timeout";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "PUT", data);
 				if (response.getStatusCode() == 200) {
 					JSONObject body = new JSONObject(response.getResponseBody());
-						QueueMessage qmsg = new QueueMessage();
-						qmsg.setDocument(body);
-						QueueMessage[] qmsgs={qmsg};
-						callback.done(qmsgs, null);
+					QueueMessage qmsg = new QueueMessage();
+					qmsg.setDocument(body);
+					QueueMessage[] qmsgs = { qmsg };
+					callback.done(qmsgs, null);
 
-					}
-				 else {
+				} else {
 					callback.done(null,
 							new CloudException(response.getStatusMessage()));
 				}
@@ -80,30 +83,32 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
-	public void refreshMessageTimeout(QueueMessage msg,int timeout,CloudQueueMessageCallback callback){
+
+	public void refreshMessageTimeout(QueueMessage msg, int timeout,
+			CloudQueueMessageCallback callback) {
 		JSONObject data = new JSONObject();
 		String url;
-		String id=msg.getId();
+		String id = msg.getId();
 		try {
 			data.put("timeout", timeout);
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
-					+ document.get("name") + "/"+id+"/refresh-message-timeout";
+					+ document.get("name") + "/" + id
+					+ "/refresh-message-timeout";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "PUT", data);
 				if (response.getStatusCode() == 200) {
 					JSONObject body = new JSONObject(response.getResponseBody());
-						QueueMessage qmsg = new QueueMessage();
-						qmsg.setDocument(body);
-						QueueMessage[] qmsgs={qmsg};
-						callback.done(qmsgs, null);
+					QueueMessage qmsg = new QueueMessage();
+					qmsg.setDocument(body);
+					QueueMessage[] qmsgs = { qmsg };
+					callback.done(qmsgs, null);
 
-					}
-				 else {
+				} else {
 					callback.done(null,
 							new CloudException(response.getStatusMessage()));
 				}
@@ -115,18 +120,20 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
-	public void addChangedColumn(String columnName){
-		
+
+	public void addChangedColumn(String columnName) {
+
 	}
-	public void setAttribute(String propertyName,Object value){
+
+	public void setAttribute(String propertyName, Object value) {
 		try {
 			document.put(propertyName, value);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -136,14 +143,61 @@ public class CloudQueue {
 		try {
 			name = document.getString("name");
 			if (name != null && !"".equals(name))
-			return true;
-			else return false;
+				return true;
+			else
+				return false;
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+	public void peekMessage(int count, CloudQueueMessageCallback callback) {
+		JSONObject data = new JSONObject();
+		String url;
+		try {
+			data.put("count", count);
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/"
+					+ document.get("name") + "/peekMessage";
+			if (validate()) {
+				CBResponse response = CBParser.callJson(url, "POST", data);
+				if (response.getStatusCode() == 200) {
 
+					JSONArray body = null;
+					try {
+						body = new JSONArray(response.getResponseBody());
+					} catch (JSONException e) {
+						body = new JSONArray();
+						body.put(new JSONObject(response.getResponseBody()));
+					}
+
+					QueueMessage[] msgArr = new QueueMessage[body.length()];
+
+					for (int i = 0; i < body.length(); i++) {
+						JSONObject obj = body.getJSONObject(i);
+						QueueMessage msg = new QueueMessage();
+						msg.setDocument(obj);
+						;
+						msgArr[i] = msg;
+					}
+					callback.done(msgArr, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+	}
 	public void peek(int count, CloudQueueMessageCallback callback) {
 		JSONObject data = new JSONObject();
 		String url;
@@ -186,7 +240,54 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
+			e.printStackTrace();
+		}
+
+	}
+	public void getMessage(int count, CloudQueueMessageCallback callback) {
+		JSONObject data = new JSONObject();
+		String url;
+		try {
+			data.put("count", count);
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+					+ document.get("name") + "/getMessage";
+			if (validate()) {
+				CBResponse response = CBParser.callJson(url, "POST", data);
+				if (response.getStatusCode() == 200) {
+
+					JSONArray body = null;
+					try {
+						body = new JSONArray(response.getResponseBody());
+					} catch (JSONException e) {
+						body = new JSONArray();
+						body.put(new JSONObject(response.getResponseBody()));
+					}
+
+					QueueMessage[] msgArr = new QueueMessage[body.length()];
+
+					for (int i = 0; i < body.length(); i++) {
+						JSONObject obj = body.getJSONObject(i);
+						QueueMessage msg = new QueueMessage();
+						msg.setDocument(obj);
+						;
+						msgArr[i] = msg;
+					}
+					callback.done(msgArr, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+
 			e.printStackTrace();
 		}
 
@@ -232,7 +333,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -280,7 +381,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -302,8 +403,8 @@ public class CloudQueue {
 						body = new JSONArray(response.getResponseBody());
 					} catch (JSONException e) {
 						body = new JSONArray();
-						String respon=response.getResponseBody();
-						if(respon!=null&&!"".equals(respon))
+						String respon = response.getResponseBody();
+						if (respon != null && !"".equals(respon))
 							body.put(new JSONObject(respon));
 					}
 
@@ -328,7 +429,7 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -413,7 +514,7 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-					this.document=body;
+					this.document = body;
 					callback.done(this.thisObj, null);
 				} else {
 					callback.done(null,
@@ -483,6 +584,82 @@ public class CloudQueue {
 		}
 	}
 
+	public void addMessage(Object message, CloudQueueMessageCallback callback) {
+		messages.clear();
+		try {
+			if (message instanceof QueueMessage[]) {
+				QueueMessage[] mss = (QueueMessage[]) message;
+				for (QueueMessage ms : mss)
+					messages.add(ms);
+			} else if (message instanceof String[]) {
+				String[] mss = (String[]) message;
+				for (String str : mss) {
+					QueueMessage msg = new QueueMessage();
+					msg.push(str);
+					messages.add(msg);
+				}
+			} else if (message instanceof String) {
+				String mss = (String) message;
+				QueueMessage msg = new QueueMessage();
+				msg.push(mss);
+				messages.add(msg);
+			} else if (message == null) {
+				throw new CloudException("Cannot push null into queue");
+
+			}
+			JSONArray arr = new JSONArray();
+			String url = null;
+			JSONObject data = new JSONObject();
+			for (QueueMessage ms : messages)
+				arr.put(ms.getDocument());
+			document.put("messages", arr);
+			data.put("document", document);
+
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+					+ document.get("name") + "/message";
+			this.thisObj = this;
+			boolean valid = validate();
+			if (valid) {
+				CBResponse response = CBParser.callJson(url, "PUT", data);
+				if (response.getStatusCode() == 200) {
+
+					JSONArray body = null;
+					try {
+						body = new JSONArray(response.getResponseBody());
+					} catch (JSONException e) {
+						body = new JSONArray();
+						body.put(new JSONObject(response.getResponseBody()));
+					}
+
+					QueueMessage[] msgArr = new QueueMessage[body.length()];
+
+					for (int i = 0; i < body.length(); i++) {
+						JSONObject obj = body.getJSONObject(i);
+						QueueMessage msg = new QueueMessage();
+						msg.setDocument(obj);
+						;
+						msgArr[i] = msg;
+					}
+					callback.done(msgArr, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+			callback.done(null, new CloudException(e.getMessage()));
+		} catch (CloudException e) {
+			callback.done(null, e);
+		}
+	}
+
 	public void push(Object message, CloudQueueMessageCallback callback) {
 		messages.clear();
 		try {
@@ -518,7 +695,7 @@ public class CloudQueue {
 			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message";
 			this.thisObj = this;
-			boolean valid=validate();
+			boolean valid = validate();
 			if (valid) {
 				CBResponse response = CBParser.callJson(url, "PUT", data);
 				if (response.getStatusCode() == 200) {
@@ -637,6 +814,7 @@ public class CloudQueue {
 			callback.done(null, new CloudException(e.getMessage()));
 		}
 	}
+
 	public void clear(CloudQueueCallback callback) {
 		JSONObject data = new JSONObject();
 		String url;
@@ -650,52 +828,8 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-						this.thisObj.document=body;
-					
-					callback.done(this.thisObj, null);
-				} else {
-					callback.done(null,new CloudException(response.getStatusMessage()));
-				}
+					this.thisObj.document = body;
 
-			} else {
-				callback.done(null, new CloudException(
-						"Object Validation Failure"));
-
-			}
-
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-
-	}
-	public void get(String queueName,CloudQueueCallback callback){
-		CloudQueue queue=new CloudQueue(queueName, null);
-		queue.get(callback);
-	}
-	public void deleteQueue(String queueName,CloudQueueCallback callback){
-		CloudQueue queue=new CloudQueue(queueName, null);
-		queue.deleteQueue(callback);
-	}
-
-	public void update(CloudQueueCallback callback) {
-		validate();
-		JSONObject data = new JSONObject();
-		String url;
-		try {
-			data.put("key", CloudApp.getAppKey());
-			setAttribute("_isModified", true);
-			setAttribute("_modifiedColumns","[\"queueType\"]");
-			data.put("document", this.document);
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
-					+ document.get("name");
-			if (validate()) {
-				CBResponse response = CBParser.callJson(url, "PUT", data);
-				if (response.getStatusCode() == 200) {
-
-					JSONObject body = new JSONObject(response.getResponseBody());
-					this.thisObj.document=body;
-					
 					callback.done(this.thisObj, null);
 				} else {
 					callback.done(null,
@@ -709,11 +843,59 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
+
+	public void get(String queueName, CloudQueueCallback callback) {
+		CloudQueue queue = new CloudQueue(queueName, null);
+		queue.get(callback);
+	}
+
+	public void deleteQueue(String queueName, CloudQueueCallback callback) {
+		CloudQueue queue = new CloudQueue(queueName, null);
+		queue.deleteQueue(callback);
+	}
+
+	public void update(CloudQueueCallback callback) {
+		validate();
+		JSONObject data = new JSONObject();
+		String url;
+		try {
+			data.put("key", CloudApp.getAppKey());
+			setAttribute("_isModified", true);
+			setAttribute("_modifiedColumns", "[\"queueType\"]");
+			data.put("document", this.document);
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+					+ document.get("name");
+			if (validate()) {
+				CBResponse response = CBParser.callJson(url, "PUT", data);
+				if (response.getStatusCode() == 200) {
+
+					JSONObject body = new JSONObject(response.getResponseBody());
+					this.thisObj.document = body;
+
+					callback.done(this.thisObj, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
 	public void get(CloudQueueCallback callback) {
 		validate();
 		JSONObject data = new JSONObject();
@@ -727,8 +909,8 @@ public class CloudQueue {
 				if (response.getStatusCode() == 200) {
 
 					JSONObject body = new JSONObject(response.getResponseBody());
-					this.thisObj.document=body;
-					
+					this.thisObj.document = body;
+
 					callback.done(this.thisObj, null);
 				} else {
 					callback.done(null,
@@ -742,7 +924,45 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
+			e.printStackTrace();
+		}
+
+	}
+	public void getAllMessages(CloudQueueArrayCallback callback) {
+		validate();
+		JSONObject data = new JSONObject();
+		String url;
+		try {
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/messages";
+			if (validate()) {
+				CBResponse response = CBParser.callJson(url, "POST", data);
+				if (response.getStatusCode() == 200) {
+					JSONArray arr = new JSONArray(response.getResponseBody());
+					CloudQueue[] queues = new CloudQueue[arr.length()];
+					for (int i = 0; i < arr.length(); i++) {
+						JSONObject obj = arr.getJSONObject(i);
+						CloudQueue queue = new CloudQueue(null, null);
+						queue.document = obj;
+						queue.thisObj = queue;
+						queues[i] = queue;
+					}
+
+					callback.done(queues, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+
 			e.printStackTrace();
 		}
 
@@ -757,16 +977,16 @@ public class CloudQueue {
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
 				if (response.getStatusCode() == 200) {
-					JSONArray arr=new JSONArray(response.getResponseBody());
-					CloudQueue[] queues=new CloudQueue[arr.length()];
-					for(int i=0;i<arr.length();i++){
-						JSONObject obj=arr.getJSONObject(i);
-						CloudQueue queue=new CloudQueue(null, null);
-						queue.document=obj;
-						queue.thisObj=queue;
-						queues[i]=queue;
+					JSONArray arr = new JSONArray(response.getResponseBody());
+					CloudQueue[] queues = new CloudQueue[arr.length()];
+					for (int i = 0; i < arr.length(); i++) {
+						JSONObject obj = arr.getJSONObject(i);
+						CloudQueue queue = new CloudQueue(null, null);
+						queue.document = obj;
+						queue.thisObj = queue;
+						queues[i] = queue;
 					}
-					
+
 					callback.done(queues, null);
 				} else {
 					callback.done(null,
@@ -780,9 +1000,85 @@ public class CloudQueue {
 			}
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
+	}
+
+	public void updateMessage(QueueMessage[] message,
+			CloudQueueMessageCallback callback) {
+		messages.clear();
+		try {
+
+			if (message == null) {
+				throw new CloudException("Cannot push null into queue");
+
+			} else {
+
+				QueueMessage[] mss = (QueueMessage[]) message;
+				for (QueueMessage ms : mss) {
+					if (ms.getId() != null)
+						messages.add(ms);
+					else {
+						callback.done(
+								null,
+								new CloudException(
+										"a message cannot be updated because it has never been saved"));
+						return;
+					}
+				}
+			}
+			JSONArray arr = new JSONArray();
+			String url = null;
+			JSONObject data = new JSONObject();
+			for (QueueMessage ms : messages)
+				arr.put(ms.getDocument());
+			document.put("messages", arr);
+			data.put("document", document);
+
+			data.put("key", CloudApp.getAppKey());
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+					+ document.get("name") + "/message";
+			this.thisObj = this;
+			boolean valid = validate();
+			if (valid) {
+				CBResponse response = CBParser.callJson(url, "PUT", data);
+				if (response.getStatusCode() == 200) {
+
+					JSONArray body = null;
+					try {
+						body = new JSONArray(response.getResponseBody());
+					} catch (JSONException e) {
+						body = new JSONArray();
+						body.put(new JSONObject(response.getResponseBody()));
+					}
+
+					QueueMessage[] msgArr = new QueueMessage[body.length()];
+
+					for (int i = 0; i < body.length(); i++) {
+						JSONObject obj = body.getJSONObject(i);
+						QueueMessage msg = new QueueMessage();
+						msg.setDocument(obj);
+						;
+						msgArr[i] = msg;
+					}
+					callback.done(msgArr, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+			} else {
+				callback.done(null, new CloudException(
+						"Object Validation Failure"));
+
+			}
+
+		} catch (JSONException e) {
+			callback.done(null, new CloudException(e.getMessage()));
+		} catch (CloudException e) {
+			callback.done(null, e);
+		}
 	}
 }

@@ -168,7 +168,8 @@ public class CloudUser extends CloudObject{
 				current = thisObj;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(response.getResponseBody());
+				JSONObject obj=new JSONObject(response.getError());
+				CloudException e = new CloudException(obj.getString("error"));
 				callbackObject.done(null, e);
 			}
 		} catch (JSONException e) {
@@ -214,7 +215,8 @@ public class CloudUser extends CloudObject{
 				current = thisObj;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(response.getResponseBody());
+				JSONObject obj=new JSONObject(response.getError());
+				CloudException e = new CloudException(obj.getString("error"));
 				callbackObject.done(null, e);
 			}
 		} catch (JSONException e) {
@@ -261,7 +263,8 @@ public class CloudUser extends CloudObject{
 				current = null;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(response.getResponseBody());
+				JSONObject obj=new JSONObject(response.getError());
+				CloudException e = new CloudException(obj.getString("error"));
 				callbackObject.done(null, e);
 			}
 		} catch (JSONException e) {
@@ -304,7 +307,9 @@ public class CloudUser extends CloudObject{
 				current = null;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(response.getResponseBody());
+				System.out.println("resp:"+response);
+				JSONObject obj=new JSONObject(response.getError());
+				CloudException e = new CloudException(obj.getString("error"));
 				callbackObject.done(null, e);
 			}
 		} catch (JSONException e){
@@ -364,7 +369,8 @@ public class CloudUser extends CloudObject{
 				current = null;
 				callbackObject.done(thisObj, null);
 			}else{
-				CloudException e = new CloudException(response.getResponseBody());
+				JSONObject obj=new JSONObject(response.getError());
+				CloudException e = new CloudException(obj.getString("error"));
 				callbackObject.done(null, e);
 			}
 		} catch (JSONException e) {
@@ -375,4 +381,5 @@ public class CloudUser extends CloudObject{
 		}
 		
 	}
+
 }

@@ -415,4 +415,19 @@ public class SearchFilter{
 		return this;
 		
 	}
+	public static void main(String[] args) {
+		SearchFilter filter=new SearchFilter();
+		filter.include("name");
+		
+//		filter.equalTo("age", 10);
+//		filter.equalTo("name", "nawaz");
+//		filter.lessThanOrEqualTo("age", 10);
+	
+//		filter.exists("subject");
+//    	filter.greaterThan("age", 19);
+//    	filter.lessThan("age", 50);
+    	filter.doesNotExists("best_friend");
+//    	filter.notEqualTo("age", "12");
+		System.out.println(filter.bool.toString());
+	}
 }

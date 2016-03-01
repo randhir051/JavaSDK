@@ -110,5 +110,9 @@ public class QueueMessage {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public static void main(String[] args) {
+		QueueMessage msg=new QueueMessage();
+		System.out.println(msg.document.toString());
+	}
 	
 }

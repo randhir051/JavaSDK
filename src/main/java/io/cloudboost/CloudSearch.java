@@ -62,38 +62,6 @@ public class CloudSearch{
 			this.size = 10;
 			this.sort = new ArrayList<Object>();
 	}
-/**
-SearchQuery and SearchFilter default to null
-*/
-		public CloudSearch(String tableName){
-			this.collectionName = tableName;
-			this.collectionArray = new ArrayList<String>();
-			this.query = new JSONObject();
-			this.bool = new JSONObject();
-			filtered = new JSONObject();
-			SearchQuery searchObject=null;
-			SearchFilter searchFilter=null;
-			try{
-			if(searchObject != null){
-				this.bool.put("bool", searchObject.bool);
-				filtered.put("query",this.bool );
-			}else{
-				filtered.put("query", new JSONObject());
-			}
-			if(searchFilter != null){
-				this.bool.put("bool", searchFilter.bool);
-				filtered.put("filter",this .bool);
-			}else{
-				filtered.put("filter", new JSONObject());
-			}
-			} catch (JSONException e2) {
-				
-				e2.printStackTrace();
-			}
-			this.from = 0;
-			this.size = 10;
-			this.sort = new ArrayList<Object>();
-	}
 	
 	public CloudSearch(String[] tableName, SearchQuery searchObject, SearchFilter searchFilter){
 		this.collectionArray = new ArrayList<String>();
@@ -253,7 +221,7 @@ SearchQuery and SearchFilter default to null
 			}
 			callbackObject.done(object, null);
 		}else{
-			CloudException e = new CloudException(response.getResponseBody());
+			CloudException e = new CloudException(response.getError());
 			callbackObject.done((CloudObject[])null, e);
 		}
 		}catch(JSONException e){
@@ -261,4 +229,5 @@ SearchQuery and SearchFilter default to null
 			callbackObject.done((CloudObject[])null, ee);
 		}
 	}
+
 }

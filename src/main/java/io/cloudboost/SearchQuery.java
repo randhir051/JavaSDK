@@ -546,4 +546,16 @@ public class SearchQuery{
 		
 		return this;
 	}
+	public static void main(String[] args) throws CloudException {
+		SearchQuery q=new SearchQuery();
+		q.searchOn("name", "ben", "10", "yes", "75%", "top");
+		q.phrase("subject", "java", "10", "top");
+		q.wildcard("first_name", "R*", "top");
+		q.startsWith("last_name", "V", "top");
+		String[] column = {"name", "descrition"};
+		q.mostColumns(column, "R", "10", "and", "25%", "top");
+		String[] columns = {"name", "descrition"};
+		q.bestColumns(columns, "V", "10", "and", "25%", "top");
+		System.out.println(q.bool.toString());
+	}
 }

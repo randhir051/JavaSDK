@@ -1,5 +1,4 @@
 package io.cloudboost;
-
 import io.cloudboost.beans.CBResponse;
 import io.cloudboost.json.JSONArray;
 import io.cloudboost.json.JSONException;

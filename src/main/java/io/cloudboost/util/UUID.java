@@ -55,9 +55,7 @@ public  class UUID {
 		char[] uuid = new char[36];
 		int r;
 
-		/*
-		 *rfc4122 requires these characters
-		 */
+		// rfc4122 requires these characters
 		uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
 		uuid[14] = '4';
 
