@@ -12,14 +12,70 @@ import java.util.ArrayList;
  */
 public class SearchQuery{
 	
-	JSONObject bool;
-	JSONObject multi_match ;
-	JSONObject match;
-	ArrayList<String> $include;
-	ArrayList<Object> must;
-	ArrayList<Object> should;
-	ArrayList<Object> must_not;
+	protected JSONObject bool;
+	protected JSONObject multi_match ;
+	protected JSONObject match;
+	protected ArrayList<String> $include;
+	protected ArrayList<Object> must;
+	protected ArrayList<Object> should;
+	protected ArrayList<Object> must_not;
 	
+	public JSONObject getBool() {
+		return bool;
+	}
+
+	public void setBool(JSONObject bool) {
+		this.bool = bool;
+	}
+
+	public JSONObject getMulti_match() {
+		return multi_match;
+	}
+
+	public void setMulti_match(JSONObject multi_match) {
+		this.multi_match = multi_match;
+	}
+
+	public JSONObject getMatch() {
+		return match;
+	}
+
+	public void setMatch(JSONObject match) {
+		this.match = match;
+	}
+
+	public ArrayList<String> get$include() {
+		return $include;
+	}
+
+	public void set$include(ArrayList<String> $include) {
+		this.$include = $include;
+	}
+
+	public ArrayList<Object> getMust() {
+		return must;
+	}
+
+	public void setMust(ArrayList<Object> must) {
+		this.must = must;
+	}
+
+	public ArrayList<Object> getShould() {
+		return should;
+	}
+
+	public void setShould(ArrayList<Object> should) {
+		this.should = should;
+	}
+
+	public ArrayList<Object> getMust_not() {
+		return must_not;
+	}
+
+	public void setMust_not(ArrayList<Object> must_not) {
+		this.must_not = must_not;
+	}
+
 	public SearchQuery(){
 		bool = new JSONObject();
 		$include = new ArrayList<String>();

@@ -14,6 +14,13 @@ public class Column{
 	
 	protected JSONObject document;
 	
+	public JSONObject getDocument() {
+		return document;
+	}
+	public void setDocument(JSONObject document) {
+		this.document = document;
+	}
+
 	public enum DataType{
 		Text, Email, URL, Number, Boolean, DateTime, GeoPoint, File, List, Relation, Object, Id, EncryptedText, ACL
 	}
@@ -179,6 +186,20 @@ public class Column{
 	public void setRelatedTo(CloudTable table){
 		try {
 			this.document.put("relatedTo", table.document.toString());
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	/***
+	 *
+	 * Set Related To
+	 * 
+	 * @param table
+	 */
+	public void setRelatedTo(String tableName){
+		try {
+			this.document.put("relatedTo", tableName);
 		} catch (JSONException e) {
 			
 			e.printStackTrace();

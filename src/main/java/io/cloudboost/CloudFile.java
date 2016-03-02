@@ -448,8 +448,9 @@ public class CloudFile{
 	 * @throws CloudException
 	 */
 	public void fetch(final CloudFileArrayCallback callback) throws CloudException{
-		CloudQuery query=new CloudQuery("File");
+		CloudQuery query=new CloudQuery("_File");
 		query.equalTo("id", getId());
+		query.setLimit(1);
 		query.find(new CloudFileArrayCallback() {
 			
 			@Override

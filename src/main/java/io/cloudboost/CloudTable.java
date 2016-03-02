@@ -16,6 +16,14 @@ public class CloudTable{
 	
 	protected JSONObject document;
 	
+	public JSONObject getDocument() {
+		return document;
+	}
+
+	public void setDocument(JSONObject document) {
+		this.document = document;
+	}
+
 	public CloudTable(String tableName){
 		if(!PrivateMethod._tableValidation(tableName)){
 			try {
@@ -45,6 +53,13 @@ public class CloudTable{
 		
 		e2.printStackTrace();
 	}	
+	}
+	public String getId(){
+		try {
+			return this.document.getString("id");
+		} catch (JSONException e) {
+			return null;
+		}
 	}
 	
 	public String getType(){
@@ -280,7 +295,7 @@ public class CloudTable{
 		JSONObject params = new JSONObject();
 		try {
 		params.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/"+CloudApp.getAppId()+"/table";
+		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/_getAll";
 		CBResponse response=CBParser.callJson(url, "POST", params);
 			if(response.getStatusCode() == 200){
 				JSONArray body = new JSONArray(response.getResponseBody());
@@ -322,7 +337,7 @@ public class CloudTable{
 		try {
 		params.put("key", CloudApp.getAppKey());
 		params.put("appId", CloudApp.getAppId());
-		String url = CloudApp.getApiUrl()+"/"+CloudApp.getAppId()+"/table/"+table.getTableName();
+		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+table.getTableName();
 		CBResponse response=CBParser.callJson(url, "POST", params);
 
 			if(response.getStatusCode() == 200){
@@ -360,7 +375,7 @@ public class CloudTable{
 		try {
 		params.put("data", document);		
 		params.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/"+CloudApp.getAppId()+"/table/"+this.document.get("name");
+		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "PUT", params);
 			if(response.getStatusCode() == 200){
 				JSONObject body = new JSONObject(response.getResponseBody());
@@ -384,7 +399,7 @@ public class CloudTable{
 	 * @param callbackObject
 	 * @throws CloudException 
 	 */
-	public void delete(CloudStringCallback callbackObject) throws CloudException{
+	public void delete(CloudTableCallback callbackObject) throws CloudException{
 		if(CloudApp.getAppId() == null){
 			throw new CloudException("App id is null");
 		}
@@ -397,17 +412,18 @@ public class CloudTable{
 		try {
 		params.put("data", document);		
 		params.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/"+CloudApp.getAppId()+"/table/"+this.document.get("name");
+		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "DELETE", params);
 			if(response.getStatusCode() == 200){
-				callbackObject.done(response.getResponseBody(), null);
+				document=new JSONObject(response.getResponseBody());
+				callbackObject.done(this, null);
 			}else{
 				CloudException e = new CloudException(response.getResponseBody());
-				callbackObject.done((String)null, e);
+				callbackObject.done(null, e);
 			}
 		} catch (JSONException e) {
 			CloudException e1 = new CloudException(e.toString());
-			callbackObject.done((String)null, e1);
+			callbackObject.done(null, e1);
 			e.printStackTrace();
 		}
 	}

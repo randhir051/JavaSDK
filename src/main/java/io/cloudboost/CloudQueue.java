@@ -11,14 +11,86 @@ import java.util.ArrayList;
 public class CloudQueue {
 	public ACL acl;
 	protected JSONObject document;
+	public JSONObject getDocument() {
+		return document;
+	}
+
+	public void setDocument(JSONObject document) {
+		this.document = document;
+	}
+
 	private CloudQueue thisObj;
-	protected ArrayList<String> _modifiedColumns;
+	public ArrayList<String> getSubscribers() {
+		return subscribers;
+	}
+
+	public void setSubscribers(ArrayList<String> subscribers) {
+		this.subscribers = subscribers;
+	}
+
 	protected ArrayList<String> subscribers;
 	protected String queueType = "pull";
 	protected long timeout = 1800;
 	protected long delay = 1800;
 	protected ArrayList<QueueMessage> messages;
 	public static final String QUEUE_TYPE = "queueType";
+	protected String name;
+	public ACL getAcl() {
+		return acl;
+	}
+
+	public void setAcl(ACL acl) {
+		this.acl = acl;
+	}
+
+	public CloudQueue getThisObj() {
+		return thisObj;
+	}
+
+	public void setThisObj(CloudQueue thisObj) {
+		this.thisObj = thisObj;
+	}
+
+	public void setQueueType(String queueType) {
+		setAttribute("queueType", queueType);
+	}
+
+	public long getTimeout() {
+		return (long) getAttribute("timeout");
+	}
+
+	public void setTimeout(long timeout) {
+		setAttribute("timeout", timeout);
+	}
+
+	public long getDelay() {
+		return (long) getAttribute("delay");
+	}
+
+	public void setDelay(long delay) {
+		setAttribute("delay", delay);
+	}
+
+	public ArrayList<QueueMessage> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(ArrayList<QueueMessage> messages) {
+		this.messages = messages;
+		setAttribute("messages", messages);
+	}
+
+	public String getName() {
+		return (String) getAttribute("name");
+	}
+
+	public void setName(String name) {
+		setAttribute("name", name);;
+	}
+
+	public static String getQueueType() {
+		return QUEUE_TYPE;
+	}
 
 	public CloudQueue(String queueName, String queueType) {
 		this.acl = new ACL();
@@ -255,6 +327,10 @@ public class CloudQueue {
 					+ document.get("name") + "/getMessage";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
+				if(response.getResponseBody()==null||"".equals(response.getResponseBody())){
+					callback.done(null, new CloudException("No message found"));
+					return;
+				}
 				if (response.getStatusCode() == 200) {
 
 					JSONArray body = null;
@@ -591,7 +667,10 @@ public class CloudQueue {
 				QueueMessage[] mss = (QueueMessage[]) message;
 				for (QueueMessage ms : mss)
 					messages.add(ms);
-			} else if (message instanceof String[]) {
+			}else if(message instanceof QueueMessage){
+				messages.add((QueueMessage) message);
+			}
+			else if (message instanceof String[]) {
 				String[] mss = (String[]) message;
 				for (String str : mss) {
 					QueueMessage msg = new QueueMessage();
@@ -967,15 +1046,77 @@ public class CloudQueue {
 		}
 
 	}
-	public void getAll(CloudQueueArrayCallback callback) {
-		validate();
+	public void delete(CloudQueueCallback callback) {
+		JSONObject data = new JSONObject();
+		String url;
+		if(!validate()){
+			callback.done(null, new CloudException("Can't create queue without a name"));
+			return;
+		}
+		try {
+			data.put("key", CloudApp.getAppKey());
+			data.put("document", document);
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/"+getAttribute("name");
+
+				CBResponse response = CBParser.callJson(url, "DELETE", data);
+				if (response.getStatusCode() == 200) {
+					JSONObject body = new JSONObject(response.getResponseBody());
+					CloudQueue.this.document=body;
+					callback.done(CloudQueue.this, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+	public void create(CloudQueueCallback callback) {
+		JSONObject data = new JSONObject();
+		String url;
+		if(!validate()){
+			callback.done(null, new CloudException("Can't create queue without a name"));
+			return;
+		}
+		try {
+			data.put("key", CloudApp.getAppKey());
+			data.put("document", document);
+			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/"+getAttribute("name")+"/create";
+
+				CBResponse response = CBParser.callJson(url, "POST", data);
+				if (response.getStatusCode() == 200) {
+					JSONObject body = new JSONObject(response.getResponseBody());
+					CloudQueue.this.document=body;
+					callback.done(CloudQueue.this, null);
+				} else {
+					callback.done(null,
+							new CloudException(response.getStatusMessage()));
+				}
+
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+	public static void getAll(CloudQueueArrayCallback callback) {
 		JSONObject data = new JSONObject();
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
 			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/';
-			if (validate()) {
+
 				CBResponse response = CBParser.callJson(url, "POST", data);
+				String body=response.getResponseBody();
+				if(body==null||"".equals(body)){
+					callback.done(null, new CloudException("No queues found"));
+					return;
+				}
 				if (response.getStatusCode() == 200) {
 					JSONArray arr = new JSONArray(response.getResponseBody());
 					CloudQueue[] queues = new CloudQueue[arr.length()];
@@ -993,11 +1134,6 @@ public class CloudQueue {
 							new CloudException(response.getStatusMessage()));
 				}
 
-			} else {
-				callback.done(null, new CloudException(
-						"Object Validation Failure"));
-
-			}
 
 		} catch (JSONException e) {
 
@@ -1024,7 +1160,7 @@ public class CloudQueue {
 						callback.done(
 								null,
 								new CloudException(
-										"a message cannot be updated because it has never been saved"));
+										"The message cannot be updated because it has never been saved"));
 						return;
 					}
 				}

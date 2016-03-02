@@ -41,11 +41,20 @@ public class QueueMessage {
 			e.printStackTrace();
 		}
 	}
+	public void setExpires(String dateString){
+		addElement("expires", dateString);
+	}
+	
 	public boolean hasKey(String key){
 		return document.has(key);
 	}
 	public String getId(){
-		return (String) getElement("_id");
+		Object o=getElement("_id");
+		if(o==null||"null".equals(o)||JSONObject.NULL.equals(o)){
+			return null;
+			}
+		else
+		return ""+o ;
 	}
 	public void setDelay(Object delay){
 		addElement("delay", delay);
@@ -75,7 +84,6 @@ public class QueueMessage {
 		try {
 			document.put(key, val);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -84,8 +92,8 @@ public class QueueMessage {
 		try {
 			obj=document.get(key);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("error, returning null");
+			return null;
 		}
 		return obj;
 	}

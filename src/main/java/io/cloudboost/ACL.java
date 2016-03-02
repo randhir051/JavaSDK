@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * ACL-Access Control Lists is a wrapper around CloudBoost access and permission management system. It forms part of every record, file,data saved
  * in the database. This enables fine-grained control over access to all resources in the App
  */
-class ACL{
+public class ACL{
 	
 	private ArrayList<String> allowedReadUser; 
 	private ArrayList<String> allowedReadRole; 

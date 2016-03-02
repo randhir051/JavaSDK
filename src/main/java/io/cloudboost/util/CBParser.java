@@ -75,7 +75,7 @@ public class CBParser {
 			respMsg = conn.getResponseMessage();
 			if (respCode != 200) {
 				String error = inputStreamToString(conn.getErrorStream());
-				CBResponse response = new CBResponse(respMsg, respMsg,
+				CBResponse response = new CBResponse(error, error,
 						respCode, null);
 				response.setError(error);
 				return response;

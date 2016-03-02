@@ -1,8 +1,6 @@
 package io.cloudboost;
 
 
-import javax.xml.ws.soap.Addressing;
-
 import io.cloudboost.util.CloudSocket;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter.Listener;
@@ -14,13 +12,13 @@ import io.socket.emitter.Emitter.Listener;
  */
 
 public class CloudApp {
-	protected static String appId;
-	protected static String appKey;
-	protected static String serverUrl = "https://api.cloudboost.io";
-	protected static String serviceUrl = "https://service.cloudboost.io";
-	protected static String appUrl = serverUrl+"/api";
-	protected static String apiUrl = serverUrl;
-	protected static String socketUrl = "https://realtime.cloudboost.io";
+	public static String appId;
+	public static String appKey;
+	public static String serverUrl = "https://api.cloudboost.io";
+	public static String serviceUrl = "https://service.cloudboost.io";
+	public static String appUrl = serverUrl+"/api";
+	public static String apiUrl = serverUrl;
+	public static String socketUrl = "https://realtime.cloudboost.io";
 	public static String SESSION_ID=null;
 	public static String masterKey=null;
 	public static String socketIoUrl=null;

@@ -120,7 +120,7 @@ public class CloudObject {
 	 * get the id of this object if its already saved, otherwise null
 	 * @return
 	 */
-	String getId() {
+	public String getId() {
 		try {
 			return (document.get("_id")).toString();
 		} catch (JSONException e) {
@@ -133,7 +133,7 @@ public class CloudObject {
 	 * get the date of creation of this object
 	 * @return
 	 */
-	Date getCreatedAt() {
+	public Date getCreatedAt() {
 		try {
 			return (Date) document.get("createdAt");
 		} catch (JSONException e) {
@@ -147,7 +147,7 @@ public class CloudObject {
 	 * get the last update date of this object
 	 * @return
 	 */
-	Date getUpdatedAt() {
+	public Date getUpdatedAt() {
 		try {
 			return (Date) document.get("updatedAt");
 		} catch (JSONException e) {
@@ -160,7 +160,7 @@ public class CloudObject {
 	 * returns true if search can be performed on this object
 	 * @return
 	 */
-	boolean getIsSearchable() {
+	public boolean getIsSearchable() {
 		try {
 			return (boolean) document.get("_isSearchable");
 		} catch (JSONException e) {
@@ -174,7 +174,7 @@ public class CloudObject {
 	 * should this object appear in searches
 	 * @param value
 	 */
-	void setIsSearchable(boolean value) {
+	public void setIsSearchable(boolean value) {
 		try {
 			document.put("_isSearchable", value);
 		} catch (JSONException e) {
@@ -187,7 +187,7 @@ public class CloudObject {
 	 * get when this cloudobject will expire
 	 * @return
 	 */
-	Calendar getExpires() {
+	public Calendar getExpires() {
 		try {
 			String str=document.getString("expires");
 			
@@ -203,7 +203,7 @@ public class CloudObject {
 	 * set expiry time for this cloudobject, after which it will not appear in queries and searches
 	 * @param value
 	 */
-	void setExpires(Calendar value) {
+	public void setExpires(Calendar value) {
 		try {
 			document.put("expires", value);
 		} catch (JSONException e) {
@@ -540,7 +540,7 @@ public class CloudObject {
 	 * 
 	 * @param columnName
 	 */
-	void unset(String columnName) {
+	public void unset(String columnName) {
 		try {
 			document.put(columnName, (Object) null);
 		} catch (JSONException e) {

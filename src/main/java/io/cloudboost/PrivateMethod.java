@@ -256,7 +256,7 @@ public class PrivateMethod{
 		
 	}
 	
-	static String  _makeString(){
+	public static String  _makeString(){
 		char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		StringBuilder sb = new StringBuilder();
 		Random random = new Random();
