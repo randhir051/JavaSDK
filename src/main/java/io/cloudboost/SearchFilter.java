@@ -121,7 +121,7 @@ public class SearchFilter {
 				JSONObject nestBody = new JSONObject();
 				nestBody.put("nested", nested);
 				this.must.add(nestBody);
-			} catch (JSONException e) {
+			} catch (Exception e) {
 				JSONObject column = new JSONObject();
 				column.put(columnName, data);
 				term.put("term", column);
