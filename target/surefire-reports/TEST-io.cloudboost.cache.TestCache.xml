@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="18" failures="0" name="io.cloudboost.cache.TestCache" time="15.074" errors="0" skipped="0">
+<testsuite tests="18" failures="0" name="io.cloudboost.cache.TestCache" time="15.503" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\jdk1.8.0_05\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean deploy"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -63,22 +63,22 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotCreateCacheWithEmptyName" time="0"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetNullWhenWrongCacheInfoRequired" time="0.454"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenClearingWrongCache" time="0.463"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotInsertNullValues" time="0"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenDeletingWrongCache" time="0.471"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemCount" time="0.947"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetInfoAboutCache" time="0.918"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCaches" time="1.481"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteCache" time="0.92"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteAllCaches" time="1.883"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldCreateCache" time="0.455"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemInCache" time="0.921"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCacheItems" time="1.394"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldClearAcache" time="1.909"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddNumber" time="0.456"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteItem" time="1.46"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddAString" time="0.462"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldset" time="0.48"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteItem" time="3.332"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddNumber" time="0.387"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldset" time="0.4"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddAString" time="0.399"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotCreateCacheWithEmptyName" time="0.001"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetNullWhenWrongCacheInfoRequired" time="0.411"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetInfoAboutCache" time="0.798"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCaches" time="1.222"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteCache" time="0.788"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemCount" time="0.761"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldClearAcache" time="1.699"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteAllCaches" time="1.63"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCacheItems" time="1.322"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldCreateCache" time="0.457"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemInCache" time="0.971"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenDeletingWrongCache" time="0.47"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenClearingWrongCache" time="0.454"/>
+  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotInsertNullValues" time="0.001"/>
 </testsuite>
