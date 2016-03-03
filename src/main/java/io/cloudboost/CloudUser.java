@@ -51,12 +51,12 @@ public class CloudUser extends CloudObject{
 	 */
 	public void setUserName(String username){
 		try {
-			this.document.put("username", username);
-		} catch (JSONException e) {
+			set("username", username);
+		} catch (CloudException e) {
 			
 			e.printStackTrace();
 		}
-		PrivateMethod._isModified(this, "username");
+//		PrivateMethod._isModified(this, "username");
 	}
 	
 	/**
@@ -79,12 +79,11 @@ public class CloudUser extends CloudObject{
 	 */
 	public void setPassword(String password){
 		try {
-			this.document.put("password", password);
-		} catch (JSONException e) {
+			set("password", password);
+		} catch (CloudException e) {
 			
 			e.printStackTrace();
 		}
-		PrivateMethod._isModified(this, "password");
 	}
 	
 	/**
@@ -107,12 +106,11 @@ public class CloudUser extends CloudObject{
 	 */
 	public void setEmail(String email){
 		try {
-			this.document.put("email", email);
-		} catch (JSONException e) {
+			set("email", email);
+		} catch (CloudException e) {
 			
 			e.printStackTrace();
 		}
-		PrivateMethod._isModified(this, "email");
 	}
 	
 	/**
