@@ -277,7 +277,6 @@ public class TestCache {
 										public void done(Object o,
 												CloudException t)
 												throws CloudException {
-											System.out.println("got all cache="+o.toString());
 											if (t != null)
 												Assert.fail(t.getMessage());
 											else {
