@@ -33,7 +33,6 @@ public class CBParser {
 			e1.printStackTrace();
 		}
 		String params = parameters.toString();
-//		System.out.println(params);
 		URL url = null;
 		try {
 			url = new URL(myUrl);
