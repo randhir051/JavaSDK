@@ -1,0 +1,53 @@
+-------------------------------------------------------------------------------
+Test set: io.cloudboost.queryacl.QueryAclTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+shouldCreateNewUser(io.cloudboost.queryacl.QueryAclTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at java.io.StringReader.<init>(StringReader.java:50)
+	at io.cloudboost.json.JSONTokener.<init>(JSONTokener.java:85)
+	at io.cloudboost.json.JSONObject.<init>(JSONObject.java:324)
+	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
+	at io.cloudboost.queryacl.QueryAclTest.shouldCreateNewUser(QueryAclTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldSetPublicReadAccessToFalse(io.cloudboost.queryacl.QueryAclTest)  Time elapsed: 0 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.queryacl.QueryAclTest$2.done(QueryAclTest.java:56)
+	at io.cloudboost.CloudObject.save(CloudObject.java:885)
+	at io.cloudboost.queryacl.QueryAclTest.shouldSetPublicReadAccessToFalse(QueryAclTest.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+
+shouldGetObjectWithUserReadAccess(io.cloudboost.queryacl.QueryAclTest)  Time elapsed: 0 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.queryacl.QueryAclTest$3.done(QueryAclTest.java:87)
+	at io.cloudboost.CloudObject.save(CloudObject.java:885)
+	at io.cloudboost.queryacl.QueryAclTest.shouldGetObjectWithUserReadAccess(QueryAclTest.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+

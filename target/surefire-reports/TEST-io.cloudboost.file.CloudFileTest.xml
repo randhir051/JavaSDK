@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="18" failures="0" name="io.cloudboost.cache.TestCache" time="16.424" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="io.cloudboost.file.CloudFileTest" time="19.016" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,22 +63,15 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotCreateCacheWithEmptyName" time="0"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetNullWhenWrongCacheInfoRequired" time="0.474"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenClearingWrongCache" time="0.573"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotInsertNullValues" time="0"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenDeletingWrongCache" time="0.457"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldset" time="0.491"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddAString" time="0.51"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddNumber" time="0.461"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteItem" time="1.569"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteCache" time="0.908"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteAllCaches" time="1.875"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCacheItems" time="2.167"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetInfoAboutCache" time="1.179"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCaches" time="1.554"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldClearAcache" time="1.887"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldCreateCache" time="0.46"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemCount" time="0.929"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemInCache" time="0.93"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileGetFromRelation" time="1.699"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="returnFileWithCloudObject" time="1.161"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="deleteFile" time="1.158"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileList" time="3.614"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldIncludeOverFile" time="2.448"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileAndFetchIt" time="1.707"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="saveFileWithDataAndName" time="0.541"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldDeleteNewFile" time="1.788"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveNewFile" time="1.282"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="saveFileAndGiveUrl" time="0.538"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileAndFetchGetFileContent" time="3.08"/>
 </testsuite>

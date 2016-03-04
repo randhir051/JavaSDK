@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="18" failures="0" name="io.cloudboost.cache.TestCache" time="16.424" errors="0" skipped="0">
+<testsuite tests="2" failures="2" name="io.cloudboost.role.CloudRoleTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,22 +63,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotCreateCacheWithEmptyName" time="0"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetNullWhenWrongCacheInfoRequired" time="0.474"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenClearingWrongCache" time="0.573"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldNotInsertNullValues" time="0"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldErrWhenDeletingWrongCache" time="0.457"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldset" time="0.491"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddAString" time="0.51"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldAddNumber" time="0.461"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteItem" time="1.569"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteCache" time="0.908"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldDeleteAllCaches" time="1.875"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCacheItems" time="2.167"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetInfoAboutCache" time="1.179"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetAllCaches" time="1.554"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldClearAcache" time="1.887"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldCreateCache" time="0.46"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemCount" time="0.929"/>
-  <testcase classname="io.cloudboost.cache.TestCache" name="shouldGetItemInCache" time="0.93"/>
+  <testcase classname="io.cloudboost.role.CloudRoleTest" name="createRole" time="0">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.role.CloudRoleTest$2.done(CloudRoleTest.java:49)
+	at io.cloudboost.CloudRole.save(CloudRole.java:86)
+	at io.cloudboost.role.CloudRoleTest.createRole(CloudRoleTest.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.role.CloudRoleTest" name="createRoleWithVersion" time="0">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.role.CloudRoleTest$1.done(CloudRoleTest.java:33)
+	at io.cloudboost.CloudRole.save(CloudRole.java:86)
+	at io.cloudboost.role.CloudRoleTest.createRoleWithVersion(CloudRoleTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
 </testsuite>
