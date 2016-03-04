@@ -262,7 +262,7 @@ public class CloudUser extends CloudObject{
 				callbackObject.done(thisObj, null);
 			}else{
 				JSONObject obj=new JSONObject(response.getError());
-				CloudException e = new CloudException(obj.getString("error"));
+				CloudException e = new CloudException(obj.toString());
 				callbackObject.done(null, e);
 			}
 		} catch (JSONException e) {
