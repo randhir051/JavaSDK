@@ -43,7 +43,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter notEqualTo(String columnName, Object data) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -71,7 +71,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter notEqualTo(String columnName, Object[] data) {
 
@@ -100,7 +100,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter equalTo(String columnName, Object data) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -142,7 +142,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter equalTo(String columnName, Object[] data) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -169,7 +169,7 @@ public class SearchFilter {
 	 * Exists
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter exists(String columnName) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -196,7 +196,7 @@ public class SearchFilter {
 	 * Does Not Exists
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter doesNotExists(String columnName) {
 
@@ -225,7 +225,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter greaterThanEqualTo(String columnName, Object data) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -255,7 +255,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter greaterThan(String columnName, Object data) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -285,7 +285,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter lessThan(String columnName, Object data) {
 
@@ -316,7 +316,7 @@ public class SearchFilter {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter lessThanOrEqualTo(String columnName, Object data) {
 		if (columnName.equals("id") || columnName.equals("isSearchable")
@@ -345,7 +345,7 @@ public class SearchFilter {
 	 * AND
 	 * 
 	 * @param object
-	 * @return
+	 * @return SearchFilter
 	 * @throws CloudException
 	 */
 	public SearchFilter and(SearchFilter object) throws CloudException {
@@ -372,7 +372,7 @@ public class SearchFilter {
 	 * OR
 	 * 
 	 * @param object
-	 * @return
+	 * @return SearchFilter
 	 * @throws CloudException
 	 */
 	public SearchFilter or(SearchFilter object) throws CloudException {
@@ -399,7 +399,7 @@ public class SearchFilter {
 	 * NOT
 	 * 
 	 * @param object
-	 * @return
+	 * @return SearchFilter
 	 * @throws CloudException
 	 */
 	public SearchFilter not(SearchFilter object) throws CloudException {
@@ -426,7 +426,7 @@ public class SearchFilter {
 	 * Include
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return SearchFilter
 	 */
 	public SearchFilter include(String columnName) {
 		if (columnName.equals("id") || columnName.equals("expires"))
@@ -443,19 +443,4 @@ public class SearchFilter {
 
 	}
 
-	public static void main(String[] args) {
-		SearchFilter filter = new SearchFilter();
-		filter.include("name");
-
-		// filter.equalTo("age", 10);
-		// filter.equalTo("name", "nawaz");
-		// filter.lessThanOrEqualTo("age", 10);
-
-		// filter.exists("subject");
-		// filter.greaterThan("age", 19);
-		// filter.lessThan("age", 50);
-		filter.doesNotExists("best_friend");
-		// filter.notEqualTo("age", "12");
-		System.out.println(filter.bool.toString());
-	}
 }

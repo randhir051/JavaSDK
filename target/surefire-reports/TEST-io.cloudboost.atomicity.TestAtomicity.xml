@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="io.cloudboost.atomicity.TestAtomicity" time="9.158" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="io.cloudboost.atomicity.TestAtomicity" time="7.759" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,11 +63,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldNotCreateTableWhenDisconnected" time="1.982"/>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldNotDeleteWhenDisconnected" time="2.9"/>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase3" time="0.44"/>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase" time="0.437"/>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase4" time="0.482"/>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase2" time="0.441"/>
-  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldDeleteCOfromOtherDatabasesIfNotSavedInOne" time="2.476"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldNotCreateTableWhenDisconnected" time="1.6"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldNotDeleteWhenDisconnected" time="2.49"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase" time="0.522"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase3" time="0.378"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase2" time="0.371"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldAttachDatabase4" time="0.37"/>
+  <testcase classname="io.cloudboost.atomicity.TestAtomicity" name="shouldDeleteCOfromOtherDatabasesIfNotSavedInOne" time="2.028"/>
 </testsuite>

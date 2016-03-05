@@ -64,7 +64,7 @@ public class CloudFile{
 	}
 	/**
 	 * returns the Id assigned to this file after saving, an unsaved CloudFile object has no Id
-	 * @return
+	 * @return _id
 	 */
 	public String getId(){
 		try {
@@ -107,7 +107,7 @@ public class CloudFile{
 	
 	/**
 	 * Constructor that builds CloudFile Object from a {@link java.sql.Blob}
-	 * @param file
+	 * @param fileObj
 	 * @throws CloudException
 	 */
 	public CloudFile(Blob fileObj) throws CloudException{
@@ -139,7 +139,7 @@ public class CloudFile{
 	
 	/**
 	 * A Constructor that takes the URL of a file and downloads it to create a CloudFile Object
-	 * @param file
+	 * @param url
 	 * @throws CloudException
 	 */
 	public CloudFile(String url) throws CloudException{
@@ -218,8 +218,8 @@ public class CloudFile{
 	}
 	
 	/**
-	 * returns the mime type of the file as a {@link java.lang.String)
-	 * @return
+	 * returns the mime type of the file as a {@link java.lang.String}
+	 * @return fileType
 	 */
 	public String getFileType(){
 		try {
@@ -233,7 +233,7 @@ public class CloudFile{
 	
 	/**
 	 * returns the URL of the file as saved in cloudboost, unsaved files have no URL's
-	 * @return
+	 * @return file url
 	 */
 	public String getFileUrl(){
 		try {
@@ -260,7 +260,7 @@ public class CloudFile{
 	
 	/**
 	 * returns the name of the file
-	 * @return
+	 * @return fileName
 	 */
 	public String getFileName(){
 		try {
@@ -274,7 +274,7 @@ public class CloudFile{
 	
 	/**
 	 * Returns the size of the file in Bytes
-	 * @return
+	 * @return size
 	 */
 	public int getFileSize(){
 		try {
@@ -290,7 +290,7 @@ public class CloudFile{
 	/**
 	 * Returns a String of the file extension e.g. .json, .txt
 	 * @param file
-	 * @return
+	 * @return file extension
 	 */
 	private String getFileExtension(File file){
 		 String name = file.getName();
@@ -346,7 +346,7 @@ public class CloudFile{
 	/**
 	 * returns the raw JSONObject wrapped by this class, only make direct changes to the underlying JSONObject
 	 * if you absolutely know what you are doing
-	 * @return
+	 * @return document
 	 */
 	public JSONObject getDocument() {
 		return document;

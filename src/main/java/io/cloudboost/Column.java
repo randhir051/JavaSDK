@@ -80,7 +80,7 @@ public class Column{
 	
 	/**
 	 * 
-	 * @return
+	 * @return ColumnName
 	 */
 	public String getColumnName(){
 		try {
@@ -102,7 +102,7 @@ public class Column{
 	
 	/**
 	 * 
-	 * @return
+	 * @return dataType
 	 */
 	public DataType getDataType(){
 		try {
@@ -165,7 +165,7 @@ public class Column{
 	
 	/***
 	 * 
-	 * @return
+	 * @return unique boolean property
 	 */
 	public boolean getUnique(){
 		try {
@@ -216,7 +216,7 @@ public class Column{
 	}
 	/**
 	 * 
-	 * @return
+	 * @return relatedTo table
 	 */
 	public CloudTable getRelatedTo(){
 		
@@ -276,7 +276,7 @@ public class Column{
 	
 	/**
 	 * 
-	 * @return
+	 * @return relationType
 	 */
 	public String setRelationType(){
 		try {

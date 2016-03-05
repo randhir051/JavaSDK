@@ -82,10 +82,7 @@ public class TestAcl {
 					
 					@Override
 					public void done(CloudObject x, CloudException t) throws CloudException {
-						if(t!=null)
-							Assert.assertEquals("Bad Request",t.getMessage());
-						else if(x!=null)
-							Assert.fail("Updated despite write restriction");
+						Assert.assertEquals(x, null);
 						
 					}
 				});

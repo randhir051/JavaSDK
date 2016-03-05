@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="io.cloudboost.notification.CloudNotificationTest" time="3.029" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="io.cloudboost.notification.CloudNotificationTest" time="3.007" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,9 +63,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="shouldStopListeningToChannel" time="0.024"/>
-  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="testSubscription" time="0.001"/>
-  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="testPublish" time="3.001"/>
-  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="testUnSubscribe" time="0.002"/>
+  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="shouldStopListeningToChannel" time="0.001"/>
   <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="shouldPublishToChannel" time="0.001"/>
+  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="testUnSubscribe" time="0.001"/>
+  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="testPublish" time="3.002"/>
+  <testcase classname="io.cloudboost.notification.CloudNotificationTest" name="testSubscription" time="0.002"/>
 </testsuite>

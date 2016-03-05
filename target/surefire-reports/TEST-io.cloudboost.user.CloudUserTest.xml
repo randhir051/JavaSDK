@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="2" name="io.cloudboost.user.CloudUserTest" time="0" errors="9" skipped="0">
+<testsuite tests="12" failures="2" name="io.cloudboost.user.CloudUserTest" time="0.001" errors="9" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,7 +63,25 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="createRole" time="0">
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="shouldCreateNewUser" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
+	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
+	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
+	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
+	at io.cloudboost.user.CloudUserTest.shouldCreateNewUser(CloudUserTest.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="createRole" time="0.001">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
 	at io.cloudboost.user.CloudUserTest$8.done(CloudUserTest.java:281)
@@ -80,13 +98,49 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="shouldCreateNewUser" time="0">
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="shouldCreateNewUserWithVersion" time="0">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
 	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
 	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
 	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
-	at io.cloudboost.user.CloudUserTest.shouldCreateNewUser(CloudUserTest.java:84)
+	at io.cloudboost.user.CloudUserTest.shouldCreateNewUserWithVersion(CloudUserTest.java:107)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="newUser" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
+	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
+	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
+	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
+	at io.cloudboost.user.CloudUserTest.newUser(CloudUserTest.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="createUserGetVersion" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
+	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
+	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
+	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
+	at io.cloudboost.user.CloudUserTest.createUserGetVersion(CloudUserTest.java:244)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -133,13 +187,13 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="createUserGetVersion" time="0">
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="loginLogoutUser" time="0">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
 	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
 	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
 	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
-	at io.cloudboost.user.CloudUserTest.createUserGetVersion(CloudUserTest.java:244)
+	at io.cloudboost.user.CloudUserTest.loginLogoutUser(CloudUserTest.java:130)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -151,13 +205,14 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="shouldCreateNewUserWithVersion" time="0">
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="queryOnUser" time="0"/>
+  <testcase classname="io.cloudboost.user.CloudUserTest" name="createNewUser" time="0">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
 	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
 	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
 	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
-	at io.cloudboost.user.CloudUserTest.shouldCreateNewUserWithVersion(CloudUserTest.java:107)
+	at io.cloudboost.user.CloudUserTest.createNewUser(CloudUserTest.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -194,61 +249,6 @@
 	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
 	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
 	at io.cloudboost.user.CloudUserTest.assignRoleToUser(CloudUserTest.java:342)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="queryOnUser" time="0"/>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="createNewUser" time="0">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
-	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
-	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
-	at io.cloudboost.user.CloudUserTest.createNewUser(CloudUserTest.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="loginLogoutUser" time="0">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
-	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
-	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
-	at io.cloudboost.user.CloudUserTest.loginLogoutUser(CloudUserTest.java:130)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.user.CloudUserTest" name="newUser" time="0">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at java.io.StringReader.&lt;init&gt;(StringReader.java:50)
-	at io.cloudboost.json.JSONTokener.&lt;init&gt;(JSONTokener.java:85)
-	at io.cloudboost.json.JSONObject.&lt;init&gt;(JSONObject.java:324)
-	at io.cloudboost.CloudUser.signUp(CloudUser.java:169)
-	at io.cloudboost.user.CloudUserTest.newUser(CloudUserTest.java:61)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

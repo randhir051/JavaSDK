@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="40" failures="15" name="io.cloudboost.table.CloudTableTest" time="0.272" errors="11" skipped="0">
+<testsuite tests="40" failures="15" name="io.cloudboost.table.CloudTableTest" time="0.333" errors="11" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,7 +63,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="getTable" time="0.233">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="getTable" time="0.254">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
 	at io.cloudboost.table.CloudTableTest$6.done(CloudTableTest.java:295)
@@ -80,11 +80,12 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldChangeRequiredPropertyOfUserDefinedColumn" time="0.002">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.table.CloudTableTest$25.done(CloudTableTest.java:987)
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="sequentialTests" time="0.005">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$1.done(CloudTableTest.java:39)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldChangeRequiredPropertyOfUserDefinedColumn(CloudTableTest.java:981)
+	at io.cloudboost.table.CloudTableTest.sequentialTests(CloudTableTest.java:33)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -94,9 +95,9 @@
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
 	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
+</failure>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeUniquePropertyOfPreDefinedColumn" time="0.002">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeUniquePropertyOfPreDefinedColumn" time="0.004">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at io.cloudboost.table.CloudTableTest$22.done(CloudTableTest.java:879)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
@@ -112,7 +113,7 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeUniquePropertyOfDefaultColumn" time="0.001">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeUniquePropertyOfDefaultColumn" time="0.004">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at io.cloudboost.table.CloudTableTest$23.done(CloudTableTest.java:912)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
@@ -128,7 +129,7 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeRequiredPropertyOfDefaultColumn" time="0.002">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeRequiredPropertyOfDefaultColumn" time="0.003">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
 	at io.cloudboost.table.CloudTableTest$24.done(CloudTableTest.java:944)
@@ -145,49 +146,11 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="updateEmployeeSchema" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="updateCompanySchema" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="deleteAddressTable" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="deleteCompanyTable" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableStoreGeoPoint" time="0.002">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$26.done(CloudTableTest.java:1019)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createTableStoreGeoPoint(CloudTableTest.java:1014)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableAllDataTypes" time="0.002">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$16.done(CloudTableTest.java:628)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createTableAllDataTypes(CloudTableTest.java:623)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotRenameColumn" time="0.001">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldChangeRequiredPropertyOfUserDefinedColumn" time="0.003">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.table.CloudTableTest$21.done(CloudTableTest.java:847)
+	at io.cloudboost.table.CloudTableTest$25.done(CloudTableTest.java:987)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldNotRenameColumn(CloudTableTest.java:842)
+	at io.cloudboost.table.CloudTableTest.shouldChangeRequiredPropertyOfUserDefinedColumn(CloudTableTest.java:981)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -199,11 +162,11 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createAndDeleteTable" time="0.002">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeDataTypeOfColumn" time="0.004">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.table.CloudTableTest$5.done(CloudTableTest.java:267)
+	at io.cloudboost.table.CloudTableTest$20.done(CloudTableTest.java:798)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createAndDeleteTable(CloudTableTest.java:263)
+	at io.cloudboost.table.CloudTableTest.shouldNotChangeDataTypeOfColumn(CloudTableTest.java:793)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -215,9 +178,128 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGiveSpecificTable" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="addColumnAfterSave" time="0.001"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGetAllTable" time="0.001">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldCreateAndDeleteTable" time="0.005">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.table.CloudTableTest$10.done(CloudTableTest.java:424)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.shouldCreateAndDeleteTable(CloudTableTest.java:420)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGiveSpecificTableByName" time="0.003">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$17.done(CloudTableTest.java:670)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.shouldGiveSpecificTableByName(CloudTableTest.java:664)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldUpdateColumnInTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotDeleteDefaultColumn" time="0.003">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.table.CloudTableTest$19.done(CloudTableTest.java:766)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.shouldNotDeleteDefaultColumn(CloudTableTest.java:760)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldCreateColumnThenDelete" time="0.002">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$18.done(CloudTableTest.java:701)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.shouldCreateColumnThenDelete(CloudTableTest.java:695)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableSetRelationToDataType" time="0.002">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$29.done(CloudTableTest.java:1132)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.createTableSetRelationToDataType(CloudTableTest.java:1127)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotPassStringToUpdateColumn" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableSetRelationsToExistingTables" time="0.004">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$27.done(CloudTableTest.java:1061)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.createTableSetRelationsToExistingTables(CloudTableTest.java:1056)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableWithTextListColumnRelation" time="0.003">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$28.done(CloudTableTest.java:1096)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.createTableWithTextListColumnRelation(CloudTableTest.java:1091)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createEmployeeTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createAddressTable" time="0"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGetAllTable" time="0.002">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
 	at io.cloudboost.table.CloudTableTest$7.done(CloudTableTest.java:327)
@@ -234,9 +316,46 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGetColumnFromTable" time="0.001"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createEmployeeTable" time="0"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="updateEmployeeSchema" time="0"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="updateCompanySchema" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="deleteAddressTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="deleteCompanyTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="deleteEmployeeTable" time="0"/>
   <testcase classname="io.cloudboost.table.CloudTableTest" name="createCompanyTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createAndDeleteTable" time="0.003">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.table.CloudTableTest$5.done(CloudTableTest.java:267)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.createAndDeleteTable(CloudTableTest.java:263)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</error>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGiveSpecificTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableAllDataTypes" time="0.003">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$16.done(CloudTableTest.java:628)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.createTableAllDataTypes(CloudTableTest.java:623)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
   <testcase classname="io.cloudboost.table.CloudTableTest" name="addColumnToExistingTable" time="0.001">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at io.cloudboost.table.CloudTableTest$13.done(CloudTableTest.java:514)
@@ -253,10 +372,7 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="deleteEmployeeTable" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createAddressTable" time="0.001"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGiveAllTable" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="updateNewColumnIntoTable" time="0.002">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="updateNewColumnIntoTable" time="0.003">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at io.cloudboost.Column.setRelatedTo(Column.java:188)
 	at io.cloudboost.table.CloudTableTest$9$1$1.done(CloudTableTest.java:377)
@@ -277,11 +393,31 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldCreateAndDeleteTable" time="0.001">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.table.CloudTableTest$10.done(CloudTableTest.java:424)
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGetColumnFromTable" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="addColumnAfterSave" time="0.001"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableStoreGeoPoint" time="0.003">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$26.done(CloudTableTest.java:1019)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldCreateAndDeleteTable(CloudTableTest.java:420)
+	at io.cloudboost.table.CloudTableTest.createTableStoreGeoPoint(CloudTableTest.java:1014)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGiveAllTable" time="0"/>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotRenameColumn" time="0.002">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at io.cloudboost.table.CloudTableTest$21.done(CloudTableTest.java:847)
+	at io.cloudboost.CloudTable.save(CloudTable.java:386)
+	at io.cloudboost.table.CloudTableTest.shouldNotRenameColumn(CloudTableTest.java:842)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -293,159 +429,7 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldGiveSpecificTableByName" time="0.001">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$17.done(CloudTableTest.java:670)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldGiveSpecificTableByName(CloudTableTest.java:664)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotChangeDataTypeOfColumn" time="0.002">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.table.CloudTableTest$20.done(CloudTableTest.java:798)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldNotChangeDataTypeOfColumn(CloudTableTest.java:793)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldUpdateColumnInTable" time="0"/>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableSetRelationToDataType" time="0.001">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$29.done(CloudTableTest.java:1132)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createTableSetRelationToDataType(CloudTableTest.java:1127)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotDeleteDefaultColumn" time="0.001">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at io.cloudboost.table.CloudTableTest$19.done(CloudTableTest.java:766)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldNotDeleteDefaultColumn(CloudTableTest.java:760)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</error>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldCreateColumnThenDelete" time="0.003">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$18.done(CloudTableTest.java:701)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.shouldCreateColumnThenDelete(CloudTableTest.java:695)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="renameTableFails" time="0">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$14.done(CloudTableTest.java:541)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.renameTableFails(CloudTableTest.java:536)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createListTable" time="0.001">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$15.done(CloudTableTest.java:580)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createListTable(CloudTableTest.java:574)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="GetAllTable" time="0">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$8.done(CloudTableTest.java:346)
-	at io.cloudboost.CloudTable.getAll(CloudTable.java:313)
-	at io.cloudboost.table.CloudTableTest.GetAllTable(CloudTableTest.java:340)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="sequentialTests" time="0.002">
-    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$1.done(CloudTableTest.java:39)
-	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.sequentialTests(CloudTableTest.java:33)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
-</failure>
-  </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="duplicateTable" time="0.001">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="duplicateTable" time="0.002">
     <failure message="expected:&lt;io.cloudboost.CloudException&gt; but was:&lt;null&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;io.cloudboost.CloudException&gt; but was:&lt;null&gt;
 	at junit.framework.Assert.fail(Assert.java:47)
 	at junit.framework.Assert.failNotEquals(Assert.java:283)
@@ -456,6 +440,23 @@
 	at io.cloudboost.table.CloudTableTest$4.done(CloudTableTest.java:247)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
 	at io.cloudboost.table.CloudTableTest.duplicateTable(CloudTableTest.java:242)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
+</failure>
+  </testcase>
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="GetAllTable" time="0.001">
+    <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at io.cloudboost.table.CloudTableTest$8.done(CloudTableTest.java:346)
+	at io.cloudboost.CloudTable.getAll(CloudTable.java:313)
+	at io.cloudboost.table.CloudTableTest.GetAllTable(CloudTableTest.java:340)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -483,12 +484,12 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </error>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableWithTextListColumnRelation" time="0.001">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="renameTableFails" time="0.001">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$28.done(CloudTableTest.java:1096)
+	at io.cloudboost.table.CloudTableTest$14.done(CloudTableTest.java:541)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createTableWithTextListColumnRelation(CloudTableTest.java:1091)
+	at io.cloudboost.table.CloudTableTest.renameTableFails(CloudTableTest.java:536)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -500,12 +501,12 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="createTableSetRelationsToExistingTables" time="0.002">
+  <testcase classname="io.cloudboost.table.CloudTableTest" name="createListTable" time="0.002">
     <failure type="junit.framework.AssertionFailedError:">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
-	at io.cloudboost.table.CloudTableTest$27.done(CloudTableTest.java:1061)
+	at io.cloudboost.table.CloudTableTest$15.done(CloudTableTest.java:580)
 	at io.cloudboost.CloudTable.save(CloudTable.java:386)
-	at io.cloudboost.table.CloudTableTest.createTableSetRelationsToExistingTables(CloudTableTest.java:1056)
+	at io.cloudboost.table.CloudTableTest.createListTable(CloudTableTest.java:574)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -517,5 +518,4 @@
 	at org.junit.internal.runners.statements.FailOnTimeout$1.run(FailOnTimeout.java:28)
 </failure>
   </testcase>
-  <testcase classname="io.cloudboost.table.CloudTableTest" name="shouldNotPassStringToUpdateColumn" time="0"/>
 </testsuite>

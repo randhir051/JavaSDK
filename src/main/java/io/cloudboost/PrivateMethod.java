@@ -27,7 +27,7 @@ public class PrivateMethod{
 	 * _defaultColumns
 	 * 
 	 * @param type
-	 * @return
+	 * @return ArrayList
 	 */
 	static ArrayList<JSONObject> _defaultColumns(String type){
 		ArrayList<JSONObject> col = new ArrayList<JSONObject>();
@@ -100,7 +100,7 @@ public class PrivateMethod{
 	 * _tableValidation
 	 * 
 	 * @param tableName
-	 * @return
+	 * @return is tablename valid?
 	 */
 	static boolean _tableValidation(String tableName){
 		char c = tableName.charAt(0);
@@ -127,7 +127,7 @@ public class PrivateMethod{
 	 * 
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return is column name valid
 	 */
 	static boolean _columnNameValidation(String columnName){
 		char c = columnName.charAt(0);
@@ -170,7 +170,7 @@ public class PrivateMethod{
 	 * 
 	 * @param column
 	 * @param table
-	 * @return
+	 * @return boolean
 	 */
 	static boolean _columnValidation(Column column, CloudTable table){
 		ArrayList<String> defaultColumns = new ArrayList<String>();

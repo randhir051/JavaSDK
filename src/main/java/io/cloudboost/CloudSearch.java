@@ -101,7 +101,7 @@ public class CloudSearch{
 	 * Set Skip
 	 * 
 	 * @param data
-	 * @return
+	 * @return CloudSearch
 	 */
 	public CloudSearch setSkip(int data){
 		this.from = data;
@@ -113,7 +113,7 @@ public class CloudSearch{
 	 * Set Limit
 	 * 
 	 * @param data
-	 * @return
+	 * @return CloudSearch
 	 */
 	public CloudSearch setLimit(int data){
 		this.size = data;
@@ -125,7 +125,7 @@ public class CloudSearch{
 	 * Order By Asc
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudSearch
 	 */
 	public CloudSearch orderByAsc(String columnName){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires")){
@@ -152,7 +152,7 @@ public class CloudSearch{
 	 * Order by Desc
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudSearch
 	 */
 	public CloudSearch orderByDesc(String columnName){
 		if (columnName.equals("id") || columnName.equals("isSearchable") || columnName.equals("expires")){

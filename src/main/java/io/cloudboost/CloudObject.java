@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *Wraps a single record from a table
- * @author cloudboost
+ * @author Ben
  * 
  */
 public class CloudObject {
@@ -24,7 +24,7 @@ public class CloudObject {
 	/**
 	 * returns the underlying json document with all data about the record, do not modify this object unless you are absolutely sure
 	 * of what you are doing
-	 * @return
+	 * @return document
 	 */
 	public JSONObject getDocument() {
 		return document;
@@ -118,7 +118,7 @@ public class CloudObject {
 	
 	/**
 	 * get the id of this object if its already saved, otherwise null
-	 * @return
+	 * @return _id
 	 */
 	public String getId() {
 		try {
@@ -131,7 +131,7 @@ public class CloudObject {
 
 	/**
 	 * get the date of creation of this object
-	 * @return
+	 * @return createdAt
 	 */
 	public Date getCreatedAt() {
 		try {
@@ -145,7 +145,7 @@ public class CloudObject {
 
 	/**
 	 * get the last update date of this object
-	 * @return
+	 * @return updatedAt
 	 */
 	public Date getUpdatedAt() {
 		try {
@@ -158,7 +158,7 @@ public class CloudObject {
 
 	/**
 	 * returns true if search can be performed on this object
-	 * @return
+	 * @return _isSearchable
 	 */
 	public boolean getIsSearchable() {
 		try {
@@ -185,7 +185,7 @@ public class CloudObject {
 
 	/**
 	 * get when this cloudobject will expire
-	 * @return
+	 * @return expiry date
 	 */
 	public Calendar getExpires() {
 		try {
@@ -214,7 +214,7 @@ public class CloudObject {
 /**
  * returns true if this cloudobject contains a given key
  * @param key key to search for
- * @return
+ * @return boolean
  */
 	public boolean hasKey(String key) {
 		return document.has(key);
@@ -378,7 +378,7 @@ public class CloudObject {
 	 * Get
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return a property by name
 	 */
 	public Object get(String columnName) {
 		if (columnName == "id" || columnName == "isSearchable") {
@@ -450,7 +450,7 @@ public class CloudObject {
 /**
  * get a cloud object saved in this cloudobject
  * @param columnName
- * @return
+ * @return CloudObject
  */
 	public CloudObject getCloudObject(String columnName) {
 		if (columnName == "id" || columnName == "isSearchable") {
@@ -477,7 +477,7 @@ public class CloudObject {
 	/**
 	 * get an array of cloudobjects in this cloudobject
 	 * @param columnName column name under which they are saved
-	 * @return
+	 * @return CloudObject[]
 	 */
 
 	public CloudObject[] getCloudObjectArray(String columnName) {
@@ -506,9 +506,9 @@ public class CloudObject {
 		return object;
 	}
 /**
- * get a value from this object as an array, cast to {@link org.json.JSONArray}
+ * get a value from this object as an array, cast to {@link io.cloudboost.json.JSONArray}
  * @param columnName
- * @return
+ * @return array property by key
  */
 	public Object[] getArray(String columnName) {
 		if (columnName == "id" || columnName == "isSearchable") {
@@ -1096,7 +1096,7 @@ public class CloudObject {
 	}
 /**
  * returns the underlying permission object of this object
- * @return
+ * @return ACL
  */
 	public ACL getAcl() {
 		

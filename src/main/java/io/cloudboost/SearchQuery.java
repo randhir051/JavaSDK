@@ -102,7 +102,7 @@ public class SearchQuery{
 	 * @param query
 	 * @param slop
 	 * @param boost
-	 * @return
+	 * @return JSONObject
 	 */
 	public JSONObject _buildSearchPhrase(String columnName, String query, String slop, String boost){
 		
@@ -156,7 +156,7 @@ public class SearchQuery{
 	 * @param operator
 	 * @param match_percent
 	 * @param boost
-	 * @return
+	 * @return JSONObject
 	 */
 	public JSONObject _buildBestColumns(String columnName, String query, String fuzziness, String operator, String match_percent, String boost){
 		
@@ -197,7 +197,7 @@ public class SearchQuery{
 	 * @param operator
 	 * @param match_percent
 	 * @param boost
-	 * @return
+	 * @return JSONObject
 	 */
 	public JSONObject _buildMostColumns(String columnName, String query, String fuzziness,  String operator, String match_percent, String boost){
 		
@@ -239,7 +239,7 @@ public class SearchQuery{
 	 * @param operator
 	 * @param match_percent
 	 * @param boost
-	 * @return
+	 * @return JSONObject
 	 */
 	public JSONObject _buildSearchOn(String columnName, String query, String fuzziness, String operator, String match_percent, String boost){
 		
@@ -332,7 +332,7 @@ public class SearchQuery{
 	 * @param all_words
 	 * @param match_percent
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery searchOn(String columns, Object  query, String fuzziness, String all_words, String match_percent, String priority){
 		
@@ -361,7 +361,7 @@ public class SearchQuery{
 	 * @param query
 	 * @param fuzziness
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery phrase(String columns, Object  query, String fuzziness, String priority){
 		
@@ -388,7 +388,7 @@ public class SearchQuery{
 	 * @param all_words
 	 * @param match_percent
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 * @throws CloudException 
 	 */
 	public SearchQuery bestColumns(String[] columns, Object query, String fuzziness, String all_words, String match_percent, String priority) throws CloudException{
@@ -424,7 +424,7 @@ public class SearchQuery{
 	 * @param all_words
 	 * @param match_percent
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 * @throws CloudException 
 	 */
 	public SearchQuery mostColumns(String[] columns, Object query, String fuzziness, String all_words, String match_percent, String priority) throws CloudException{
@@ -456,7 +456,7 @@ public class SearchQuery{
 	 * @param column
 	 * @param value
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery startsWith(String columnName, String value, String priority){
 		
@@ -487,7 +487,7 @@ public class SearchQuery{
 	 * @param column
 	 * @param value
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery wildcard(String columnName, String value, String priority){
 		
@@ -518,7 +518,7 @@ public class SearchQuery{
 	 * @param column
 	 * @param value
 	 * @param priority
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery regexp(String columnName, String value, String priority){
 		
@@ -547,7 +547,7 @@ public class SearchQuery{
 	 * AND
 	 * 
 	 * @param object
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery and(SearchQuery object){
 		
@@ -566,7 +566,7 @@ public class SearchQuery{
 	 * OR
 	 * 
 	 * @param object
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery or(SearchQuery object){
 		JSONObject obj=new JSONObject();
@@ -588,7 +588,7 @@ public class SearchQuery{
 	 * NOT
 	 * 
 	 * @param object
-	 * @return
+	 * @return SearchQuery
 	 */
 	public SearchQuery not(SearchQuery object){
 		
@@ -601,17 +601,5 @@ public class SearchQuery{
 		}
 		
 		return this;
-	}
-	public static void main(String[] args) throws CloudException {
-		SearchQuery q=new SearchQuery();
-		q.searchOn("name", "ben", "10", "yes", "75%", "top");
-		q.phrase("subject", "java", "10", "top");
-		q.wildcard("first_name", "R*", "top");
-		q.startsWith("last_name", "V", "top");
-		String[] column = {"name", "descrition"};
-		q.mostColumns(column, "R", "10", "and", "25%", "top");
-		String[] columns = {"name", "descrition"};
-		q.bestColumns(columns, "V", "10", "and", "25%", "top");
-		System.out.println(q.bool.toString());
 	}
 }

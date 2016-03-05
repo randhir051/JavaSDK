@@ -52,7 +52,7 @@ public class CloudRole extends CloudObject{
 	 * 
 	 * Set Role Name
 	 * 
-	 * @return
+	 * @return name
 	 */
 	public String getRoleName(){
 		try {

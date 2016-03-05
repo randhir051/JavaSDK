@@ -362,7 +362,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param obj
-	 * @return
+	 * @return CloudQuery good for chaining requests
 	 */
 	public CloudQuery equalTo(String columnName, Object obj) {
 		if (columnName.equals("id")) {
@@ -392,7 +392,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param obj
-	 * @return
+	 * @return CloudQuery
 	 */
 
 	public CloudQuery notEqualTo(String columnName, Object obj) {
@@ -432,7 +432,7 @@ public class CloudQuery {
 	 * CloudQuery Exists
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery exists(String columnName) {
 		if (columnName == "id" || columnName == "expires")
@@ -456,7 +456,7 @@ public class CloudQuery {
 	 * CloudQuery Exists
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery doesNotExists(String columnName) {
 
@@ -481,7 +481,7 @@ public class CloudQuery {
 	 * CloudQuery Include List
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery includeList(String columnName) {
 		if (columnName == "id" || columnName == "expires")
@@ -529,7 +529,7 @@ public class CloudQuery {
 	 * CloudQuery All
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery all(String columnName) {
 		if (columnName == "id")
@@ -550,7 +550,7 @@ public class CloudQuery {
 	 * CloudQuery Any
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery any(String columnName) {
 		if (columnName == "id")
@@ -571,7 +571,7 @@ public class CloudQuery {
 	 * CloudQuery First
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery first(String columnName) {
 		if (columnName == "id")
@@ -593,7 +593,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery greaterThan(String columnName, Object data) {
 
@@ -621,7 +621,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery greaterThanEqualTo(String columnName, Object data) {
 
@@ -649,7 +649,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery lessThan(String columnName, Object data) {
 
@@ -677,7 +677,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 */
 
 	public CloudQuery lessThanEqualTo(String columnName, Object data) {
@@ -705,7 +705,7 @@ public class CloudQuery {
 	 * CloudQuery OrderByAsc
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery orderByAsc(String columnName) {
 
@@ -727,7 +727,7 @@ public class CloudQuery {
 	 * CloudQuery OrderByDesc
 	 * 
 	 * @param columnName
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery orderByDesc(String columnName) {
 
@@ -749,7 +749,7 @@ public class CloudQuery {
 	 * CloudQuery Limit
 	 * 
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery setLimit(int data) {
 
@@ -762,7 +762,7 @@ public class CloudQuery {
 	 * CloudQuery Skip
 	 * 
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery setSkip(int data) {
 
@@ -775,7 +775,7 @@ public class CloudQuery {
 	 * CloudQuery Select Column
 	 * 
 	 * @param columnNames
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery selectColumn(String[] columnNames) {
 		try {
@@ -805,7 +805,7 @@ public class CloudQuery {
 	 * CloudQuery Do Not Select Column
 	 * 
 	 * @param columnNames
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery doNotSelectColumn(String[] columnNames) {
 
@@ -827,7 +827,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 * @throws CloudException
 	 */
 	@SuppressWarnings("unchecked")
@@ -947,7 +947,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 * @throws CloudException
 	 */
 	@SuppressWarnings("unchecked")
@@ -1061,7 +1061,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param data
-	 * @return
+	 * @return CloudQuery
 	 * @throws CloudException
 	 */
 	@SuppressWarnings("unchecked")
@@ -1147,7 +1147,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param value
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery startsWith(String columnName, Object value) {
 
@@ -1177,7 +1177,7 @@ public class CloudQuery {
 	 * @param geoPoint
 	 * @param maxDistance
 	 * @param minDistance
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery near(String columnName, CloudGeoPoint geoPoint,
 			Double maxDistance, Double minDistance) {
@@ -1205,7 +1205,7 @@ public class CloudQuery {
 	 * @param columnName
 	 * @param geoPoint
 	 * @param radius
-	 * @return
+	 * @return CloudQuery
 	 */
 	//
 	public CloudQuery geoWithin(String columnName, CloudGeoPoint geoPoint,
@@ -1231,7 +1231,7 @@ public class CloudQuery {
 	 * 
 	 * @param columnName
 	 * @param geoPoint
-	 * @return
+	 * @return CloudQuery
 	 */
 	public CloudQuery geoWithin(String columnName, CloudGeoPoint[] geoPoint) {
 		JSONArray coordinates = new JSONArray();

@@ -25,7 +25,7 @@ public class CloudApp {
 	
 	/**
 	 * gives the App ID to connect to
-	 * @return
+	 * @return appId
 	 */
 	public static String getAppId() {
 		return appId;
@@ -42,7 +42,7 @@ public class CloudApp {
 	
 /**
  * get the URL for connecting to an App on CloudBoost
- * @return
+ * @return appUrl
  */
 	public static String getAppUrl() {
 		return appUrl;
@@ -50,14 +50,14 @@ public class CloudApp {
 	
 /**
  * URL for connecting to API
- * @return
+ * @return apiUrl
  */
 	public static String getApiUrl(){
 		return apiUrl;
 	}
 	/**
 	 * URL for accessing the server, can connect, disconnect the server
-	 * @return
+	 * @return serverUrl
 	 */
 
 	public static String getServerUrl() {
@@ -65,7 +65,7 @@ public class CloudApp {
 	}
 /**
  * 
- * @return
+ * @return serviceUrl
  */
 	public static String getServiceUrl(){
 		return serviceUrl;

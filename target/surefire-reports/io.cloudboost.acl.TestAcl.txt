@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: io.cloudboost.acl.TestAcl
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 12.742 sec <<< FAILURE!
-shouldSetThePublicWriteAccess(io.cloudboost.acl.TestAcl)  Time elapsed: 6.748 sec  <<< FAILURE!
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 9.362 sec <<< FAILURE!
+shouldSetThePublicWriteAccess(io.cloudboost.acl.TestAcl)  Time elapsed: 0.937 sec  <<< FAILURE!
 junit.framework.ComparisonFailure: null expected:<[Bad Request]> but was:<[Unauthorized to modify]>
 	at junit.framework.Assert.assertEquals(Assert.java:81)
 	at junit.framework.Assert.assertEquals(Assert.java:87)

@@ -40,7 +40,7 @@ public class CloudUser extends CloudObject{
 	
 	/**
 	 * 
-	 * @return
+	 * @return current logged in user
 	 */
 	public static CloudUser getcurrentUser(){
 		return current;
@@ -56,12 +56,11 @@ public class CloudUser extends CloudObject{
 			
 			e.printStackTrace();
 		}
-//		PrivateMethod._isModified(this, "username");
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return username
 	 */
 	public String getUserName(){
 		try {
@@ -88,7 +87,7 @@ public class CloudUser extends CloudObject{
 	
 	/**
 	 * 
-	 * @return
+	 * @return password
 	 */
 	public String getPassword(){
 		try {
@@ -115,7 +114,7 @@ public class CloudUser extends CloudObject{
 	
 	/**
 	 * 
-	 * @return
+	 * @return email
 	 */
 	public String getEmail(){
 		try {

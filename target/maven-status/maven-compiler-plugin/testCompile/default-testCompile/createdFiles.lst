@@ -114,7 +114,6 @@ io\cloudboost\table\CloudTableTest$20$1.class
 io\cloudboost\table\CloudTableTest$18$1.class
 io\cloudboost\table\CreateTableTest$1$1.class
 io\cloudboost\acl\TestAcl$6.class
-io\cloudboost\app\AppTest$1.class
 io\cloudboost\notificationquery\NotificationQueryTest$40$1.class
 io\cloudboost\notificationquery\NotificationQueryTest$1.class
 io\cloudboost\notificationacl\TestNotificationAcl$7$2.class
@@ -162,7 +161,6 @@ io\cloudboost\query\QueryTest$50.class
 io\cloudboost\acl\TestAcl$6$1.class
 io\cloudboost\notificationquery\NotificationQueryTest$25$1.class
 io\cloudboost\queue\QueueTest$16$1$1.class
-io\cloudboost\app\AppTest2$2.class
 io\cloudboost\file\CloudFileTest$9.class
 io\cloudboost\notificationquery\NotificationQueryTest$59.class
 io\cloudboost\object\CloudObjectTest.class
@@ -305,7 +303,6 @@ io\cloudboost\notificationquery\NotificationQueryTest.class
 io\cloudboost\object\CloudObjectTest$39.class
 io\cloudboost\queryacl\QueryAclTest$1.class
 io\cloudboost\queue\QueueTest$46$1$1.class
-io\cloudboost\app\AppTest$2$1.class
 io\cloudboost\query\QueryTest$40.class
 io\cloudboost\search\CloudSearchTest$17$1.class
 io\cloudboost\query\QueryTest$50$1.class
@@ -342,7 +339,6 @@ io\cloudboost\notificationquery\NotificationQueryTest$74.class
 io\cloudboost\table\CloudTableTest$21$1.class
 io\cloudboost\queue\QueueTest$6.class
 io\cloudboost\table\CreateTableTest$20$1.class
-io\cloudboost\app\AppTest2$2$1.class
 io\cloudboost\queue\QueueTest$17$1.class
 io\cloudboost\notificationquery\NotificationQueryTest$6.class
 io\cloudboost\cache\TestCache$15$1$1$1.class
@@ -361,7 +357,6 @@ io\cloudboost\table\CloudTableTest$17.class
 io\cloudboost\object\CloudObjectTest$50.class
 io\cloudboost\queue\QueueTest$22.class
 io\cloudboost\table\CreateTableTest$19$1.class
-io\cloudboost\app\AppTest.class
 io\cloudboost\notificationacl\TestNotificationAcl$3$2.class
 io\cloudboost\queue\QueueTest$17.class
 io\cloudboost\cache\TestCache$8$1.class
@@ -376,7 +371,6 @@ io\cloudboost\file\CloudFileTest$11.class
 io\cloudboost\user\CloudUserTest$5$1$1.class
 io\cloudboost\notificationquery\NotificationQueryTest$75.class
 io\cloudboost\object\CloudObjectTest$8$1.class
-io\cloudboost\app\AppTest2$1.class
 io\cloudboost\file\CloudFileTest$8.class
 io\cloudboost\atomicity\TestAtomicity$2$1.class
 io\cloudboost\query\QueryTest$41.class
@@ -388,7 +382,6 @@ io\cloudboost\notificationacl\TestNotificationAcl$4.class
 io\cloudboost\query\QueryTest$2$1.class
 io\cloudboost\search\CloudSearchTest$8$1.class
 io\cloudboost\masteracl\TestMasterAcl.class
-io\cloudboost\app\AppTest2.class
 io\cloudboost\notificationacl\TestNotificationAcl$7$2$1$1.class
 io\cloudboost\queue\QueueTest$29$1.class
 io\cloudboost\object\CloudObjectTest$15.class
@@ -442,7 +435,6 @@ io\cloudboost\user\CloudUserTest$5$1.class
 io\cloudboost\object\CloudObjectTest$36.class
 io\cloudboost\search\CloudSearchTest$14$1.class
 io\cloudboost\user\CloudUserTest$11$1$1$1.class
-io\cloudboost\app\CloudAppTest.class
 io\cloudboost\notificationquery\NotificationQueryTest$73$1.class
 io\cloudboost\table\CreateTableTest$5.class
 io\cloudboost\user\CloudUserTest$10$1$1$1.class
@@ -462,7 +454,6 @@ io\cloudboost\object\CloudObjectTest$49.class
 io\cloudboost\queue\QueueTest$22$1$1.class
 io\cloudboost\queue\QueueTest$4.class
 io\cloudboost\object\CloudObjectTest$27$1.class
-io\cloudboost\app\AppTest$2.class
 io\cloudboost\queue\QueueTest$26.class
 io\cloudboost\query\QueryTest$8.class
 io\cloudboost\fileacl\TestFileAcl$2$1.class
@@ -534,7 +525,6 @@ io\cloudboost\object\CloudObjectTest$50$1.class
 io\cloudboost\table\CloudTableTest$5.class
 io\cloudboost\notificationquery\NotificationQueryTest$58.class
 io\cloudboost\notificationquery\NotificationQueryTest$88.class
-io\cloudboost\app\InitTest.class
 io\cloudboost\cache\TestCache$11.class
 io\cloudboost\table\CreateTableTest$2.class
 io\cloudboost\notificationquery\NotificationQueryTest$34$1.class

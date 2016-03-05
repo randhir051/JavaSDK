@@ -113,7 +113,7 @@ public class CloudGeoPoint{
 	 * 
 	 * Get Longitude
 	 * 
-	 * @return
+	 * @return longitude
 	 */
 	public Double getLongitude(){
 		try {
@@ -157,7 +157,7 @@ public class CloudGeoPoint{
 	 * 
 	 * Get Latitute
 	 * 
-	 * @return
+	 * @return latitude
 	 */
 	public Double getLatitute(){
 		try {
@@ -172,7 +172,7 @@ public class CloudGeoPoint{
 	/**
 	 * 
 	 * @param point
-	 * @return
+	 * @return distanceInKMs
 	 */
 	public Double distanceInKMs(CloudGeoPoint point) {
 
@@ -183,7 +183,7 @@ public class CloudGeoPoint{
 	/**
 	 * 
 	 * @param point
-	 * @return
+	 * @return distanceInMiles
 	 */
 	public Double distanceInMiles(CloudGeoPoint point){
 
@@ -195,7 +195,7 @@ public class CloudGeoPoint{
 	/**
 	 * 
 	 * @param point
-	 * @return
+	 * @return distanceInRadians
 	 */
 	public Double distanceInRadians(CloudGeoPoint point){
 
@@ -204,7 +204,7 @@ public class CloudGeoPoint{
 	/**
 	 * 
 	 * @param point
-	 * @return
+	 * @return Double
 	 */
 	@SuppressWarnings("unchecked")
 	private Double greatCircleFormula(CloudGeoPoint point){
@@ -231,15 +231,15 @@ public class CloudGeoPoint{
 	/**
 	 * 
 	 * @param number
-	 * @return
+	 * @return number in radians
 	 */
 	private Double toRad(Double number){
 		return number * Math.PI / 180;
 	}
 	/**
-	 * get a geopont out of an object (specifically an {@link org.json.JSONOabject})
+	 * get a geopont out of an object (specifically an {@link io.cloudboost.json.JSONOabject})
 	 * @param object
-	 * @return
+	 * @return CloudGeoPoint
 	 * @throws JSONException
 	 * @throws CloudException
 	 */

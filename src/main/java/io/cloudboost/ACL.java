@@ -81,14 +81,14 @@ public class ACL{
 	/**
 	 * get json object representing this ACL object, changing this object is not recommended, only 
 	 * do so if you absolutely know what you are doing
-	 * @return
+	 * @return a JSONObject of the ACL
 	 */
 	public JSONObject getACL(){
 		return acl;
 	}
 	/**
 	 * get a list of role Id's allowed to change resource, role Id's are instances of {@link io.cloudboost.CloudRole} 
-	 * @return
+	 * @return ArrayList of allowed write roles
 	 */
 	public ArrayList<String> getAllowedWriteRole(){
 		JSONArray role;
@@ -109,7 +109,7 @@ public class ACL{
 	}
 	/**
 	 * get an ArrayList of role Id's which are allowed to access resource,role Id's are instances of {@link io.cloudboost.CloudRole} 
-	 * @return
+	 * @return ArrayList
 	 */
 	public ArrayList<String> getAllowedReadRole(){
 		JSONArray role;
@@ -130,7 +130,7 @@ public class ACL{
 	}
 	/**
 	 * get an ArrayList of User Id's which are allowed to modify this resource 
-	 * @return
+	 * @return ArrayList
 	 */
 	@SuppressWarnings({ })
 	public ArrayList<String> getAllowedWriteUser(){
@@ -152,7 +152,7 @@ public class ACL{
 	}
 	/**
 	 * get an ArrayList of User Id's which are allowed to access this resource 
-	 * @return
+	 * @return ArrayList
 	 */
 	public ArrayList<String> getAllowedReadUser(){
 		try {
@@ -172,7 +172,7 @@ public class ACL{
 	}
 	/**
 	 * get an ArrayList of User Id's which are not allowed to modify this resource 
-	 * @return
+	 * @return ArrayList
 	 */
 	private ArrayList<String> getDeniedWriteList(JSONObject acl){
 		try {
@@ -192,7 +192,7 @@ public class ACL{
 	}
 	/**
 	 * get an ArrayList of User Id's which are not allowed to access this resource 
-	 * @return
+	 * @return ArrayList
 	 */
 	public ArrayList<String> getDeniedReadUser(){
 		try {

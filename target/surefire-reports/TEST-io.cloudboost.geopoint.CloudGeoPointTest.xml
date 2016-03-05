@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="io.cloudboost.geopoint.CloudGeoPointTest" time="6.188" errors="0" skipped="0">
+<testsuite tests="12" failures="0" name="io.cloudboost.geopoint.CloudGeoPointTest" time="6.07" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,16 +63,16 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="updateGeoPoint" time="1.188"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getDataNearFunction" time="0.5"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListPolygonGeowithin" time="0.499"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListCircleGeowithin" time="0.501"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitude" time="0.582"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListCircleGeowithin" time="0.492"/>
   <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="takeLongitudeInRange" time="0"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getDataNearFunction" time="0.501"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListPolygonGeowithin" time="0.498"/>
   <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="takeLatitudeInRange" time="0.001"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitudePassedAsString" time="0.586"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitudePassedAsStringType" time="0.58"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListPolygonGeowithinEqualToLimit" time="0.49"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListCircleGeowithinEqualToLimit" time="0.671"/>
-  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitudeWhenPassedAsNumType" time="0.59"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitude" time="0.621"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="updateGeoPoint" time="1.199"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListCircleGeowithinEqualToLimit" time="0.518"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitudeWhenPassedAsNumType" time="0.57"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitudePassedAsString" time="0.56"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="saveLatitudeLongitudePassedAsStringType" time="0.59"/>
+  <testcase classname="io.cloudboost.geopoint.CloudGeoPointTest" name="getListPolygonGeowithinEqualToLimit" time="0.52"/>
 </testsuite>

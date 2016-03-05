@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="11" failures="0" name="io.cloudboost.file.CloudFileTest" time="19.016" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="io.cloudboost.file.CloudFileTest" time="14.263" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\jdk1.8.0_05\jre\bin"/>
@@ -63,15 +63,15 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileGetFromRelation" time="1.699"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="returnFileWithCloudObject" time="1.161"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="deleteFile" time="1.158"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileList" time="3.614"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldIncludeOverFile" time="2.448"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileAndFetchIt" time="1.707"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="saveFileWithDataAndName" time="0.541"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldDeleteNewFile" time="1.788"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveNewFile" time="1.282"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="saveFileAndGiveUrl" time="0.538"/>
-  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileAndFetchGetFileContent" time="3.08"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileAndFetchGetFileContent" time="2.275"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="returnFileWithCloudObject" time="1.14"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileGetFromRelation" time="1.88"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldIncludeOverFile" time="2.251"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileAndFetchIt" time="1.179"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="saveFileAndGiveUrl" time="0.402"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="saveFileWithDataAndName" time="0.398"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveFileList" time="1.833"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldDeleteNewFile" time="1.186"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="shouldSaveNewFile" time="0.81"/>
+  <testcase classname="io.cloudboost.file.CloudFileTest" name="deleteFile" time="0.909"/>
 </testsuite>
