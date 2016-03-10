@@ -300,7 +300,49 @@ public class CloudFile{
 		 }
 		 return name.substring(lastIndexOf);
 	}
-	
+	/**
+	 * Makes an HTTP POST request to upload the file and save all attributes to CloudBoost
+	 * @param callbackObject callback to be triggered when the call has completed
+	 * @param uploadCallback callback interface that returns in realtime the percent of file uploaded
+	 * @throws CloudException
+	 * @throws IOException
+	 * @throws JSONException
+	 */
+	public void save(CloudFileCallback callbackObject,FileUploadCallback uploadCallback) throws CloudException, IOException, JSONException{
+		if(CloudApp.getAppId() == null){
+			throw new CloudException("App Id is null");
+		}
+		
+		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId();
+		CBResponse response=null;
+		if(data==null)
+		response=CBParser.postFormData(url, "POST", document, file,uploadCallback);
+		
+		else {
+			JSONObject params=new JSONObject();
+			params.put("key", CloudApp.getAppKey());
+			
+			params.put("fileObj", document);
+			params.put("data", data);
+			response=CBParser.callJson(url, "POST", params);}
+		if (response.getStatusCode() == 200) {
+			String responseBody = response.getResponseBody();
+			JSONObject body=null;
+			try {
+				body = new JSONObject(responseBody);
+			} catch (JSONException e) {
+				
+				e.printStackTrace();
+			}
+			document = body;
+			callbackObject.done(this, null);
+		} else {
+			CloudException e = new CloudException(
+					response.getStatusMessage());
+			callbackObject.done(null, e);
+		}
+		
+	}
 	/**
 	 * Makes an HTTP POST request to upload the file and save all attributes to CloudBoost
 	 * @param callbackObject callback to be triggered when the call has completed

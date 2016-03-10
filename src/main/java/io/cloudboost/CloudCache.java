@@ -195,7 +195,7 @@ public class CloudCache {
 	 * @param call
 	 * @throws CloudException
 	 */
-	public void create(ObjectCallback call) throws CloudException {
+	public void create(CloudCacheCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
 				throw new CloudException("App Id is null");
@@ -210,7 +210,8 @@ public class CloudCache {
 					+ "/" + this.document.getString("name") + "/create";
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
-				call.done(response.getResponseBody(), null);
+				document=new JSONObject(response.getResponseBody());
+				call.done(this, null);
 			} else
 				call.done(null, new CloudException(response.getStatusMessage()));
 		} catch (JSONException e) {
@@ -218,12 +219,28 @@ public class CloudCache {
 		}
 
 	}
+	public JSONObject getDocument() {
+		return document;
+	}
+	public void setDocument(JSONObject document) {
+		this.document = document;
+	}
+	public String getCacheName() {
+		try{
+			return document.getString("name");
+		}catch(JSONException e){
+			return null;
+		}
+	}
+	public void setCacheName(String cacheName) {
+		document.put("name", cacheName);
+	}
 	/**
 	 * it counts all items under unique keys in the cache, returns an integer in the callback
 	 * @param call
 	 * @throws CloudException
 	 */
-	public void getItemsCount(ObjectCallback call) throws CloudException {
+	public void getItemsCount(CloudIntegerCallback call) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			try {
 				throw new CloudException("App Id is null");
@@ -238,7 +255,7 @@ public class CloudCache {
 					+ "/" + this.document.getString("name") + "/items/count";
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
-				call.done(response.getResponseBody(), null);
+				call.done(Integer.parseInt(response.getResponseBody()), null);
 			} else
 				call.done(null, new CloudException(response.getStatusMessage()));
 		} catch (JSONException e) {
@@ -246,6 +263,14 @@ public class CloudCache {
 		}
 
 	}
+	public int getSize() {
+		try{
+			return document.getInt("size");
+		}catch(JSONException e){
+			return 0;
+		}
+	}
+
 	/**
 	 * returns all caches
 	 * @param call

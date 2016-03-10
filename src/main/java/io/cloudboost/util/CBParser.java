@@ -1,6 +1,7 @@
 package io.cloudboost.util;
 
 import io.cloudboost.CloudApp;
+import io.cloudboost.FileUploadCallback;
 import io.cloudboost.beans.CBResponse;
 import io.cloudboost.json.JSONArray;
 import io.cloudboost.json.JSONException;
@@ -8,6 +9,8 @@ import io.cloudboost.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -59,6 +62,8 @@ public class CBParser {
 		conn.setRequestProperty("User-Agent",
 				"Mozilla/5.0 (Windows NT 6.1; rv:26.0) Gecko/20100101 Firefox/26.0");
 		conn.setRequestProperty("Content-Type", "application/json");
+		if (CloudApp.SESSION_ID != null)
+			conn.setRequestProperty("sessionID", CloudApp.SESSION_ID);
 		DataOutputStream dos = null;
 		String respMsg = null;
 		int respCode = 0;
@@ -71,12 +76,14 @@ public class CBParser {
 			dos.flush();
 			dos.close();
 			respCode = conn.getResponseCode();
+			if (CloudApp.SESSION_ID == null)
+				CloudApp.SESSION_ID = conn.getHeaderField("sessionID");
 
 			respMsg = conn.getResponseMessage();
 			if (respCode != 200) {
 				String error = inputStreamToString(conn.getErrorStream());
-				CBResponse response = new CBResponse(error, error,
-						respCode, null);
+				CBResponse response = new CBResponse(error, error, respCode,
+						null);
 				response.setError(error);
 				return response;
 			}
@@ -127,7 +134,47 @@ public class CBParser {
 
 	public static DataOutputStream dos = null;
 	public static HttpURLConnection conn = null;
+	public static CBResponse postFormData(String myurl, String httpMethod,
+			JSONObject params, File file,FileUploadCallback callback) throws IOException {
+		URL url = null;
+		try {
+			url = new URL(myurl);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		try {
 
+			conn = (HttpURLConnection) url.openConnection();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+
+		conn.setReadTimeout(10000);
+		try {
+			conn.setRequestMethod(httpMethod);
+		} catch (ProtocolException e) {
+			e.printStackTrace();
+		}
+		conn.setRequestProperty("User-Agent",
+				"Mozilla/5.0 (Windows NT 6.1; rv:26.0) Gecko/20100101 Firefox/26.0");
+		conn.setRequestProperty("Content-Type",
+				"multipart/form-data; boundary=" + boundary);
+		dos = new DataOutputStream(conn.getOutputStream());
+		setParameter("key", CloudApp.getAppKey());
+		setParameter("fileObj", params.toString());
+		setParameter("sdk", "java");
+		setFile("fileToUpload", "blob", file,callback);
+		InputStream stream = post();
+
+		int code = conn.getResponseCode();
+		String msg = conn.getResponseMessage();
+		String response = inputStreamToString(stream);
+		CBResponse resp = new CBResponse(response, msg, code, null);
+		return resp;
+
+	}
 	public static CBResponse postFormData(String myurl, String httpMethod,
 			JSONObject params, InputStream is) throws IOException {
 		URL url = null;
@@ -161,6 +208,7 @@ public class CBParser {
 		setParameter("sdk", "java");
 		setFile("fileToUpload", "blob", is);
 		InputStream stream = post();
+
 		int code = conn.getResponseCode();
 		String msg = conn.getResponseMessage();
 		String response = inputStreamToString(stream);
@@ -175,23 +223,58 @@ public class CBParser {
 		dos.close();
 		return conn.getInputStream();
 	}
-
-	private static void pipe(InputStream in, OutputStream out)
+	private static void pipe(File file, OutputStream out,FileUploadCallback callback)
 			throws IOException {
 		byte[] buf = new byte[500000];
 		int nread;
-		int navailable;
-		int total = 0;
+		long contentLength=file.length();
+		FileInputStream in=new FileInputStream(file);
+		long total = 0;
+		int percentCompleted=0;
 		synchronized (in) {
 			while ((nread = in.read(buf, 0, buf.length)) >= 0) {
-				out.write(buf, 0, nread);
 				total += nread;
+				percentCompleted=(int)((total*100)/contentLength);
+				callback.setProgress(percentCompleted);
+				out.write(buf, 0, nread);
+				
 			}
 		}
 		out.flush();
 		buf = null;
 	}
-
+	private static void pipe(InputStream in, OutputStream out)
+			throws IOException {
+		byte[] buf = new byte[500000];
+		int nread;
+		long total = 0;
+		synchronized (in) {
+			while ((nread = in.read(buf, 0, buf.length)) >= 0) {
+				total += nread;
+				out.write(buf, 0, nread);
+				
+			}
+		}
+		out.flush();
+		buf = null;
+	}
+	public static void setFile(String name, String filename, File file,FileUploadCallback callback)
+			throws IOException {
+		boundary();
+		writeName(name);
+		write("; filename=\"");
+		write(filename);
+		write("\"");
+		newline();
+		write("Content-Type: ");
+		String type = HttpURLConnection.guessContentTypeFromName(filename);
+		if (type == null)
+			type = "application/octet-stream";
+		writeln(type);
+		newline();
+		pipe(file, dos,callback);
+		newline();
+	}
 	public static void setFile(String name, String filename, InputStream is)
 			throws IOException {
 		boundary();

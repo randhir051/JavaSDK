@@ -1217,4 +1217,16 @@ public class CloudQueue {
 			callback.done(null, e);
 		}
 	}
+	public static void main(String[] args) {
+		CloudApp.init("bengi123", "mLiJB380x9fhPRCjCGmGRg==");
+		CloudQueue q=new CloudQueue("egigi", null);
+//		q.delete(callback);
+		q.create(new CloudQueueCallback() {
+			@Override
+			public void done(CloudQueue q, CloudException e) {
+				
+				
+			}
+		});
+	}
 }

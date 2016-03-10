@@ -10,6 +10,7 @@ import io.cloudboost.CloudObjectArrayCallback;
 import io.cloudboost.CloudObjectCallback;
 import io.cloudboost.CloudQuery;
 import io.cloudboost.CloudStringCallback;
+import io.cloudboost.FileUploadCallback;
 import io.cloudboost.ObjectCallback;
 import io.cloudboost.json.JSONException;
 import io.cloudboost.json.JSONObject;
@@ -211,7 +212,49 @@ public class CloudFileTest {
 			}
 		});
 	}
+	@Test(timeout = 50000)
+	public void shouldCountProgress() throws IOException, CloudException,
+			JSONException {
+		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");
+		URLConnection connection = url.openConnection();
+		InputStream in = connection.getInputStream();
+		File f = new File("json.json");
+		FileOutputStream fos = new FileOutputStream(f);
+		byte[] buf = new byte[512];
+		while (true) {
+			int len = in.read(buf);
+			if (len == -1) {
+				break;
+			}
+			fos.write(buf, 0, len);
+		}
+		in.close();
+		fos.flush();
+		fos.close();
+		initialize();
+		final CloudFile cf = new CloudFile(f);
+		cf.save(new CloudFileCallback() {
 
+			@Override
+			public void done(final CloudFile x1, CloudException t)
+					throws CloudException {
+				
+				if (t != null) {
+					Assert.fail(t.getMessage());
+				}
+				
+
+			}
+		},new FileUploadCallback() {
+			
+			@Override
+			public void setProgress(int percent) {
+				if(percent==100)
+					Assert.assertTrue(true);
+				
+			}
+		});
+	}
 	@Test(timeout = 50000)
 	public void shouldSaveFileAndFetchIt() throws IOException, CloudException,
 			JSONException {
@@ -263,7 +306,7 @@ public class CloudFileTest {
 		});
 	}
 
-	@Test(timeout = 50000)
+	@Test(timeout = 500000)
 	public void shouldSaveFileList() throws IOException, CloudException,
 			JSONException {
 		URL url = new URL("http://hmkcode.appspot.com/rest/controller/get.json");

@@ -1,7 +1,9 @@
 package io.cloudboost.cache;
 
 import io.cloudboost.CloudCache;
+import io.cloudboost.CloudCacheCallback;
 import io.cloudboost.CloudException;
+import io.cloudboost.CloudIntegerCallback;
 import io.cloudboost.ObjectCallback;
 import io.cloudboost.UTIL;
 import io.cloudboost.json.JSONArray;
@@ -20,8 +22,7 @@ public class TestCache {
 	public void shouldset() throws CloudException {
 		initialize();
 		CloudCache cache = new CloudCache("student");
-		cache.set("test1",
-				"{\"name\":\"ben\",\"sex\":\"m\",\"age\":\"25\"}",
+		cache.set("test1", "{\"name\":\"ben\",\"sex\":\"m\",\"age\":\"25\"}",
 				new ObjectCallback() {
 
 					@Override
@@ -38,7 +39,7 @@ public class TestCache {
 										&& ob.getString("sex").equals("m")
 										&& ob.getString("age").equals("25"));
 							} catch (JSONException e1) {
-								
+
 								e1.printStackTrace();
 							}
 						}
@@ -145,18 +146,15 @@ public class TestCache {
 	public void shouldCreateCache() throws CloudException {
 		initialize();
 		CloudCache cache = new CloudCache("student");
-		cache.create(new ObjectCallback() {
+		cache.create(new CloudCacheCallback() {
 
 			@Override
-			public void done(Object x, CloudException t) throws CloudException {
-				JSONObject object;
-				try {
-					object = new JSONObject(x + "");
-					Assert.assertEquals("student", object.getString("name"));
-
-				} catch (JSONException e) {
-					
-					e.printStackTrace();
+			public void done(CloudCache x, CloudException t)
+					throws CloudException {
+				if (t != null)
+					Assert.fail(t.getMessage());
+				else {
+					Assert.assertEquals("student", x.getCacheName());
 				}
 
 			}
@@ -196,10 +194,10 @@ public class TestCache {
 					Assert.fail(e.getMessage());
 				else {
 
-					cache.getItemsCount(new ObjectCallback() {
+					cache.getItemsCount(new CloudIntegerCallback() {
 
 						@Override
-						public void done(Object x, CloudException t)
+						public void done(Integer x, CloudException t)
 								throws CloudException {
 							int n = Integer.parseInt("" + x);
 							Assert.assertTrue(n >= 1);
@@ -330,7 +328,7 @@ public class TestCache {
 										Assert.assertEquals("kb", size
 												.substring(size.length() - 2));
 									} catch (JSONException e) {
-										
+
 										e.printStackTrace();
 									}
 
@@ -348,7 +346,7 @@ public class TestCache {
 	@Test(timeout = 30000)
 	public void shouldGetNullWhenWrongCacheInfoRequired() throws CloudException {
 		initialize();
-		final CloudCache cache = new CloudCache("wrongCache");
+		final CloudCache cache = new CloudCache("wrongcache");
 
 		cache.getInfo(new ObjectCallback() {
 
@@ -357,7 +355,7 @@ public class TestCache {
 				if (t != null)
 					Assert.fail(t.getMessage());
 				else {
-						Assert.assertEquals("null",(String)o);
+					Assert.assertEquals("null", (String) o);
 
 				}
 
@@ -369,37 +367,39 @@ public class TestCache {
 	@Test(timeout = 30000)
 	public void shouldGetAllCaches() throws CloudException {
 		initialize();
-		CloudCache cache1=new CloudCache("egima");
-		final CloudCache cache2=new CloudCache("bengi");
-		cache1.create(new ObjectCallback() {
-			
+		CloudCache cache1 = new CloudCache("egima");
+		final CloudCache cache2 = new CloudCache("bengi");
+		cache1.create(new CloudCacheCallback() {
+
 			@Override
-			public void done(Object x, CloudException t) throws CloudException {
-				cache2.create(new ObjectCallback() {
-					
+			public void done(CloudCache x, CloudException t)
+					throws CloudException {
+				cache2.create(new CloudCacheCallback() {
+
 					@Override
-					public void done(Object x, CloudException t) throws CloudException {
+					public void done(CloudCache x, CloudException t)
+							throws CloudException {
 						CloudCache.getAllCache(new ObjectCallback() {
-							
+
 							@Override
-							public void done(Object x, CloudException t) throws CloudException {
-								if(t!=null)
+							public void done(Object x, CloudException t)
+									throws CloudException {
+								if (t != null)
 									Assert.fail(t.getMessage());
 								try {
-									JSONArray arr=new JSONArray(x.toString());
-									Assert.assertTrue(arr.length()>0);
+									JSONArray arr = new JSONArray(x.toString());
+									Assert.assertTrue(arr.length() > 0);
 
 								} catch (JSONException e) {
 									e.printStackTrace();
 								}
 
-								
 							}
 						});
-						
+
 					}
 				});
-				
+
 			}
 		});
 
@@ -408,20 +408,21 @@ public class TestCache {
 	@Test(timeout = 30000)
 	public void shouldDeleteCache() throws CloudException {
 		initialize();
-		final CloudCache cache=new CloudCache("egima");
+		final CloudCache cache = new CloudCache("egima");
 		cache.delete(new ObjectCallback() {
-			
+
 			@Override
 			public void done(Object x, CloudException t) throws CloudException {
 				cache.getInfo(new ObjectCallback() {
-					
+
 					@Override
-					public void done(Object x, CloudException t) throws CloudException {
-						Assert.assertEquals("null", (String)x);
-						
+					public void done(Object x, CloudException t)
+							throws CloudException {
+						Assert.assertEquals("null", (String) x);
+
 					}
 				});
-				
+
 			}
 		});
 	}
@@ -429,26 +430,27 @@ public class TestCache {
 	@Test(timeout = 30000)
 	public void shouldErrWhenDeletingWrongCache() throws CloudException {
 		initialize();
-		CloudCache cache=new CloudCache("wrongCache");
+		CloudCache cache = new CloudCache("wrongCache");
 		cache.delete(new ObjectCallback() {
-			
+
 			@Override
 			public void done(Object x, CloudException t) throws CloudException {
-				Assert.assertTrue(t!=null);
-				
+				Assert.assertTrue(t != null);
+
 			}
 		});
 	}
+
 	@Test(timeout = 30000)
 	public void shouldErrWhenClearingWrongCache() throws CloudException {
 		initialize();
-		CloudCache cache=new CloudCache("wrongCache");
+		CloudCache cache = new CloudCache("wrongCache");
 		cache.clear(new ObjectCallback() {
-			
+
 			@Override
 			public void done(Object x, CloudException t) throws CloudException {
-				Assert.assertTrue(t!=null);
-				
+				Assert.assertTrue(t != null);
+
 			}
 		});
 	}
@@ -456,49 +458,60 @@ public class TestCache {
 	@Test(timeout = 30000)
 	public void shouldClearAcache() throws CloudException {
 		initialize();
-		final CloudCache cache=new CloudCache("ayiko");
-		cache.create(new ObjectCallback() {
-			
+		final CloudCache cache = new CloudCache("ayiko");
+		cache.create(new CloudCacheCallback() {
+
 			@Override
-			public void done(Object x, CloudException t) throws CloudException {
-				cache.set("item1", "asaa;lsdj;alskdjf;laksjdf;aksjfd;lajlfj;alksdj;fdlfaj", new ObjectCallback() {
-					
-					@Override
-					public void done(Object x, CloudException t) throws CloudException {
-						cache.clear(new ObjectCallback() {
-							
+			public void done(CloudCache x, CloudException t)
+					throws CloudException {
+				cache.set(
+						"item1",
+						"asaa;lsdj;alskdjf;laksjdf;aksjfd;lajlfj;alksdj;fdlfaj",
+						new ObjectCallback() {
+
 							@Override
-							public void done(Object x, CloudException t) throws CloudException {
-								cache.getInfo(new ObjectCallback() {
+							public void done(Object x, CloudException t)
+									throws CloudException {
+								cache.clear(new ObjectCallback() {
 
 									@Override
-									public void done(Object o, CloudException t)
+									public void done(Object x, CloudException t)
 											throws CloudException {
-										if (t != null)
-											Assert.fail(t.getMessage());
-										else {
-											try {
-												JSONObject object = new JSONObject(o
-														.toString());
-												String size = object.getString("size");
-												size=size.replaceAll("kb", "");
-												Double size0=Double.parseDouble(size);
+										cache.getInfo(new ObjectCallback() {
 
-												Assert.assertEquals(0.0, size0);
-											} catch (JSONException e) {
-												e.printStackTrace();
+											@Override
+											public void done(Object o,
+													CloudException t)
+													throws CloudException {
+												if (t != null)
+													Assert.fail(t.getMessage());
+												else {
+													try {
+														JSONObject object = new JSONObject(
+																o.toString());
+														String size = object
+																.getString("size");
+														size = size.replaceAll(
+																"kb", "");
+														Double size0 = Double
+																.parseDouble(size);
+
+														Assert.assertEquals(
+																0.0, size0);
+													} catch (JSONException e) {
+														e.printStackTrace();
+													}
+
+												}
+
 											}
-
-										}
+										});
 
 									}
 								});
-								
 							}
 						});
-					}
-				});
-				
+
 			}
 		});
 	}
@@ -506,32 +519,36 @@ public class TestCache {
 	@Test(timeout = 30000)
 	public void shouldDeleteAllCaches() throws CloudException {
 		initialize();
-		final CloudCache cache=new CloudCache("photos");
-		cache.create(new ObjectCallback() {
-			
+		final CloudCache cache = new CloudCache("photos");
+		cache.create(new CloudCacheCallback() {
+
 			@Override
-			public void done(Object x, CloudException t) throws CloudException {
-				CloudCache cache2=new CloudCache("mails");
-				cache2.create(new ObjectCallback() {
-					
+			public void done(CloudCache x, CloudException t)
+					throws CloudException {
+				CloudCache cache2 = new CloudCache("mails");
+				cache2.create(new CloudCacheCallback() {
+
 					@Override
-					public void done(Object x, CloudException t) throws CloudException {
+					public void done(CloudCache x, CloudException t)
+							throws CloudException {
 						CloudCache.deleteAll(new ObjectCallback() {
-							
+
 							@Override
-							public void done(Object x, CloudException t) throws CloudException {
+							public void done(Object x, CloudException t)
+									throws CloudException {
 								cache.getInfo(new ObjectCallback() {
-									
+
 									@Override
-									public void done(Object x, CloudException t) throws CloudException {
-										Assert.assertEquals("null", (String)x);
-										
+									public void done(Object x, CloudException t)
+											throws CloudException {
+										Assert.assertEquals("null", (String) x);
+
 									}
 								});
-								
+
 							}
 						});
-						
+
 					}
 				});
 			}
