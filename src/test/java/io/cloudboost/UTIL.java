@@ -21,43 +21,6 @@ public class UTIL {
 		CloudApp.init("kisenyi", "yW0nFG/XF1GCfgaRdbj4KA==");
 	}
 
-	public static void main(String[] args) throws CloudException {
-		init();
-		// CloudUser user=new CloudUser();
-		// // String user=PrivateMethod._makeString();
-		// user.setUserName("trust");
-		// user.setPassword("trust");
-		// // user.setEmail("trust@cloudboost.io");
-		// user.logIn(new CloudUserCallback() {
-		//
-		// @Override
-		// public void done(CloudUser user, CloudException e) throws
-		// CloudException {
-		// if(e!=null)
-		// System.out.println("error: "+e.getMessage());
-		// else
-		// user.logOut(new CloudUserCallback() {
-		//
-		// @Override
-		// public void done(CloudUser user, CloudException e) throws
-		// CloudException {
-		// if(e!=null)
-		// System.out.println("error: "+e.getMessage());
-		// else{System.out.println("logged out");}
-		//
-		// }
-		// });
-		//
-		// }
-		// });
-		int n = 9;
-		// System.out.println("binary of n is "+);
-		decToBin(n);
-		System.out.println("our bin number is " + bin);
-		System.out.println("binary gap="
-				+ getBinGap("100011101100111110011100"));
-	}
-
 	public static int getBinGap(String s) {
 
 		char pres;
