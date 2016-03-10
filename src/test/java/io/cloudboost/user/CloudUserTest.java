@@ -58,7 +58,7 @@ public class CloudUserTest {
 			}
 		});
 	}
-	@Test(timeout = 20000)
+/*	@Test(timeout = 20000)
 	public void shouldResetPassword() throws CloudException{
 		initialize();
 		CloudUser.resetPassword("ben@cloudboost.io", new CloudStringCallback() {
@@ -72,6 +72,7 @@ public class CloudUserTest {
 			}
 		});
 	}
+	*/
 	@Test(timeout = 20000)
 	public void shouldCreateNewUserAndChangePassword() throws CloudException{
 		final String username = PrivateMethod._makeString();
