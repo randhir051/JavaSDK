@@ -8,6 +8,7 @@ import io.cloudboost.util.CloudSocket;
 import io.socket.client.Ack;
 import io.socket.emitter.Emitter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -1094,6 +1095,17 @@ public class CloudObject {
 
 		return valid;
 	}
+	public CloudFile getFile(String columnName) throws CloudException{
+		CloudFile file=null;
+		try{
+			
+			JSONObject fileOb=document.getJSONObject(columnName);
+			file=new CloudFile(fileOb);
+			return file;
+		}catch(JSONException e){
+			throw new CloudException("It seems column '"+columnName+"' does not contain a CloudFile");
+		}
+	}
 /**
  * returns the underlying permission object of this object
  * @return ACL
@@ -1109,4 +1121,5 @@ public class CloudObject {
 			return null;
 		}
 	}
+
 }
