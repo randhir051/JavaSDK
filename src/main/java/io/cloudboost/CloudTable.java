@@ -36,7 +36,7 @@ public class CloudTable{
 		this.document = new JSONObject();
 		this.document.put("name", tableName);
 		this.document.put("appId", CloudApp.getAppId());
-		this.document.put("_type", "table");
+//		this.document.put("_type", "table");
 		if(tableName.toLowerCase() == "user"){
 			this.document.put("type", "user");
 			this.document.put("maxCount", 1);
@@ -336,7 +336,7 @@ public class CloudTable{
 		JSONObject params = new JSONObject();
 		try {
 		params.put("key", CloudApp.getAppKey());
-		params.put("appId", CloudApp.getAppId());
+//		params.put("appId", CloudApp.getAppId());
 		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+table.getTableName();
 		CBResponse response=CBParser.callJson(url, "POST", params);
 
@@ -410,7 +410,7 @@ public class CloudTable{
 		
 		JSONObject params  = new JSONObject();
 		try {
-		params.put("data", document);		
+		params.put("name", this.document.get("name"));		
 		params.put("key", CloudApp.getAppKey());
 		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "DELETE", params);
@@ -438,4 +438,5 @@ public class CloudTable{
 		}
 		
 	}
+
 }

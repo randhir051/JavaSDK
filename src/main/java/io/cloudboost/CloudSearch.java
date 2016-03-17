@@ -229,5 +229,18 @@ public class CloudSearch{
 			callbackObject.done((CloudObject[])null, ee);
 		}
 	}
-
+public static void main(String[] args) throws CloudException {
+	CloudApp.init("cpnbzclvxjts", "67d3f4e4-97e6-4f2b-91af-d553b9160e20");
+	SearchFilter filter=new SearchFilter();
+	filter.exists("name");
+	CloudSearch search=new CloudSearch("data", null, filter);
+	search.search(new CloudObjectArrayCallback() {
+		
+		@Override
+		public void done(CloudObject[] x, CloudException t) throws CloudException {
+			// TODO Auto-generated method stub
+			
+		}
+	});
+}
 }

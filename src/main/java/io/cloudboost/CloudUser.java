@@ -295,7 +295,7 @@ public class CloudUser extends CloudObject {
 		JSONObject data = new JSONObject();
 		thisObj = this;
 		try {
-			data.put("document", document);
+//			data.put("document", document);
 			data.put("user", thisObj.document);
 			data.put("role", role.document);
 
@@ -394,7 +394,7 @@ public class CloudUser extends CloudObject {
 		thisObj = this;
 
 		try {
-			data.put("document", document);
+//			data.put("document", document);
 
 			data.put("user", thisObj.document);
 			data.put("role", role.document);

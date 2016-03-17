@@ -501,5 +501,25 @@ public class CloudFile{
 				
 			}
 		});
+		
+	}
+	public static void main(String[] args) throws CloudException, JSONException, IOException {
+		CloudApp.init("cpnbzclvxjts", "67d3f4e4-97e6-4f2b-91af-d553b9160e20");
+		CloudFile file=new CloudFile(new File("smack.jpg"));
+		file.save(new CloudFileCallback() {
+			
+			@Override
+			public void done(CloudFile x, CloudException t) throws CloudException {
+				x.getFileContent(new ObjectCallback() {
+					
+					@Override
+					public void done(Object x, CloudException t) throws CloudException {
+						System.out.println("file content: "+x.toString());
+						
+					}
+				});
+				
+			}
+		});
 	}
 }

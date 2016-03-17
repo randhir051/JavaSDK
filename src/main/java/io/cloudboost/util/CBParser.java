@@ -35,6 +35,11 @@ public class CBParser {
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
+		
+		if(httpMethod.toLowerCase().equals("delete")){
+			httpMethod="PUT";
+			parameters.put("method", "DELETE");
+		}
 		String params = parameters.toString();
 		URL url = null;
 		try {
@@ -90,6 +95,7 @@ public class CBParser {
 			inputString = inputStreamToString(conn.getInputStream());
 
 		} catch (IOException e) {
+			
 			CBResponse resp = new CBResponse(respMsg, respMsg, respCode, sid);
 			return resp;
 		}

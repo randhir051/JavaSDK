@@ -1,9 +1,11 @@
 package io.cloudboost;
 
+import io.cloudboost.json.JSONArray;
 import io.cloudboost.json.JSONException;
 import io.cloudboost.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 
@@ -339,7 +341,11 @@ public class SearchQuery{
 		if(all_words != null){
 	        all_words = "and";
 	    }
-	        
+	     if(query instanceof String[]){
+	    	 String[] arr=(String[]) query;
+	    	 JSONArray jsonArr=new JSONArray(Arrays.asList(arr));
+	    	 query=jsonArr;
+	     }   
 	    JSONObject obj = this._buildSearchOn(columns,query.toString(), fuzziness,all_words,match_percent,priority);
 	    
 	    

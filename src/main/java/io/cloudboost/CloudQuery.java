@@ -855,7 +855,9 @@ public class CloudQuery {
 				|| data instanceof String[] || data instanceof Double[]) {
 
 			CloudObject[] object = new CloudObject[data.length];
+			if(data instanceof CloudObject[])
 			columnName =columnName.equals("_id")?columnName:columnName +"._id";
+			
 
 			try {
 				this.query.put("$include", $include);
@@ -1520,5 +1522,50 @@ public class CloudQuery {
 			callbackObject.done((CloudObject) null, e1);
 			e.printStackTrace();
 		}
+	}
+	public void paginate(Integer pageNo,Integer totalItemsPerPage,final PaginatorCallback callback) throws CloudException{
+		if (CloudApp.getAppId() == null) {
+			throw new CloudException("App Id is null");
+		}
+		if(pageNo==null)
+			pageNo=1;
+		if(totalItemsPerPage==null)
+			totalItemsPerPage=getLimit();
+		final int totalItems=totalItemsPerPage;
+		if(pageNo>0){
+			if(totalItemsPerPage>0){
+				setSkip((pageNo*totalItemsPerPage)-totalItemsPerPage);
+				setLimit(totalItemsPerPage);
+			}
+		}
+		if(totalItemsPerPage>0)
+			setLimit(totalItemsPerPage);
+		find(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(final CloudObject[] x, CloudException t) throws CloudException {
+				
+				if(t!=null)
+					callback.done(null, null, null, t);
+				else{
+					setSkip(0);
+					setLimit(99999999);
+					count(new CloudIntegerCallback() {
+						
+						@Override
+						public void done(Integer count, CloudException e) throws CloudException {
+							if(e!=null)
+								callback.done(null, null, null, e);
+							else{
+								callback.done(x, count, (int) Math.ceil(count/totalItems), null);
+							}
+							
+						}
+					});
+				}
+				
+			}
+		});
+			
 	}
 }
